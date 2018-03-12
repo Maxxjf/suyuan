@@ -1,0 +1,4 @@
+include ':app'
+include ':qcloudLib-kotlin'
+project(':qcloudLib-kotlin').projectDir = new File('../qcloudLib-kotlin/')
+include ':qcloudLib-kotlin:qclib'

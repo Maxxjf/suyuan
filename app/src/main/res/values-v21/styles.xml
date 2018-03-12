@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Android 5.0以上使用Material Design风格. -->
+    <style name="AppTheme.Theme.AppCompat" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--设置状态栏的颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--设置appBar的背景色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--设置appBar上字体的颜色-->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!--表示控件激活时候的色调，与之相同作用的一个属性：android:colorAccent。作用也是一样的。-->
+        <item name="android:colorControlActivated">@color/colorAccent</item>
+        <!--表示控件默认时的色调-->
+        <item name="android:colorControlNormal">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>
