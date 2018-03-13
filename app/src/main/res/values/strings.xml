@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">溯源</string>
+
+    <string name="toast_input_not_null">输入的内容为空</string>
 </resources>
