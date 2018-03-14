@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
-        <com.qcloud.qclib.widget.customview.ClearEditText
+        <EditText
             android:id="@+id/et_text"
             android:layout_width="0dp"
             android:layout_height="@dimen/actionbar_height"
@@ -21,8 +21,9 @@
             android:layout_marginLeft="@dimen/layout_margin"
             android:textCursorDrawable="@drawable/cursor_orange_drawable"
             android:gravity="center_vertical"
-            android:imeOptions="actionUnspecified"
+            android:imeOptions="flagNoExtractUi"
             android:inputType="text"
+            android:imeActionId="@+id/login"
             android:lines="1"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/micro_text_size"

@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
@@ -45,10 +46,10 @@ class InputDialog @JvmOverloads constructor(
     }
 
     private fun initDialog() {
-        et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
         val lp = window!!.attributes
-        lp.width = ScreenUtil.getScreenWidth(mContext) / 2 //设置宽度
-        lp.gravity = Gravity.BOTTOM or Gravity.CLIP_HORIZONTAL
+        lp.width = ScreenUtil.getScreenWidth(mContext) //设置宽度
+        //lp.height = mContext.resources.getDimensionPixelOffset(R.dimen.actionbar_height)
+        lp.gravity = Gravity.BOTTOM
         window!!.attributes = lp
         setCancelable(true)
         window!!.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
@@ -57,6 +58,7 @@ class InputDialog @JvmOverloads constructor(
     }
 
     private fun initView() {
+        //et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
         et_text.inputType = InputType.TYPE_CLASS_TEXT
         //修改下划线颜色
         et_text.background.setColorFilter(ContextCompat.getColor(mContext, R.color.transparent), PorterDuff.Mode.CLEAR)
@@ -76,7 +78,6 @@ class InputDialog @JvmOverloads constructor(
 
         //监听键盘
         et_text.setOnEditorActionListener { _, actionId, event ->
-            Timber.e(event.keyCode.toString())
             when (actionId) {
                 KeyEvent.KEYCODE_ENDCALL, KeyEvent.KEYCODE_ENTER -> {
                     onFinishClick()
@@ -107,7 +108,6 @@ class InputDialog @JvmOverloads constructor(
             val heightDifference = screenHeight - r.bottom
 
             if (heightDifference <= 0 && mLastDiff > 0) {
-                //imm.hideSoftInputFromWindow(messageTextView.getWindowToken(), 0);
                 dismiss()
             }
             mLastDiff = heightDifference
@@ -123,6 +123,7 @@ class InputDialog @JvmOverloads constructor(
     private fun onFinishClick() {
         if (check()) {
             onFinishInputListener?.onFinishInput(mInputValue)
+            KeyBoardUtil.showSoftInput(mContext, et_text)
             KeyBoardUtil.hideKeybord(mContext, et_text)
             dismiss()
         }
@@ -139,6 +140,10 @@ class InputDialog @JvmOverloads constructor(
         return true
     }
 
+    fun setInputValue(value: String) {
+        et_text.setText(value)
+    }
+
     fun initInputHint(@StringRes hintRes: Int) {
         et_text?.setHint(hintRes)
     }
@@ -148,10 +153,14 @@ class InputDialog @JvmOverloads constructor(
     }
 
     override fun dismiss() {
-        et_text.setText("")
+        super.dismiss()
         // dismiss之前重置mLastDiff值避免下次无法打开
         mLastDiff = 0
-        super.dismiss()
+    }
+
+    override fun show() {
+        super.show()
+        KeyBoardUtil.showKeybord(mContext, et_text)
     }
 
     /**
