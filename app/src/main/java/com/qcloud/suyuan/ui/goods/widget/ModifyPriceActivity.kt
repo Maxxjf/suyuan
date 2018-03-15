@@ -26,7 +26,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
     }
 
     companion object {
-        fun openActivty(@NonNull context: Context) {
+        fun openActivity(@NonNull context: Context) {
             context.startActivity(Intent(context, ModifyPriceActivity::class.java))
         }
     }

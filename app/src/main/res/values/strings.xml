@@ -7,6 +7,14 @@
     <string name="title_launch">启动页</string>
     <string name="title_main">首页</string>
     <string name="title_cashier">收银台</string>
+    <string name="title_sellers">卖货</string>
+    <string name="title_purchase">进货</string>
+    <string name="title_modify_price">修改售价</string>
+    <string name="title_selling_water">销售流水</string>
+    <string name="title_out_storage">撤消入库</string>
+    <string name="title_store_product">门店产品</string>
+    <string name="title_credit_record">赊账记录</string>
+    <string name="title_return_record">退货记录</string>
 
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>

@@ -13,7 +13,7 @@ import com.qcloud.suyuan.ui.goods.view.IPurchaseView
  * Author: gaobaiqiang
  * 2018/3/15 上午12:33.
  */
-class PurchaseActivty: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IPurchaseView {
+class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IPurchaseView {
     override val layoutId: Int
         get() = R.layout.activity_purchase
 
@@ -26,8 +26,8 @@ class PurchaseActivty: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IPu
     }
 
     companion object {
-        fun openActivty(@NonNull context: Context) {
-            context.startActivity(Intent(context, PurchaseActivty::class.java))
+        fun openActivity(@NonNull context: Context) {
+            context.startActivity(Intent(context, PurchaseActivity::class.java))
         }
     }
 }

@@ -39,6 +39,31 @@
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:label="@string/title_suyuan"/>
+
+        <activity android:name=".ui.goods.widget.SellersActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_sellers"/>
+        <activity android:name=".ui.goods.widget.PurchaseActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_purchase"/>
+        <activity android:name=".ui.goods.widget.ModifyPriceActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_modify_price"/>
+        <activity android:name=".ui.order.widget.SellingWaterActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_selling_water"/>
+        <activity android:name=".ui.record.widget.CreditRecordActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_credit_record"/>
+        <activity android:name=".ui.record.widget.ReturnRecordActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_return_record"/>
+        <activity android:name=".ui.storage.widget.OutStorageActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_out_storage"/>
+        <activity android:name=".ui.store.widget.StoreProductActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/title_store_product"/>
     </application>
 
 </manifest>
