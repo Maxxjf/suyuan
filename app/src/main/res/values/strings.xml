@@ -1,6 +1,43 @@
 <resources>
     <string name="app_name">溯源</string>
 
+    <string name="qcloud">旗云科技</string>
+
+    <string name="title_suyuan">农资溯源管理系统</string>
+    <string name="title_launch">启动页</string>
+    <string name="title_main">首页</string>
+    <string name="title_cashier">收银台</string>
+    <string name="title_sellers">卖货</string>
+    <string name="title_purchase">进货</string>
+    <string name="title_modify_price">修改售价</string>
+    <string name="title_selling_water">销售流水</string>
+    <string name="title_out_storage">撤消入库</string>
+    <string name="title_store_product">门店产品</string>
+    <string name="title_credit_record">赊账记录</string>
+    <string name="title_return_record">退货记录</string>
+
+    <string name="btn_confirm">确认</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_logout">退出登录</string>
+
+    <string name="hint_main_search">请输入"溯源码"、"批次条形码"、"产品条形码"</string>
+
+    <string name="toast_app_exit">您确认要离开？</string>
+    <string name="toast_input_not_null">输入的内容为空</string>
+    <string name="tag_today_report_form">今日营业</string>
+    <string name="tag_main_warn">告警提示</string>
+
+    <string name="tab_main_sellers">卖货</string>
+    <string name="tab_main_purchase">进货</string>
+    <string name="tab_main_modify_price">修改售价</string>
+    <string name="tab_main_selling_water">销售流水</string>
+    <string name="tab_main_out_storage">撤消入库</string>
+    <string name="tab_main_store_product">门店产品</string>
+    <string name="tab_main_credit_record">赊账记录</string>
+    <string name="tab_main_return_record">退货记录</string>
+    <string name="tab_main_more">更多操作</string>
+
+
     <string name="save">保存</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>

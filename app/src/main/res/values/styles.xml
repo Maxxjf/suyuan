@@ -12,6 +12,22 @@
         <!--设置appBar上字体的颜色-->
         <item name="android:textColorPrimary">@color/white</item>
     </style>
+
+    <!--输入消息弹窗-->
+    <style name="InputDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="colorControlNormal">@color/colorTitle</item>
+        <item name="android:textColorHint">@color/colorHint</item>
+        <item name="colorControlActivated">@color/colorSubTitle</item>
+    </style>
+
     <style name="cb_password">
         <!--波纹的颜色-->
         <item name="android:colorControlHighlight">@color/colorPrimary</item>
