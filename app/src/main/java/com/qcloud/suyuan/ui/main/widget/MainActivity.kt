@@ -11,6 +11,7 @@ import com.qcloud.suyuan.ui.main.view.IMainView
  * Date: 2018/3/12 15:29.
  */
 class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView {
+
     override val layoutId: Int
         get() = R.layout.activity_main
 

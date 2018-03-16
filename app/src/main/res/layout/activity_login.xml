@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/backgroud"
+    tools:context=".ui.main.widget.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="@dimen/margin_40"
+        android:layout_height="@dimen/margin_30"
+        android:layout_centerInParent="true"
+        android:background="@drawable/hand_transoarent_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_1"
+            android:background="@drawable/bg_white_radius"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_2"
+                android:gravity="center_horizontal"
+                android:text="@string/tv_system_name"
+                android:textColor="@color/colorGreen"
+                android:textSize="@dimen/micro_text_size" />
+
+            <com.qcloud.suyuan.widget.customview.KeyBackEditText
+                android:id="@+id/et_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_call"
+                android:hint="@string/et_hint_account"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:paddingLeft="@dimen/margin_2"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint"
+                android:textSize="@dimen/mini_text_size" />
+
+            <com.qcloud.suyuan.widget.customview.KeyBackEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_call"
+                android:hint="@string/et_hint_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:paddingLeft="@dimen/margin_2"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint"
+                android:textSize="@dimen/mini_text_size" />
+
+            <CheckBox
+                android:id="@+id/cb_rember_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:layout_marginTop="@dimen/margin_1"
+                android:checked="true"
+                android:text="@string/cb_remember_password"
+                android:theme="@style/cb_password" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:layout_marginRight="@dimen/margin_2"
+                android:background="@drawable/btn_green_radius_selector"
+                android:text="@string/btn_login"
+                android:textSize="@dimen/small_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

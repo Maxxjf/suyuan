@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFC107</color>
-    <color name="colorPrimaryDark">#FF6F00</color>
-    <color name="colorAccent">#FFCA28</color>
+    <color name="colorPrimary">#27C54E</color>
+    <color name="colorPrimaryDark">#27B12E</color>
+    <color name="colorAccent">#27D534</color>
 
     <color name="colorTitle">#282828</color><!--标题-->
     <color name="colorSubTitle">#656565</color><!--二级标题-->
     <color name="colorText">#656565</color><!--正文-->
     <color name="colorHint">#989898</color><!--提示-->
+    
+    <color name="halfTransparent">#80ffffff</color>
 </resources>

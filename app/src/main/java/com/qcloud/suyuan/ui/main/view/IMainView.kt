@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.main.view
  * Date: 2018/3/12 15:27.
  */
 interface IMainView {
+
 }

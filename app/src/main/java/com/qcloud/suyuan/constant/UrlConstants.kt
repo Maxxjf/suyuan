@@ -9,5 +9,10 @@ object UrlConstants {
     /**app请求前缀 */
     const val URL_PREFIX = "fep/"
     /**带app的url前缀 */
-    const val URL_PREFIX_APP = URL_PREFIX + "app/"
+    const val URL_PREFIX_APP = URL_PREFIX + "client/"
+
+    /**登录**/
+    const val LOGIN="login"
+
+
 }
