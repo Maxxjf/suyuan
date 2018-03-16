@@ -21,11 +21,22 @@
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
     <string name="btn_logout">退出登录</string>
+    <string name="btn_login">登录</string>
+    <string name="btn_forrget_login">忘记密码</string>
+
+    <string name="cb_remember_password">记住密码</string>
 
     <string name="hint_main_search">请输入"溯源码"、"批次条形码"、"产品条形码"</string>
+    <string name="et_hint_account">请输入您的账号</string>
+    <string name="et_hint_password">请输入您的密码</string>
+
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_input_not_null">输入的内容为空</string>
+    <string name="toast_login_success">登录成功</string>
+    <string name="toast_login_fails">密码或者账号错误</string>
+
+
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
 
@@ -51,15 +62,13 @@
     <string name="tv_system_name">农资溯源管理系统</string>
 
 
-    <string name="et_hint_account">请输入您的账号</string>
-    <string name="et_hint_password">请输入您的密码</string>
 
 
-    <string name="cb_remember_password">记住密码</string>
 
 
-    <string name="btn_login">登录</string>
 
-    <string name="toast_login_success">登录成功</string>
-    <string name="toast_login_fails">密码或者账号错误</string>
+
+
+
+
 </resources>

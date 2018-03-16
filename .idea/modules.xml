@@ -5,7 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../qcloudLib-kotlin/qclib/qclib.iml" filepath="$PROJECT_DIR$/../qcloudLib-kotlin/qclib/qclib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../qcloudLib-kotlin/qcloudLib-kotlin.iml" filepath="$PROJECT_DIR$/../qcloudLib-kotlin/qcloudLib-kotlin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/suyuan-android.iml" filepath="$PROJECT_DIR$/suyuan-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/suyuan.iml" filepath="$PROJECT_DIR$/.idea/suyuan.iml" />
+      <module fileurl="file://D:\project\suyuan\suyuan-android.iml" filepath="D:\project\suyuan\suyuan-android.iml" />
     </modules>
   </component>
 </project>

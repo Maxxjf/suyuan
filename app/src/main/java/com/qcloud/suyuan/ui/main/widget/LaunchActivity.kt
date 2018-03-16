@@ -37,5 +37,6 @@ class LaunchActivity: BaseActivity<ILaunchView, LaunchPresenterImpl>(), ILaunchV
     }
     private fun toLogin(){
         LoginActivity.openActivity(this)
+        finish()
     }
 }

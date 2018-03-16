@@ -19,7 +19,7 @@ class LoginPresenterImpl: BasePresenter<ILoginView>(),ILoginPresenter {
            //模拟
            mView?.loginSuccess()
        }else{
-           mView?.loadErr("登录")
+           mView?.loadErr("登录错误")
        }
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/backgroud"
+    android:background="@drawable/bg_login"
     tools:context=".ui.main.widget.LoginActivity">
 
     <RelativeLayout
@@ -14,6 +14,8 @@
         android:background="@drawable/hand_transoarent_radius">
 
         <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/margin_1"
@@ -33,7 +35,7 @@
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@android:drawable/sym_action_call"
+                android:drawableLeft="@drawable/icon_account"
                 android:hint="@string/et_hint_account"
                 android:imeOptions="actionNext"
                 android:inputType="number"
@@ -46,7 +48,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@android:drawable/sym_action_call"
+                android:drawableLeft="@drawable/icon_password"
                 android:hint="@string/et_hint_password"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
@@ -54,15 +56,28 @@
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
                 android:textSize="@dimen/mini_text_size" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:id="@+id/cb_rember_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/cb_remember_password"
+                    android:theme="@style/cb_password" />
+                <TextView
+                    android:layout_marginRight="@dimen/margin_2"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorGreen"
+                    android:id="@+id/forget_password"
+                    android:text="@string/btn_forrget_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
-            <CheckBox
-                android:id="@+id/cb_rember_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_1"
-                android:checked="true"
-                android:text="@string/cb_remember_password"
-                android:theme="@style/cb_password" />
 
             <Button
                 android:id="@+id/btn_login"
