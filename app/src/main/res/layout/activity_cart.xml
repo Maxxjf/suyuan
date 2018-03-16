@@ -7,7 +7,7 @@
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.shop.widget.CartActivity">
 
-    <com.qcloud.jiahua.widget.toolbar.BaseBar
+    <RelativeLayout
         tools:bar_background="@color/colorPrimary"
         tools:title_text="@string/tv_system_name"
         tools:title_color="@color/colorRed"
@@ -15,7 +15,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_5"
-        ></com.qcloud.jiahua.widget.toolbar.BaseBar>
+        ></RelativeLayout>
     <LinearLayout
         android:layout_below="@+id/toolbar"
         android:orientation="horizontal"

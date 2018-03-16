@@ -12,7 +12,7 @@ import com.qcloud.suyuan.ui.shop.view.ICartView
  * 类型：CartActivity
  * Author: iceberg
  * Date: 2018/3/15.
- * TODO:
+ * 购物车
  */
 class CartActivity: BaseActivity<ICartView, CartPresenterImpl>(),ICartView {
     override fun loadErr(errMsg: String, isShow: Boolean) {
