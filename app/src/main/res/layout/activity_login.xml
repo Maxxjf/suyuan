@@ -8,8 +8,8 @@
     tools:context=".ui.main.widget.LoginActivity">
 
     <RelativeLayout
-        android:layout_width="@dimen/margin_40"
-        android:layout_height="@dimen/margin_30"
+        android:layout_width="@dimen/login_width"
+        android:layout_height="@dimen/login_height"
         android:layout_centerInParent="true"
         android:background="@drawable/hand_transoarent_radius">
 

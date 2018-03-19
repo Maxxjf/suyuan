@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="login_width">618dp</dimen>
+    <dimen name="login_height">526dp</dimen>
+</resources>

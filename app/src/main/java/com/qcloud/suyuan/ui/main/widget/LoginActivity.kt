@@ -2,6 +2,7 @@ package com.qcloud.suyuan.ui.main.widget
 
 import android.content.Context
 import android.content.Intent
+import android.util.DisplayMetrics
 import android.view.View
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.SharedUtil
@@ -13,6 +14,7 @@ import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
 import com.qcloud.suyuan.ui.shop.widget.CartActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import timber.log.Timber
 
 /**
  * 类型：LoginActivity
@@ -20,7 +22,8 @@ import kotlinx.android.synthetic.main.activity_login.*
  * Date: 2018/3/15.
  * 登录页
  */
-class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView {
+class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView,View.OnClickListener {
+
 
 
     private var account: String = ""
@@ -35,9 +38,21 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
         get() = true
 
     override fun initViewAndData() {
+        initData()
+        initListener();
+
+    }
+
+    private fun initData() {
+        Timber.e(""+getResources().getDisplayMetrics())
+        DisplayMetrics.DENSITY_260
         et_account.setText(SharedUtil.getString(ShareConstants.account))
+    }
+
+    private fun initListener() {
         cb_rember_password.setOnCheckedChangeListener { button, isCheck ->
             {
+                Timber.e("isCheck:${isCheck}")
                 if (isCheck) {
                     account = et_account.text.toString().trim()
                     loadErr("${account}", true)
@@ -47,14 +62,13 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
                 }
             }
         }
-        btn_login.setOnClickListener(View.OnClickListener { view: View? ->
-            if (view != null) {
-                mPresenter?.onBtnClick(view.id)
-            }
-        })
+        btn_login.setOnClickListener(this)
     }
-
-
+    override fun onClick(view: View?) {
+        if (view!=null){
+            mPresenter?.onBtnClick(view.id)
+        }
+    }
     override fun loginBtnClick() {
         if (check()) {
             startLoadingDialog()

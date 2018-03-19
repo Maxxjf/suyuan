@@ -60,15 +60,7 @@
 
 
     <string name="tv_system_name">农资溯源管理系统</string>
-
-
-
-
-
-
-
-
-
+    <string name="title_activity_test">TestActivity</string>
 
 
 </resources>
