@@ -11,83 +11,98 @@
         android:layout_width="@dimen/login_width"
         android:layout_height="@dimen/login_height"
         android:layout_centerInParent="true"
-        android:background="@drawable/hand_transoarent_radius">
+        android:background="@drawable/radius_hand_transoarent">
 
         <LinearLayout
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_1"
+            android:layout_margin="@dimen/margin_2"
             android:background="@drawable/bg_white_radius"
-            android:orientation="vertical">
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_6"
+            android:paddingRight="@dimen/margin_6">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginTop="@dimen/margin_7"
                 android:gravity="center_horizontal"
                 android:text="@string/tv_system_name"
                 android:textColor="@color/colorGreen"
-                android:textSize="@dimen/micro_text_size" />
+                android:textSize="@dimen/bigTitleSize" />
 
-            <com.qcloud.suyuan.widget.customview.KeyBackEditText
+            <TextView
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_7"
                 android:drawableLeft="@drawable/icon_account"
                 android:hint="@string/et_hint_account"
                 android:imeOptions="actionNext"
                 android:inputType="number"
-                android:paddingLeft="@dimen/margin_2"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/mini_text_size" />
+                android:textSize="@dimen/textSize" />
 
-            <com.qcloud.suyuan.widget.customview.KeyBackEditText
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/underLine"
+                android:background="@color/colorDivider"></View>
+
+            <TextView
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4"
                 android:drawableLeft="@drawable/icon_password"
                 android:hint="@string/et_hint_password"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:paddingLeft="@dimen/margin_2"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/mini_text_size" />
+                android:textSize="@dimen/textSize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/underLine"
+                android:background="@color/colorDivider"></View>
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_2">
+
                 <CheckBox
-                    android:layout_marginLeft="@dimen/margin_2"
                     android:id="@+id/cb_rember_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/cb_remember_password"
+                    android:textSize="@dimen/textSize"
                     android:theme="@style/cb_password" />
+
                 <TextView
-                    android:layout_marginRight="@dimen/margin_2"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:textColor="@color/colorGreen"
-                    android:id="@+id/forget_password"
-                    android:text="@string/btn_forrget_login"
+                    android:id="@+id/btn_forget_password"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/btn_forrget_login"
+                    android:textColor="@drawable/selector_green_click"
+                    android:textSize="@dimen/textSize" />
             </RelativeLayout>
 
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_2"
-                android:layout_marginRight="@dimen/margin_2"
-                android:background="@drawable/btn_green_radius_selector"
+                android:layout_width="@dimen/login_btn_width"
+                android:layout_height="@dimen/login_btn_height"
+                android:layout_marginTop="@dimen/margin_7"
+                android:background="@drawable/selector_btn_green_radius"
                 android:text="@string/btn_login"
-                android:textSize="@dimen/small_text_size" />
+                android:textSize="@dimen/btnTextSize" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

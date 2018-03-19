@@ -2,18 +2,20 @@ package com.qcloud.suyuan.ui.main.widget
 
 import android.content.Context
 import android.content.Intent
-import android.util.DisplayMetrics
 import android.view.View
+import android.widget.TextView
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.SharedUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.base.SwipeBaseActivity
 import com.qcloud.suyuan.constant.ShareConstants
 import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
 import com.qcloud.suyuan.ui.shop.widget.CartActivity
+import com.qcloud.suyuan.widget.dialog.InputDialog
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.annotations.NotNull
 import timber.log.Timber
 
 /**
@@ -22,13 +24,12 @@ import timber.log.Timber
  * Date: 2018/3/15.
  * 登录页
  */
-class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView,View.OnClickListener {
+class LoginActivity : SwipeBaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView, View.OnClickListener {
 
 
-
-    private var account: String = ""
-    private var password: String = ""
-
+    private var account: String = "" //账号
+    private var password: String = "" //密码
+    private var input: InputDialog? =null
     override val layoutId: Int
         get() = R.layout.activity_login
 
@@ -44,8 +45,6 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     private fun initData() {
-        Timber.e(""+getResources().getDisplayMetrics())
-        DisplayMetrics.DENSITY_260
         et_account.setText(SharedUtil.getString(ShareConstants.account))
     }
 
@@ -62,18 +61,33 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
                 }
             }
         }
+        btn_forget_password.setOnClickListener(this)
         btn_login.setOnClickListener(this)
+        et_account.setOnClickListener(this)
+        et_password.setOnClickListener(this)
     }
+
     override fun onClick(view: View?) {
-        if (view!=null){
-            mPresenter?.onBtnClick(view.id)
+
+        if (view != null) {
+            when(view.id){
+                R.id.et_account ->showInput(view as TextView?)
+                R.id.et_password ->showInput(view as TextView?)
+                R.id.btn_forget_password ->forgetBtnClick()
+                R.id.btn_login ->loginBtnClick()
+            }
         }
     }
+
     override fun loginBtnClick() {
         if (check()) {
             startLoadingDialog()
             mPresenter?.login(account, password)
         }
+    }
+
+    override fun forgetBtnClick() {
+        QToast.show(this,resources.getText(R.string.btn_forrget_login))
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -103,6 +117,18 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
         }
 
         return true
+    }
+
+    override fun showInput(@NotNull view: TextView?) {
+        if (input==null){
+            input = InputDialog(this)
+        }
+        if (view != null) {
+            input?.setBindView(view)
+            input?.setInputValue(view.text.toString().trim())
+        }
+
+        input?.show()
     }
 
     companion object {

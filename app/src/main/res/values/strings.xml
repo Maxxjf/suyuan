@@ -23,6 +23,7 @@
     <string name="btn_logout">退出登录</string>
     <string name="btn_login">登录</string>
     <string name="btn_forrget_login">忘记密码</string>
+    <string name="btn_updata_password">修改密码</string>
     <string name="btn_search">搜索</string>
     <string name="btn_get_more">查看更多</string>
 
@@ -66,6 +67,7 @@
 
     <string name="tv_system_name">农资溯源管理系统</string>
     <string name="title_activity_test">TestActivity</string>
+
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>
     <string name="tag_return">退款</string>

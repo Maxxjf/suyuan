@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.widgets.dialog
+package com.qcloud.suyuan.widget.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -14,8 +14,7 @@ import android.text.TextWatcher
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
@@ -37,6 +36,8 @@ class InputDialog @JvmOverloads constructor(
 
     private var mInputValue: String? = null
 
+    var mEtView: TextView? = null
+
     var onFinishInputListener: OnFinishInputListener? = null
     var onTextChangeListener: OnTextChangeListener? = null
 
@@ -48,7 +49,7 @@ class InputDialog @JvmOverloads constructor(
     private fun initDialog() {
         val lp = window!!.attributes
         lp.width = ScreenUtil.getScreenWidth(mContext) //设置宽度
-        //lp.height = mContext.resources.getDimensionPixelOffset(R.dimen.actionbar_height)
+        lp.height = mContext.resources.getDimensionPixelOffset(R.dimen.btn_height)
         lp.gravity = Gravity.BOTTOM
         window!!.attributes = lp
         setCancelable(true)
@@ -125,6 +126,7 @@ class InputDialog @JvmOverloads constructor(
             onFinishInputListener?.onFinishInput(mInputValue)
             KeyBoardUtil.showSoftInput(mContext, et_text)
             KeyBoardUtil.hideKeybord(mContext, et_text)
+            mEtView?.setText(mInputValue)
             dismiss()
         }
     }
@@ -150,6 +152,10 @@ class InputDialog @JvmOverloads constructor(
 
     fun initInputHint(hintValue: String) {
         et_text?.hint = hintValue
+    }
+
+    fun setBindView(@NonNull view: TextView) {
+        this.mEtView=view
     }
 
     override fun dismiss() {

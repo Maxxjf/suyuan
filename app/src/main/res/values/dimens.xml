@@ -10,8 +10,14 @@
     <dimen name="typeTextSize">16sp</dimen>
     <!--正文-->
     <dimen name="textSize">13.33sp</dimen>
+    <!--下划线-->
+    <dimen name="underLine">2dp</dimen>
+
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_width">618dp</dimen>
     <dimen name="login_height">526dp</dimen>
+    <dimen name="login_btn_width">490dp</dimen>
+    <dimen name="login_btn_height">74dp</dimen>
+
 </resources>
