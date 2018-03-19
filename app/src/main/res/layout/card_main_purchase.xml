@@ -19,23 +19,24 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_purchase"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/appbar_text_size"
-            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/titleTextSize"
+            android:textColor="@color/colorOrange"
             android:text="@string/tab_main_purchase" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/appbar_text_size"
-            android:textColor="@color/colorBlue"
-            android:text="JINHUO" />
+            android:textSize="@dimen/titleTextSize"
+            android:textColor="@color/colorOrange"
+            android:text="@string/tab_main_purchase_pinyin" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

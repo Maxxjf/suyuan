@@ -19,13 +19,14 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_sellers"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/appbar_text_size"
+            android:textSize="@dimen/titleTextSize"
             android:textColor="@color/colorBlue"
             android:text="@string/tab_main_sellers" />
 
@@ -33,9 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/appbar_text_size"
+            android:textSize="@dimen/titleTextSize"
             android:textColor="@color/colorBlue"
-            android:text="MAIHUO" />
+            android:text="@string/tab_main_sellers_pinyin" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

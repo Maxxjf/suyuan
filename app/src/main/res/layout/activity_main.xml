@@ -36,7 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/padding_2"
+                tools:ignore="NestedWeights"/>
 
             <include
                 layout="@layout/card_main_warn"
@@ -56,7 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="NestedWeights">
 
                 <include
                     layout="@layout/card_main_sellers"

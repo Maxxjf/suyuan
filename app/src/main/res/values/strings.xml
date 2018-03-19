@@ -42,8 +42,11 @@
     <string name="tag_main_warn">告警提示</string>
 
     <string name="tab_main_sellers">卖货</string>
+    <string name="tab_main_sellers_pinyin">MAIHUO</string>
     <string name="tab_main_purchase">进货</string>
+    <string name="tab_main_purchase_pinyin">JINHUO</string>
     <string name="tab_main_modify_price">修改售价</string>
+    <string name="tab_main_modify_price_pinyin">XIUGAISHOUJIA</string>
     <string name="tab_main_selling_water">销售流水</string>
     <string name="tab_main_out_storage">撤消入库</string>
     <string name="tab_main_store_product">门店产品</string>

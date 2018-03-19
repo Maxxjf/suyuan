@@ -5,7 +5,7 @@
     <!--深主题色-->
     <color name="colorPrimaryDark">#1B8D37</color>
     <!--控件触发颜色-->
-    <color name="colorAccent">#27C54E</color>
+    <color name="colorAccent">#89E4B9</color>
 
     <!--主文字颜色-->
     <color name="colorTitle">#353535</color>
@@ -21,6 +21,20 @@
     <color name="colorModelBg">#F2F2F2</color>
     <!--背景颜色-->
     <color name="colorBg">#FFFFFF</color>
+    <!--蓝色-->
+    <color name="colorBlue">#1F8DFB</color>
+    <!--橙色-->
+    <color name="colorOrange">#FB770F</color>
+    <!--绿色-->
+    <color name="colorGreen">#4CC08A</color>
+    <!--青色-->
+    <color name="colorCyan">#4DC3B0</color>
+    <!---->
+    <color name="colorBlue2">#50B5C5</color>
+    <!---->
+    <color name="colorBlue3">#669ECC</color>
+    <!--红色-->
+    <color name="colorRed">#FF1215</color>
     
     <color name="halfTransparent">#80ffffff</color>
 
@@ -28,6 +42,6 @@
     <color name="btnNormal">#27C54E</color>
     <!--按钮点击颜色-->
     <color name="btnPressed">#1B8D37</color>
-    <!--按钮不可点击颜色-->、
+    <!--按钮不可点击颜色-->
     <color name="btnError">#E5E5E5</color>
 </resources>
