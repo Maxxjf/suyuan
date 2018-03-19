@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--大标题，用于导航重要标题-->
-    <dimen name="bigTitleSize">36sp</dimen>
+    <dimen name="bigTitleSize">24sp</dimen>
     <!--按钮文字大小，用于按钮和二级标题-->
-    <dimen name="btnTextSize">30sp</dimen>
+    <dimen name="TitleTextSize">20sp</dimen>
+    <!--按钮文字大小，用于按钮和二级标题-->
+    <dimen name="btnTextSize">20sp</dimen>
     <!--分类标题和功能按钮-->
-    <dimen name="typeTextSize">24sp</dimen>
+    <dimen name="typeTextSize">16sp</dimen>
     <!--正文-->
-    <dimen name="textSize">20sp</dimen>
+    <dimen name="textSize">13.33sp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_width">618dp</dimen>

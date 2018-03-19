@@ -28,7 +28,7 @@ class LaunchActivity: BaseActivity<ILaunchView, LaunchPresenterImpl>(), ILaunchV
     private fun startTimer() {
         Observable.timer(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { toLogin() }
+                .subscribe { toMain() }
     }
 
     private fun toMain() {
