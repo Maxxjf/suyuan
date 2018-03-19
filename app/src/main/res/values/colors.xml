@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--主题色-->
     <color name="colorPrimary">#27C54E</color>
-    <color name="colorPrimaryDark">#27B12E</color>
-    <color name="colorAccent">#27D534</color>
+    <!--深主题色-->
+    <color name="colorPrimaryDark">#1B8D37</color>
+    <!--控件触发颜色-->
+    <color name="colorAccent">#27C54E</color>
 
-    <color name="colorTitle">#282828</color><!--标题-->
-    <color name="colorSubTitle">#656565</color><!--二级标题-->
-    <color name="colorText">#656565</color><!--正文-->
-    <color name="colorHint">#989898</color><!--提示-->
+    <!--主文字颜色-->
+    <color name="colorTitle">#353535</color>
+    <!--辅助文件颜色-->
+    <color name="colorSubTitle">#888888</color>
+    <!--主文字颜色-->
+    <color name="colorText">#656565</color>
+    <color name="colorHint">#989898</color>
+
+    <!--线条颜色-->
+    <color name="colorLine">#E5E5E5</color>
+    <!--分割模块背景颜色-->
+    <color name="colorModelBg">#F2F2F2</color>
+    <!--背景颜色-->
+    <color name="colorBg">#FFFFFF</color>
     
     <color name="halfTransparent">#80ffffff</color>
+
+    <!--按钮显示颜色-->
+    <color name="btnNormal">#27C54E</color>
+    <!--按钮点击颜色-->
+    <color name="btnPressed">#1B8D37</color>
+    <!--按钮不可点击颜色-->、
+    <color name="btnError">#E5E5E5</color>
 </resources>
