@@ -16,7 +16,13 @@
     <string name="title_out_storage">撤消入库</string>
     <string name="title_store_product">门店产品</string>
     <string name="title_credit_record">赊账记录</string>
+    <string name="title_return">退货</string>
     <string name="title_return_record">退货记录</string>
+    <string name="title_suyuan_record">溯源记录</string>
+    <string name="title_form">报表</string>
+    <string name="title_my_supplier">我的供应商管理</string>
+    <string name="title_store_info">门店信息</string>
+    <string name="title_device_state">设备状态</string>
     <string name="title_search_suyuan">扫溯源码搜索</string>
     <string name="title_search_batch">扫批次条形码搜索</string>
     <string name="title_search_product">扫产品条形码搜索</string>
@@ -59,9 +65,14 @@
     <string name="tab_main_out_storage">撤消入库</string>
     <string name="tab_main_store_product">门店产品</string>
     <string name="tab_main_credit_record">赊账记录</string>
-    <string name="tab_main_return_record">退货记录</string>
+    <string name="tab_main_return">退货</string>
     <string name="tab_main_more">更多操作</string>
-
+    <string name="tab_main_return_record">退货记录</string>
+    <string name="tab_main_suyuan_record">溯源记录</string>
+    <string name="tab_main_form">报表</string>
+    <string name="tab_main_my_supplier">我的供应商管理</string>
+    <string name="tab_main_store_info">门店信息</string>
+    <string name="tab_main_device_state">设备状态</string>
 
     <string name="save">保存</string>
     <string name="edit">编辑</string>

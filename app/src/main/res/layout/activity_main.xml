@@ -127,7 +127,7 @@
                     android:layout_margin="@dimen/padding_2"/>
 
                 <include
-                    layout="@layout/card_main_return_record"
+                    layout="@layout/card_main_return"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

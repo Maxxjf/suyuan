@@ -9,6 +9,6 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/appbar_height"
-        app:title_text="@string/title_purchase"/>
+        app:title_text="@string/title_form"/>
 
 </android.support.constraint.ConstraintLayout>

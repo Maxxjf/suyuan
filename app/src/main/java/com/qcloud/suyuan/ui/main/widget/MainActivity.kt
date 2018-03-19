@@ -24,6 +24,7 @@ import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
 import com.qcloud.suyuan.ui.record.widget.ReturnRecordActivity
 import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
+import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,7 +34,7 @@ import kotlinx.android.synthetic.main.card_main_more.*
 import kotlinx.android.synthetic.main.card_main_out_storage.*
 import kotlinx.android.synthetic.main.card_main_purchase.*
 import kotlinx.android.synthetic.main.card_main_report_form.*
-import kotlinx.android.synthetic.main.card_main_return_record.*
+import kotlinx.android.synthetic.main.card_main_return.*
 import kotlinx.android.synthetic.main.card_main_sellers.*
 import kotlinx.android.synthetic.main.card_main_selling_water.*
 import kotlinx.android.synthetic.main.card_main_store_product.*
@@ -48,6 +49,7 @@ import timber.log.Timber
 class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, View.OnClickListener {
 
     private var searchDialog: SearchSelectDialog? = null
+    private var moreDialog: MoreOperationDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_main
@@ -64,7 +66,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
         layout_out_storage.setOnClickListener(this)
         layout_store_product.setOnClickListener(this)
         layout_credit_record.setOnClickListener(this)
-        layout_return_record.setOnClickListener(this)
+        layout_return.setOnClickListener(this)
         layout_more.setOnClickListener(this)
 
         initToolbar()
@@ -95,8 +97,13 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_out_storage -> OutStorageActivity.openActivity(this)
             R.id.layout_store_product -> StoreProductActivity.openActivity(this)
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
-            R.id.layout_return_record -> ReturnRecordActivity.openActivity(this)
-            R.id.layout_more -> QToast.error(this, R.string.tab_main_more)
+            R.id.layout_return -> ReturnRecordActivity.openActivity(this)
+            R.id.layout_more -> {
+                if (moreDialog == null) {
+                    moreDialog = MoreOperationDialog(this@MainActivity)
+                }
+                moreDialog?.show()
+            }
         }
     }
 
@@ -150,6 +157,12 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
         if (searchDialog != null && searchDialog!!.isShowing) {
             searchDialog?.let {
                 searchDialog?.dismiss()
+            }
+        }
+
+        if (moreDialog != null && moreDialog!!.isShowing) {
+            moreDialog?.let {
+                moreDialog?.dismiss()
             }
         }
     }
