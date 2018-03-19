@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--顶部导航自定义属性-->
+    <declare-styleable name="CustomBar">
+        <!--是否显示返回图标-->
+        <attr name="is_back" format="boolean"/>
+        <!--返回图标-->
+        <attr name="back_icon" format="reference"/>
+        <!--是否显示退出登录图标-->
+        <attr name="is_logout" format="boolean"/>
+        <!--退出登录图标-->
+        <attr name="logout_icon" format="reference"/>
+        <!--是否显示标题文字-->
+        <attr name="is_title" format="boolean"/>
+        <!--标题文字-->
+        <attr name="title_text" format="reference"/>
+        <!--是否显示在主页-->
+        <attr name="is_main" format="boolean"/>
+        <!--是否显示右控件-->
+        <attr name="is_right" format="boolean"/>
+        <!--右图标-->
+        <attr name="right_icon" format="reference"/>
+        <!--右文字-->
+        <attr name="right_text" format="reference"/>
+    </declare-styleable>
+</resources>

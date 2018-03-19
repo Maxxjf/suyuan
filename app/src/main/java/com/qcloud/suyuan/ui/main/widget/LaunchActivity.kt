@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.ui.main.widget
 
+import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.main.presenter.impl.LaunchPresenterImpl
@@ -28,7 +30,13 @@ class LaunchActivity: BaseActivity<ILaunchView, LaunchPresenterImpl>(), ILaunchV
     private fun startTimer() {
         Observable.timer(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { toLogin() }
+                .subscribe {
+                    if (StringUtil.isBlank(TokenUtil.getToken())) {
+                        toLogin()
+                    } else {
+                        toMain()
+                    }
+                }
     }
 
     private fun toMain() {

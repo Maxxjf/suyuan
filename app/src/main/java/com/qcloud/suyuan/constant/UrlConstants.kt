@@ -7,7 +7,7 @@ package com.qcloud.suyuan.constant
  */
 object UrlConstants {
     /**app请求前缀 */
-    const val URL_PREFIX = "fep/"
+    const val URL_PREFIX = "fep/app/"
     /**带app的url前缀 */
     const val URL_PREFIX_APP = URL_PREFIX + "client/"
 
