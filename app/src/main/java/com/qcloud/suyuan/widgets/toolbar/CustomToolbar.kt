@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.support.annotation.DrawableRes
+import android.support.annotation.NonNull
 import android.support.annotation.StringRes
 import android.support.v7.widget.Toolbar
 import android.util.AttributeSet
@@ -38,6 +39,8 @@ class CustomToolbar @JvmOverloads constructor(
     private var rightIcon: Int = 0
     @StringRes
     private var rightText: Int = 0
+
+    var onBtnClickListener: OnBtnClickListener? = null
 
     init {
         initAttrs(attrs)
@@ -120,10 +123,19 @@ class CustomToolbar @JvmOverloads constructor(
         btn_right.setOnClickListener(this)
     }
 
+    fun setTitleText(@NonNull titleText: String) {
+        tv_title.text = titleText
+    }
+
     override fun onClick(p0: View) {
         when (p0.id) {
             R.id.btn_back -> (mContext as Activity).finish()
             R.id.btn_logout -> QToast.show(mContext, "退出登录")
+            R.id.btn_right -> onBtnClickListener?.onBtnClick(p0)
         }
+    }
+
+    interface OnBtnClickListener {
+        fun onBtnClick(view: View)
     }
 }

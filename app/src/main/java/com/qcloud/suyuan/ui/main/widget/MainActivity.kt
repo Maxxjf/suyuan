@@ -12,6 +12,7 @@ import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseApplication
+import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.realm.RealmHelper
 import com.qcloud.suyuan.ui.goods.widget.ModifyPriceActivity
 import com.qcloud.suyuan.ui.goods.widget.PurchaseActivity
@@ -23,15 +24,21 @@ import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
 import com.qcloud.suyuan.ui.record.widget.ReturnRecordActivity
 import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
+import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
+import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_main_credit_record.*
 import kotlinx.android.synthetic.main.card_main_modify_price.*
 import kotlinx.android.synthetic.main.card_main_more.*
 import kotlinx.android.synthetic.main.card_main_out_storage.*
 import kotlinx.android.synthetic.main.card_main_purchase.*
+import kotlinx.android.synthetic.main.card_main_report_form.*
 import kotlinx.android.synthetic.main.card_main_return_record.*
 import kotlinx.android.synthetic.main.card_main_sellers.*
 import kotlinx.android.synthetic.main.card_main_selling_water.*
 import kotlinx.android.synthetic.main.card_main_store_product.*
+import kotlinx.android.synthetic.main.card_main_warn.*
+import timber.log.Timber
 
 /**
  * 类说明：主页
@@ -39,6 +46,8 @@ import kotlinx.android.synthetic.main.card_main_store_product.*
  * Date: 2018/3/12 15:29.
  */
 class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, View.OnClickListener {
+
+    private var searchDialog: SearchSelectDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_main
@@ -57,6 +66,24 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
         layout_credit_record.setOnClickListener(this)
         layout_return_record.setOnClickListener(this)
         layout_more.setOnClickListener(this)
+
+        initToolbar()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mPresenter?.getMainForm()
+    }
+
+    private fun initToolbar() {
+        toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                if (searchDialog == null) {
+                    searchDialog = SearchSelectDialog(this@MainActivity)
+                }
+                searchDialog?.show()
+            }
+        }
     }
 
     override fun onClick(v: View) {
@@ -70,6 +97,33 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
             R.id.layout_return_record -> ReturnRecordActivity.openActivity(this)
             R.id.layout_more -> QToast.error(this, R.string.tab_main_more)
+        }
+    }
+
+    override fun showMainForm(bean: MainFormBean) {
+        if (isRunning) {
+            var todayForm = bean.todayBusiness
+            if (todayForm != null) {
+                tv_income.text = todayForm.earningStr
+                tv_credit.text = todayForm.onCreditStr
+                tv_valid_order.text = String.format(resources.getString(R.string.num_of_valid_order), todayForm.order)
+                tv_return.text = todayForm.returnMoneyStr
+            }
+            var warnBean = bean.alarm
+            if (warnBean != null) {
+                tv_valid_warn.text = warnBean.indateStr
+                tv_stock_warn.text = warnBean.stockStr
+            }
+        }
+    }
+
+    override fun loadErr(errMsg: String, isShow: Boolean) {
+        if (isRunning) {
+            if (isShow) {
+                QToast.show(this, errMsg)
+            } else {
+                Timber.e(errMsg)
+            }
         }
     }
 
@@ -89,6 +143,15 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
                     .show()
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (searchDialog != null && searchDialog!!.isShowing) {
+            searchDialog?.let {
+                searchDialog?.dismiss()
+            }
+        }
     }
 
     companion object {

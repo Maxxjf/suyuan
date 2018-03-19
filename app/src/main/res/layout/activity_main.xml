@@ -8,6 +8,7 @@
     tools:context=".ui.main.widget.MainActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/appbar_height"
         app:is_back="false"

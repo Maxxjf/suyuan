@@ -80,6 +80,10 @@
             android:label="@string/title_store_product"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".ui.main.widget.SearchActivity"
+            android:label="@string/title_search_suyuan"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme"></activity>

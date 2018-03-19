@@ -14,5 +14,8 @@ object UrlConstants {
     /**登录**/
     const val LOGIN="login"
 
+    /** 首页数据 */
+    const val MAIN_FORM = URL_PREFIX + "index/indexData"
+
 
 }

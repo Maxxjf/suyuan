@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.main.presenter
  * Date: 2018/3/12 15:28.
  */
 interface IMainPresenter {
+    fun getMainForm()
 }
