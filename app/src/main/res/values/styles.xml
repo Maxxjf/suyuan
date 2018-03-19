@@ -28,6 +28,20 @@
         <item name="colorControlActivated">@color/colorSubTitle</item>
     </style>
 
+    <!-- 水平分界线白色底 -->
+    <style name="LineHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/line_height</item>
+        <item name="android:background">@color/colorLine</item>
+    </style>
+
+    <!-- 垂直分界线白色底 -->
+    <style name="LineVertical">
+        <item name="android:layout_width">@dimen/line_height</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorLine</item>
+    </style>
+
     <style name="cb_password">
         <!--波纹的颜色-->
         <item name="android:colorControlHighlight">@color/colorPrimary</item>
