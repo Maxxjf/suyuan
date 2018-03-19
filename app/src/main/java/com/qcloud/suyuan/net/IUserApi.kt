@@ -1,23 +1,25 @@
-package com.qcloud.jiahua.net
+package com.qcloud.suyuan.net
 
-import com.qcloud.qclib.network.ReturnBean
-import com.qcloud.suyuan.beans.UserBean
+import com.google.gson.reflect.TypeToken
+import com.lzy.okgo.model.HttpParams
+import com.qcloud.qclib.beans.BaseResponse
+import com.qcloud.qclib.network.OkGoRequest
+import com.qcloud.suyuan.beans.EmptyResBean
 import com.qcloud.suyuan.constant.UrlConstants
-import retrofit2.http.POST
-import retrofit2.http.QueryMap
-import rx.Observable
-import java.util.*
+import io.reactivex.Observable
 
 /**
  * 类说明：用户有关
  * Author: Kuzan
  * Date: 2017/6/6 15:19.
  */
-interface IUserApi {
-    /**
-     * 登录
-     * */
-    @POST(UrlConstants.LOGIN)
-    fun login(@QueryMap map: HashMap<String, Any>): Observable<ReturnBean<UserBean>>
+object IUserApi {
+    /** 登录 */
+    fun login(params: HttpParams): Observable<BaseResponse<EmptyResBean>> {
+        val type = object : TypeToken<BaseResponse<EmptyResBean>>() {
 
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.LOGIN, type, params)
+    }
 }

@@ -1,7 +1,7 @@
-package com.qcloud.jiahua.model
+package com.qcloud.suyuan.model
 
 import com.qcloud.qclib.callback.DataCallback
-import com.qcloud.suyuan.beans.UserBean
+import com.qcloud.suyuan.beans.EmptyResBean
 
 
 /**
@@ -13,6 +13,6 @@ interface IUserModel {
     /**
      * 用户登录
      * */
-    fun login(loginAccount: String, password: String, callback: DataCallback<UserBean>)
+    fun login(loginAccount: String, password: String, callback: DataCallback<EmptyResBean>)
 
 }
