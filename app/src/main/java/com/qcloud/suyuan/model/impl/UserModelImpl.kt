@@ -5,7 +5,7 @@ import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
-import com.qcloud.suyuan.beans.EmptyResBean
+import com.qcloud.suyuan.beans.LoginReturnBean
 import com.qcloud.suyuan.model.IUserModel
 import com.qcloud.suyuan.net.IUserApi
 
@@ -23,8 +23,9 @@ class UserModelImpl : IUserModel {
      *
      * @time 2018/3/19 13:43
      */
-    override fun login(loginAccount: String, password: String, callback: DataCallback<EmptyResBean>) {
+    override fun login(loginAccount: String, password: String, callback: DataCallback<LoginReturnBean>) {
         mParams.put("loginAccount", loginAccount)
+        mParams.put("password", password)
         BaseApi.dispose(IUserApi.login(mParams), callback)
     }
 
