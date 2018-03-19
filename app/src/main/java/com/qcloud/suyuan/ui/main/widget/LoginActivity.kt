@@ -13,7 +13,7 @@ import com.qcloud.suyuan.constant.ShareConstants
 import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
 import com.qcloud.suyuan.ui.shop.widget.CartActivity
-import com.qcloud.suyuan.widget.dialog.InputDialog
+import com.qcloud.suyuan.widgets.dialog.InputDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.annotations.NotNull
 import timber.log.Timber
