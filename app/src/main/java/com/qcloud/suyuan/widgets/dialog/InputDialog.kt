@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.widget.dialog
+package com.qcloud.suyuan.widgets.dialog
 
 import android.app.Dialog
 import android.content.Context

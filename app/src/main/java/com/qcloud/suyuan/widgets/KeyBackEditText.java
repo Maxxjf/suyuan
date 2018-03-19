@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.widget.customview;
+package com.qcloud.suyuan.widgets;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
