@@ -44,6 +44,10 @@
     <string name="hint_main_search">请输入"溯源码"、"批次条形码"、"产品条形码"</string>
     <string name="et_hint_account">请输入您的账号</string>
     <string name="et_hint_password">请输入您的密码</string>
+    <string name="et_hint_phone">请输入手机号</string>
+    <string name="et_hint_code">请输入验证码</string>
+    <string name="et_hint_new_password">请输入您的新密码</string>
+    <string name="et_hint_2rd_password">请您再次确认密码</string>
 
 
     <string name="toast_app_exit">您确认要离开？</string>
@@ -93,6 +97,13 @@
     <string name="num_of_valid_order">%d笔</string>
     <string name="tag_stock_warn">库存告警</string>
     <string name="tag_valid_warn">有效期告警</string>
+    <string name="tag_code_time">%dS后重新获得</string>
+    <string name="tag_get_code">获取验证码</string>
+    <string name="tag_goods_list">商品列表</string>
+    <string name="tag_goods_rule">规格</string>
+    <string name="tag_goods_name">产品名称</string>
+    <string name="tag_goods_data">批次</string>
+    <string name="tag_goods_control">操作</string>
 
 
 </resources>

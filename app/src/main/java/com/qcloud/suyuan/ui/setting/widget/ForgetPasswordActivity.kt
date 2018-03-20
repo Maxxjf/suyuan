@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.ui.setting.widget
 
+import android.content.Context
+import android.content.Intent
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.SwipeBaseActivity
 import com.qcloud.suyuan.ui.setting.presenter.impl.IForgetPasswordPresenterImpl
@@ -19,5 +21,11 @@ class ForgetPasswordActivity: SwipeBaseActivity<IForgetpasswordView, IForgetPass
 
     override fun initViewAndData() {
 
+    }
+    companion object {
+        fun openActivity(context: Context){
+            var intent=Intent(context,ForgetPasswordActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 }

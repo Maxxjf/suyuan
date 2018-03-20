@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.shop.widget.CartActivity">
+    tools:context=".ui.goods.widget.returnedActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bar_height"
+        android:layout_height="@dimen/appbar_height"
         app:is_back="false"
         app:is_main="true"
         app:is_title="false"
@@ -27,31 +27,15 @@
             android:layout_width="0dp"
             android:layout_weight="7"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:padding="@dimen/margin_2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_11">
-                <TextView
-                    android:layout_alignParentBottom="true"
-                    android:textSize="@dimen/btnTextSize"
-                    android:text="@string/tag_get_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            android:background="@color/colorRed"
+            android:orientation="vertical"></LinearLayout>
 
-            </RelativeLayout>
-
-        </LinearLayout>
-        <View
-            android:background="@color/colorLine"
-            android:layout_width="@dimen/margin_2"
-            android:layout_height="match_parent"/>
         <LinearLayout
             android:id="@+id/layout_idcard"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="match_parent"
-            android:background="@color/colorDark"
+            android:background="@color/colorLine"
             android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 

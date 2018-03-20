@@ -8,7 +8,7 @@ import com.qcloud.suyuan.ui.setting.view.IForgetpasswordView
  * 类型：IForgetPasswordPresenterImpl
  * Author: iceberg
  * Date: 2018/3/19.
- * TODO:
+ * 忘记密码
  */
 class IForgetPasswordPresenterImpl:BasePresenter<IForgetpasswordView>(), IForgetPasswordPresenter {
 }

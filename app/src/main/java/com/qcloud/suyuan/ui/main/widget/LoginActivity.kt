@@ -12,6 +12,7 @@ import com.qcloud.suyuan.base.SwipeBaseActivity
 import com.qcloud.suyuan.constant.ShareConstants
 import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
+import com.qcloud.suyuan.ui.setting.widget.ForgetPasswordActivity
 import com.qcloud.suyuan.ui.shop.widget.CartActivity
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import kotlinx.android.synthetic.main.activity_login.*
@@ -87,7 +88,7 @@ class LoginActivity : SwipeBaseActivity<ILoginView, LoginPresenterImpl>(), ILogi
     }
 
     override fun forgetBtnClick() {
-        QToast.show(this,resources.getText(R.string.btn_forrget_login))
+        ForgetPasswordActivity.openActivity(this)
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
