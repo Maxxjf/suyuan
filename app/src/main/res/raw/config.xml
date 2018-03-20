@@ -7,7 +7,9 @@
         <!--库赞服务器-->
         <!--<server>http://10.10.100.169:8082/</server>-->
         <!--rap服务器-->
-        <server>http://rap.qi-cloud.org/mockjs/145/</server>
+        <!--<server>http://rap.qi-cloud.org/mockjs/145/</server>-->
+        <!--测试服务器-->
+        <server>http://10.10.21.116:8082/</server>
 
     </system>
 </config>

@@ -12,10 +12,10 @@ object UrlConstants {
     const val URL_PREFIX_APP = URL_PREFIX + "app/"
 
     /**登录**/
-    const val LOGIN="login"
+    const val LOGIN = URL_PREFIX_APP + "login"
 
     /** 首页数据 */
-    const val MAIN_FORM = URL_PREFIX + "index/indexData"
+    const val MAIN_FORM = URL_PREFIX_APP + "index/indexData"
 
 
 }

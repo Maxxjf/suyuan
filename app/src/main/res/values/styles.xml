@@ -22,7 +22,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
-        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
         <item name="colorControlNormal">@color/colorTitle</item>
         <item name="android:textColorHint">@color/colorHint</item>
         <item name="colorControlActivated">@color/colorSubTitle</item>
