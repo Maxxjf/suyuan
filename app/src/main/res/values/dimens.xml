@@ -2,10 +2,12 @@
 <resources>
     <!--大标题，用于导航重要标题-->
     <dimen name="bigTitleSize">36sp</dimen>
-    <!--按钮文字大小，用于按钮和二级标题-->
+    <!--二级标题-->
     <dimen name="titleTextSize">30sp</dimen>
-    <!--按钮文字大小，用于按钮和二级标题-->
-    <dimen name="btnTextSize">20sp</dimen>
+    <!--用于按钮-->
+    <dimen name="btnTextSize">30sp</dimen>
+    <!--较小的按钮-->
+    <dimen name="smallBtnTextSize">25sp</dimen>
     <!--分类标题和功能按钮-->
     <dimen name="typeTextSize">24sp</dimen>
     <!--正文-->
@@ -20,5 +22,7 @@
     <dimen name="login_height">526dp</dimen>
     <dimen name="login_btn_width">490dp</dimen>
     <dimen name="login_btn_height">74dp</dimen>
+    <!--小票信息高度-->
+    <dimen name="repict_info_height">132dp</dimen>
 
 </resources>

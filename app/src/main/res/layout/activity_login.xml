@@ -34,19 +34,6 @@
                 android:textSize="@dimen/bigTitleSize" />
 
             <TextView
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_4"
-                android:drawableLeft="@drawable/icon_password"
-                android:hint="@string/et_hint_password"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:textColor="@color/colorText"
-                android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/textSize" />
-
-            <TextView
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,6 +50,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/underLine"
                 android:background="@color/colorDivider"></View>
+
+            <TextView
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4"
+                android:drawableLeft="@drawable/icon_password"
+                android:hint="@string/et_hint_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorHint"
+                android:textSize="@dimen/textSize" />
 
             <View
                 android:layout_width="match_parent"

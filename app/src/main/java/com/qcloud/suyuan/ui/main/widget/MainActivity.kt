@@ -16,13 +16,12 @@ import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.realm.RealmHelper
 import com.qcloud.suyuan.ui.goods.widget.ModifyPriceActivity
 import com.qcloud.suyuan.ui.goods.widget.PurchaseActivity
+import com.qcloud.suyuan.ui.goods.widget.ReturnedActivity
 import com.qcloud.suyuan.ui.goods.widget.SellersActivity
 import com.qcloud.suyuan.ui.main.presenter.impl.MainPresenterImpl
 import com.qcloud.suyuan.ui.main.view.IMainView
-import com.qcloud.suyuan.ui.order.widget.ReturnActivity
 import com.qcloud.suyuan.ui.order.widget.SellingWaterActivity
 import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
-import com.qcloud.suyuan.ui.record.widget.ReturnRecordActivity
 import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
@@ -102,7 +101,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_out_storage -> OutStorageActivity.openActivity(this)
             R.id.layout_store_product -> StoreProductActivity.openActivity(this)
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
-            R.id.layout_return -> ReturnActivity.openActivity(this)
+            R.id.layout_return -> ReturnedActivity.openActivity(this)
             R.id.layout_more -> {
                 if (moreDialog == null) {
                     moreDialog = MoreOperationDialog(this@MainActivity)
