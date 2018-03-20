@@ -24,8 +24,6 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
     open var isInFragment: Boolean = false
     open var mPresenter: T? = null
 
-    private var mFragmentBack: IFragmentBack? = null
-
     private var loadingDialog: LoadingDialog? = null
 
     override fun onAttach(context: Context?) {
@@ -46,14 +44,6 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
         super.onCreate(savedInstanceState)
         isInFragment = true
         mContext = context
-
-        // 保护机制，判断承载此fragment是否实现了IBackInterface接口
-        if (activity !is IFragmentBack) {
-            throw ClassCastException("Hosting Activity must implement BackHandledInterface")
-        } else {
-            mFragmentBack = activity as IFragmentBack?
-        }
-        mFragmentBack?.initSelectFragment(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

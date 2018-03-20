@@ -112,6 +112,10 @@
             android:label="@string/title_forget_password"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".ui.goods.widget.WarnActivity"
+            android:label="@string/title_warn"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme"></activity>

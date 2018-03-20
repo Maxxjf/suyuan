@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_height"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_image"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_bar_code"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_name"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_manufacturer"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_spec"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_stock"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_valid"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"/>
+    </LinearLayout>
+
+    <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+        android:id="@+id/list_stock_warn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/btn_top_radius_selector"
+    android:layout_marginRight="@dimen/layout_margin"
+    android:gravity="center"
+    android:textSize="@dimen/btnTextSize"
+    android:textColor="@color/colorTitle"
+    tools:text="库存告警"/>
+

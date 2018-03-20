@@ -209,7 +209,7 @@
                         android:layout_width="@dimen/margin_12"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:background="@drawable/selector_btn_green_radius"
+                        android:background="@drawable/btn_radius_selector"
                         android:text="@string/btn_returned_good" />
                 </RelativeLayout>
             </LinearLayout>
@@ -281,13 +281,13 @@
                     android:textSize="@dimen/textSize" />
 
                 <TextView
-                    android:id="@+id/tag_serail_number"
+                    android:id="@+id/tag_serial_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="@dimen/margin_4"
                     android:layout_toRightOf="@+id/tv_time"
-                    android:text="@string/tag_serail_number"
+                    android:text="@string/tag_serial_number"
                     android:textSize="@dimen/textSize" />
 
                 <TextView

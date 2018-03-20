@@ -14,10 +14,7 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseApplication
 import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.realm.RealmHelper
-import com.qcloud.suyuan.ui.goods.widget.ModifyPriceActivity
-import com.qcloud.suyuan.ui.goods.widget.PurchaseActivity
-import com.qcloud.suyuan.ui.goods.widget.ReturnedActivity
-import com.qcloud.suyuan.ui.goods.widget.SellersActivity
+import com.qcloud.suyuan.ui.goods.widget.*
 import com.qcloud.suyuan.ui.main.presenter.impl.MainPresenterImpl
 import com.qcloud.suyuan.ui.main.view.IMainView
 import com.qcloud.suyuan.ui.order.widget.SellingWaterActivity
@@ -69,6 +66,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
         layout_credit_record.setOnClickListener(this)
         layout_return.setOnClickListener(this)
         layout_more.setOnClickListener(this)
+        btn_get_more.setOnClickListener(this)
 
         initToolbar()
     }
@@ -81,13 +79,10 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
     private fun initToolbar() {
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-//                if (searchDialog == null) {
-//                    searchDialog = SearchSelectDialog(this@MainActivity)
-//                }
-//                searchDialog?.show()
-                val dialog = TipDialog(this@MainActivity)
-                dialog.setTip("测试一下， 没什么的，呈不在吗在吗回回四川师大 回回")
-                dialog.show()
+                if (searchDialog == null) {
+                    searchDialog = SearchSelectDialog(this@MainActivity)
+                }
+                searchDialog?.show()
             }
         }
     }
@@ -108,6 +103,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
                 }
                 moreDialog?.show()
             }
+            R.id.btn_get_more -> WarnActivity.openActivity(this)
         }
     }
 

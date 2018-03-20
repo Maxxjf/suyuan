@@ -105,7 +105,7 @@
                 <Button
                     android:id="@+id/btn_get_more"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/small_btn_height"
+                    android:layout_height="@dimen/btn_height"
                     android:gravity="center"
                     android:background="@drawable/btn_ripple_primary"
                     android:paddingLeft="@dimen/margin_4"

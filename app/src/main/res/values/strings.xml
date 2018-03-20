@@ -27,6 +27,7 @@
     <string name="title_search_batch">扫批次条形码搜索</string>
     <string name="title_search_product">扫产品条形码搜索</string>
     <string name="title_forget_password">忘记密码</string>
+    <string name="title_warn">告警提示</string>
 
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
@@ -117,12 +118,20 @@
     <string name="tag_return_money">退款金额: </string>
     <string name="tag_receipt_info">小票信息</string>
     <string name="tag_time">时间：</string>
-    <string name="tag_serail_number">流水号：</string>
+    <string name="tag_serial_number">流水号：</string>
     <string name="tag_name">名称</string>
     <string name="tag_number">数量</string>
     <string name="tag_price">价格</string>
     <string name="tag_add_all">合计：</string>
     <string name="tag_on_sale">优惠：</string>
     <string name="tag_money">实收：</string>
+    <string name="tag_product_image">产品图片</string>
+    <string name="tag_product_bar_code">产品条形码</string>
+    <string name="tag_product_name">产品名称</string>
+    <string name="tag_product_manufacturer">生产厂家</string>
+    <string name="tag_product_spec">产品规格</string>
+    <string name="tag_product_stock">当前库存</string>
+    <string name="tag_product_valid">有效期</string>
+    <string name="btn_edit_stock_warn">编辑库存警告线</string>
 
 </resources>
