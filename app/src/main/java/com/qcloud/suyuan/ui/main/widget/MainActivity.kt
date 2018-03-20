@@ -27,6 +27,7 @@ import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_main_credit_record.*
@@ -81,10 +82,13 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
     private fun initToolbar() {
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                if (searchDialog == null) {
-                    searchDialog = SearchSelectDialog(this@MainActivity)
-                }
-                searchDialog?.show()
+//                if (searchDialog == null) {
+//                    searchDialog = SearchSelectDialog(this@MainActivity)
+//                }
+//                searchDialog?.show()
+                val dialog = TipDialog(this@MainActivity)
+                dialog.setTip("测试一下， 没什么的，呈不在吗在吗回回四川师大 回回")
+                dialog.show()
             }
         }
     }

@@ -100,7 +100,7 @@
                 android:layout_width="@dimen/login_btn_width"
                 android:layout_height="@dimen/login_btn_height"
                 android:layout_marginTop="@dimen/margin_7"
-                android:background="@drawable/selector_btn_green_radius"
+                android:background="@drawable/btn_radius_selector"
                 android:text="@string/btn_login"
                 android:textSize="@dimen/btnTextSize" />
         </LinearLayout>
