@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.ui.user.presenter
+package com.qcloud.suyuan.ui.setting.presenter
 
 /**
  * 类型：IForgetPasswordPresenter

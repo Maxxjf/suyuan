@@ -1,9 +1,9 @@
-package com.qcloud.suyuan.ui.user.widget
+package com.qcloud.suyuan.ui.setting.widget
 
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.SwipeBaseActivity
-import com.qcloud.suyuan.ui.user.presenter.impl.IForgetPasswordPresenterImpl
-import com.qcloud.suyuan.ui.user.view.IForgetpasswordView
+import com.qcloud.suyuan.ui.setting.presenter.impl.IForgetPasswordPresenterImpl
+import com.qcloud.suyuan.ui.setting.view.IForgetpasswordView
 
 /**
  * 类型：ForgetPasswordActivity

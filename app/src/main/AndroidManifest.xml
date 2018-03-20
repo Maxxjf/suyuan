@@ -68,8 +68,8 @@
             android:label="@string/title_credit_record"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ui.record.widget.ReturnRecordActivity"
-            android:label="@string/title_return_record"
+            android:name=".ui.order.widget.ReturnActivity"
+            android:label="@string/title_return"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ui.storage.widget.OutStorageActivity"
@@ -82,6 +82,30 @@
         <activity
             android:name=".ui.main.widget.SearchActivity"
             android:label="@string/title_search_suyuan"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.record.widget.ReturnRecordActivity"
+            android:label="@string/title_return_record"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.record.widget.SuyuanRecordActivity"
+            android:label="@string/title_suyuan_record"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.record.widget.FormActivity"
+            android:label="@string/title_form"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.store.widget.MySupplierActivity"
+            android:label="@string/title_my_supplier"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.store.widget.StoreInfoActivity"
+            android:label="@string/title_store_info"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.setting.widget.DeviceStateActivity"
+            android:label="@string/title_device_state"
             android:screenOrientation="landscape" />
         <activity
             android:name=".TestActivity"

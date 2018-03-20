@@ -19,6 +19,7 @@ import com.qcloud.suyuan.ui.goods.widget.PurchaseActivity
 import com.qcloud.suyuan.ui.goods.widget.SellersActivity
 import com.qcloud.suyuan.ui.main.presenter.impl.MainPresenterImpl
 import com.qcloud.suyuan.ui.main.view.IMainView
+import com.qcloud.suyuan.ui.order.widget.ReturnActivity
 import com.qcloud.suyuan.ui.order.widget.SellingWaterActivity
 import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
 import com.qcloud.suyuan.ui.record.widget.ReturnRecordActivity
@@ -97,7 +98,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_out_storage -> OutStorageActivity.openActivity(this)
             R.id.layout_store_product -> StoreProductActivity.openActivity(this)
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
-            R.id.layout_return -> ReturnRecordActivity.openActivity(this)
+            R.id.layout_return -> ReturnActivity.openActivity(this)
             R.id.layout_more -> {
                 if (moreDialog == null) {
                     moreDialog = MoreOperationDialog(this@MainActivity)

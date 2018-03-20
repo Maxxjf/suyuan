@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.ui.user.view
+package com.qcloud.suyuan.ui.setting.view
 
 /**
  * 类型：IForgetpasswordView

@@ -8,6 +8,12 @@ import android.view.Gravity
 import android.view.View
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.ui.record.widget.FormActivity
+import com.qcloud.suyuan.ui.record.widget.ReturnRecordActivity
+import com.qcloud.suyuan.ui.record.widget.SuyuanRecordActivity
+import com.qcloud.suyuan.ui.setting.widget.DeviceStateActivity
+import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
+import com.qcloud.suyuan.ui.store.widget.StoreInfoActivity
 import kotlinx.android.synthetic.main.card_main_device_state.*
 import kotlinx.android.synthetic.main.card_main_form.*
 import kotlinx.android.synthetic.main.card_main_my_supplier.*
@@ -53,21 +59,27 @@ class MoreOperationDialog@JvmOverloads constructor(
         when (v.id) {
             R.id.btn_close -> dismiss()
             R.id.layout_return_record -> {
+                ReturnRecordActivity.openActivity(mContext)
                 dismiss()
             }
             R.id.layout_suyuan_record -> {
+                SuyuanRecordActivity.openActivity(mContext)
                 dismiss()
             }
             R.id.layout_form -> {
+                FormActivity.openActivity(mContext)
                 dismiss()
             }
             R.id.layout_my_suppler -> {
+                MySupplierActivity.openActivity(mContext)
                 dismiss()
             }
             R.id.layout_store_info -> {
+                StoreInfoActivity.openActivity(mContext)
                 dismiss()
             }
             R.id.layout_device_state -> {
+                DeviceStateActivity.openActivity(mContext)
                 dismiss()
             }
         }
