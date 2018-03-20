@@ -24,7 +24,7 @@ class UserModelImpl : IUserModel {
      * @time 2018/3/19 13:43
      */
     override fun login(loginAccount: String, password: String, callback: DataCallback<LoginReturnBean>) {
-        mParams.put("loginAccount", loginAccount)
+        mParams.put("account", loginAccount)
         mParams.put("password", password)
         BaseApi.dispose(IUserApi.login(mParams), callback)
     }
