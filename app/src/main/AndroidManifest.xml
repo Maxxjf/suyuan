@@ -23,6 +23,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="targer_screen_width"
+            android:value="1600" />
+
         <activity
             android:name=".ui.main.widget.LaunchActivity"
             android:label="@string/app_name"

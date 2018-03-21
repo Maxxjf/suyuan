@@ -17,7 +17,7 @@ import com.shizhefei.view.indicator.IndicatorViewPager
  * Author: gaobaiqiang
  * 2018/3/20 下午9:11.
  */
-class WarnViewPagerAdapte(context: Context, fragmentManager: FragmentManager): IndicatorViewPager.IndicatorFragmentPagerAdapter(fragmentManager) {
+class WarnViewPagerAdapter(context: Context, fragmentManager: FragmentManager): IndicatorViewPager.IndicatorFragmentPagerAdapter(fragmentManager) {
 
     private val inflater = LayoutInflater.from(context)
     val list: MutableList<String> = ArrayList()

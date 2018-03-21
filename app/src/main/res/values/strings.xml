@@ -133,5 +133,6 @@
     <string name="tag_product_stock">当前库存</string>
     <string name="tag_product_valid">有效期</string>
     <string name="btn_edit_stock_warn">编辑库存警告线</string>
+    <string name="btn_out_storage">撤消入库</string>
 
 </resources>

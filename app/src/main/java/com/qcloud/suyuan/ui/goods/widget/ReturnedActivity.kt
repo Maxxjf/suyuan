@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.adapter.ReturnGoodsListAdapter
-import com.qcloud.suyuan.adapter.ReturnedReceiptAdapter
+import com.qcloud.suyuan.adapters.ReturnGoodsListAdapter
+import com.qcloud.suyuan.adapters.ReturnedReceiptAdapter
 import com.qcloud.suyuan.base.SwipeBaseActivity
 import com.qcloud.suyuan.beans.GoodsBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.IReturnedPersenterImpl
@@ -20,8 +20,8 @@ import timber.log.Timber
  * 退货
  */
 class ReturnedActivity :SwipeBaseActivity<IReturnedView,IReturnedPersenterImpl>(),IReturnedView{
-    private var goodsAdapter:ReturnGoodsListAdapter? = null
-    private var receiptAdapter:ReturnedReceiptAdapter?= null
+    private var goodsAdapter: ReturnGoodsListAdapter? = null
+    private var receiptAdapter: ReturnedReceiptAdapter?= null
     override val layoutId: Int
         get() = R.layout.activity_returned
 
@@ -34,7 +34,7 @@ class ReturnedActivity :SwipeBaseActivity<IReturnedView,IReturnedPersenterImpl>(
 
     private fun initView() {
         goodsAdapter= ReturnGoodsListAdapter(this)
-        receiptAdapter=ReturnedReceiptAdapter(this)
+        receiptAdapter= ReturnedReceiptAdapter(this)
         rv_return_goods_list.layoutManager = LinearLayoutManager(this)
         rv_receipt.layoutManager=LinearLayoutManager(this)
         rv_return_goods_list.adapter=goodsAdapter

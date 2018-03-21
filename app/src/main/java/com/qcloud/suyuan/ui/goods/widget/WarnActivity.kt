@@ -5,7 +5,7 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v4.content.ContextCompat
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.adapters.WarnViewPagerAdapte
+import com.qcloud.suyuan.adapters.WarnViewPagerAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.goods.presenter.impl.WarnPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IWarnView
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_warn.*
 class WarnActivity: BaseActivity<IWarnView, WarnPresenterImpl>(), IWarnView {
 
     private var mIndicatorViewPager: IndicatorViewPager? = null
-    private var mAdapter: WarnViewPagerAdapte? = null
+    private var mAdapter: WarnViewPagerAdapter? = null
 
     override val layoutId: Int
         get() = R.layout.activity_warn
@@ -52,7 +52,7 @@ class WarnActivity: BaseActivity<IWarnView, WarnPresenterImpl>(), IWarnView {
         view_pager.offscreenPageLimit = 2
 
         mIndicatorViewPager = IndicatorViewPager(view_page_indicator, view_pager)
-        mAdapter = WarnViewPagerAdapte(this, supportFragmentManager)
+        mAdapter = WarnViewPagerAdapter(this, supportFragmentManager)
         mIndicatorViewPager?.adapter = mAdapter
 
         mPresenter?.createViewPager()
