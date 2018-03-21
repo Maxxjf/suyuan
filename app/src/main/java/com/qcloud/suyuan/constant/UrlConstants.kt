@@ -16,6 +16,8 @@ object UrlConstants {
 
     /** 首页数据 */
     const val MAIN_FORM = URL_PREFIX_APP + "index/indexData"
-
-
+    /**获取库存告警列表*/
+    const val GET_STOCK_WARN_LIST = URL_PREFIX_APP + "index/stockList"
+    /**获取有效期告警列表*/
+    const val GET_VALID_WARN_LIST = URL_PREFIX_APP + "index/indateList"
 }

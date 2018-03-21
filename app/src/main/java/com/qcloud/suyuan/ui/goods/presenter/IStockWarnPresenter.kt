@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.goods.presenter
  * 2018/3/20 下午9:00.
  */
 interface IStockWarnPresenter {
+    fun loadData(pageNo: Int)
 }
