@@ -11,8 +11,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.AppManager
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.ui.main.widget.LoginActivity
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
 
 /**
@@ -130,9 +131,14 @@ class CustomToolbar @JvmOverloads constructor(
     override fun onClick(p0: View) {
         when (p0.id) {
             R.id.btn_back -> (mContext as Activity).finish()
-            R.id.btn_logout -> QToast.show(mContext, "退出登录")
+            R.id.btn_logout -> toLogin()
             R.id.btn_right -> onBtnClickListener?.onBtnClick(p0)
         }
+    }
+
+    private fun toLogin() {
+        AppManager.instance.killAllActivity()
+        LoginActivity.openActivity(mContext)
     }
 
     interface OnBtnClickListener {

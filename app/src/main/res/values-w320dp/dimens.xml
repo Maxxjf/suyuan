@@ -3,7 +3,7 @@
     <!--大标题，用于导航重要标题-->
     <dimen name="bigTitleSize">24sp</dimen>
     <!--按钮文字大小，用于按钮和二级标题-->
-    <dimen name="TitleTextSize">20sp</dimen>
+    <dimen name="titleTextSize">20sp</dimen>
     <!--按钮文字大小，用于按钮和二级标题-->
     <dimen name="btnTextSize">20sp</dimen>
     <!--较小的按钮-->

@@ -65,7 +65,7 @@
         android:layout_centerVertical="true"
         android:text="@string/title_suyuan"
         android:textColor="@color/white"
-        android:textSize="@dimen/TitleTextSize"/>
+        android:textSize="@dimen/titleTextSize"/>
 
     <TextView
         android:id="@+id/btn_logout"

@@ -20,7 +20,7 @@ class LoginPresenterImpl : BasePresenter<ILoginView>(), ILoginPresenter {
     override fun login(account: String, password: String) {
         mUserModel.login(account, password, object : DataCallback<LoginReturnBean> {
             override fun onSuccess(bean: LoginReturnBean?, message: String?) {
-                if (StringUtil.isBlank(bean?.token)) {
+                if (!StringUtil.isBlank(bean?.token)) {
                     mView?.loginSuccess()
                     bean?.token?.let { TokenUtil.saveToken(it) }
                 }
