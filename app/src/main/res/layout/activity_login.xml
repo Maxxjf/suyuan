@@ -31,9 +31,10 @@
                 android:gravity="center_horizontal"
                 android:text="@string/tv_system_name"
                 android:textColor="@color/colorGreen"
-                android:textSize="@dimen/bigTitleSize" />
+                android:textSize="@dimen/text_size_8" />
 
             <TextView
+                android:text="dorry"
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
                 android:inputType="number"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/textSize" />
+                android:textSize="@dimen/text_size_4" />
 
             <View
                 android:layout_width="match_parent"
@@ -52,6 +53,7 @@
                 android:background="@color/colorDivider"></View>
 
             <TextView
+                android:text="123456"
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +64,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/textSize" />
+                android:textSize="@dimen/text_size_4" />
 
             <View
                 android:layout_width="match_parent"
@@ -80,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
                     android:text="@string/cb_remember_password"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/text_size_4"
                     android:theme="@style/cb_password" />
 
                 <TextView
@@ -91,7 +93,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/btn_forrget_login"
                     android:textColor="@drawable/selector_green_click"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
             </RelativeLayout>
 
 
@@ -102,7 +104,7 @@
                 android:layout_marginTop="@dimen/margin_7"
                 android:background="@drawable/btn_radius_selector"
                 android:text="@string/btn_login"
-                android:textSize="@dimen/btnTextSize" />
+                android:textSize="@dimen/text_size_6" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

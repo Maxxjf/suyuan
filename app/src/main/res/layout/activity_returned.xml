@@ -4,8 +4,9 @@
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".ui.shop.widget.CartActivity">
+    tools:context=".ui.goods.widget.ReturnedActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
@@ -15,7 +16,7 @@
         app:is_main="false"
         app:is_right="false"
         app:is_title="true"
-        app:title="@string/title_return"
+        app:title_text="@string/title_return"
         />
 
     <LinearLayout
@@ -43,7 +44,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="@string/tag_goods_list"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/text_size_5" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -57,7 +58,7 @@
                     android:paddingRight="@dimen/margin_11"
                     android:paddingTop="@dimen/margin_1"
                     android:text="@string/et_hint_order_number"
-                    android:textSize="@dimen/smallBtnTextSize" />
+                    android:textSize="@dimen/text_size_5" />
 
                 <TextView
                     android:id="@+id/btn_confirm"
@@ -69,7 +70,7 @@
                     android:padding="@dimen/margin_1"
                     android:text="@string/btn_confirm"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/smallBtnTextSize" />
+                    android:textSize="@dimen/text_size_5" />
             </RelativeLayout>
 
             <View
@@ -89,7 +90,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_order"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -98,7 +99,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_name"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -107,7 +108,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_rule"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -116,7 +117,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_data"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -125,7 +126,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_control"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
             </LinearLayout>
 
@@ -135,6 +136,7 @@
                 android:orientation="vertical">
 
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_return_goods_list"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="9"
@@ -153,7 +155,7 @@
                         android:layout_alignBottom="@+id/tv_goods_number"
                         android:text="@string/tag_goods_number"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/textSize" />
+                        android:textSize="@dimen/text_size_4" />
 
                     <TextView
                         android:id="@+id/tv_goods_number"
@@ -162,7 +164,7 @@
                         android:layout_toRightOf="@+id/tag_goods_number"
                         android:text="10"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:textSize="@dimen/text_size_5" />
 
                     <TextView
                         android:id="@+id/tag_return_money"
@@ -173,7 +175,7 @@
                         android:layout_toRightOf="@+id/tv_goods_number"
                         android:text="@string/tag_return_money"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/textSize" />
+                        android:textSize="@dimen/text_size_4" />
 
                     <TextView
                         android:id="@+id/tv_return_money"
@@ -182,7 +184,7 @@
                         android:layout_toRightOf="@+id/tag_return_money"
                         android:text="￥546.00"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:textSize="@dimen/text_size_5" />
 
                     <TextView
                         android:id="@+id/tag_money_getter"
@@ -191,7 +193,7 @@
                         android:layout_alignParentBottom="true"
                         android:text="@string/tag_money_getter"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/textSize" />
+                        android:textSize="@dimen/text_size_4" />
 
                     <TextView
                         android:id="@+id/tv_money_getter"
@@ -202,12 +204,13 @@
                         android:gravity="bottom"
                         android:text="张三"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/textSize" />
+                        android:textSize="@dimen/text_size_4" />
 
                     <Button
-
-                        android:layout_width="@dimen/margin_12"
-                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_6"
+                        android:layout_width="@dimen/margin_20"
+                        android:layout_height="@dimen/margin_6"
                         android:layout_alignParentRight="true"
                         android:background="@drawable/btn_radius_selector"
                         android:text="@string/btn_returned_good" />
@@ -223,6 +226,8 @@
             android:background="@color/colorLine" />
 
         <LinearLayout
+            android:paddingLeft="@dimen/margin_4"
+            android:paddingRight="@dimen/margin_4"
             android:id="@+id/layout_idcard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -242,7 +247,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="@string/tag_receipt_info"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/text_size_5" />
 
             </RelativeLayout>
 
@@ -254,14 +259,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
-                android:background="@color/colorLine"
+                android:background="@color/colorGrayBack"
                 android:padding="@dimen/margin_2">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="安佳农药专卖店"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/text_size_6" />
 
                 <TextView
                     android:id="@+id/tag_time"
@@ -269,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:text="@string/tag_time"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:id="@+id/tv_time"
@@ -278,7 +283,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_toRightOf="@+id/tag_time"
                     android:text="2018-03-10 00:00"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:id="@+id/tag_serial_number"
@@ -288,15 +293,15 @@
                     android:layout_marginLeft="@dimen/margin_4"
                     android:layout_toRightOf="@+id/tv_time"
                     android:text="@string/tag_serial_number"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/tag_serail_number"
+                    android:layout_toRightOf="@+id/tag_serial_number"
                     android:text="LSH00000001"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
             </RelativeLayout>
 
             <LinearLayout
@@ -311,7 +316,7 @@
                     android:gravity="center"
                     android:text="@string/tag_name"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -320,7 +325,7 @@
                     android:gravity="center"
                     android:text="@string/tag_number"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -329,7 +334,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_rule"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -338,15 +343,17 @@
                     android:gravity="center"
                     android:text="@string/tag_price"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/text_size_4" />
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_receipt"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_30"></android.support.v7.widget.RecyclerView>
+                android:layout_height="@dimen/margin_40"></android.support.v7.widget.RecyclerView>
 
             <LinearLayout
-                android:background="@color/colorLine"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:background="@drawable/bg_receipt"
                 android:padding="@dimen/margin_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -362,10 +369,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tag_add_all"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:textSize="@dimen/text_size_5" />
                     <TextView
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
+                        android:textSize="@dimen/text_size_5"
                         android:text="1000.00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -380,10 +387,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tag_on_sale"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:textSize="@dimen/text_size_5" />
                     <TextView
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
+                        android:textSize="@dimen/text_size_5"
                         android:text="5.00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -398,10 +405,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tag_money"
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:textSize="@dimen/text_size_5" />
                     <TextView
                         android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
+                        android:textSize="@dimen/text_size_5"
                         android:text="995.00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

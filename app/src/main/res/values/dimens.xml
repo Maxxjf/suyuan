@@ -17,6 +17,15 @@
     <!-- Appbar最小高度 -->
     <dimen name="bar_height">76dp</dimen>
 
+    <dimen name="text_size_1">5sp</dimen>
+    <dimen name="text_size_2">10sp</dimen>
+    <dimen name="text_size_3">15sp</dimen>
+    <dimen name="text_size_4">20sp</dimen>
+    <dimen name="text_size_5">25sp</dimen>
+    <dimen name="text_size_6">30sp</dimen>
+    <dimen name="text_size_7">35sp</dimen>
+    <dimen name="text_size_8">40sp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_width">618dp</dimen>
     <dimen name="login_height">526dp</dimen>

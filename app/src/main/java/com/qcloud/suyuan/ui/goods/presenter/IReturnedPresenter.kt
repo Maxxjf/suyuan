@@ -1,8 +1,5 @@
 package com.qcloud.suyuan.ui.goods.presenter
 
-import com.qcloud.qclib.base.BasePresenter
-import com.qcloud.suyuan.ui.goods.view.IReturnedView
-
 /**
  * 类型：IReturnedPresenter
  * Author: iceberg
@@ -10,4 +7,8 @@ import com.qcloud.suyuan.ui.goods.view.IReturnedView
  * 退货
  */
 interface IReturnedPresenter {
+    /**
+     * 得到退货列表信息
+     */
+    fun getList()
 }

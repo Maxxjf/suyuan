@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.ui.goods.view
 
+import com.qcloud.suyuan.beans.GoodsBean
+
 /**
  * 类型：IReturnedView
  * Author: iceberg
@@ -7,4 +9,5 @@ package com.qcloud.suyuan.ui.goods.view
  * 退货
  */
 interface IReturnedView {
+    fun replaceReceiptList(mList:List<GoodsBean>);
 }
