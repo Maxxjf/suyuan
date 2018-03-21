@@ -2,7 +2,7 @@ package com.qcloud.suyuan.adapters
 
 import android.content.Context
 import android.view.View
-import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
@@ -28,7 +28,7 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<GoodsBean
         var name = holder.get<TextView>(R.id.tv_name)
         var rule = holder.get<TextView>(R.id.tv_rule)
         var date = holder.get<TextView>(R.id.tv_date)
-        var delete = holder.get<ImageView>(R.id.iv_delete)
+        var delete = holder.get<LinearLayout>(R.id.iv_delete)
 //        with(bean) {
 //            tvNumber.setText(number)
 //        }

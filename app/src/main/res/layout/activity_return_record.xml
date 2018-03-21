@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/appbar_height"
-        app:title_text="@string/title_return_record"/>
+        app:title_text="@string/title_return_record" />
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_12"
+        android:padding="@dimen/margin_2">
+
+        <TextView
+            android:layout_toLeftOf="@+id/tv_date_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/tag_date"
+            android:textSize="@dimen/text_size_6" />
+        <TextView
+            android:id="@+id/tv_date_from"
+            android:layout_width="@dimen/margin_40"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_date_picker_from"
+            android:background="@color/colorLine"
+            android:padding="@dimen/margin_1"
+            android:text="2018/03/11"
+            android:textSize="@dimen/text_size_5" />
+
+        <ImageView
+            android:layout_toLeftOf="@+id/z"
+            android:id="@+id/iv_date_picker_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_date_picker" />
+        <TextView
+            android:id="@+id/z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tv_date_to"
+            android:padding="@dimen/margin_1"
+            android:text="~"
+            android:textSize="@dimen/text_size_5" />
+
+        <TextView
+            android:id="@+id/tv_date_to"
+            android:layout_width="@dimen/margin_40"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_date_picker_to"
+            android:background="@color/colorLine"
+            android:padding="@dimen/margin_1"
+            android:text="2018/03/14"
+            android:textSize="@dimen/text_size_5" />
+
+        <ImageView
+            android:id="@+id/iv_date_picker_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_date_picker" />
+    </RelativeLayout>
+
+</LinearLayout>
