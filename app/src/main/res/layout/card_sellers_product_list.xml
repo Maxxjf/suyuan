@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="1dp"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layout_margin"
+                android:layout_marginStart="@dimen/layout_margin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize"
+                android:text="@string/tag_goods_list"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/padding_1"
+                android:layout_marginBottom="@dimen/padding_1"
+                android:layout_marginRight="@dimen/layout_margin"
+                android:background="@drawable/frame_gray">
+
+                <ImageView
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/appbar_height"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_image"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_bar_code"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_name"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_manufacturer"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_valid"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_product_stock"/>
+        </LinearLayout>
+
+        <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+            android:id="@+id/list_stock_warn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+
