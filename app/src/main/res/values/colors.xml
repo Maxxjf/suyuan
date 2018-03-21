@@ -19,6 +19,8 @@
     <color name="colorLine">#E5E5E5</color>
     <!--分割模块背景颜色-->
     <color name="colorModelBg">#F2F2F2</color>
+
+    <color name="colorGrayBack">#F9F9F9</color><!--线条颜色-->
     <!--背景颜色-->
     <color name="colorBg">#FFFFFF</color>
     <!--蓝色-->
@@ -37,6 +39,7 @@
     <color name="colorRed">#FF1215</color>
     
     <color name="halfTransparent">#80ffffff</color>
+
 
     <!--按钮显示颜色-->
     <color name="btnNormal">#27C54E</color>
