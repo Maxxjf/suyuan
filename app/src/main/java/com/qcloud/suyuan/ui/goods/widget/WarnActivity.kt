@@ -4,16 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v4.content.ContextCompat
-import com.qcloud.qclib.utils.DensityUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.WarnViewPagerAdapte
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.goods.presenter.impl.WarnPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IWarnView
 import com.shizhefei.view.indicator.IndicatorViewPager
-import com.shizhefei.view.indicator.slidebar.ColorBar
-import com.shizhefei.view.indicator.slidebar.DrawableBar
-import com.shizhefei.view.indicator.slidebar.ScrollBar
 import com.shizhefei.view.indicator.transition.OnTransitionTextListener
 import kotlinx.android.synthetic.main.activity_warn.*
 
@@ -42,9 +38,6 @@ class WarnActivity: BaseActivity<IWarnView, WarnPresenterImpl>(), IWarnView {
      * 初始化指示器
      */
     private fun initIndicator() {
-        val barr = DrawableBar(this, R.drawable.bg_gray_top_radius, ScrollBar.Gravity.CENTENT)
-        view_page_indicator?.scrollBar = barr
-
         val unSelectSize = 16f
         val selectSize = unSelectSize * 1.2f
 
