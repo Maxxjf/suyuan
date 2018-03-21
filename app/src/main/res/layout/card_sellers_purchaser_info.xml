@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="1dp"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_9">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layout_margin"
+                android:layout_marginStart="@dimen/layout_margin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize"
+                android:text="@string/tag_purchaser_info"/>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/LineHorizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/layout_margin">
+
+            <com.qcloud.qclib.widget.customview.RatioImageView
+                android:id="@+id/img_user_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bmp_user_head"
+                app:width="120"
+                app:ratio="1.0"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/layout_margin"
+                android:layout_marginLeft="@dimen/layout_margin">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/textSize"
+                        android:text="@string/tag_user_name"/>
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_1"
+                        android:layout_marginStart="@dimen/margin_1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/textSize"
+                        tools:text="库赞"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/textSize"
+                        android:text="@string/tag_user_name"/>
+
+                    <TextView
+                        android:id="@+id/tv_user_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_1"
+                        android:layout_marginStart="@dimen/margin_1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/textSize"
+                        tools:text="447858***7586"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:text="@string/tag_mobile"/>
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:paddingLeft="@dimen/layout_margin"
+                android:background="@drawable/frame_gray"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                tools:text="13750363622"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:text="@string/tag_purchase_use"/>
+
+            <LinearLayout
+                android:id="@+id/btn_purchase_use"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:background="@drawable/frame_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_purchase_use"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/btn_height"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/layout_margin"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="病虫防治"/>
+
+                <ImageView
+                    android:id="@+id/btn_drop_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_drop_down"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/layout_margin"
+            android:gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/padding_1"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:text="@string/tag_other_instructions"/>
+
+            <TextView
+                android:id="@+id/tv_other_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:background="@drawable/frame_gray"
+                android:padding="@dimen/layout_margin"
+                android:gravity="top|left"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:hint="@string/hint_input_other_instructions"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_input_purchase_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/large_btn_height"
+            android:background="@drawable/btn_radius_selector"
+            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/margin_2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/btn_input_purchaser_info"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+
