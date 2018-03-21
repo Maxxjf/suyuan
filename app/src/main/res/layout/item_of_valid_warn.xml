@@ -76,16 +76,35 @@
         android:textSize="@dimen/textSize"
         tools:text="@string/tag_product_stock"/>
 
-    <TextView
-        android:id="@+id/tv_product_valid"
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.2"
-        android:maxLines="3"
+        android:orientation="vertical"
         android:gravity="center"
-        android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
-        tools:text="@string/tag_product_valid"/>
+        android:padding="@dimen/margin_1">
+
+        <TextView
+            android:id="@+id/tv_product_valid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_valid"/>
+
+        <TextView
+            android:id="@+id/tv_product_batch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_valid"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -96,6 +115,7 @@
         android:padding="@dimen/margin_1">
 
         <Button
+            android:id="@+id/btn_out_storage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_height"
             android:background="@drawable/btn_frame_radius_selector"

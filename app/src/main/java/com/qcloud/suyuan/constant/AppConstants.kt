@@ -8,4 +8,6 @@ package com.qcloud.suyuan.constant
 object AppConstants {
     /**列表分页size大小 */
     const val PAGE_SIZE = 10
+
+    val loadColors = intArrayOf(0x7fff0000, 0x700ff000, 0x7f0000ff)
 }

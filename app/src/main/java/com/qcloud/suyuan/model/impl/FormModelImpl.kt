@@ -19,7 +19,7 @@ class FormModelImpl: IFormModel {
      * 获取首页报表数据
      * */
     override fun getMainForm(callback: DataCallback<MainFormBean>) {
-        var params: HttpParams = OkGoRequest.getAppParams()
+        val params: HttpParams = OkGoRequest.getAppParams()
 
         BaseApi.dispose(IFormApi.getMainForm(params), callback)
     }
