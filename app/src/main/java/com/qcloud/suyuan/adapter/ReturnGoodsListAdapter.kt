@@ -16,14 +16,14 @@ import timber.log.Timber
  * Date: 2018/3/21.
  * 退货列表
  */
-class ReturnGoodsListAdapter(mContext: Context) : CommonRecyclerAdapter<GoodsBean>(mContext) {
+class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<GoodsBean>(context) {
 
     override val viewId: Int
         get() = R.layout.adapter_returned_goods_list
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: GoodsBean = mList.get(position)
-        Timber.e("实体：${bean}")
+        Timber.e("实体：${mList}")
         var number = holder.get<TextView>(R.id.tv_number)
         var name = holder.get<TextView>(R.id.tv_name)
         var rule = holder.get<TextView>(R.id.tv_rule)
