@@ -115,7 +115,7 @@ class ForgetPasswordActivity : BaseActivity<IForgetpasswordView, IForgetPassword
     }
     override fun forgetPasswordSuccess() {
         val dialog:TipDialog= TipDialog(this)
-        dialog.setTip(R.string.tip_update_pw_suceess)
+        //dialog.setTip(R.string.tip_update_pw_suceess)
         dialog.onConfirmClickListener=object : TipDialog.OnConfirmClickListener{
             override fun onConfirmClick() {
                 finish()

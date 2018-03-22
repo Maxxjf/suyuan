@@ -214,7 +214,7 @@
                         android:layout_centerVertical="true"
                         android:background="@drawable/btn_radius_selector"
                         android:text="@string/btn_returned_good"
-                        android:textSize="@dimen/text_size_6" />
+                        android:textSize="@dimen/typeTextSize" />
                 </RelativeLayout>
             </LinearLayout>
 
