@@ -38,7 +38,7 @@ class WarnActivity: BaseActivity<IWarnView, WarnPresenterImpl>(), IWarnView {
      * 初始化指示器
      */
     private fun initIndicator() {
-        val unSelectSize = 16f
+        val unSelectSize = 24f
         val selectSize = unSelectSize * 1.2f
 
         val selectColor = ContextCompat.getColor(this, R.color.white)

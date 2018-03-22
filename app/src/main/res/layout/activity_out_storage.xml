@@ -8,7 +8,7 @@
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bar_height"
+        android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_out_storage"/>
 
 </android.support.constraint.ConstraintLayout>

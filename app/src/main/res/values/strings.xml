@@ -9,7 +9,7 @@
     <string name="title_login">登录</string>
     <string name="title_cashier">收银台</string>
     <string name="title_cart">购物车</string>
-    <string name="title_sellers">卖货</string>
+    <string name="title_sellers">销售产品</string>
     <string name="title_purchase">进货</string>
     <string name="title_modify_price">修改售价</string>
     <string name="title_selling_water">销售流水</string>
@@ -41,10 +41,15 @@
     <string name="btn_search_batch_bar_code">点击扫批次条形码</string>
     <string name="btn_search_product_bar_code">点击扫产品条形码</string>
     <string name="btn_returned_good">退货</string>
+    <string name="btn_settlement">结算</string>
+    <string name="btn_edit_stock_warn">编辑库存警告线</string>
+    <string name="btn_out_storage">撤消入库</string>
+    <string name="btn_input_purchaser_info">输入购买者信息</string>
 
     <string name="cb_remember_password">记住密码</string>
 
     <string name="hint_main_search">请输入"溯源码"、"批次条形码"、"产品条形码"</string>
+    <string name="hint_suyuan_code_search">请输入溯源码</string>
     <string name="et_hint_account">请输入您的账号</string>
     <string name="et_hint_password">请输入您的密码</string>
     <string name="et_hint_phone">请输入手机号</string>
@@ -52,6 +57,7 @@
     <string name="et_hint_new_password">请输入您的新密码</string>
     <string name="et_hint_2rd_password">请您再次确认密码</string>
     <string name="et_hint_order_number">请输入批次条形码</string>
+    <string name="hint_input_other_instructions">请输入您要写的说明</string>
 
 
     <string name="toast_app_exit">您确认要离开？</string>
@@ -117,6 +123,7 @@
     <string name="tip_err_request">页面丢失啦，点击图标刷新一下吧~</string>
 
     <string name="tag_goods_number">商品数量: </string>
+    <string name="tag_total_account">总计金额: </string>
     <string name="tag_money_getter">收银员: </string>
     <string name="tag_return_money">退款金额: </string>
     <string name="tag_receipt_info">小票信息</string>
@@ -125,6 +132,8 @@
     <string name="tag_name">名称</string>
     <string name="tag_number">数量</string>
     <string name="tag_price">价格</string>
+    <string name="tag_selling_price">售价</string>
+    <string name="tag_stock">库存</string>
     <string name="tag_add_all">合计：</string>
     <string name="tag_on_sale">优惠：</string>
     <string name="tag_money">实收：</string>
@@ -135,8 +144,12 @@
     <string name="tag_product_spec">产品规格</string>
     <string name="tag_product_stock">当前库存</string>
     <string name="tag_product_valid">有效期</string>
-    <string name="btn_edit_stock_warn">编辑库存警告线</string>
-    <string name="btn_out_storage">撤消入库</string>
+    <string name="tag_purchaser_info">购买者信息</string>
+    <string name="tag_user_name">姓名: </string>
+    <string name="tag_user_id">身份证号: </string>
+    <string name="tag_mobile">联系电话: </string>
+    <string name="tag_purchase_use">购买用途: </string>
+    <string name="tag_other_instructions">其他说明: </string>
 
     <string name="toast_no_data">暂无数据</string>
     <string name="toast_no_more_data">暂无更多数据</string>

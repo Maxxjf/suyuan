@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:cardCornerRadius="1dp"
     app:cardElevation="2dp"
-    android:layout_margin="@dimen/padding_2">
+    android:layout_margin="@dimen/margin_2">
 
     <RelativeLayout
         android:id="@+id/layout_warn"
@@ -17,11 +17,11 @@
         <TextView
             android:id="@+id/tv_warn_title"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_height"
+            android:layout_height="@dimen/tabHeight"
             android:background="@color/colorGreen"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:textSize="@dimen/title_text_size"
+            android:textSize="@dimen/titleTextSize"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:text="@string/tag_main_warn"/>
@@ -105,11 +105,11 @@
                 <Button
                     android:id="@+id/btn_get_more"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/btn_height"
+                    android:layout_height="@dimen/btnHeight"
                     android:gravity="center"
                     android:background="@drawable/btn_ripple_primary"
-                    android:paddingLeft="@dimen/margin_4"
-                    android:paddingRight="@dimen/margin_4"
+                    android:paddingLeft="@dimen/margin_6"
+                    android:paddingRight="@dimen/margin_6"
                     android:textSize="@dimen/btnTextSize"
                     android:textColor="@color/btnNormal"
                     android:text="@string/btn_get_more"/>

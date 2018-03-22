@@ -1,42 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/margin_20"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_1">
-
-        <com.qcloud.qclib.widget.customview.RatioImageView
-            android:id="@+id/img_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bmp_product"
-            app:ratio="1.0"/>
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/tv_product_bar_code"
+        android:id="@+id/tv_product_number"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="0.8"
         android:gravity="center"
         android:textColor="@color/colorTitle"
         android:textSize="@dimen/textSize"
-        tools:text="9785644239047588"/>
+        tools:text="1"/>
 
     <TextView
         android:id="@+id/tv_product_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
@@ -44,55 +27,36 @@
         tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
 
     <TextView
-        android:id="@+id/tv_product_manufacture"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1.0"
-        android:maxLines="3"
-        android:gravity="center"
-        android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
-        tools:text="@string/tag_product_manufacturer"/>
-
-    <TextView
         android:id="@+id/tv_product_spec"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.0"
+        android:layout_weight="1.2"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
         android:textSize="@dimen/textSize"
         tools:text="@string/tag_product_spec"/>
 
-    <TextView
-        android:id="@+id/tv_product_stock"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.8"
-        android:maxLines="3"
-        android:gravity="center"
-        android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
-        tools:text="@string/tag_product_stock"/>
+        android:layout_weight="1.4"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <com.qcloud.suyuan.widgets.customview.RefreshNumView
+            android:id="@+id/refresh_num_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1.0"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/margin_1">
-
-        <TextView
-            android:id="@+id/tv_product_valid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:gravity="center"
-            android:textColor="@color/colorRed"
-            android:textSize="@dimen/textSize"
-            tools:text="@string/tag_product_valid"/>
 
         <TextView
             android:id="@+id/tv_product_batch"
@@ -103,23 +67,54 @@
             android:textColor="@color/colorRed"
             android:textSize="@dimen/textSize"
             tools:text="@string/tag_product_valid"/>
+
+        <TextView
+            android:id="@+id/tv_product_valid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/textSize"
+            tools:text="超过有效期"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_product_stock"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_stock"/>
+
+    <TextView
+        android:id="@+id/tv_selling_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_selling_price"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/margin_1">
 
-        <Button
-            android:id="@+id/btn_out_storage"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btnHeight"
-            android:background="@drawable/btn_frame_radius_selector"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/btnTextSize"
-            android:text="@string/btn_out_storage"/>
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_delete"/>
     </LinearLayout>
+
+
 </LinearLayout>

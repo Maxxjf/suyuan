@@ -24,8 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_date_from"
             android:text="@string/tag_date"
-            android:textSize="@dimen/text_size_6" />
-
+            android:textSize="@dimen/typeTextSize" />
         <TextView
             android:id="@+id/tv_date_from"
             android:layout_width="@dimen/margin_40"
@@ -35,7 +34,7 @@
             android:background="@color/colorLine"
             android:padding="@dimen/margin_1"
             android:text="2018/03/11"
-            android:textSize="@dimen/text_size_5" />
+            android:textSize="@dimen/typeTextSize" />
 
         <ImageView
             android:id="@+id/iv_date_picker_from"
@@ -53,7 +52,7 @@
             android:layout_toLeftOf="@+id/tv_date_to"
             android:padding="@dimen/margin_1"
             android:text="~"
-            android:textSize="@dimen/text_size_5" />
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:id="@+id/tv_date_to"
@@ -64,7 +63,7 @@
             android:background="@color/colorLine"
             android:padding="@dimen/margin_1"
             android:text="2018/03/14"
-            android:textSize="@dimen/text_size_5" />
+            android:textSize="@dimen/textSize" />
 
         <ImageView
             android:id="@+id/iv_date_picker_to"

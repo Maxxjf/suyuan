@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:cardCornerRadius="1dp"
     app:cardElevation="2dp"
-    android:layout_margin="@dimen/padding_2">
+    android:layout_margin="@dimen/margin_2">
 
     <LinearLayout
         android:id="@+id/layout_report_form"
@@ -17,7 +17,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_height"
+            android:layout_height="@dimen/tabHeight"
             android:background="@color/colorGreen"
             android:gravity="center"
             android:textSize="@dimen/titleTextSize"
