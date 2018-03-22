@@ -58,5 +58,7 @@ class RefreshNumView @JvmOverloads constructor(
 
     fun refreshBean(bean: SellersBean) {
         currBean = bean
+        currNum = bean.number
+        tv_number?.text = bean.number.toString()
     }
 }

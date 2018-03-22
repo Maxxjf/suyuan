@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="1dp"
-    app:cardElevation="1dp">
+    app:cardElevation="0dp"
+    app:cardCornerRadius="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,34 +30,45 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/btn_height"
+                android:layout_height="@dimen/editHeight"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/padding_2"
-                android:layout_marginBottom="@dimen/padding_2"
-                android:layout_marginRight="@dimen/layout_margin"
-                android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginRight="@dimen/margin_2"
+                android:layout_marginEnd="@dimen/margin_2"
                 android:background="@drawable/frame_gray">
 
                 <ImageView
                     android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/padding_1"
-                    android:paddingRight="@dimen/padding_1"
+                    android:layout_marginLeft="@dimen/margin_1"
+                    android:layout_marginStart="@dimen/margin_1"
+                    android:layout_marginRight="@dimen/margin_1"
+                    android:layout_marginEnd="@dimen/margin_1"
                     android:src="@drawable/icon_search"
                     android:background="?attr/selectableItemBackgroundBorderless"/>
 
-                <com.qcloud.qclib.widget.customview.ClearEditText
+                <View
+                    style="@style/LineVertical"
+                    android:layout_margin="@dimen/margin_1"/>
+
+                <EditText
+                    android:id="@+id/et_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/btnHeight"
+                    android:layout_height="match_parent"
                     android:minWidth="@dimen/margin_40"
+                    android:background="@null"
+                    android:layout_marginLeft="@dimen/margin_1"
+                    android:layout_marginStart="@dimen/margin_1"
                     android:gravity="center_vertical"
                     android:inputType="number"
                     android:imeOptions="actionSearch"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:textColorHint="@color/colorGray"
                     android:hint="@string/hint_suyuan_code_search"/>
 
             </LinearLayout>
@@ -145,7 +156,7 @@
                 android:text="@string/tag_goods_control"/>
         </LinearLayout>
 
-        <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+        <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
             android:id="@+id/list_product"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -283,15 +294,15 @@
             <Button
                 android:id="@+id/btn_settlement"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/btn_height"
+                android:layout_height="@dimen/btnHeight"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:paddingLeft="@dimen/layout_margin"
-                android:paddingRight="@dimen/layout_margin"
+                android:paddingLeft="@dimen/layoutMargin"
+                android:paddingRight="@dimen/layoutMargin"
                 android:background="@drawable/btn_radius_selector"
                 android:textColor="@color/white"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/btnTextSize"
                 android:text="@string/btn_settlement"/>
         </RelativeLayout>
     </LinearLayout>

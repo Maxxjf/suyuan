@@ -11,7 +11,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.qcloud.qclib.AppManager
 import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseApplication
@@ -74,7 +73,7 @@ class CustomToolbar @JvmOverloads constructor(
 
                 // 是否显示右控件
                 isRight = typedArray.getBoolean(R.styleable.CustomBar_is_right, false)
-                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search)
+                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search_code)
                 rightText = typedArray.getResourceId(R.styleable.CustomBar_right_text, R.string.btn_search)
             } finally {
                 typedArray.recycle()

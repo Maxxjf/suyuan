@@ -19,7 +19,7 @@
     <!--小小字体-->
     <dimen name="miniTextSize">15sp</dimen>
     <!--下划线-->
-    <dimen name="underLine">1.5dp</dimen>
+    <dimen name="underLine">0.75dp</dimen>
     <!-- Appbar最小高度 -->
     <dimen name="barHeight">66dp</dimen>
     <!-- 屏幕左右对齐基线 -->

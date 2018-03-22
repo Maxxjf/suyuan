@@ -55,7 +55,8 @@
         <activity
             android:name=".ui.goods.widget.SellersActivity"
             android:label="@string/title_sellers"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".ui.goods.widget.PurchaseActivity"
             android:label="@string/title_purchase"

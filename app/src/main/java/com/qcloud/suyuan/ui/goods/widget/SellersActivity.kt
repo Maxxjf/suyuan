@@ -5,19 +5,20 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
-import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
-import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
+import android.view.KeyEvent
+import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
+import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.SellersBean
-import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.card_sellers_product_list.*
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -38,19 +39,16 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun initViewAndData() {
         initRecyclerView()
+        initEditView()
     }
 
+    /**
+     * 初始化列表
+     * */
     private fun initRecyclerView() {
         list_product?.setLayoutManager(LinearLayoutManager(this))
 
-        SwipeRefreshUtil.setColorSchemeColors(list_product, AppConstants.loadColors)
-        list_product?.onRefreshListener = object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                Observable.timer(2, TimeUnit.SECONDS)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe { list_product?.loadedFinish() }
-            }
-        }
+        PullRefreshUtil.setRefresh(list_product, false, false)
 
         mAdapter = SellersAdapter(this)
         list_product?.setAdapter(mAdapter!!)
@@ -59,6 +57,43 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         mPresenter?.loadData()
+    }
+
+    /**
+     * 初始化搜索输入框
+     * */
+    private fun initEditView() {
+//        et_search.setOnEditorActionListener { _, action, keyEvent ->
+//            if (action == EditorInfo.IME_ACTION_SEARCH
+//                    || action == EditorInfo.IME_ACTION_DONE) {
+//                et_search.requestFocus()
+//                //KeyBoardUtil.hideKeybord(this, et_search)
+//                Timber.e("acton = $action, search = ${EditorInfo.IME_ACTION_SEARCH}, done = ${EditorInfo.IME_ACTION_DONE}")
+//            }
+//            false
+//        }
+        et_search.setOnKeyListener { view, i, keyEvent ->
+            if ((i == KeyEvent.KEYCODE_ENTER)) {
+                //et_search.requestFocus()
+                //et_search.isFocusable = false
+                KeyBoardUtil.hideKeybord(this, et_search)
+                toGet()
+                Timber.e("keyEvent = $i, enter = ${KeyEvent.KEYCODE_ENTER}")
+            }
+            false
+        }
+    }
+
+    private fun toGet() {
+        Observable.timer(500, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    et_search.setText("")
+                    et_search.requestFocus()
+//                    et_search.isFocusable = true
+//                    et_search.isEnabled = true
+                }
+
     }
 
     override fun replaceList(beans: List<SellersBean>?) {

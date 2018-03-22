@@ -37,7 +37,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/layout_margin">
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/modelMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:layout_marginTop="@dimen/modelMargin">
 
             <com.qcloud.qclib.widget.customview.RatioImageView
                 android:id="@+id/img_user_head"
@@ -92,7 +96,7 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/textSize"
-                        android:text="@string/tag_user_name"/>
+                        android:text="@string/tag_user_id"/>
 
                     <TextView
                         android:id="@+id/tv_user_id"
@@ -111,7 +115,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/modelMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:layout_marginTop="@dimen/modelMargin"
             android:orientation="horizontal">
 
             <TextView
@@ -125,7 +133,7 @@
             <TextView
                 android:id="@+id/tv_mobile"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_height"
+                android:layout_height="@dimen/editHeight"
                 android:layout_marginLeft="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_1"
                 android:paddingLeft="@dimen/layout_margin"
@@ -139,7 +147,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/modelMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:layout_marginTop="@dimen/modelMargin"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -154,7 +166,7 @@
             <LinearLayout
                 android:id="@+id/btn_purchase_use"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_height"
+                android:layout_height="@dimen/editHeight"
                 android:layout_marginLeft="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_1"
                 android:background="@drawable/frame_gray"
@@ -166,7 +178,7 @@
                 <TextView
                     android:id="@+id/tv_purchase_use"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/btn_height"
+                    android:layout_height="@dimen/editHeight"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/layout_margin"
                     android:gravity="center_vertical"
@@ -186,7 +198,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_margin="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/modelMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:layout_marginTop="@dimen/modelMargin"
             android:gravity="top"
             android:orientation="horizontal">
 
@@ -194,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:layout_marginTop="@dimen/padding_1"
+                android:layout_marginTop="@dimen/underLine"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
                 android:text="@string/tag_other_instructions"/>
@@ -216,12 +232,9 @@
         <Button
             android:id="@+id/btn_input_purchase_info"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/large_btn_height"
+            android:layout_height="@dimen/largeBtnHeight"
             android:background="@drawable/btn_radius_selector"
-            android:layout_marginLeft="@dimen/layout_margin"
-            android:layout_marginRight="@dimen/layout_margin"
-            android:layout_marginBottom="@dimen/layout_margin"
-            android:layout_marginTop="@dimen/margin_2"
+            android:layout_margin="@dimen/layoutMargin"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/btnTextSize"

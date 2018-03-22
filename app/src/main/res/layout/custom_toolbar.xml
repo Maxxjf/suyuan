@@ -104,7 +104,7 @@
             android:id="@+id/img_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_search"/>
+            android:src="@drawable/icon_search_code"/>
 
         <TextView
             android:id="@+id/tv_right"
