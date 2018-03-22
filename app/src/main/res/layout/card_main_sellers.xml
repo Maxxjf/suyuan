@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     app:cardCornerRadius="1dp"
     app:cardElevation="2dp"
-    android:layout_margin="@dimen/padding_2">
+    android:layout_margin="@dimen/margin_2">
 
     <LinearLayout
         android:id="@+id/layout_sellers"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/titleTextSize"
+            android:textSize="@dimen/bigTitleSize"
             android:textColor="@color/colorBlue"
             android:text="@string/tab_main_sellers" />
 
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="@dimen/titleTextSize"
+            android:textSize="@dimen/bigTitleSize"
             android:textColor="@color/colorBlue"
             android:text="@string/tab_main_sellers_pinyin" />
     </LinearLayout>

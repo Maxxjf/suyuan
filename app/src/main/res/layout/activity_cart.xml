@@ -10,7 +10,7 @@
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bar_height"
+        android:layout_height="@dimen/barHeight"
         app:is_back="false"
         app:is_main="true"
         app:is_title="false"

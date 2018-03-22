@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbar_height"
+        android:layout_height="@dimen/tabHeight"
         android:background="@color/colorAccent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/layout_margin"
-            android:paddingRight="@dimen/layout_margin"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:paddingRight="@dimen/layoutMargin"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -26,10 +25,8 @@
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="@dimen/layout_margin"
-            android:paddingLeft="@dimen/layout_margin"
-            android:paddingTop="@dimen/padding_1"
-            android:paddingBottom="@dimen/padding_1"
+            android:paddingRight="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/layoutMargin"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/icon_close"/>
@@ -42,7 +39,7 @@
         android:background="@color/colorLine"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/padding_2">
+        android:padding="@dimen/margin_2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,21 +53,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
 
             <include
                 layout="@layout/card_main_suyuan_record"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
 
             <include
                 layout="@layout/card_main_form"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
         </LinearLayout>
 
         <LinearLayout
@@ -85,21 +82,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
 
             <include
                 layout="@layout/card_main_store_info"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
 
             <include
                 layout="@layout/card_main_device_state"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_margin="@dimen/padding_2"/>
+                android:layout_margin="@dimen/margin_2"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

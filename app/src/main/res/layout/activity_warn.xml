@@ -8,13 +8,13 @@
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appbar_height"
+        android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_warn"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appbar_height"
-        android:layout_marginTop="@dimen/margin_1">
+        android:layout_height="@dimen/tabHeight"
+        android:layout_marginTop="@dimen/margin_2">
 
         <com.shizhefei.view.indicator.FixedIndicatorView
             android:id="@+id/view_page_indicator"
@@ -36,10 +36,10 @@
             android:background="?attr/selectableItemBackground"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
             android:drawableLeft="@drawable/icon_edit_stock_warn"
-            android:drawablePadding="@dimen/padding_1"
+            android:drawablePadding="@dimen/drawPadding"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/typeTextSize"
             android:text="@string/btn_edit_stock_warn"/>
@@ -47,7 +47,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_height"
+        android:layout_height="@dimen/underLine"
         android:background="@color/colorPrimaryDark"/>
 
     <android.support.v4.view.ViewPager

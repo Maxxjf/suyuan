@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/bar_height"
+    android:layout_height="@dimen/barHeight"
     android:background="@color/colorPrimary">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/layout_margin"
+        android:paddingLeft="@dimen/layoutMargin"
+        android:paddingRight="@dimen/layoutMargin"
         android:src="@drawable/icon_back"
-        android:background="?attr/selectableItemBackground"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -21,8 +22,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/layout_margin"
-        android:paddingRight="@dimen/layout_margin"
+        android:paddingLeft="@dimen/layoutMargin"
+        android:paddingRight="@dimen/layoutMargin"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -36,17 +37,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_1"
-            android:layout_marginStart="@dimen/padding_1"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
             android:textColor="@color/white"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/titleTextSize"
             android:text="@string/title_suyuan"/>
 
         <View
-            android:layout_width="@dimen/line_height"
+            android:layout_width="@dimen/underLine"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/padding_2"
-            android:layout_marginRight="@dimen/padding_2"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginRight="@dimen/margin_2"
             android:background="@color/colorPrimaryDark"/>
 
         <TextView
@@ -71,16 +72,16 @@
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:paddingRight="@dimen/layout_margin"
-        android:paddingEnd="@dimen/layout_margin"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingRight="@dimen/layoutMargin"
+        android:paddingEnd="@dimen/layoutMargin"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:drawableTop="@drawable/icon_logout"
         android:drawablePadding="@dimen/padding_1"
         android:textColor="@color/white"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/smallTextSize"
         android:text="@string/btn_logout"/>
 
     <LinearLayout
@@ -91,9 +92,9 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:background="?attr/selectableItemBackground"
-        android:paddingLeft="@dimen/layout_margin"
-        android:paddingRight="@dimen/layout_margin"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingLeft="@dimen/layoutMargin"
+        android:paddingRight="@dimen/layoutMargin"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btn_logout"
         android:layout_toStartOf="@+id/btn_logout"
@@ -111,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_1"
             android:textColor="@color/white"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/smallTextSize"
             android:text="@string/btn_search"/>
     </LinearLayout>
 

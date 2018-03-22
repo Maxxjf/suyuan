@@ -79,7 +79,7 @@ class CustomToolbar @JvmOverloads constructor(
 
     private fun initBar() {
         val rootView = LayoutInflater.from(mContext).inflate(R.layout.custom_toolbar, null, false)
-        addView(rootView, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, resources.getDimensionPixelOffset(R.dimen.bar_height)))
+        addView(rootView, LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, resources.getDimensionPixelOffset(R.dimen.barHeight)))
 
         // 标题
         if (isTitle) {

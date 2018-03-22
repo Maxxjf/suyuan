@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--大文字-->
+    <dimen name="largeTextSize">33sp</dimen>
     <!--大标题，用于导航重要标题-->
-    <dimen name="bigTitleSize">24sp</dimen>
-    <!--按钮文字大小，用于按钮和二级标题-->
-    <dimen name="titleTextSize">20sp</dimen>
-    <!--按钮文字大小，用于按钮和二级标题-->
-    <dimen name="btnTextSize">20sp</dimen>
+    <dimen name="bigTitleSize">27sp</dimen>
+    <!--二级标题-->
+    <dimen name="titleTextSize">22.5sp</dimen>
+    <!--用于按钮-->
+    <dimen name="btnTextSize">22.5sp</dimen>
     <!--较小的按钮-->
     <dimen name="smallBtnTextSize">18sp</dimen>
     <!--分类标题和功能按钮-->
-    <dimen name="typeTextSize">16sp</dimen>
+    <dimen name="typeTextSize">19.5sp</dimen>
     <!--正文-->
-    <dimen name="textSize">13.33sp</dimen>
+    <dimen name="textSize">18sp</dimen>
+    <!--小字体-->
+    <dimen name="smallTextSize">16.5sp</dimen>
+    <!--小小字体-->
+    <dimen name="miniTextSize">15sp</dimen>
+    <!--下划线-->
+    <dimen name="underLine">1.5dp</dimen>
+    <!-- Appbar最小高度 -->
+    <dimen name="barHeight">66dp</dimen>
+    <!-- 屏幕左右对齐基线 -->
+    <dimen name="layoutMargin">24dp</dimen>
+    <!-- 内容留白 -->
+    <dimen name="viewPadding">15dp</dimen>
+    <!-- 模块间隔 -->
+    <dimen name="modelMargin">18dp</dimen>
+    <!-- 图标间隔 -->
+    <dimen name="drawPadding">7.5dp</dimen>
+    <!-- 小按钮高度 -->
+    <dimen name="smallBtnHeight">34.5dp</dimen>
+    <!-- 一般控件高度 -->
+    <dimen name="btnHeight">48dp</dimen>
+    <!-- 大按钮高度 -->
+    <dimen name="largeBtnHeight">66dp</dimen>
+    <!-- 按钮最小宽度 -->
+    <dimen name="minButtonWidth">150dp</dimen>
+    <!-- Tab 高度 -->
+    <dimen name="tabHeight">60dp</dimen>
+    <!-- 列表item常规高度 -->
+    <dimen name="itemHeight">90dp</dimen>
+    <!--列表带图片item高度-->
+    <dimen name="itemImgHeight">135dp</dimen>
+    <!--输入框高度-->
+    <dimen name="editHeight">48dp</dimen>
 
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="login_width">618dp</dimen>
-    <dimen name="login_height">526dp</dimen>
-    <dimen name="login_btn_width">490dp</dimen>
-    <dimen name="login_btn_height">74dp</dimen>
+    <dimen name="fab_margin">12dp</dimen>
+    <dimen name="login_width">463.5dp</dimen>
+    <dimen name="login_height">394.5dp</dimen>
+    <dimen name="login_btn_width">367.5dp</dimen>
+    <dimen name="login_btn_height">55.5dp</dimen>
     <!--小票信息高度-->
-    <dimen name="repict_info_height">200dp</dimen>
+    <dimen name="repict_info_height">99dp</dimen>
 </resources>

@@ -22,8 +22,8 @@
                 android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="@dimen/layout_margin"
-                android:layout_marginStart="@dimen/layout_margin"
+                android:layout_marginLeft="@dimen/layoutMargin"
+                android:layout_marginStart="@dimen/layoutMargin"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/titleTextSize"
                 android:text="@string/tag_goods_list"/>
@@ -36,8 +36,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/padding_1"
-                android:layout_marginBottom="@dimen/padding_1"
+                android:layout_marginTop="@dimen/padding_2"
+                android:layout_marginBottom="@dimen/padding_2"
                 android:layout_marginRight="@dimen/layout_margin"
                 android:layout_marginEnd="@dimen/layout_margin"
                 android:background="@drawable/frame_gray">
@@ -53,7 +53,7 @@
 
                 <com.qcloud.qclib.widget.customview.ClearEditText
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/btn_height"
+                    android:layout_height="@dimen/btnHeight"
                     android:minWidth="@dimen/margin_40"
                     android:gravity="center_vertical"
                     android:inputType="number"
@@ -68,7 +68,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_height"
+            android:layout_height="@dimen/tabHeight"
             android:orientation="horizontal"
             android:background="@color/white">
 
