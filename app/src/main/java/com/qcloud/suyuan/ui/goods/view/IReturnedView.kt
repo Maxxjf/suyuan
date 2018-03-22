@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.ui.goods.view
 
+import com.qcloud.qclib.base.BaseView
 import com.qcloud.suyuan.beans.GoodsBean
 
 /**
@@ -8,6 +9,6 @@ import com.qcloud.suyuan.beans.GoodsBean
  * Date: 2018/3/19.
  * 退货
  */
-interface IReturnedView {
+interface IReturnedView :BaseView{
     fun replaceReceiptList(mList:List<GoodsBean>);
 }

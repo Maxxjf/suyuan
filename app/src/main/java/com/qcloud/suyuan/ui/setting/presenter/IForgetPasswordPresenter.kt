@@ -7,4 +7,6 @@ package com.qcloud.suyuan.ui.setting.presenter
  * TODO:
  */
 interface IForgetPasswordPresenter {
+    fun getCode(mobile: String)
+    fun forgetPassword(code: String, mobile: String, password: String)
 }

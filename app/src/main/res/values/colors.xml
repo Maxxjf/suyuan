@@ -18,9 +18,9 @@
     <!--线条颜色-->
     <color name="colorLine">#E5E5E5</color>
     <!--分割模块背景颜色-->
-    <color name="colorModelBg">#F2F2F2</color>
-
-    <color name="colorGrayBack">#F9F9F9</color><!--线条颜色-->
+    <color name="colorModelBgF2">#F2F2F2</color>
+    <!--区块背景颜色-->
+    <color name="colorModelBgF9">#F9F9F9</color>
     <!--背景颜色-->
     <color name="colorBg">#FFFFFF</color>
     <!--蓝色-->

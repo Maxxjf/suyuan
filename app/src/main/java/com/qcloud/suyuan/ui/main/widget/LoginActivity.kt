@@ -8,7 +8,7 @@ import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.SharedUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.base.SwipeBaseActivity
+import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.constant.ShareConstants
 import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
@@ -24,7 +24,7 @@ import timber.log.Timber
  * Date: 2018/3/15.
  * 登录页
  */
-class LoginActivity : SwipeBaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView, View.OnClickListener {
+class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView, View.OnClickListener {
 
 
     private var account: String = "" //账号
@@ -106,7 +106,7 @@ class LoginActivity : SwipeBaseActivity<ILoginView, LoginPresenterImpl>(), ILogi
         account = et_account.text.toString().trim()
         password = et_password.text.toString().trim()
         if (StringUtil.isBlank(account)) {
-            QToast.show(this, R.string.et_hint_account, 1000)
+
             et_account.requestFocus()
             return false
         }

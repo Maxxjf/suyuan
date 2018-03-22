@@ -33,5 +33,7 @@
     <dimen name="login_btn_height">74dp</dimen>
     <!--小票信息高度-->
     <dimen name="repict_info_height">132dp</dimen>
+    <!--退货列表高度-->
+    <dimen name="return_goods_height">500dp</dimen>
 
 </resources>

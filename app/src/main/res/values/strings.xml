@@ -81,7 +81,7 @@
     <string name="tab_main_my_supplier">我的供应商管理</string>
     <string name="tab_main_store_info">门店信息</string>
     <string name="tab_main_device_state">设备状态</string>
-
+    <string name="tab_time">时间</string>
 
     <string name="save">保存</string>
     <string name="edit">编辑</string>

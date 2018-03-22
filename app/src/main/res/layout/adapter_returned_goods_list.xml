@@ -34,7 +34,6 @@
         android:text="@string/tag_goods_rule"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
-
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="0dp"
@@ -44,18 +43,15 @@
         android:text="@string/tag_goods_data"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
-
-    <RelativeLayout
-        android:id="@+id/iv_delete"
+    <TextView
+        android:id="@+id/tv_date"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:src="@drawable/icon_account" >
-        <ImageView
-            android:background="@drawable/selector_btn_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+        android:text="@string/tag_time"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
+
 
 </LinearLayout>

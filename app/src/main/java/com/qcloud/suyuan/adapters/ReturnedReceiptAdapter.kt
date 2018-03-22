@@ -1,9 +1,11 @@
 package com.qcloud.suyuan.adapters
 
 import android.content.Context
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.GoodsBean
 
@@ -20,15 +22,19 @@ class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<GoodsBea
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: GoodsBean = mList.get(position)
-        var name = holder.get<TextView>(R.id.tv_name)
-        var number = holder.get<TextView>(R.id.tv_number)
-        var rule = holder.get<TextView>(R.id.tv_rule)
-        var date = holder.get<TextView>(R.id.tv_price)
+        var tvName = holder.get<TextView>(R.id.tv_name)
+        var tvNumber = holder.get<TextView>(R.id.tv_number)
+        var tvRule = holder.get<TextView>(R.id.tv_rule)
+        var tvPrice = holder.get<TextView>(R.id.tv_price)
+        var root    =holder.get<LinearLayout>(R.id.root)
+        if (position%2==0){
+            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }
         if (bean != null) {
-            number?.setText(bean.number)
-            name?.setText(bean.name)
-            rule?.setText(bean.rule)
-            date?.setText(bean.date)
+            tvNumber?.setText(bean.number)
+            tvName?.setText(bean.name)
+            tvRule?.setText(bean.rule)
+            tvPrice?.setText(bean.price)
         }
     }
 

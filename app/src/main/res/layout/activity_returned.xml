@@ -4,8 +4,8 @@
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.goods.widget.ReturnedActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -16,8 +16,7 @@
         app:is_main="false"
         app:is_right="false"
         app:is_title="true"
-        app:title_text="@string/title_return"
-        />
+        app:title_text="@string/title_return" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,14 +39,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/textView"
+                    android:layout_alignBottom="@+id/et_shape_code"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="@string/tag_goods_list"
                     android:textSize="@dimen/text_size_5" />
 
-                <TextView
-                    android:id="@+id/textView"
+                <EditText
+                    android:focusable="false"
+                    android:textColor="@color/black"
+                    android:hint="@string/et_hint_order_number"
+                    android:id="@+id/et_shape_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -57,7 +59,7 @@
                     android:paddingLeft="@dimen/margin_1"
                     android:paddingRight="@dimen/margin_11"
                     android:paddingTop="@dimen/margin_1"
-                    android:text="@string/et_hint_order_number"
+                    android:text=""
                     android:textSize="@dimen/text_size_5" />
 
                 <TextView
@@ -138,14 +140,12 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_return_goods_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="9"
+                    android:layout_height="@dimen/return_goods_height"
                     android:paddingLeft="@dimen/margin_2" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
                     android:padding="@dimen/margin_2">
 
                     <TextView
@@ -207,13 +207,14 @@
                         android:textSize="@dimen/text_size_4" />
 
                     <Button
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/text_size_6"
+                        android:id="@+id/btn_returned_goods"
                         android:layout_width="@dimen/margin_20"
                         android:layout_height="@dimen/margin_6"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:background="@drawable/btn_radius_selector"
-                        android:text="@string/btn_returned_good" />
+                        android:text="@string/btn_returned_good"
+                        android:textSize="@dimen/text_size_6" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -226,13 +227,13 @@
             android:background="@color/colorLine" />
 
         <LinearLayout
-            android:paddingLeft="@dimen/margin_4"
-            android:paddingRight="@dimen/margin_4"
             android:id="@+id/layout_idcard"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin_4"
+            android:paddingRight="@dimen/margin_4">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -259,7 +260,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
-                android:background="@color/colorGrayBack"
+                android:background="@color/colorModelBgF9"
                 android:padding="@dimen/margin_2">
 
                 <TextView
@@ -352,12 +353,12 @@
                 android:layout_height="@dimen/margin_40"></android.support.v7.widget.RecyclerView>
 
             <LinearLayout
-                android:layout_marginBottom="@dimen/margin_4"
-                android:background="@drawable/bg_receipt"
-                android:padding="@dimen/margin_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/margin_4"
+                android:background="@drawable/bg_receipt"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -370,13 +371,15 @@
                         android:text="@string/tag_add_all"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/text_size_5" />
+
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/text_size_5"
-                        android:text="1000.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="1000.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_5" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -388,13 +391,15 @@
                         android:text="@string/tag_on_sale"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/text_size_5" />
+
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/text_size_5"
-                        android:text="5.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="5.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_5" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -406,12 +411,13 @@
                         android:text="@string/tag_money"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/text_size_5" />
+
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/text_size_5"
-                        android:text="995.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="995.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_5" />
                 </LinearLayout>
 
             </LinearLayout>

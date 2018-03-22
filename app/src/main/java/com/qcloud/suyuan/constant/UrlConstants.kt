@@ -13,6 +13,10 @@ object UrlConstants {
 
     /**登录**/
     const val LOGIN = URL_PREFIX_APP + "login"
+    /**获取验证码**/
+    const val GET_CODE = URL_PREFIX_APP + "getCode"
+    /**获取验证码**/
+    const val FORGET_PASSWORD = URL_PREFIX_APP + "forgetPassword"
 
     /** 首页数据 */
     const val MAIN_FORM = URL_PREFIX_APP + "index/indexData"
