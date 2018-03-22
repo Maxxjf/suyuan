@@ -9,14 +9,13 @@ import com.qcloud.qclib.utils.SharedUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
-import com.qcloud.suyuan.constant.ShareConstants
+import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.main.presenter.impl.LoginPresenterImpl
 import com.qcloud.suyuan.ui.main.view.ILoginView
 import com.qcloud.suyuan.ui.setting.widget.ForgetPasswordActivity
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.annotations.NotNull
-import timber.log.Timber
 
 /**
  * 类型：LoginActivity
@@ -26,10 +25,9 @@ import timber.log.Timber
  */
 class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView, View.OnClickListener {
 
-
     private var account: String = "" //账号
     private var password: String = "" //密码
-    private var input: InputDialog? =null
+    private var inputDialog: InputDialog? =null
     override val layoutId: Int
         get() = R.layout.activity_login
 
@@ -40,27 +38,23 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
 
     override fun initViewAndData() {
         initData()
-        initListener();
-
+        initListener()
     }
 
     private fun initData() {
-        et_account.setText(SharedUtil.getString(ShareConstants.account))
+        et_account.text = SharedUtil.getString(AppConstants.account)
     }
 
     private fun initListener() {
-        cb_rember_password.setOnCheckedChangeListener { button, isCheck ->
-            {
-                Timber.e("isCheck:${isCheck}")
-                if (isCheck) {
-                    account = et_account.text.toString().trim()
-                    loadErr("${account}", true)
-                    SharedUtil.writeString(ShareConstants.account, account)
-                } else {
-                    SharedUtil.writeString(ShareConstants.account, "")
-                }
+        cb_rember_password.setOnCheckedChangeListener { _, isCheck ->
+            account = et_account.text.toString().trim()
+            if (isCheck) {
+                SharedUtil.writeString(AppConstants.account, account)
+            } else {
+                SharedUtil.writeString(AppConstants.account, "")
             }
         }
+
         btn_forget_password.setOnClickListener(this)
         btn_login.setOnClickListener(this)
         et_account.setOnClickListener(this)
@@ -68,13 +62,12 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     override fun onClick(view: View?) {
-
         if (view != null) {
             when(view.id){
-                R.id.et_account ->showInput(view as TextView?)
-                R.id.et_password ->showInput(view as TextView?)
-                R.id.btn_forget_password ->forgetBtnClick()
-                R.id.btn_login ->loginBtnClick()
+                R.id.et_account -> showInput(view as TextView?)
+                R.id.et_password -> showInput(view as TextView?)
+                R.id.btn_forget_password -> forgetBtnClick()
+                R.id.btn_login -> loginBtnClick()
             }
         }
     }
@@ -100,13 +93,14 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     override fun loginSuccess() {
         stopLoadingDialog()
         MainActivity.openActivity(this)
+        finish()
     }
 
     private fun check(): Boolean {
         account = et_account.text.toString().trim()
         password = et_password.text.toString().trim()
         if (StringUtil.isBlank(account)) {
-
+            QToast.show(this, R.string.et_hint_account)
             et_account.requestFocus()
             return false
         }
@@ -120,15 +114,15 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     override fun showInput(@NotNull view: TextView?) {
-        if (input==null){
-            input = InputDialog(this)
+        if (inputDialog == null){
+            inputDialog = InputDialog(this)
         }
         if (view != null) {
-            input?.setBindView(view)
-            input?.setInputValue(view.text.toString().trim())
+            inputDialog?.setBindView(view)
+            inputDialog?.setInputValue(view.text.toString().trim())
         }
 
-        input?.show()
+        inputDialog?.show()
     }
 
     companion object {

@@ -10,4 +10,7 @@ object AppConstants {
     const val PAGE_SIZE = 10
 
     val loadColors = intArrayOf(0x7fff0000, 0x700ff000, 0x7f0000ff)
+
+    /**账号key值 */
+    const val account = "KEY_ACCOUNT"
 }

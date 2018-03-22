@@ -109,14 +109,14 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
 
     override fun showMainForm(bean: MainFormBean) {
         if (isRunning) {
-            var todayForm = bean.todayBusiness
+            val todayForm = bean.todayBusiness
             if (todayForm != null) {
                 tv_income.text = todayForm.earningStr
                 tv_credit.text = todayForm.onCreditStr
                 tv_valid_order.text = String.format(resources.getString(R.string.num_of_valid_order), todayForm.order)
                 tv_return.text = todayForm.returnMoneyStr
             }
-            var warnBean = bean.alarm
+            val warnBean = bean.alarm
             if (warnBean != null) {
                 tv_valid_warn.text = warnBean.indateStr
                 tv_stock_warn.text = warnBean.stockStr

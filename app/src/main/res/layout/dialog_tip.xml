@@ -20,11 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_1"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/icon_close"
             android:layout_gravity="right|top"
-            android:layout_marginTop="@dimen/margin_6"
-            android:layout_marginRight="@dimen/margin_1"/>
+            android:layout_marginTop="@dimen/itemHeight"
+            android:layout_marginRight="@dimen/margin_4"/>
     </FrameLayout>
 
     <LinearLayout
@@ -42,14 +42,14 @@
             android:gravity="center"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
-            android:textSize="@dimen/titleTextSize"
+            android:textSize="@dimen/largeTextSize"
             android:text="@string/tip_title" />
 
         <TextView
             android:id="@+id/tv_tip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/margin_10"
+            android:minHeight="@dimen/itemHeight"
             android:gravity="center_horizontal"
             android:layout_margin="@dimen/margin_2"
             android:paddingLeft="@dimen/padding_4"
@@ -61,10 +61,10 @@
         <Button
             android:id="@+id/btn_confirm"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/appbar_height"
-            android:layout_marginBottom="@dimen/margin_2"
-            android:layout_marginLeft="@dimen/margin_2"
-            android:layout_marginRight="@dimen/margin_2"
+            android:layout_height="@dimen/btnHeight"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_marginRight="@dimen/margin_4"
             android:background="@drawable/btn_radius_selector"
             android:gravity="center"
             android:textColor="@color/white"

@@ -66,6 +66,8 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
 
         mEmptyView = NoDataView(activity!!)
         list_valid_warn?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
+
+        loadData()
     }
 
     private fun loadData() {

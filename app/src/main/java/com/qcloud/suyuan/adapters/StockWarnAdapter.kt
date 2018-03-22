@@ -5,6 +5,7 @@ import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.StockWarnBean
@@ -27,6 +28,12 @@ class StockWarnAdapter(context: Context): CommonRecyclerAdapter<StockWarnBean>(c
         val tvManufacture = holder.get<TextView>(R.id.tv_product_manufacture)
         val tvSpec = holder.get<TextView>(R.id.tv_product_spec)
         val tvStock = holder.get<TextView>(R.id.tv_product_stock)
+
+        if (position %2 == 0) {
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF2))
+        } else {
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+        }
 
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)

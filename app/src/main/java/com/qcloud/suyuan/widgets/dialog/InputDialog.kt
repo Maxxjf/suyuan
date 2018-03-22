@@ -49,7 +49,7 @@ class InputDialog @JvmOverloads constructor(
     private fun initDialog() {
         val lp = window!!.attributes
         lp.width = ScreenUtil.getScreenWidth(mContext) //设置宽度
-        lp.height = mContext.resources.getDimensionPixelOffset(R.dimen.btn_height)
+        lp.height = mContext.resources.getDimensionPixelOffset(R.dimen.tabHeight)
         lp.gravity = Gravity.BOTTOM
         window!!.attributes = lp
         setCancelable(true)

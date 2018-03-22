@@ -7,5 +7,7 @@ package com.qcloud.suyuan.beans
  * 登录返回
  */
 class LoginReturnBean {
-    var token:String = ""
+    var loginState: Int = 0     // 0失败 1成功
+    var token: String = ""
+    var user: UserBean? = null
 }

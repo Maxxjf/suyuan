@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/layout_input"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/actionbar_height"
+        android:layout_height="@dimen/tabHeight"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -16,9 +16,9 @@
         <EditText
             android:id="@+id/et_text"
             android:layout_width="0dp"
-            android:layout_height="@dimen/actionbar_height"
+            android:layout_height="@dimen/tabHeight"
             android:layout_weight="1"
-            android:layout_marginLeft="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layoutMargin"
             android:textCursorDrawable="@drawable/cursor_orange_drawable"
             android:gravity="center_vertical"
             android:imeOptions="flagNoExtractUi"
@@ -26,20 +26,20 @@
             android:imeActionId="@+id/login"
             android:lines="1"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/micro_text_size"
+            android:textSize="@dimen/textSize"
             android:textColorHint="@color/colorHint"
             android:hint="请输入内容"/>
 
         <TextView
             android:id="@+id/btn_finish"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_height"
+            android:layout_height="@dimen/btnHeight"
             android:background="?attr/selectableItemBackground"
-            android:paddingLeft="@dimen/margin_3"
-            android:paddingRight="@dimen/margin_3"
+            android:paddingLeft="@dimen/margin_4"
+            android:paddingRight="@dimen/margin_4"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/micro_text_size"
+            android:textSize="@dimen/btnTextSize"
             android:text="@string/btn_finish" />
     </LinearLayout>
 </RelativeLayout>

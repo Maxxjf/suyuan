@@ -12,8 +12,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import com.qcloud.qclib.AppManager
+import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.base.BaseApplication
 import com.qcloud.suyuan.ui.main.widget.LoginActivity
+import com.qcloud.suyuan.utils.UserInfoUtil
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
 
 /**
@@ -24,8 +28,7 @@ import kotlinx.android.synthetic.main.custom_toolbar.view.*
 class CustomToolbar @JvmOverloads constructor(
         private val mContext: Context,
         attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-) : Toolbar(mContext, attrs, defStyleAttr), View.OnClickListener {
+        defStyleAttr: Int = 0) : Toolbar(mContext, attrs, defStyleAttr), View.OnClickListener {
 
     private var isBack: Boolean = true
     private var isLogout: Boolean = true
@@ -42,6 +45,8 @@ class CustomToolbar @JvmOverloads constructor(
     private var rightText: Int = 0
 
     var onBtnClickListener: OnBtnClickListener? = null
+
+    private var logoutDialog: TipDialog? = null
 
     init {
         initAttrs(attrs)
@@ -131,14 +136,29 @@ class CustomToolbar @JvmOverloads constructor(
     override fun onClick(p0: View) {
         when (p0.id) {
             R.id.btn_back -> (mContext as Activity).finish()
-            R.id.btn_logout -> toLogin()
+            R.id.btn_logout -> toLogout()
             R.id.btn_right -> onBtnClickListener?.onBtnClick(p0)
         }
     }
 
-    private fun toLogin() {
-        AppManager.instance.killAllActivity()
-        LoginActivity.openActivity(mContext)
+    private fun toLogout() {
+        if (logoutDialog == null) {
+            initLogoutDialog()
+        }
+        logoutDialog?.show()
+    }
+
+    private fun initLogoutDialog() {
+        logoutDialog = TipDialog(mContext)
+        logoutDialog?.setTip(R.string.toast_logout)
+        logoutDialog?.onConfirmClickListener = object : TipDialog.OnConfirmClickListener {
+            override fun onConfirmClick() {
+                TokenUtil.clearToken()
+                UserInfoUtil.mUser = null
+                BaseApplication.mAppManager?.killAllActivity()
+                LoginActivity.openActivity(mContext)
+            }
+        }
     }
 
     interface OnBtnClickListener {

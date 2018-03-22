@@ -24,7 +24,6 @@ interface ILoginView :BaseView {
      */
     fun forgetBtnClick()
 
-
     /**
      * 显示输入框
      */

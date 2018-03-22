@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="@dimen/margin_1">
+        android:padding="@dimen/margin_4">
 
         <com.qcloud.qclib.widget.customview.RatioImageView
             android:id="@+id/img_product"

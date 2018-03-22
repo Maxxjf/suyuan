@@ -61,6 +61,7 @@
 
 
     <string name="toast_app_exit">您确认要离开？</string>
+    <string name="toast_logout">您确认要退出账号吗？</string>
     <string name="toast_input_not_null">输入的内容为空</string>
     <string name="toast_login_success">登录成功</string>
     <string name="toast_login_fails">密码或者账号错误</string>
