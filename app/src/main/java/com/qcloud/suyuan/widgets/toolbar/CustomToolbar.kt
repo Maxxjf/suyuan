@@ -73,7 +73,7 @@ class CustomToolbar @JvmOverloads constructor(
 
                 // 是否显示右控件
                 isRight = typedArray.getBoolean(R.styleable.CustomBar_is_right, false)
-                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search)
+                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search_code)
                 rightText = typedArray.getResourceId(R.styleable.CustomBar_right_text, R.string.btn_search)
             } finally {
                 typedArray.recycle()
