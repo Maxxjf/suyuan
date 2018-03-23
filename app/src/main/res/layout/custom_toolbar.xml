@@ -98,13 +98,13 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btn_logout"
         android:layout_toStartOf="@+id/btn_logout"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/img_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_search_code"/>
+            android:src="@drawable/icon_search"/>
 
         <TextView
             android:id="@+id/tv_right"

@@ -15,9 +15,11 @@ import com.qcloud.suyuan.beans.SellersBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.card_sellers_product_list.*
+import kotlinx.android.synthetic.main.card_sellers_purchaser_info.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -40,6 +42,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     override fun initViewAndData() {
         initRecyclerView()
         initEditView()
+        initDropDown()
     }
 
     /**
@@ -82,6 +85,22 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             }
             false
         }
+    }
+
+    private fun initDropDown() {
+        val dropDownPop = DropDownPop(this)
+        val list: MutableList<String> = ArrayList()
+        list.add("病虫防治1")
+        list.add("病虫防治2")
+        list.add("病虫防治3")
+        list.add("病虫防治4")
+        list.add("病虫防治5")
+        dropDownPop.replaceList(list)
+
+        tv_purchase_use.setOnClickListener {
+            dropDownPop.showAsDropDown(tv_purchase_use)
+        }
+
     }
 
     private fun toGet() {
