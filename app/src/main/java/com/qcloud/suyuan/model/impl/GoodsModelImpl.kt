@@ -4,6 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
+import com.qcloud.suyuan.beans.CodeBean
 import com.qcloud.suyuan.beans.StockWarnBean
 import com.qcloud.suyuan.beans.ValidWarnBean
 import com.qcloud.suyuan.model.IGoodsModel
@@ -15,6 +16,8 @@ import com.qcloud.suyuan.net.IGoodsApi
  * 2018/3/21 上午9:05.
  */
 class GoodsModelImpl: IGoodsModel {
+
+
     /**
      * 获取库存告警列表
      * */
@@ -35,5 +38,16 @@ class GoodsModelImpl: IGoodsModel {
         params.put("pageSize", pageSize)
 
         BaseApi.dispose(IGoodsApi.getValidWarnList(params), callback)
+    }
+    /**
+     * 获取退货记录列表
+     * */
+    override fun getReturnRecord(startTime: String, endTime: String, pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<CodeBean>>) {
+        val params=OkGoRequest.getAppParams()
+        params.put("startTime",startTime)
+        params.put("endTime",endTime)
+        params.put("pageNo",pageNo)
+        params.put("pageSize",pageSize)
+        BaseApi.dispose(IGoodsApi.getReturnedRecord(params),callback)
     }
 }

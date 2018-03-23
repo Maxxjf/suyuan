@@ -89,6 +89,10 @@
     <string name="tab_main_store_info">门店信息</string>
     <string name="tab_main_device_state">设备状态</string>
     <string name="tab_time">时间</string>
+    <string name="tab_invalid_suyuan">作废溯源码</string>
+    <string name="tab_return_name">退货产品名称</string>
+    <string name="tab_goods_rule">产品规格</string>
+    <string name="tab_handle_member">操作人</string>
 
     <string name="save">保存</string>
     <string name="edit">编辑</string>

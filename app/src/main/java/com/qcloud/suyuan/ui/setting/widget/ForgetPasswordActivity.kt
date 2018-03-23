@@ -36,7 +36,12 @@ class ForgetPasswordActivity : BaseActivity<IForgetpasswordView, IForgetPassword
     override fun initPresenter(): IForgetPasswordPresenterImpl? = IForgetPasswordPresenterImpl()
 
     override fun initViewAndData() {
-
+        et_phone.setOnClickListener(this)
+        et_code.setOnClickListener(this)
+        et_password.setOnClickListener(this)
+        et_password_confrim.setOnClickListener(this)
+        btn_get_code.setOnClickListener(this)
+        btn_updata_password.setOnClickListener(this)
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -51,7 +56,7 @@ class ForgetPasswordActivity : BaseActivity<IForgetpasswordView, IForgetPassword
                 R.id.et_password -> showInput(view as TextView?)
                 R.id.et_password_confrim -> showInput(view as TextView?)
                 R.id.btn_get_code -> getCodeClick();
-                R.id.btn_confirm -> confirmClick();
+                R.id.btn_updata_password -> confirmClick();
             }
         }
     }

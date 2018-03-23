@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.goods.widget.ReturnedActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -46,20 +46,19 @@
                     android:textSize="@dimen/titleTextSize" />
 
                 <EditText
-                    android:focusable="false"
-                    android:textColor="@color/black"
-                    android:hint="@string/et_hint_order_number"
                     android:id="@+id/et_shape_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/btn_confirm"
                     android:background="@drawable/textview_border_gray"
+                    android:focusable="false"
+                    android:hint="@string/et_hint_order_number"
                     android:paddingBottom="@dimen/margin_1"
                     android:paddingLeft="@dimen/margin_1"
                     android:paddingRight="@dimen/margin_11"
                     android:paddingTop="@dimen/margin_1"
-                    android:text="@string/et_hint_order_number"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/textSize" />
 
                 <TextView
@@ -350,7 +349,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_receipt"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_40"/>
+                android:layout_height="@dimen/margin_40" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -369,14 +368,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tag_add_all"
-                        android:textColor="@color/colorText"/>
+                        android:textColor="@color/colorText" />
 
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
-                        android:text="1000.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="1000.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/typeTextSize" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -390,12 +389,13 @@
                         android:text="@string/tag_on_sale"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/typeTextSize" />
+
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
-                        android:text="5.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="5.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/typeTextSize" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -409,12 +409,13 @@
                         android:text="@string/tag_money"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/typeTextSize" />
+
                     <TextView
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize"
-                        android:text="995.00"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="995.00"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/typeTextSize" />
                 </LinearLayout>
 
             </LinearLayout>

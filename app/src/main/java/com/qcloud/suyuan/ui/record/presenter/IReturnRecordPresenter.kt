@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.record.presenter
  * 2018/3/15 上午1:00.
  */
 interface IReturnRecordPresenter {
+    fun loadData(startTime: String, endTime: String, pageNO: Int)
 }

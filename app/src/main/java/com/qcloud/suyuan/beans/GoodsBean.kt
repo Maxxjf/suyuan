@@ -13,6 +13,7 @@ class GoodsBean {
     var date:String=""
     var number:String=""
     var price:String=""
+    var handlerMenber:String=""
     override fun toString(): String {
         return "GoodsBean(id='$id', name='$name', rule='$rule', date='$date', number='$number', price='$price')"
     }

@@ -15,7 +15,7 @@ object UrlConstants {
     const val LOGIN = URL_PREFIX_APP + "login"
     /**获取验证码**/
     const val GET_CODE = URL_PREFIX_APP + "getCode"
-    /**获取验证码**/
+    /**修改密码**/
     const val FORGET_PASSWORD = URL_PREFIX_APP + "forgetPassword"
 
     /** 首页数据 */
@@ -24,4 +24,7 @@ object UrlConstants {
     const val GET_STOCK_WARN_LIST = URL_PREFIX_APP + "index/stockList"
     /**获取有效期告警列表*/
     const val GET_VALID_WARN_LIST = URL_PREFIX_APP + "index/indateList"
+
+    /**获取退货记录列表*/
+    const val GET_RETURNED_RECORD_LIST = URL_PREFIX_APP + "salesReturn/salesReturnList"
 }

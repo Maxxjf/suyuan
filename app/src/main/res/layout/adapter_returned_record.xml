@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_12"
+    android:layout_height="@dimen/margin_14"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tv_number"
+        android:id="@+id/tv_suyuan_no"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/tag_goods_order"
+        android:text="@string/tab_invalid_suyuan"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
 
@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/tag_goods_name"
+        android:text="@string/tab_return_name"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
 
@@ -31,31 +31,28 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/tag_goods_rule"
+        android:text="@string/tab_goods_rule"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
+
     <TextView
-        android:id="@+id/tv_date"
+        android:id="@+id/tv_handle_member"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/tag_goods_data"
+        android:text="@string/tab_handle_member"
         android:textColor="@color/colorText"
         android:textSize="@dimen/textSize" />
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/iv_detele"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_btn_delete"
-        />
-    </RelativeLayout>
-
+        android:text="@string/tab_time"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
 
 
 </LinearLayout>

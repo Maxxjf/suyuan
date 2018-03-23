@@ -34,7 +34,6 @@ class StockWarnAdapter(context: Context): CommonRecyclerAdapter<StockWarnBean>(c
         } else {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
-
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)
             tvBarCode.text = barCode

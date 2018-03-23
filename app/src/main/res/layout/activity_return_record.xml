@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.record.widget.ReturnRecordActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/appbar_height"
+        android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_return_record" />
 
     <RelativeLayout
@@ -41,11 +42,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/z"
+            android:layout_toLeftOf="@+id/tv_to"
             android:src="@drawable/icon_date_picker" />
 
         <TextView
-            android:id="@+id/z"
+            android:id="@+id/tv_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -73,17 +74,67 @@
             android:layout_centerVertical="true"
             android:src="@drawable/icon_date_picker" />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_6"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_invalid_suyuan"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/typeTextSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_return_name"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/typeTextSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_goods_rule"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/typeTextSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_handle_member"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/typeTextSize" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tab_time"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/typeTextSize" />
+
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorLine" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
         android:id="@+id/rv_return_goods_record"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView>
 
 </LinearLayout>

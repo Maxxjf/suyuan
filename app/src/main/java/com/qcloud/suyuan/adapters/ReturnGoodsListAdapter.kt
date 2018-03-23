@@ -28,7 +28,7 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<GoodsBean
         var tvName = holder.get<TextView>(R.id.tv_name)
         var tvRule = holder.get<TextView>(R.id.tv_rule)
         var tvDate = holder.get<TextView>(R.id.tv_date)
-        //var ivDelete = holder.get<RelativeLayout>(R.id.iv_delete)
+        var ivDelete = holder.get<RelativeLayout>(R.id.iv_detele)
         var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
             root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
@@ -39,10 +39,10 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<GoodsBean
             tvRule?.setText(bean.rule)
             tvDate?.setText(bean.date)
         }
-//        ivDelete?.setOnClickListener(View.OnClickListener {
-//            remove(position)
-//            notifyDataSetChanged()
-//        })
+        ivDelete?.setOnClickListener(View.OnClickListener {
+            remove(position)
+            notifyDataSetChanged()
+        })
     }
 
 

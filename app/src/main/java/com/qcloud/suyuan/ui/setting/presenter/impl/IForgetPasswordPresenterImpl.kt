@@ -13,28 +13,28 @@ import com.qcloud.suyuan.ui.setting.view.IForgetpasswordView
  * Date: 2018/3/19.
  * 忘记密码
  */
-class IForgetPasswordPresenterImpl:BasePresenter<IForgetpasswordView>(), IForgetPasswordPresenter {
-    private var mModel:UserModelImpl= UserModelImpl()
+class IForgetPasswordPresenterImpl : BasePresenter<IForgetpasswordView>(), IForgetPasswordPresenter {
+    private var mModel: UserModelImpl = UserModelImpl()
     override fun getCode(mobile: String) {
-            mModel.getCode(mobile,object :DataCallback<EmptyResBean>{
-                override fun onSuccess(t: EmptyResBean?, message: String?) {
+        mModel.getCode(mobile, object : DataCallback<EmptyResBean> {
+            override fun onSuccess(t: EmptyResBean?, message: String?) {
 
-                }
+            }
 
-                override fun onError(status: Int, message: String) {
-
-                }
-            })
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message)
+            }
+        })
     }
 
-    override fun forgetPassword(code:String,mobile:String,password:String){
-        mModel.forgetPassword(code,mobile,password,object :DataCallback<EmptyResBean>{
+    override fun forgetPassword(code: String, mobile: String, password: String) {
+        mModel.forgetPassword(code, mobile, password, object : DataCallback<EmptyResBean> {
             override fun onSuccess(t: EmptyResBean?, message: String?) {
                 mView?.forgetPasswordSuccess()
             }
 
             override fun onError(status: Int, message: String) {
-
+                mView?.loadErr(message)
             }
         })
     }
