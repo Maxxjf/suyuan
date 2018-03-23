@@ -64,7 +64,7 @@ class ReturnedActivity :SwipeBaseActivity<IReturnedView,IReturnedPersenterImpl>(
         }
     }
     private fun getListData() {
-        mPresenter?.getList()
+        mPresenter?.loadData()
     }
     override fun replaceReceiptList(beans:List<GoodsBean>) {
 

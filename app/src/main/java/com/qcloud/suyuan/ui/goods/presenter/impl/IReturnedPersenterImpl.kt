@@ -12,7 +12,7 @@ import com.qcloud.suyuan.ui.goods.view.IReturnedView
  * TODO:
  */
 class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter {
-    override fun getList() {
+    override fun loadData() {
       var list:ArrayList<GoodsBean> = ArrayList<GoodsBean>()
         var goods:GoodsBean= GoodsBean()
         goods.id="sjaifajdadfa02"

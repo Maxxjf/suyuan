@@ -58,6 +58,7 @@
     <string name="et_hint_2rd_password">请您再次确认密码</string>
     <string name="et_hint_order_number">请输入批次条形码</string>
     <string name="hint_input_other_instructions">请输入您要写的说明</string>
+    <string name="hint_input_water_number">请输入流水号，采购人</string>
 
 
     <string name="toast_app_exit">您确认要离开？</string>
@@ -122,6 +123,8 @@
     <string name="tag_goods_data">批次</string>
     <string name="tag_goods_control">操作</string>
     <string name="tag_date">日期：</string>
+    <string name="tag_selling_water_list">流水列表</string>
+    <string name="tag_cash_pay">现金支付</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>
@@ -155,6 +158,7 @@
     <string name="tag_mobile">联系电话: </string>
     <string name="tag_purchase_use">购买用途: </string>
     <string name="tag_other_instructions">其他说明: </string>
+    <string name="tag_buyer">采购人：</string>
 
     <string name="toast_no_data">暂无数据</string>
     <string name="toast_no_more_data">暂无更多数据</string>
