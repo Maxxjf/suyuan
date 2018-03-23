@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.ui.record.widget
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -9,7 +10,6 @@ import android.view.View
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
-import com.qcloud.qclib.widget.customview.wheelview.DatePicker
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.ReturnedRecordAdapter
 import com.qcloud.suyuan.base.BaseActivity
@@ -18,6 +18,7 @@ import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.ReturnRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.IReturnRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.customview.DatePick
 import kotlinx.android.synthetic.main.activity_return_record.*
 import timber.log.Timber
 
@@ -29,14 +30,13 @@ import timber.log.Timber
 class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresenterImpl>(), IReturnRecordView, View.OnClickListener {
 
 
-
     private var madapter: ReturnedRecordAdapter? = null
     private var mEmptyView: NoDataView? = null
-    private  var datePicker:DatePicker?=null
+    private var datePicker: DatePickerDialog? = null
 
-    var pageNo:Int=1
-    var startTime:String="2018-01-01"
-    var endTime:String="2018-03-22"
+    var pageNo: Int = 1
+    var startTime: String = "2018-01-01"
+    var endTime: String = "2018-03-22"
 
     override val layoutId: Int
         get() = R.layout.activity_return_record
@@ -51,32 +51,18 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
     }
 
     override fun onClick(view: View?) {
-      if(view!=null){
-          when(view.id){
-              R.id.tv_date_from ->showPicker(view)
-              R.id.tv_date_to ->showPicker(view)
-          }
-      }
-    }
+        if (view != null) {
+            when (view.id) {
 
-    private fun showPicker(view: View) {
-        if (datePicker==null) {
-            datePicker = DatePicker(this)
+            }
         }
-        datePicker!!.setRangeStart(2012,1,1)
-        datePicker!!.setRangeEnd(2018,12,30)
-        datePicker!!.setOnDatePickListener(object :DatePicker.OnDatePickListener{
-
-        })
-        datePicker!!.showAtLocation(view,Gravity.BOTTOM,0,0)
     }
+
 
     private fun initView() {
-        tv_date_from.setOnClickListener(this)
-        tv_date_to.setOnClickListener(this)
         rv_return_goods_record?.setLayoutManager(LinearLayoutManager(this))
-        SwipeRefreshUtil.setLoadMore(rv_return_goods_record,true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_return_goods_record,AppConstants.loadColors)
+        SwipeRefreshUtil.setLoadMore(rv_return_goods_record, true)
+        SwipeRefreshUtil.setColorSchemeColors(rv_return_goods_record, AppConstants.loadColors)
 
         rv_return_goods_record?.onRefreshListener = object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
@@ -92,11 +78,23 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
         }
         madapter = ReturnedRecordAdapter(this)
         rv_return_goods_record?.setAdapter(madapter!!)
-        mEmptyView= NoDataView(this)
-        rv_return_goods_record.setEmptyView(mEmptyView!!,Gravity.CENTER_HORIZONTAL)
+        mEmptyView = NoDataView(this)
+        rv_return_goods_record.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        tv_date_from.setOnDateChangeListener(object : DatePick.OnDateChangeListener{
+            override fun onDateChange(year: Int, mouth: Int, day: Int) {
+                loadData()
+            }
+        })
+        tv_date_to.setOnDateChangeListener(object : DatePick.OnDateChangeListener{
+            override fun onDateChange(year: Int, mouth: Int, day: Int) {
+                loadData()
+            }
+        })
     }
 
     private fun loadData() {
+        startTime = tv_date_from.text.toString().trim()
+        endTime = tv_date_to.text.toString().trim()
         mPresenter?.loadData(startTime, endTime, pageNo)
     }
 
@@ -112,27 +110,27 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
     }
 
     override fun replaceList(beans: List<CodeBean>?, isNext: Boolean) {
-        if (isRunning){
+        if (isRunning) {
             rv_return_goods_record?.loadedFinish()
-            if (beans!=null && beans.isNotEmpty()){
-                if (madapter!=null){
+            if (beans != null && beans.isNotEmpty()) {
+                if (madapter != null) {
                     madapter!!.replaceList(beans)
                 }
                 rv_return_goods_record?.isMore(isNext)
                 hideEmptyView()
-            }else{
+            } else {
                 showEmptyView(resources.getString(R.string.tip_no_data))
             }
         }
     }
 
     override fun addListAtEnd(beans: List<CodeBean>?, isNext: Boolean) {
-        if (isRunning){
+        if (isRunning) {
             rv_return_goods_record?.loadedFinish()
-            if (beans!=null&& beans.isNotEmpty()){
+            if (beans != null && beans.isNotEmpty()) {
                 madapter?.addListAtEnd(beans)
                 rv_return_goods_record.isMore(isNext)
-            }else{
+            } else {
                 loadErr(resources.getString(R.string.toast_no_more_data))
                 rv_return_goods_record?.isMore(false)
             }
@@ -140,7 +138,7 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
     }
 
     override fun showEmptyView(tip: String) {
-       rv_return_goods_record?.showEmptyView()
+        rv_return_goods_record?.showEmptyView()
     }
 
     override fun hideEmptyView() {

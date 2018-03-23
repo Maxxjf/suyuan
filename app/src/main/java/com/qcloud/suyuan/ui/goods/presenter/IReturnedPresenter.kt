@@ -10,5 +10,5 @@ interface IReturnedPresenter {
     /**
      * 得到退货列表信息
      */
-    fun getList()
+    fun loadData()
 }
