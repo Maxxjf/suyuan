@@ -7,9 +7,9 @@ import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.widget.DatePicker
 import android.widget.TextView
-import timber.log.Timber
 import java.util.*
 
+@Suppress("DEPRECATION")
 /**
  * 类型：DatePick
  * Author: iceberg
@@ -43,9 +43,6 @@ class DatePick @JvmOverloads constructor(
         })
     }
 
-     override  fun setOnClickListener(l: OnClickListener?) {
-        Timber.e("外面设置监听没有用的")
-    }
 
     fun showDate(year: Int, month: Int, day: Int) {
         this.year = year
