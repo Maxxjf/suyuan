@@ -15,7 +15,7 @@
         app:is_main="true"
         app:is_title="false"
         app:is_right="true"
-        app:right_icon="@drawable/icon_search_code"
+        app:right_icon="@drawable/icon_search"
         app:right_text="@string/btn_search"/>
     <LinearLayout
         android:layout_below="@+id/toolbar"

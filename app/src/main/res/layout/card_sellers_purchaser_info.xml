@@ -181,6 +181,8 @@
                     android:layout_height="@dimen/editHeight"
                     android:layout_weight="1"
                     android:paddingLeft="@dimen/layout_margin"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center_vertical"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/textSize"

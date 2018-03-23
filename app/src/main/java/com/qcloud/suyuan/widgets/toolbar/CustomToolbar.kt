@@ -73,7 +73,7 @@ class CustomToolbar @JvmOverloads constructor(
 
                 // 是否显示右控件
                 isRight = typedArray.getBoolean(R.styleable.CustomBar_is_right, false)
-                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search_code)
+                rightIcon = typedArray.getResourceId(R.styleable.CustomBar_right_icon, R.drawable.icon_search)
                 rightText = typedArray.getResourceId(R.styleable.CustomBar_right_text, R.string.btn_search)
             } finally {
                 typedArray.recycle()
@@ -120,7 +120,7 @@ class CustomToolbar @JvmOverloads constructor(
         // 右控件
         if (isRight) {
             btn_right.visibility = View.VISIBLE
-            img_right.setBackgroundColor(rightIcon)
+            img_right.setImageResource(rightIcon)
             tv_right.setText(rightText)
         } else {
             btn_right.visibility = View.GONE
