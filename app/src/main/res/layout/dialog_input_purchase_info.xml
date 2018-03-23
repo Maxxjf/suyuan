@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabHeight"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:paddingRight="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/tag_input_purchase_info"/>
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_close"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/layoutMargin">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/editHeight"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_user_id"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/editHeight"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/modelMargin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_purchase_name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/editHeight"
+                android:layout_marginTop="@dimen/modelMargin"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_mobile"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.6"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingRight="@dimen/layoutMargin"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/et_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:paddingLeft="@dimen/margin_2"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:background="@drawable/frame_gray"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:hint="@string/hint_input_user_id"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_history_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="@dimen/margin_30"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:paddingLeft="@dimen/margin_2"
+                android:layout_marginTop="@dimen/modelMargin"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:background="@drawable/frame_gray"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:hint="@string/hint_input_user_id"/>
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:paddingLeft="@dimen/margin_2"
+                android:layout_marginTop="@dimen/modelMargin"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:background="@drawable/frame_gray"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/typeTextSize"
+                android:hint="@string/hint_input_user_id"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/largeBtnHeight"
+        android:background="@drawable/btn_radius_selector"
+        android:layout_marginTop="@dimen/margin_6"
+        android:layout_marginLeft="@dimen/layoutMargin"
+        android:layout_marginRight="@dimen/layoutMargin"
+        android:layout_marginBottom="@dimen/layoutMargin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btnTextSize"
+        android:text="@string/btn_confirm"/>
+</LinearLayout>

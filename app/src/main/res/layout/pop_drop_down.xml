@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:minHeight="@dimen/margin_40"
+    android:background="@drawable/bg_gray_bottom_radius">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SellersBean
 import com.qcloud.suyuan.ui.goods.presenter.ISellersPresenter
 import com.qcloud.suyuan.ui.goods.view.ISellersView
@@ -11,6 +12,14 @@ import com.qcloud.suyuan.ui.goods.view.ISellersView
  * 2018/3/15 上午12:22.
  */
 class SellersPresenterImpl: BasePresenter<ISellersView>(), ISellersPresenter {
+
+    override fun onBtnClick(viewId: Int) {
+        when (viewId) {
+            R.id.btn_settlement -> mView?.onSettlementClick()
+            R.id.btn_input_purchase_info -> mView?.onInputPurchaserClick()
+        }
+    }
+
     override fun loadData() {
         val list: MutableList<SellersBean> = ArrayList()
         var bean = SellersBean()

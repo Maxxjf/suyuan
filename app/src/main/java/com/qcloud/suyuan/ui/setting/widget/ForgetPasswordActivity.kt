@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.ui.setting.presenter.impl.IForgetPasswordPresenterImpl
 import com.qcloud.suyuan.ui.setting.view.IForgetpasswordView
 import com.qcloud.suyuan.widgets.dialog.InputDialog
@@ -121,8 +122,8 @@ class ForgetPasswordActivity : BaseActivity<IForgetpasswordView, IForgetPassword
     override fun forgetPasswordSuccess() {
         val dialog:TipDialog= TipDialog(this)
         //dialog.setTip(R.string.tip_update_pw_suceess)
-        dialog.onConfirmClickListener=object : TipDialog.OnConfirmClickListener{
-            override fun onConfirmClick() {
+        dialog.onBtnClickListener=object : BaseDialog.OnBtnClickListener{
+            override fun onBtnClick(view: View) {
                 finish()
             }
         }

@@ -3,6 +3,7 @@ package com.qcloud.suyuan.widgets.pop
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.ViewGroup
 import android.widget.AdapterView
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
@@ -13,7 +14,7 @@ import com.qcloud.suyuan.adapters.DropDownAdapter
  * Author: gaobaiqiang
  * 2018/3/22 下午11:18.
  */
-class DropDownPop(mContext: Context) : BasePopupWindow(mContext) {
+class DropDownPop(mContext: Context, val list: List<String>, xWidth: Int) : BasePopupWindow(mContext) {
     private var list_value: RecyclerView? = null
     private var mAdapter: DropDownAdapter? = null
 
@@ -25,8 +26,14 @@ class DropDownPop(mContext: Context) : BasePopupWindow(mContext) {
     override val animId: Int
         get() = com.qcloud.qclib.R.style.AnimationPopupWindow_up_to_bottom
 
-    override fun initAfterViews() {
-        list_value = mView.findViewById(R.id.list_value)
+    init {
+        width = xWidth
+        height = ViewGroup.LayoutParams.WRAP_CONTENT
+        initView()
+    }
+
+    private fun initView() {
+        list_value = mView?.findViewById(R.id.list_value)
         list_value?.layoutManager = LinearLayoutManager(mContext)
 
         mAdapter = DropDownAdapter(mContext)
@@ -34,13 +41,9 @@ class DropDownPop(mContext: Context) : BasePopupWindow(mContext) {
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val value = mAdapter?.mList?.get(position) ?: ""
             onItemClickListener?.onItemClick(position, value)
+            dismiss()
         }
-    }
-
-    fun replaceList(list: List<String>) {
-        if (list.isNotEmpty()) {
-            mAdapter?.replaceList(list)
-        }
+        mAdapter?.replaceList(list)
     }
 
     interface OnItemClickListener {

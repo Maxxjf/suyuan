@@ -3,18 +3,28 @@ package com.qcloud.suyuan.ui.goods.widget
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.support.annotation.StringRes
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.View
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.widget.customview.wheelview.DatePicker
+import com.qcloud.qclib.widget.customview.wheelview.DateTimePicker
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.SellersBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.CashDialog
+import com.qcloud.suyuan.widgets.dialog.InputPurchaseDialog
+import com.qcloud.suyuan.widgets.dialog.SettlementDialog
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,9 +38,16 @@ import java.util.concurrent.TimeUnit
  * Author: gaobaiqiang
  * 2018/3/15 上午12:23.
  */
-class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISellersView {
+class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISellersView, View.OnClickListener {
     private var mAdapter: SellersAdapter? = null
     private var mEmptyView: NoDataView? = null
+
+    private var mPurchaseUsePop: DropDownPop? = null
+
+    private var tipDialog: TipDialog? = null
+    private var settlementDialog: SettlementDialog? = null
+    private var cashDialog: CashDialog? = null
+    private var inputPurchaseDialog: InputPurchaseDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_sellers
@@ -40,9 +57,15 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     }
 
     override fun initViewAndData() {
+        initView()
         initRecyclerView()
         initEditView()
         initDropDown()
+    }
+
+    private fun initView() {
+        btn_settlement.setOnClickListener(this)
+        btn_input_purchase_info.setOnClickListener(this)
     }
 
     /**
@@ -87,20 +110,30 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
+    /**
+     * 初始化下拉弹窗
+     * */
     private fun initDropDown() {
-        val dropDownPop = DropDownPop(this)
         val list: MutableList<String> = ArrayList()
         list.add("病虫防治1")
         list.add("病虫防治2")
         list.add("病虫防治3")
         list.add("病虫防治4")
         list.add("病虫防治5")
-        dropDownPop.replaceList(list)
+        btn_purchase_use.post {
+            val width = btn_purchase_use.width
+            mPurchaseUsePop = DropDownPop(this, list, width)
 
-        tv_purchase_use.setOnClickListener {
-            dropDownPop.showAsDropDown(tv_purchase_use)
+            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
+                override fun onItemClick(position: Int, value: String) {
+                    tv_purchase_use.text = value
+                }
+            }
         }
 
+        btn_purchase_use.setOnClickListener {
+            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
+        }
     }
 
     private fun toGet() {
@@ -113,6 +146,57 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 //                    et_search.isEnabled = true
                 }
 
+    }
+
+    override fun onClick(v: View) {
+        mPresenter?.onBtnClick(v.id)
+    }
+
+    override fun onSettlementClick() {
+        if (tipDialog == null) {
+            tipDialog = TipDialog(this)
+        }
+        tipDialog?.setTip(R.string.tip_buy_highly_toxic)
+        tipDialog?.setConfirmBtn(R.string.btn_i_know)
+        tipDialog?.show()
+        tipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                showSettlementDialog()
+            }
+        }
+    }
+
+    private fun showSettlementDialog() {
+        if (settlementDialog == null) {
+            settlementDialog = SettlementDialog(this)
+        }
+        settlementDialog?.show()
+        settlementDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                when (view.id) {
+                    R.id.btn_cash -> showCashDialog()
+                }
+            }
+        }
+    }
+
+    private fun showCashDialog() {
+        if (cashDialog == null) {
+            cashDialog = CashDialog(this)
+        }
+        cashDialog?.show()
+        cashDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                QToast.info(this@SellersActivity, R.string.tip_printing_suyuan_code, false)
+            }
+        }
+    }
+
+    override fun onInputPurchaserClick() {
+        if (inputPurchaseDialog == null) {
+            inputPurchaseDialog = InputPurchaseDialog(this)
+        }
+        inputPurchaseDialog?.show()
     }
 
     override fun replaceList(beans: List<SellersBean>?) {
@@ -135,6 +219,35 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun hideEmptyView() {
        list_product?.hideEmptyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPurchaseUsePop.let {
+            if (mPurchaseUsePop != null && mPurchaseUsePop!!.isShowing) {
+                mPurchaseUsePop?.dismiss()
+            }
+        }
+        tipDialog.let {
+            if (tipDialog != null && tipDialog!!.isShowing) {
+                tipDialog?.dismiss()
+            }
+        }
+        settlementDialog.let {
+            if (settlementDialog != null && settlementDialog!!.isShowing) {
+                settlementDialog?.dismiss()
+            }
+        }
+        cashDialog.let {
+            if (cashDialog != null && cashDialog!!.isShowing) {
+                cashDialog?.dismiss()
+            }
+        }
+        inputPurchaseDialog.let {
+            if (inputPurchaseDialog != null && inputPurchaseDialog!!.isShowing) {
+                inputPurchaseDialog?.dismiss()
+            }
+        }
     }
 
     companion object {
