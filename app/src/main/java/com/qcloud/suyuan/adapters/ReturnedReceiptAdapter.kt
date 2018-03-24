@@ -7,7 +7,7 @@ import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.beans.GoodsBean
+import com.qcloud.suyuan.beans.ScanCodeBean
 
 /**
  * 类型：ReturnGoodsListAdapter
@@ -15,13 +15,13 @@ import com.qcloud.suyuan.beans.GoodsBean
  * Date: 2018/3/21.
  * 小票信息
  */
-class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<GoodsBean>(mContext) {
+class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<ScanCodeBean.InfoListBean>(mContext) {
 
     override val viewId: Int
         get() = R.layout.adapter_returned_receipt
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val bean: GoodsBean = mList.get(position)
+        val bean: ScanCodeBean.InfoListBean = mList.get(position)
         var tvName = holder.get<TextView>(R.id.tv_name)
         var tvNumber = holder.get<TextView>(R.id.tv_number)
         var tvRule = holder.get<TextView>(R.id.tv_rule)
@@ -31,10 +31,10 @@ class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<GoodsBea
             root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
         }
         if (bean != null) {
-            tvNumber?.setText(bean.number)
-            tvName?.setText(bean.name)
-            tvRule?.setText(bean.rule)
-            tvPrice?.setText(bean.price)
+            tvNumber?.setText("${bean.goodsNum}")
+            tvName?.setText("${bean.goodsName}")
+            tvRule?.setText("${bean.specification}")
+            tvPrice?.setText("${bean.price}")
         }
     }
 

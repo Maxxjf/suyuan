@@ -46,18 +46,20 @@
                     android:textSize="@dimen/titleTextSize" />
 
                 <EditText
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:id="@+id/et_shape_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/btn_confirm"
                     android:background="@drawable/textview_border_gray"
-                    android:focusable="false"
                     android:hint="@string/et_hint_order_number"
                     android:paddingBottom="@dimen/margin_1"
                     android:paddingLeft="@dimen/margin_1"
                     android:paddingRight="@dimen/margin_11"
                     android:paddingTop="@dimen/margin_1"
+                    android:text="HN433900679o86"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/textSize" />
 
@@ -136,7 +138,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <android.support.v7.widget.RecyclerView
+                <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
                     android:id="@+id/rv_return_goods_list"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/return_goods_height"
@@ -259,7 +261,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
-                android:background="@color/colorModelBgF9"
+                android:background="@drawable/bg_receipt"
                 android:padding="@dimen/margin_2">
 
                 <TextView
@@ -346,7 +348,7 @@
                     android:textSize="@dimen/typeTextSize" />
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
                 android:id="@+id/rv_receipt"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_40" />
@@ -355,7 +357,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/margin_4"
-                android:background="@drawable/bg_receipt"
                 android:orientation="vertical"
                 android:padding="@dimen/margin_2">
 
@@ -365,6 +366,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:textSize="@dimen/textSize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tag_add_all"

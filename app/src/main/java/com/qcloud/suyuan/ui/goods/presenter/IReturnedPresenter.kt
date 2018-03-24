@@ -10,5 +10,7 @@ interface IReturnedPresenter {
     /**
      * 得到退货列表信息
      */
-    fun loadData()
+    fun loadData(code: String)
+
+    fun salesReturn(money: String, traceabilityIdStr: String)
 }

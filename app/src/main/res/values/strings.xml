@@ -28,6 +28,7 @@
     <string name="title_search_product">扫产品条形码搜索</string>
     <string name="title_forget_password">忘记密码</string>
     <string name="title_warn">告警提示</string>
+    <string name="title_dialog_return">退货确认</string>
 
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
@@ -129,6 +130,7 @@
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>
     <string name="tip_err_request">页面丢失啦，点击图标刷新一下吧~</string>
+    <string name="tip_err_return_tip">提示：确认后产品库存将会恢复，该溯源记录将被删除</string>
 
     <string name="tag_goods_number">商品数量: </string>
     <string name="tag_total_account">总计金额: </string>
@@ -159,6 +161,7 @@
     <string name="tag_purchase_use">购买用途: </string>
     <string name="tag_other_instructions">其他说明: </string>
     <string name="tag_buyer">采购人：</string>
+    <string name="tag_returned_number">退货数量：</string>
 
     <string name="toast_no_data">暂无数据</string>
     <string name="toast_no_more_data">暂无更多数据</string>
