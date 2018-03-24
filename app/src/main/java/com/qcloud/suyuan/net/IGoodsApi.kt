@@ -15,6 +15,42 @@ import io.reactivex.Observable
  * 2018/3/21 上午9:04.
  */
 object IGoodsApi {
+    /** 产品列表 */
+    fun list(params: HttpParams): Observable<BaseResponse<ProductReturnBean>> {
+        val type = object : TypeToken<BaseResponse<ProductReturnBean>>() {
+
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.GET_STOCK_LIST, type, params)
+    }
+
+    /** 产品详情 */
+    fun details(params: HttpParams): Observable<BaseResponse<ProductDetailsBean>> {
+        val type = object : TypeToken<BaseResponse<ProductDetailsBean>>() {
+
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.GET_PRODUCT_DETAILS, type, params)
+    }
+
+    /** 修改价格 */
+    fun editPrice(params: HttpParams): Observable<BaseResponse<EmptyReturnBean>> {
+        val type = object : TypeToken<BaseResponse<EmptyReturnBean>>() {
+
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.EDIT_PRICE, type, params)
+    }
+
+    /** 调整警告线 */
+    fun editCordon(params: HttpParams): Observable<BaseResponse<EmptyReturnBean>> {
+        val type = object : TypeToken<BaseResponse<EmptyReturnBean>>() {
+
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.EDIT_CORDON, type, params)
+    }
+
     /** 库存告警报表 */
     fun getStockWarnList(params: HttpParams): Observable<BaseResponse<ReturnDataBean<StockWarnBean>>> {
         val type = object : TypeToken<BaseResponse<ReturnDataBean<StockWarnBean>>>() {
@@ -30,8 +66,9 @@ object IGoodsApi {
 
         }.type
 
-        return OkGoRequest.instance.getRequest(UrlConstants.GET_STOCK_WARN_LIST, type, params)
+        return OkGoRequest.instance.getRequest(UrlConstants.GET_VALID_WARN_LIST, type, params)
     }
+
     /** 退货记录 */
     fun getReturnedRecord(params: HttpParams): Observable<BaseResponse<ReturnDataBean<CodeBean>>> {
         val type = object : TypeToken<BaseResponse<ReturnDataBean<CodeBean>>>() {
@@ -39,16 +76,18 @@ object IGoodsApi {
 
         return OkGoRequest.instance.getRequest(UrlConstants.GET_RETURNED_RECORD_LIST, type, params)
     }
-    /**扫码查询**/
+
+    /** 扫码查询 */
     fun scanCode(params: HttpParams): Observable<BaseResponse<ScanCodeBean>> {
         val type = object : TypeToken<BaseResponse<ScanCodeBean>>() {
         }.type
 
         return OkGoRequest.instance.getRequest(UrlConstants.SCAN_CODE, type, params)
     }
+
     /** 退货 */
-    fun salesReturn(params: HttpParams): Observable<BaseResponse<EmptyResBean>> {
-        val type = object : TypeToken<BaseResponse<EmptyResBean>>() {
+    fun salesReturn(params: HttpParams): Observable<BaseResponse<EmptyReturnBean>> {
+        val type = object : TypeToken<BaseResponse<EmptyReturnBean>>() {
         }.type
 
         return OkGoRequest.instance.getRequest(UrlConstants.SALES_RETURN, type, params)

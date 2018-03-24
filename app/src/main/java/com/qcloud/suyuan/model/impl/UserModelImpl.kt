@@ -3,7 +3,7 @@ package com.qcloud.suyuan.model.impl
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
-import com.qcloud.suyuan.beans.EmptyResBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.LoginReturnBean
 import com.qcloud.suyuan.model.IUserModel
 import com.qcloud.suyuan.net.IUserApi
@@ -29,7 +29,7 @@ class UserModelImpl : IUserModel {
     /**
      * 获取验证码
      */
-    override fun getCode(mobile:String,callback: DataCallback<EmptyResBean>){
+    override fun getCode(mobile:String,callback: DataCallback<EmptyReturnBean>){
         val params = OkGoRequest.getAppParams()
         params.put("mobile",mobile)
         BaseApi.dispose(IUserApi.getCode(params),callback)
@@ -38,7 +38,7 @@ class UserModelImpl : IUserModel {
     /**
      * 忘记密码（修改密码）
      */
-    override fun forgetPassword(code:String,mobile: String,password: String,callback: DataCallback<EmptyResBean>){
+    override fun forgetPassword(code:String,mobile: String,password: String,callback: DataCallback<EmptyReturnBean>){
         val params = OkGoRequest.getAppParams()
         params.put("code",code)
         params.put("mobile",mobile)
@@ -46,4 +46,11 @@ class UserModelImpl : IUserModel {
         BaseApi.dispose(IUserApi.forgetPassWord(params),callback)
     }
 
+    /**
+     * 退出登录
+     * */
+    override fun logout(callback: DataCallback<EmptyReturnBean>) {
+        val params = OkGoRequest.getAppParams()
+        BaseApi.dispose(IUserApi.logout(params),callback)
+    }
 }

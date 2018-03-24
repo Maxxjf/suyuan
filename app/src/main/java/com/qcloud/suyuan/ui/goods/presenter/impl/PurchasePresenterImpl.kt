@@ -16,7 +16,7 @@ class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter 
         val bean = ProductBean()
         bean.amount = 998
         bean.barCode = barCode
-        bean.goodsId = "24240807"
+        bean.id = "24240807"
         bean.name = "莠去津50%(悬浮剂)"
         bean.specification = "100g*20瓶/件"
         bean.millName = "甘肃省武山县农药厂"

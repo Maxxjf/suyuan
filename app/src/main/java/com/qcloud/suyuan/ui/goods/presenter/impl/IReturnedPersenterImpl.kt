@@ -3,7 +3,7 @@ package com.qcloud.suyuan.ui.goods.presenter.impl
 import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.utils.StringUtil
-import com.qcloud.suyuan.beans.EmptyResBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.ScanCodeBean
 import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
@@ -44,8 +44,8 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         //2.溯源码ID将以，隔开，合并成一个字符串
         var  traceabilityIdStr=StringUtil.combineList(strList)
         Timber.e("退货id字符串${traceabilityIdStr}")
-        model.SalesReturn(money,traceabilityIdStr,object :DataCallback<EmptyResBean>{
-            override fun onSuccess(t: EmptyResBean?, message: String?) {
+        model.SalesReturn(money,traceabilityIdStr,object :DataCallback<EmptyReturnBean>{
+            override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
                     mView?.loadErr(message)
                 }

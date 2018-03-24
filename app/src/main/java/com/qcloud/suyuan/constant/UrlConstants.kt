@@ -13,6 +13,8 @@ object UrlConstants {
 
     /**登录**/
     const val LOGIN = URL_PREFIX_APP + "login"
+    /**退出登录*/
+    const val LOGOUT = URL_PREFIX_APP + "logout"
     /**获取验证码**/
     const val GET_CODE = URL_PREFIX_APP + "getCode"
     /**修改密码**/
@@ -31,4 +33,13 @@ object UrlConstants {
     const val SALES_RETURN = URL_PREFIX_APP + "salesReturn/salesReturn"
     /**获取退货记录列表*/
     const val GET_RETURNED_RECORD_LIST = URL_PREFIX_APP + "salesReturn/salesReturnList"
+
+    /**获取库存(产品)列表*/
+    const val GET_STOCK_LIST = URL_PREFIX_APP + "stock/list"
+    /**获取商品详情*/
+    const val GET_PRODUCT_DETAILS = URL_PREFIX_APP + "stock/detail"
+    /**修改价格*/
+    const val EDIT_PRICE = URL_PREFIX_APP + "stock/editPrice"
+    /**调整警告线*/
+    const val EDIT_CORDON = URL_PREFIX_APP + "editCardon"
 }

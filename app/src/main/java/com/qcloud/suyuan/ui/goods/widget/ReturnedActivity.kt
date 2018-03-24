@@ -136,10 +136,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     private fun ReturnGoodsConfirm() {
         var money: String = returnDialog!!.getMoney()
-        if (!StringUtil.isMoneyStr(money)) {
-            loadErr(getString(R.string.hint_input_money))
-            return
-        }
+//        if (!StringUtil.isMoneyStr(money)) {
+//            loadErr(getString(R.string.hint_input_money))
+//            return
+//        }
         var list = goodsAdapter!!.mList
         if (list == null || list.isEmpty()) {
             loadErr(getString(R.string.toast_list_empty))

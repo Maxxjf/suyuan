@@ -12,12 +12,13 @@ import com.qcloud.qclib.toast.QToast
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.InStorageAdapter
 import com.qcloud.suyuan.base.BaseActivity
-import com.qcloud.suyuan.beans.StockBean
+import com.qcloud.suyuan.beans.InStorageRecordBean
 import com.qcloud.suyuan.ui.store.presenter.impl.StockDetailsPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.AdjustWarnDialog
 import com.qcloud.suyuan.widgets.dialog.ChangePriceDialog
+import com.qcloud.suyuan.widgets.dialog.ProductDetailsDialog
 import kotlinx.android.synthetic.main.card_stock_product_details.*
 import kotlinx.android.synthetic.main.card_stock_product_list.*
 import timber.log.Timber
@@ -31,6 +32,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
     private var mAdapter: InStorageAdapter? = null
     private var mEmptyView: NoDataView? = null
 
+    private var productDetailsDialog: ProductDetailsDialog? = null
     private var adjustWarnDialog: AdjustWarnDialog? = null
     private var changePriceDialog: ChangePriceDialog? = null
 
@@ -58,8 +60,8 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
 
         mAdapter = InStorageAdapter(this)
         list_product.setAdapter(mAdapter!!)
-        mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<StockBean> {
-            override fun onHolderClick(view: View, t: StockBean, position: Int) {
+        mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<InStorageRecordBean> {
+            override fun onHolderClick(view: View, t: InStorageRecordBean, position: Int) {
                 QToast.show(this@StockDetailsActivity, "打印${t.batch}")
             }
         }
@@ -77,7 +79,10 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
     }
 
     override fun onProductDetailsClick() {
-
+        if (productDetailsDialog == null) {
+            productDetailsDialog = ProductDetailsDialog(this)
+        }
+        productDetailsDialog?.show()
     }
 
     override fun onProductPriceClick() {
@@ -94,7 +99,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         adjustWarnDialog?.show()
     }
 
-    override fun replaceList(beans: List<StockBean>?) {
+    override fun replaceList(beans: List<InStorageRecordBean>?) {
         if (isRunning) {
             if (beans != null && beans.isNotEmpty()) {
                 mAdapter?.replaceList(beans)
@@ -116,6 +121,12 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
 
     override fun onDestroy() {
         super.onDestroy()
+        productDetailsDialog?.let {
+            if (productDetailsDialog != null && productDetailsDialog!!.isShowing) {
+                productDetailsDialog?.dismiss()
+            }
+        }
+
         adjustWarnDialog?.let {
             if (adjustWarnDialog != null && adjustWarnDialog!!.isShowing) {
                 adjustWarnDialog?.dismiss()

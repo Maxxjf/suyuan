@@ -1,12 +1,7 @@
 package com.qcloud.suyuan.widgets.dialog
 
-import android.app.Dialog
 import android.content.Context
-import android.support.annotation.NonNull
-import android.support.annotation.StyleRes
-import android.view.Gravity
 import android.view.View
-import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_settlement.*

@@ -10,6 +10,18 @@ import com.qcloud.suyuan.beans.*
  * 2018/3/21 上午9:04.
  */
 interface IGoodsModel {
+    /**获取库存列表(产品列表)*/
+    fun list(pageNo: Int, pageSize: Int, callback: DataCallback<ProductReturnBean>)
+
+    /**获取商品详情*/
+    fun details(id: String, callback: DataCallback<ProductDetailsBean>)
+
+    /**调整价格*/
+    fun editPrice(goodsId: String, retailPrice: Double, callback: DataCallback<EmptyReturnBean>)
+
+    /**调整警告线*/
+    fun editWarnLine(goodsId: String, cordon: Int, callback: DataCallback<EmptyReturnBean>)
+
     /**获取库存告警列表*/
     fun getStockWarnList(pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<StockWarnBean>>)
 
@@ -21,5 +33,5 @@ interface IGoodsModel {
 
     fun ScanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>)
 
-    fun SalesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyResBean>)
+    fun SalesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>)
 }

@@ -2,7 +2,7 @@ package com.qcloud.suyuan.ui.store.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.beans.StockBean
+import com.qcloud.suyuan.beans.InStorageRecordBean
 import com.qcloud.suyuan.ui.store.presenter.IStockDetailsPresenter
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
 
@@ -24,8 +24,8 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
     }
 
     override fun loadData() {
-        val list: MutableList<StockBean> = ArrayList()
-        var bean = StockBean()
+        val list: MutableList<InStorageRecordBean> = ArrayList()
+        var bean = InStorageRecordBean()
         bean.batch = "10"
         bean.number = "288"
         bean.operator = "张大伟"

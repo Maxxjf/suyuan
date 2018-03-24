@@ -6,14 +6,14 @@ import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.beans.StockBean
+import com.qcloud.suyuan.beans.InStorageRecordBean
 
 /**
  * Description: 入库列表
  * Author: gaobaiqiang
  * 2018/3/24 下午3:40.
  */
-class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<StockBean>(mContext) {
+class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<InStorageRecordBean>(mContext) {
     override val viewId: Int
         get() = R.layout.item_of_in_storage
 

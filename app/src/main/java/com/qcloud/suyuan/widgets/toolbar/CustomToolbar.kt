@@ -11,10 +11,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseApplication
 import com.qcloud.suyuan.base.BaseDialog
+import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.model.impl.UserModelImpl
 import com.qcloud.suyuan.ui.main.widget.LoginActivity
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.dialog.TipDialog
@@ -153,12 +157,26 @@ class CustomToolbar @JvmOverloads constructor(
         logoutDialog?.setTip(R.string.toast_logout)
         logoutDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
+                logout()
+            }
+        }
+    }
+
+    private fun logout() {
+        UserModelImpl().logout(object : DataCallback<EmptyReturnBean> {
+            override fun onSuccess(t: EmptyReturnBean?, message: String?) {
+                QToast.show(mContext, R.string.toast_logout_success)
                 TokenUtil.clearToken()
                 UserInfoUtil.mUser = null
                 BaseApplication.mAppManager?.killAllActivity()
                 LoginActivity.openActivity(mContext)
             }
-        }
+
+            override fun onError(status: Int, message: String) {
+                QToast.show(mContext, message)
+            }
+
+        })
     }
 
     interface OnBtnClickListener {

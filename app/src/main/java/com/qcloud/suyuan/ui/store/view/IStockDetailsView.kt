@@ -1,7 +1,7 @@
 package com.qcloud.suyuan.ui.store.view
 
 import com.qcloud.qclib.base.BaseView
-import com.qcloud.suyuan.beans.StockBean
+import com.qcloud.suyuan.beans.InStorageRecordBean
 
 /**
  * Description: 库存详情
@@ -15,5 +15,5 @@ interface IStockDetailsView: BaseView {
 
     fun onAdjustWarnClick()
 
-    fun replaceList(beans: List<StockBean>?)
+    fun replaceList(beans: List<InStorageRecordBean>?)
 }

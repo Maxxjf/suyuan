@@ -55,18 +55,19 @@
             android:paddingLeft="@dimen/padding_4"
             android:paddingRight="@dimen/padding_4"
             android:textColor="@color/colorSubTitle"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/typeTextSize"
             tools:text="@string/tip_title"/>
 
         <Button
             android:id="@+id/btn_confirm"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/btnHeight"
+            android:layout_height="@dimen/largeBtnHeight"
             android:layout_marginBottom="@dimen/margin_4"
             android:layout_marginLeft="@dimen/margin_4"
             android:layout_marginRight="@dimen/margin_4"
             android:background="@drawable/btn_radius_selector"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="@dimen/btnTextSize"
             android:text="@string/btn_confirm"/>

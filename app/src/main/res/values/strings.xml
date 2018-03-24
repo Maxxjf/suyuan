@@ -84,14 +84,16 @@
     <string name="hint_input_money">请输入有效的金额</string>
     <string name="hint_input_name_idcard_phone">请输入姓名/身份证号/电话号码</string>
 
-
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
     <string name="toast_input_not_null">输入的内容为空</string>
     <string name="toast_login_success">登录成功</string>
     <string name="toast_login_fails">密码或者账号错误</string>
     <string name="toast_list_empty">列表为空</string>
-
+    <string name="toast_no_data">暂无数据</string>
+    <string name="toast_no_more_data">暂无更多数据</string>
+    <string name="toast_logout_success">退出登录成功</string>
+    <string name="toast_logout_failure">退出登录失败</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -236,8 +238,14 @@
     <string name="tag_sale_price">销售金额</string>
     <string name="tag_returned_number">退货数量：</string>
     <string name="tag_all_credit">总赊账金额：</string>
+    <string name="tag_details_info">详细信息</string>
+    <string name="tag_factory">生产厂家: </string>
+    <string name="tag_factory_address">厂家地址: </string>
+    <string name="tag_factory_web">网页:</string>
+    <string name="tag_pesticides_registration">农药登记证: </string>
+    <string name="tag_production_license">生产许可证: </string>
+    <string name="tag_product_standard">产品标准证: </string>
 
-    <string name="toast_no_data">暂无数据</string>
-    <string name="toast_no_more_data">暂无更多数据</string>
+
 
 </resources>
