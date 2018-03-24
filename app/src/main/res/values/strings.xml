@@ -120,7 +120,6 @@
     <string name="tab_goods_rule">产品规格</string>
     <string name="tab_handle_member">操作人</string>
 
-
     <string name="save">保存</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
@@ -149,7 +148,7 @@
     <string name="tag_goods_data">批次</string>
     <string name="tag_goods_control">操作</string>
     <string name="tag_date">日期：</string>
-    <string name="tag_selling_wgater_list">流水列表</string>
+    <string name="tag_selling_water_list">流水列表</string>
     <string name="tag_cash_pay">现金支付</string>
     <string name="tag_list_name">姓名</string>
     <string name="tag_list_idcard">身份证</string>
@@ -159,7 +158,6 @@
     <string name="tag_list_payed_money">已还金额</string>
     <string name="tag_order_info">账单明细</string>
 
-
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>
     <string name="tip_err_request">页面丢失啦，点击图标刷新一下吧~</string>
@@ -167,11 +165,10 @@
     <string name="tip_printing_suyuan_code">订单完成，正在打印溯源码…</string>
     <string name="tip_no_any_product">抱歉！没有找到符合条件的相关产品名称或产品条形码</string>
     <string name="tip_printing_bar_code">入库完成，正在批次打印溯源码…</string>
-    <string name="tip_err_return_tip">提示：确认后产品库存将会恢复，该溯源记录将被删除</string>
     <string name="tip_err_return_tip">提示：确认后产品库存将会恢复，\n该溯源记录将被删除</string>
 
     <string name="tag_goods_number">商品数量: </string>
-    <string name="tag_total_account">总计金额: </string>地漂移，洗鬼甘麻烦
+    <string name="tag_total_account">总计金额: </string>
     <string name="tag_money_getter">收银员: </string>
     <string name="tag_return_money">退款金额: </string>
     <string name="tag_receipt_info">小票信息</string>
