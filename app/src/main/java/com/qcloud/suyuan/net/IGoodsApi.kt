@@ -5,9 +5,7 @@ import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.network.OkGoRequest
-import com.qcloud.suyuan.beans.CodeBean
-import com.qcloud.suyuan.beans.StockWarnBean
-import com.qcloud.suyuan.beans.ValidWarnBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 
@@ -41,4 +39,19 @@ object IGoodsApi {
 
         return OkGoRequest.instance.getRequest(UrlConstants.GET_RETURNED_RECORD_LIST, type, params)
     }
+    /**扫码查询**/
+    fun scanCode(params: HttpParams): Observable<BaseResponse<ScanCodeBean>> {
+        val type = object : TypeToken<BaseResponse<ScanCodeBean>>() {
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.SCAN_CODE, type, params)
+    }
+    /** 退货 */
+    fun salesReturn(params: HttpParams): Observable<BaseResponse<EmptyResBean>> {
+        val type = object : TypeToken<BaseResponse<EmptyResBean>>() {
+        }.type
+
+        return OkGoRequest.instance.getRequest(UrlConstants.SALES_RETURN, type, params)
+    }
+
 }

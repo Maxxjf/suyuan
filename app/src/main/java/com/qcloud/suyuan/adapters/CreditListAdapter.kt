@@ -10,31 +10,33 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ScanCodeBean
 
 /**
- * 类型：ReturnGoodsListAdapter
+ * 类型： CreditListAdapter
  * Author: iceberg
- * Date: 2018/3/21.
- * 小票信息
+ * Date: 2018/3/24
+ * 赊账列表
  */
-class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<ScanCodeBean.InfoListBean>(mContext) {
+class CreditListAdapter(mContext: Context) : CommonRecyclerAdapter<ScanCodeBean.InfoListBean>(mContext) {
 
     override val viewId: Int
-        get() = R.layout.adapter_returned_receipt
+        get() = R.layout.adapter_credit_list
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: ScanCodeBean.InfoListBean = mList.get(position)
         var tvName = holder.get<TextView>(R.id.tv_name)
-        var tvNumber = holder.get<TextView>(R.id.tv_number)
-        var tvRule = holder.get<TextView>(R.id.tv_rule)
-        var tvPrice = holder.get<TextView>(R.id.tv_price)
+        var tvIdcard = holder.get<TextView>(R.id.tv_idcard)
+        var tvPhone = holder.get<TextView>(R.id.tv_phone)
+        var tvMoney = holder.get<TextView>(R.id.tv_money)
         var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
             root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }else{
+            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.white))
         }
         if (bean != null) {
-            tvNumber?.setText("${bean.goodsNum}")
+            tvIdcard?.setText("${bean.goodsNum}")
             tvName?.setText("${bean.goodsName}")
-            tvRule?.setText("${bean.specification}")
-            tvPrice?.setText("${bean.price}")
+            tvPhone?.setText("${bean.specification}")
+            tvMoney?.setText("${bean.price}")
         }
     }
 

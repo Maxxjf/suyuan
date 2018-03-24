@@ -1,44 +1,59 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
-import com.qcloud.suyuan.beans.GoodsBean
+import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.suyuan.beans.EmptyResBean
+import com.qcloud.suyuan.beans.ScanCodeBean
+import com.qcloud.suyuan.model.IGoodsModel
+import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IReturnedPresenter
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
+import timber.log.Timber
 
 /**
  * 类型：IReturnedPersenterImpl
  * Author: iceberg
  * Date: 2018/3/19.
- * TODO:
+ * 退货
  */
 class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter {
-    override fun loadData() {
-      var list:ArrayList<GoodsBean> = ArrayList<GoodsBean>()
-        var goods:GoodsBean= GoodsBean()
-        goods.id="sjaifajdadfa02"
-        goods.name="我是一瓶毒药"
-        goods.date="20180102"
-        goods.rule="20元/瓶"
-        goods.number="2"
-        goods.price="￥2.00"
-        list.add(goods)
-        var goods2:GoodsBean= GoodsBean()
-        goods2.id="sjaifajdadfa02"
-        goods2.name="我是一瓶毒药"
-        goods2.date="20180102"
-        goods2.rule="20元/瓶"
-        goods2.number="2"
-        goods2.price="￥2.00"
-        list.add(goods2)
-        var goods3:GoodsBean= GoodsBean()
-        goods3.id="sjaifajdadfa02"
-        goods3.name="我是一瓶毒药"
-        goods3.date="20180102"
-        goods3.rule="20元/瓶"
-        goods3.number="2"
-        goods3.price="￥2.00"
-        list.add(goods3)
+    private var model:IGoodsModel=GoodsModelImpl()
+    private var saleId=""//销售单id (首次为空,从第二次开始传)
+    override fun loadData( code:String) {
+      model.ScanCode(code,saleId,object :DataCallback<ScanCodeBean>{
+        override fun onSuccess(t: ScanCodeBean?, message: String?) {
+          if (t != null) {
+            mView?.replaceList(t.infoList,false)
+            mView?.addListAtEnd(t.merchandise,false)
+            saleId= t.saleSerial!!.id!!
+          }
+        }
 
-        mView?.replaceReceiptList(list)
+        override fun onError(status: Int, message: String) {
+          mView?.loadErr(message)
+        }
+      })
+    }
+    override fun salesReturn( money:String,list:List<ScanCodeBean.MerchandiseBean>) {
+        //1.将溯源码ID提出来
+        var strList=ArrayList<String>()
+        for (index in list.indices){
+            strList.add(list[index].traceabilityId!!)
+        }
+        //2.溯源码ID将以，隔开，合并成一个字符串
+        var  traceabilityIdStr=StringUtil.combineList(strList)
+        Timber.e("退货id字符串${traceabilityIdStr}")
+        model.SalesReturn(money,traceabilityIdStr,object :DataCallback<EmptyResBean>{
+            override fun onSuccess(t: EmptyResBean?, message: String?) {
+                if (message != null) {
+                    mView?.loadErr(message)
+                }
+            }
+
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message)
+            }
+        })
     }
 }

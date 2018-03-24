@@ -80,6 +80,7 @@
             android:label="@string/title_credit_record"
             android:screenOrientation="landscape" />
         <activity
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.goods.widget.ReturnedActivity"
             android:label="@string/title_return"
             android:screenOrientation="landscape" />

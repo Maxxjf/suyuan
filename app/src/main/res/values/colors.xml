@@ -47,4 +47,6 @@
     <color name="btnPressed">#1B8D37</color>
     <!--按钮不可点击颜色-->
     <color name="btnError">#E5E5E5</color>
+    <!--弹出框颜色-->
+    <color name="dialogTitle">#89e4b9</color>
 </resources>

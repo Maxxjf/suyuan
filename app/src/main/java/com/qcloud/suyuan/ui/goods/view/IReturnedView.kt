@@ -1,7 +1,7 @@
 package com.qcloud.suyuan.ui.goods.view
 
 import com.qcloud.qclib.base.BaseView
-import com.qcloud.suyuan.beans.GoodsBean
+import com.qcloud.suyuan.beans.ScanCodeBean
 
 /**
  * 类型：IReturnedView
@@ -10,5 +10,17 @@ import com.qcloud.suyuan.beans.GoodsBean
  * 退货
  */
 interface IReturnedView :BaseView{
-    fun replaceReceiptList(mList:List<GoodsBean>);
+    /**替换数据 */
+    fun replaceList(beans: List<ScanCodeBean.InfoListBean>?, isNext: Boolean)
+
+    /**添加数据 */
+    fun addListAtEnd(bean: ScanCodeBean.MerchandiseBean?, isNext: Boolean)
+
+    /**显示空布局 */
+    fun showEmptyView(tip: String)
+
+    /**隐藏空布局 */
+    fun hideEmptyView()
+
+
 }
