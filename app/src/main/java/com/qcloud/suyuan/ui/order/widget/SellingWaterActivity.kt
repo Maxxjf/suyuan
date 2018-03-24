@@ -5,8 +5,10 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
+import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.ReturnGoodsListAdapter
 import com.qcloud.suyuan.adapters.ReturnedReceiptAdapter
@@ -18,6 +20,7 @@ import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_selling_water.*
+import timber.log.Timber
 
 /**
  * Description: 销售流水
@@ -71,7 +74,14 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
         waterAdapter = ReturnGoodsListAdapter(this)
         receiptAdapter = ReturnedReceiptAdapter(this)
-        btn_confirm.setOnClickListener(this)
+        et_search.setOnKeyListener{view: View?, i: Int, keyEvent: KeyEvent? ->
+            if ((i == KeyEvent.KEYCODE_ENTER)) {
+                KeyBoardUtil.hideKeybord(this, et_search)
+//                getDate()
+                Timber.e("keyEvent = $i, enter = ${KeyEvent.KEYCODE_ENTER}")
+            }
+            false
+        }
     }
 
     override fun onClick(p0: View?) {

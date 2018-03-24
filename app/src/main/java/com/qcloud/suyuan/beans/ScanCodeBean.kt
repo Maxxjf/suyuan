@@ -30,8 +30,9 @@ class ScanCodeBean {
         var goodsName: String? = null
         var specification: String? = null
         var traceabilityCode: String? = null
+        var traceabilityId: String? = null
         override fun toString(): String {
-            return "MerchandiseBean(batchNum=$batchNum, goodsName=$goodsName, specification=$specification, traceabilityCode=$traceabilityCode)"
+            return "MerchandiseBean(batchNum=$batchNum, goodsName=$goodsName, specification=$specification, traceabilityCode=$traceabilityCode, traceabilityId=$traceabilityId)"
         }
 
     }

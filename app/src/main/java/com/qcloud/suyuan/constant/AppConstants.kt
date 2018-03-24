@@ -13,4 +13,8 @@ object AppConstants {
 
     /**账号key值 */
     const val account = "KEY_ACCOUNT"
+    /**密码key值 */
+    const val password = "KEY_PASSWORD"
+    /**记得密码是否选中 */
+    const val isCheck = "KEY_FORGET_PASSWORD_IS_CHECK"
 }

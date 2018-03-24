@@ -45,35 +45,52 @@
                     android:text="@string/tag_goods_list"
                     android:textSize="@dimen/titleTextSize" />
 
-                <EditText
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:id="@+id/et_shape_code"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/btn_confirm"
-                    android:background="@drawable/textview_border_gray"
-                    android:hint="@string/et_hint_order_number"
-                    android:paddingBottom="@dimen/margin_1"
-                    android:paddingLeft="@dimen/margin_1"
-                    android:paddingRight="@dimen/margin_11"
-                    android:paddingTop="@dimen/margin_1"
-                    android:text="HN433900679o86"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/textSize" />
-
-                <TextView
-                    android:id="@+id/btn_confirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/textview_border_primary"
-                    android:padding="@dimen/margin_1"
-                    android:text="@string/btn_confirm"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/btnTextSize" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="@dimen/margin_2"
+                    android:layout_marginEnd="@dimen/margin_2"
+                    android:background="@drawable/frame_gray">
+
+                    <ImageView
+                        android:id="@+id/btn_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_1"
+                        android:layout_marginStart="@dimen/margin_1"
+                        android:layout_marginRight="@dimen/margin_1"
+                        android:layout_marginEnd="@dimen/margin_1"
+                        android:src="@drawable/icon_search"
+                        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                    <View
+                        style="@style/LineVertical"
+                        android:layout_margin="@dimen/margin_1"/>
+
+                    <EditText
+                        android:text="HN433900679o86"
+                        android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                        android:id="@+id/et_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:minWidth="@dimen/margin_40"
+                        android:background="@null"
+                        android:layout_marginLeft="@dimen/margin_1"
+                        android:layout_marginStart="@dimen/margin_1"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"
+                        android:textColor="@color/colorTitle"
+                        android:textSize="@dimen/textSize"
+                        android:textColorHint="@color/colorGray"
+                        android:hint="@string/hint_suyuan_code_search"/>
+
+                </LinearLayout>
             </RelativeLayout>
 
             <View

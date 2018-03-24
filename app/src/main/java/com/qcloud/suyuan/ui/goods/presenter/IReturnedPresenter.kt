@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.ui.goods.presenter
 
+import com.qcloud.suyuan.beans.ScanCodeBean
+
 /**
  * 类型：IReturnedPresenter
  * Author: iceberg
@@ -12,5 +14,5 @@ interface IReturnedPresenter {
      */
     fun loadData(code: String)
 
-    fun salesReturn(money: String, traceabilityIdStr: String)
+    fun salesReturn(money: String, merchandiseBean: List<ScanCodeBean.MerchandiseBean>)
 }

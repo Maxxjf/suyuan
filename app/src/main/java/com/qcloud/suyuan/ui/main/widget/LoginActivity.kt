@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
 
     private var account: String = "" //账号
     private var password: String = "" //密码
-    private var inputDialog: InputDialog? =null
+    private var inputDialog: InputDialog? = null
     override val layoutId: Int
         get() = R.layout.activity_login
 
@@ -43,18 +43,11 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
 
     private fun initData() {
         et_account.text = SharedUtil.getString(AppConstants.account)
+        et_password.text = SharedUtil.getString(AppConstants.password)
+        cb_rember_password.isChecked = SharedUtil.getBoolean(AppConstants.isCheck)
     }
 
     private fun initListener() {
-        cb_rember_password.setOnCheckedChangeListener { _, isCheck ->
-            account = et_account.text.toString().trim()
-            if (isCheck) {
-                SharedUtil.writeString(AppConstants.account, account)
-            } else {
-                SharedUtil.writeString(AppConstants.account, "")
-            }
-        }
-
         btn_forget_password.setOnClickListener(this)
         btn_login.setOnClickListener(this)
         et_account.setOnClickListener(this)
@@ -63,7 +56,7 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
 
     override fun onClick(view: View?) {
         if (view != null) {
-            when(view.id){
+            when (view.id) {
                 R.id.et_account -> showInput(view as TextView?)
                 R.id.et_password -> showInput(view as TextView?)
                 R.id.btn_forget_password -> forgetBtnClick()
@@ -91,6 +84,7 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     override fun loginSuccess() {
+
         stopLoadingDialog()
         MainActivity.openActivity(this)
         finish()
@@ -113,8 +107,20 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
         return true
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        if (cb_rember_password.isChecked) {
+            SharedUtil.writeString(AppConstants.account, account)
+            SharedUtil.writeString(AppConstants.password, password)
+        } else {
+//            SharedUtil.writeString(AppConstants.account, "")
+            SharedUtil.writeString(AppConstants.password, "")
+        }
+        SharedUtil.writeBoolean(AppConstants.isCheck, cb_rember_password.isChecked)
+    }
+
     override fun showInput(@NotNull view: TextView?) {
-        if (inputDialog == null){
+        if (inputDialog == null) {
             inputDialog = InputDialog(this)
         }
         if (view != null) {

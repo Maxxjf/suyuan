@@ -2,13 +2,12 @@ package com.qcloud.suyuan.widgets.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.support.annotation.IdRes
 import android.support.annotation.NonNull
 import android.support.annotation.StyleRes
 import android.view.Gravity
 import android.view.View
 import com.qcloud.suyuan.R
-import kotlinx.android.synthetic.main.dialog_tip.*
+import kotlinx.android.synthetic.main.dialog_return_good.*
 
 /**
  * Description: 退货确认弹框
@@ -22,7 +21,7 @@ class ReturnDialog @JvmOverloads constructor(
     var onConfirmClickListener: OnConfirmClickListener? = null
 
     init {
-        setContentView(R.layout.dialog_tip)
+        setContentView(R.layout.dialog_return_good)
         initDialog()
         initView()
     }
@@ -49,13 +48,14 @@ class ReturnDialog @JvmOverloads constructor(
         }
     }
 
-    fun setTip(tip: String) {
-        tv_tip.text = tip
+    fun setNumber(number: Int) {
+        tv_return_number.text = "${number}"
     }
 
-    fun setTip(@IdRes tipRes: Int) {
-        tv_tip.setText(tipRes)
+    fun getMoney(): String {
+        return et_return_money.text.toString()
     }
+
 
     interface OnConfirmClickListener {
         fun onConfirmClick()

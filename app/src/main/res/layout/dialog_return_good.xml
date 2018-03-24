@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/login_width"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -42,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_return_number"
             android:text="10"
             android:textSize="@dimen/textSize"
             android:layout_width="wrap_content"
@@ -52,9 +54,10 @@
         android:background="@drawable/textview_border_gray"
         android:layout_marginTop="@dimen/margin_3"
         android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginRight="@dimen/margin_8"
         android:layout_gravity="left"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:padding="@dimen/margin_1"
@@ -63,24 +66,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <EditText
-            android:background="null"
+            android:digits="0123456789."
+            android:id="@+id/et_return_money"
+            android:textColor="@color/colorText"
+            android:background="@null"
             android:padding="@dimen/margin_1"
-            android:text="0.00"
+            android:hint="@string/hint_input_money"
+            android:inputType="text"
             android:textSize="@dimen/textSize"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="@dimen/margin_3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_white_bottom_radius"
         android:gravity="center"
         android:orientation="vertical">
-
-
         <TextView
-
             android:id="@+id/tv_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,10 +93,9 @@
             android:gravity="center_horizontal"
             android:paddingLeft="@dimen/padding_4"
             android:paddingRight="@dimen/padding_4"
-            android:textColor="@color/colorRed"
+            android:textColor="@color/design_textinput_error_color_light"
             android:textSize="@dimen/textSize"
             tools:text="@string/tip_err_return_tip" />
-
         <Button
             android:layout_marginTop="@dimen/margin_8"
             android:id="@+id/btn_confirm"

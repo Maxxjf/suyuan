@@ -2,12 +2,14 @@ package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.beans.EmptyResBean
 import com.qcloud.suyuan.beans.ScanCodeBean
 import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IReturnedPresenter
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
+import timber.log.Timber
 
 /**
  * 类型：IReturnedPersenterImpl
@@ -33,10 +35,20 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         }
       })
     }
-    override fun salesReturn( money:String,traceabilityIdStr:String) {
+    override fun salesReturn( money:String,list:List<ScanCodeBean.MerchandiseBean>) {
+        //1.将溯源码ID提出来
+        var strList=ArrayList<String>()
+        for (index in list.indices){
+            strList.add(list[index].traceabilityId!!)
+        }
+        //2.溯源码ID将以，隔开，合并成一个字符串
+        var  traceabilityIdStr=StringUtil.combineList(strList)
+        Timber.e("退货id字符串${traceabilityIdStr}")
         model.SalesReturn(money,traceabilityIdStr,object :DataCallback<EmptyResBean>{
             override fun onSuccess(t: EmptyResBean?, message: String?) {
-
+                if (message != null) {
+                    mView?.loadErr(message)
+                }
             }
 
             override fun onError(status: Int, message: String) {
