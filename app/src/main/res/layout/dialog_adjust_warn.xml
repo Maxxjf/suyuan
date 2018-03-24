@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabHeight"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:paddingRight="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/btn_adjust_warn"/>
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_close"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editHeight"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_6"
+        android:layout_marginStart="@dimen/margin_6"
+        android:layout_marginRight="@dimen/margin_6"
+        android:layout_marginEnd="@dimen/margin_6"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:background="@drawable/frame_gray">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginStart="@dimen/margin_2"
+            android:layout_marginRight="@dimen/margin_2"
+            android:layout_marginEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_stock_warn_line"/>
+
+        <View
+            style="@style/LineVertical"
+            android:layout_margin="@dimen/margin_1"/>
+
+        <EditText
+            android:id="@+id/et_warn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:layout_marginStart="@dimen/margin_1"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:textColorHint="@color/colorGray"
+            android:hint="@string/hint_input_product_code_and_name"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/largeBtnHeight"
+        android:background="@drawable/btn_radius_selector"
+        android:layout_marginLeft="@dimen/layoutMargin"
+        android:layout_marginRight="@dimen/layoutMargin"
+        android:layout_marginBottom="@dimen/layoutMargin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btnTextSize"
+        android:text="@string/btn_confirm"/>
+</LinearLayout>

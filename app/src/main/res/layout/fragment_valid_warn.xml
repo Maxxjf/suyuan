@@ -44,7 +44,7 @@
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/typeTextSize"
-            android:text="@string/tag_product_manufacturer"/>
+            android:text="@string/tag_product_spec"/>
 
         <TextView
             android:layout_width="0dp"
@@ -53,7 +53,7 @@
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/typeTextSize"
-            android:text="@string/tag_product_spec"/>
+            android:text="@string/tag_product_manufacturer"/>
 
         <TextView
             android:layout_width="0dp"

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.store.widget.StoreProductActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
@@ -11,4 +13,209 @@
         android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_store_product"/>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/barHeight">
+
+        <LinearLayout
+            android:id="@+id/layout_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:background="@drawable/frame_gray">
+
+            <ImageView
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:layout_marginRight="@dimen/margin_1"
+                android:layout_marginEnd="@dimen/margin_1"
+                android:src="@drawable/icon_search"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            <View
+                style="@style/LineVertical"
+                android:layout_margin="@dimen/margin_1"/>
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="@dimen/margin_40"
+                android:background="@null"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:gravity="center_vertical"
+                android:inputType="number"
+                android:imeOptions="actionSearch"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:textColorHint="@color/colorGray"
+                android:hint="@string/hint_input_product_code_and_name"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/layout_search"
+            android:layout_toEndOf="@+id/layout_search"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:text="@string/tag_purchase_use"/>
+
+            <LinearLayout
+                android:id="@+id/btn_purchase_use"
+                android:layout_width="@dimen/margin_40"
+                android:layout_height="@dimen/editHeight"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:background="@drawable/frame_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_purchase_use"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/layout_margin"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="病虫防治"/>
+
+                <ImageView
+                    android:id="@+id/btn_drop_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_drop_down"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_my_product"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/icon_my_product"
+            android:drawableStart="@drawable/icon_my_product"
+            android:drawablePadding="@dimen/drawPadding"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/btn_my_product"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/LineHorizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabHeight"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_image"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_bar_code"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_name"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_spec"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_manufacturer"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_total_stock"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_operator"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_last_in_time"/>
+    </LinearLayout>
+
+    <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+        android:id="@+id/list_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
