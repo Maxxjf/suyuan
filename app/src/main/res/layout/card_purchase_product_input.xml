@@ -125,8 +125,8 @@
                     android:textSize="@dimen/typeTextSize"
                     android:hint="0.00"/>
 
-                <TextView
-                    android:id="@+id/tv_in_storage_birthday"
+                <com.qcloud.suyuan.widgets.customview.DatePickerButton
+                    android:id="@+id/btn_in_storage_birthday"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -134,11 +134,10 @@
                     android:gravity="center_vertical"
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="0"/>
+                    android:textSize="@dimen/typeTextSize"/>
 
-                <TextView
-                    android:id="@+id/tv_in_storage_end_date"
+                <com.qcloud.suyuan.widgets.customview.DatePickerButton
+                    android:id="@+id/btn_in_storage_end_date"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -146,8 +145,7 @@
                     android:gravity="center_vertical"
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="0"/>
+                    android:textSize="@dimen/typeTextSize"/>
 
                 <LinearLayout
                     android:id="@+id/btn_in_storage_supplier"
