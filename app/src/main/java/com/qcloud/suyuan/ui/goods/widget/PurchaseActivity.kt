@@ -53,7 +53,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         mAdapter = PutProductAdapter(this)
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.replaceList(ArrayList())
-        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, id ->
             val id: String = mAdapter?.mList?.get(position)?.goodsId ?: ""
             PurchaseDetailsActivity.openActivity(this, id)
         }

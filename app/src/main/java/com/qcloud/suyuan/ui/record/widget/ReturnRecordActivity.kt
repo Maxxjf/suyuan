@@ -18,7 +18,7 @@ import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.ReturnRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.IReturnRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
-import com.qcloud.suyuan.widgets.customview.DatePick
+import com.qcloud.suyuan.widgets.customview.DatePickerButton
 import kotlinx.android.synthetic.main.activity_return_record.*
 import timber.log.Timber
 
@@ -80,16 +80,16 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
         rv_return_goods_record?.setAdapter(madapter!!)
         mEmptyView = NoDataView(this)
         rv_return_goods_record.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        tv_date_from.setOnDateChangeListener(object : DatePick.OnDateChangeListener{
-            override fun onDateChange(year: Int, mouth: Int, day: Int) {
+        tv_date_from.onDateChangeListener = object : DatePickerButton.OnDateChangeListener {
+            override fun onDateChange(year: Int, mouth: Int, day: Int, dateStr: String) {
                 loadData()
             }
-        })
-        tv_date_to.setOnDateChangeListener(object : DatePick.OnDateChangeListener{
-            override fun onDateChange(year: Int, mouth: Int, day: Int) {
+        }
+        tv_date_to.onDateChangeListener = object : DatePickerButton.OnDateChangeListener {
+            override fun onDateChange(year: Int, mouth: Int, day: Int, dateStr: String) {
                 loadData()
             }
-        })
+        }
     }
 
     private fun loadData() {

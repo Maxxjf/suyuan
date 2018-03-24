@@ -91,4 +91,6 @@ dependencies {
     // 第三方crash异常捕捉
     implementation 'com.tencent.bugly:crashreport:2.6.6.1'
     implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    // 二维码/条形码
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
 }
