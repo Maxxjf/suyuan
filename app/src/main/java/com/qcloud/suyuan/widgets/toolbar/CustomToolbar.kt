@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseApplication
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.ui.main.widget.LoginActivity
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.dialog.TipDialog
@@ -150,8 +151,8 @@ class CustomToolbar @JvmOverloads constructor(
     private fun initLogoutDialog() {
         logoutDialog = TipDialog(mContext)
         logoutDialog?.setTip(R.string.toast_logout)
-        logoutDialog?.onConfirmClickListener = object : TipDialog.OnConfirmClickListener {
-            override fun onConfirmClick() {
+        logoutDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
                 TokenUtil.clearToken()
                 UserInfoUtil.mUser = null
                 BaseApplication.mAppManager?.killAllActivity()

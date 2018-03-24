@@ -5,23 +5,24 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.LinearLayout
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.DropDownAdapter
 
 /**
- * Description: 下拉弹窗
+ * Description: 下拉带按钮弹窗
  * Author: gaobaiqiang
  * 2018/3/22 下午11:18.
  */
-class DropDownPop(mContext: Context, val list: List<String>, xWidth: Int) : BasePopupWindow(mContext) {
+class DropDownBtnPop(mContext: Context, val list: List<String>, xWidth: Int) : BasePopupWindow(mContext) {
     private var list_value: RecyclerView? = null
     private var mAdapter: DropDownAdapter? = null
 
     var onItemClickListener: OnItemClickListener? = null
 
     override val viewId: Int
-        get() = R.layout.pop_drop_down
+        get() = R.layout.pop_drop_down_with_btn
 
     override val animId: Int
         get() = com.qcloud.qclib.R.style.AnimationPopupWindow_up_to_bottom
@@ -44,6 +45,11 @@ class DropDownPop(mContext: Context, val list: List<String>, xWidth: Int) : Base
             dismiss()
         }
         mAdapter?.replaceList(list)
+
+        val btn_add = mView?.findViewById<LinearLayout>(R.id.btn_add)
+        btn_add?.setOnClickListener {
+            onPopWindowViewClick?.onViewClick(it)
+        }
     }
 
     interface OnItemClickListener {

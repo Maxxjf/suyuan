@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_3">
+
+        <com.qcloud.qclib.widget.customview.RatioImageView
+            android:id="@+id/img_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bmp_product"
+            app:ratio="1.0"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_product_bar_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="9785644239047588"/>
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
+
+    <TextView
+        android:id="@+id/tv_product_spec"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_spec"/>
+
+    <TextView
+        android:id="@+id/tv_product_manufacture"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_manufacturer"/>
+
+    <TextView
+        android:id="@+id/tv_product_stock"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_stock"/>
+</LinearLayout>

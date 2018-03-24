@@ -56,11 +56,17 @@
             android:name=".ui.goods.widget.SellersActivity"
             android:label="@string/title_sellers"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".ui.goods.widget.PurchaseActivity"
             android:label="@string/title_purchase"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".ui.goods.widget.PurchaseDetailsActivity"
+            android:label="@string/title_purchase"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".ui.goods.widget.ModifyPriceActivity"
             android:label="@string/title_modify_price"

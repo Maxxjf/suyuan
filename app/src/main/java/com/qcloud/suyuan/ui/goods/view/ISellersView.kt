@@ -7,7 +7,11 @@ import com.qcloud.suyuan.beans.SellersBean
  * Author: gaobaiqiang
  * 2018/3/15 上午12:20.
  */
-interface ISellersView{
+interface ISellersView {
+    fun onSettlementClick()
+
+    fun onInputPurchaserClick()
+
     /**替换数据 */
     fun replaceList(beans: List<SellersBean>?)
 

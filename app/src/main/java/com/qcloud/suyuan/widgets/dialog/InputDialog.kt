@@ -126,7 +126,7 @@ class InputDialog @JvmOverloads constructor(
             onFinishInputListener?.onFinishInput(mInputValue)
             KeyBoardUtil.showSoftInput(mContext, et_text)
             KeyBoardUtil.hideKeybord(mContext, et_text)
-            mEtView?.setText(mInputValue)
+            mEtView?.text = mInputValue
             dismiss()
         }
     }

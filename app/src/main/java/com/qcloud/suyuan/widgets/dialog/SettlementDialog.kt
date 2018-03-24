@@ -2,7 +2,6 @@ package com.qcloud.suyuan.widgets.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.support.annotation.IdRes
 import android.support.annotation.NonNull
 import android.support.annotation.StyleRes
 import android.view.Gravity
@@ -10,17 +9,17 @@ import android.view.View
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
-import kotlinx.android.synthetic.main.dialog_tip.*
+import kotlinx.android.synthetic.main.dialog_settlement.*
 
 /**
- * Description: 消息弹窗
+ * Description: 结算弹窗
  * Author: gaobaiqiang
- * 2018/3/20 下午5:50.
+ * 2018/3/23 下午2:21.
  */
-class TipDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener {
+class SettlementDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener  {
 
     override val viewId: Int
-        get() = R.layout.dialog_tip
+        get() = R.layout.dialog_settlement
 
     init {
         initView()
@@ -28,32 +27,23 @@ class TipDialog constructor(context: Context) : BaseDialog(context), View.OnClic
 
     private fun initView() {
         btn_close.setOnClickListener(this)
-        btn_confirm.setOnClickListener(this)
+        btn_credit.setOnClickListener(this)
+        btn_cash.setOnClickListener(this)
+        btn_alipay.setOnClickListener(this)
+        btn_wechat.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_close -> dismiss()
-            R.id.btn_confirm -> {
+            R.id.btn_credit, R.id.btn_cash, R.id.btn_alipay, R.id.btn_wechat -> {
                 dismiss()
                 onBtnClickListener?.onBtnClick(v)
             }
         }
     }
 
-    fun setTip(tip: String) {
-        tv_tip.text = tip
-    }
+    fun refreshSettlementData() {
 
-    fun setTip(@IdRes tipRes: Int) {
-        tv_tip.setText(tipRes)
-    }
-
-    fun setConfirmBtn(tip: String) {
-        btn_confirm.text = tip
-    }
-
-    fun setConfirmBtn(@IdRes tipRes: Int) {
-        btn_confirm.setText(tipRes)
     }
 }

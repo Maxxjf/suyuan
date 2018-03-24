@@ -3,10 +3,9 @@ package com.qcloud.suyuan.ui.goods.presenter
 import com.qcloud.qclib.base.BtnClickPresenter
 
 /**
- * Description: 卖货
+ * Description: 确认入库
  * Author: gaobaiqiang
- * 2018/3/15 上午12:21.
+ * 2018/3/23 下午9:26.
  */
-interface ISellersPresenter: BtnClickPresenter {
-    fun loadData()
+interface IPurchaseDetailsPresenter: BtnClickPresenter {
 }

@@ -23,8 +23,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/icon_close"
             android:layout_gravity="right|top"
-            android:layout_marginTop="@dimen/itemHeight"
-            android:layout_marginRight="@dimen/margin_4"/>
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_2"/>
     </FrameLayout>
 
     <LinearLayout
