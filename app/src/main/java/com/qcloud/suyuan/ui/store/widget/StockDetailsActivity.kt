@@ -62,7 +62,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         list_product.setAdapter(mAdapter!!)
         mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<InStorageRecordBean> {
             override fun onHolderClick(view: View, t: InStorageRecordBean, position: Int) {
-                QToast.show(this@StockDetailsActivity, "打印${t.batch}")
+                QToast.show(this@StockDetailsActivity, "打印${t.batchNum}")
             }
         }
 

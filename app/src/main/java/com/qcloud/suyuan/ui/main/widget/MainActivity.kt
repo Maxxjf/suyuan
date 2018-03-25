@@ -3,14 +3,12 @@ package com.qcloud.suyuan.ui.main.widget
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
-import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.materialdesign.dialogs.MaterialDialog
 import com.qcloud.qclib.materialdesign.enums.DialogAction
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.ApiReplaceUtil
-import com.qcloud.qclib.widget.customview.wheelview.DateTimePicker
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseApplication
@@ -25,7 +23,6 @@ import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
-import com.qcloud.suyuan.widgets.dialog.TipDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_main_credit_record.*

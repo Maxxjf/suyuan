@@ -29,13 +29,13 @@ class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<InStorageRecor
         }
 
         with(bean) {
-            holder.setText(R.id.tv_batch_number, batch)
-                    .setText(R.id.tv_time, time)
-                    .setText(R.id.tv_number, number)
-                    .setText(R.id.tv_stock, stock)
-                    .setText(R.id.tv_product_valid, valid)
-                    .setText(R.id.tv_price, price)
-                    .setText(R.id.tv_operator, operator)
+//            holder.setText(R.id.tv_batch_number, batch)
+//                    .setText(R.id.tv_time, time)
+//                    .setText(R.id.tv_number, number)
+//                    .setText(R.id.tv_stock, stock)
+//                    .setText(R.id.tv_product_valid, valid)
+//                    .setText(R.id.tv_price, price)
+//                    .setText(R.id.tv_operator, operator)
         }
 
         btnPrint.setOnClickListener {

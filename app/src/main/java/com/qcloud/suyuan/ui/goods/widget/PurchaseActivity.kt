@@ -5,7 +5,6 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
@@ -54,7 +53,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.replaceList(ArrayList())
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, id ->
-            val id: String = mAdapter?.mList?.get(position)?.goodsId ?: ""
+            val id: String = mAdapter?.mList?.get(position)?.id ?: ""
             PurchaseDetailsActivity.openActivity(this, id)
         }
 

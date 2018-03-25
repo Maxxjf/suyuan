@@ -21,6 +21,10 @@ android {
                 includeCompileClasspath true
             }
         }
+
+        ndk {
+            moduleName "serial_port"
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +55,22 @@ android {
             signingConfig signingConfigs.key
         }
     }
+    task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+        destinationDir file("$projectDir/libs")
+        baseName "Native_Libs"
+        extension "jar"
+        from fileTree(dir: "libs", include: "**/*.so")
+        into "lib"
+    }
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn(nativeLibsToJar)
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            jni.srcDirs = []
+        }
+    }
     packagingOptions {
         pickFirst 'META-INF/*'
     }
@@ -77,6 +97,12 @@ realm {
     kotlinExtensionsEnabled = true
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -93,4 +119,7 @@ dependencies {
     implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
     // 二维码/条形码
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    // 身份证识别器
+    implementation files('libs/IDNRSocket V1.26.jar')
+    implementation files('libs/Native_Libs.jar')
 }

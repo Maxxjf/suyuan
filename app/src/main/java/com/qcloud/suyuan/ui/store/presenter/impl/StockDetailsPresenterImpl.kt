@@ -26,13 +26,12 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
     override fun loadData() {
         val list: MutableList<InStorageRecordBean> = ArrayList()
         var bean = InStorageRecordBean()
-        bean.batch = "10"
-        bean.number = "288"
-        bean.operator = "张大伟"
-        bean.price = "￥100.00"
-        bean.stock = "49"
-        bean.time = "2018/03/25"
-        bean.valid = "2017/12/12-2020/12/12"
+        bean.batchNum = "10"
+        bean.goodsNum = 100
+        bean.operaName = "张大伟"
+        bean.price = 100.00
+        bean.surplusNum = 48
+        bean.createDate = "2018/03/25"
         list.add(bean)
         list.add(bean)
         list.add(bean)
