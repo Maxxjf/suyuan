@@ -50,7 +50,7 @@
         android:layout_height="match_parent">
         <Button
             android:textColor="@color/colorPrimary"
-            android:text="@string/tag_list_payed_money"
+            android:text="@string/btn_pay_credit"
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -21,7 +21,7 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
     private var model:IGoodsModel=GoodsModelImpl()
     private var saleId=""//销售单id (首次为空,从第二次开始传)
     override fun loadData( code:String) {
-      model.ScanCode(code,saleId,object :DataCallback<ScanCodeBean>{
+      model.scanCode(code,saleId,object :DataCallback<ScanCodeBean>{
         override fun onSuccess(t: ScanCodeBean?, message: String?) {
           if (t != null) {
             mView?.replaceList(t.infoList,false)
@@ -44,7 +44,7 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         //2.溯源码ID将以，隔开，合并成一个字符串
         var  traceabilityIdStr=StringUtil.combineList(strList)
         Timber.e("退货id字符串${traceabilityIdStr}")
-        model.SalesReturn(money,traceabilityIdStr,object :DataCallback<EmptyReturnBean>{
+        model.salesReturn(money,traceabilityIdStr,object :DataCallback<EmptyReturnBean>{
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
                     mView?.loadErr(message)

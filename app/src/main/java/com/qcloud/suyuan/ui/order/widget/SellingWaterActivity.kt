@@ -7,14 +7,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
-import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
+import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.ReturnGoodsListAdapter
 import com.qcloud.suyuan.adapters.ReturnedReceiptAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.CodeBean
-import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.order.presenter.impl.SellingWaterPresenterImpl
 import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.widgets.customview.NoDataView
@@ -59,18 +58,18 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     }
 
     private fun initView() {
+        waterAdapter=ReturnGoodsListAdapter(this)
+        receiptAdapter=ReturnedReceiptAdapter(this)
         rv_selling_water_list.setLayoutManager(LinearLayoutManager(this))
         rv_selling_water_list.setAdapter(waterAdapter!!)
-        rv_receipt.setLayoutManager(LinearLayoutManager(this))
-        rv_receipt.setAdapter(receiptAdapter!!)
-        SwipeRefreshUtil.setLoadMore(rv_selling_water_list, false)
-        SwipeRefreshUtil.setColorSchemeColors(rv_selling_water_list, AppConstants.loadColors)
-        SwipeRefreshUtil.setLoadMore(rv_receipt, false)
-        SwipeRefreshUtil.setColorSchemeColors(rv_receipt, AppConstants.loadColors)
+        rv_credit_list.setLayoutManager(LinearLayoutManager(this))
+        rv_credit_list.setAdapter(receiptAdapter!!)
+        PullRefreshUtil.setRefresh(rv_selling_water_list,true,true)
+        PullRefreshUtil.setRefresh(rv_credit_list,true,true)
 
         mEmptyView = NoDataView(this)
         rv_selling_water_list.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        rv_receipt.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_credit_list.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         waterAdapter = ReturnGoodsListAdapter(this)
         receiptAdapter = ReturnedReceiptAdapter(this)
@@ -90,7 +89,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
     override fun replaceList(beans: List<CodeBean>?, isNext: Boolean) {
         if (isRunning){
-            rv_receipt.loadedFinish()
+            rv_credit_list.loadedFinish()
             if (beans!=null && beans.isNotEmpty()){
 //                receiptAdapter?.replaceList(beans)
                 hideEmptyView()
@@ -114,12 +113,12 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
     override fun showEmptyView(tip: String) {
         rv_selling_water_list.showEmptyView()
-        rv_receipt.showEmptyView()
+        rv_credit_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
          rv_selling_water_list.hideEmptyView()
-         rv_receipt.hideEmptyView()
+         rv_credit_list.hideEmptyView()
     }
 
     companion object {

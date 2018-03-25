@@ -91,7 +91,7 @@ class GoodsModelImpl: IGoodsModel {
      * 扫码查询
      *  @param saleId   销售单id (首次为空,从第二次开始传)
      * */
-    override fun ScanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>) {
+    override fun scanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>) {
         val params=OkGoRequest.getAppParams()
         params.put("code",code)
         params.put("saleId",saleId)
@@ -101,7 +101,7 @@ class GoodsModelImpl: IGoodsModel {
      * 退货
      * @param traceabilityIdStr   溯源记录id字符串(多个用 , 隔开)
      * */
-    override fun SalesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>) {
+    override fun salesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>) {
         val params=OkGoRequest.getAppParams()
         params.put("money",money)
         params.put("traceabilityIdStr",traceabilityIdStr)

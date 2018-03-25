@@ -42,4 +42,11 @@ object UrlConstants {
     const val EDIT_PRICE = URL_PREFIX_APP + "stock/editPrice"
     /**调整警告线*/
     const val EDIT_CORDON = URL_PREFIX_APP + "editCardon"
+
+    /**赊账列表**/
+    const val GET_CREDIT_LIST= URL_PREFIX_APP+"onCredit/list"
+    /**赊账详细**/
+    const val GET_CREDIT_INFO= URL_PREFIX_APP+"onCredit/info"
+
+
 }

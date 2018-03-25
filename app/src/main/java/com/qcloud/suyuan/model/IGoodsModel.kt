@@ -31,7 +31,7 @@ interface IGoodsModel {
     /**获取退货记录*/
     fun getReturnRecord(startTime:String,endTime:String,pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<CodeBean>>)
 
-    fun ScanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>)
+    fun scanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>)
 
-    fun SalesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>)
+    fun salesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>)
 }

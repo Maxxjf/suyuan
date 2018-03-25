@@ -8,7 +8,7 @@ import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.beans.ScanCodeBean
+import com.qcloud.suyuan.beans.CreditInfoBean
 
 /**
  * 类型：OrderInfoAdapter
@@ -16,13 +16,13 @@ import com.qcloud.suyuan.beans.ScanCodeBean
  * Date: 2018/3/24
  * 账单明细
  */
-class OrderInfoAdapter(context: Context) : CommonRecyclerAdapter<ScanCodeBean.MerchandiseBean>(context) {
+class OrderInfoAdapter(context: Context) : CommonRecyclerAdapter<CreditInfoBean>(context) {
 
     override val viewId: Int
         get() = R.layout.adapter_order_info
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val bean: ScanCodeBean.MerchandiseBean = mList.get(position)
+        val bean: CreditInfoBean = mList.get(position)
         var tvTime = holder.get<TextView>(R.id.tv_time)
         var tvWaterNumber = holder.get<TextView>(R.id.tv_water_number)
         var tvCredit = holder.get<TextView>(R.id.tv_credit)
@@ -33,12 +33,15 @@ class OrderInfoAdapter(context: Context) : CommonRecyclerAdapter<ScanCodeBean.Me
             root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
         }
         if (bean != null) {
-            tvTime?.setText(bean.traceabilityCode)
-            tvWaterNumber?.setText(bean.goodsName)
-            tvCredit?.setText(bean.specification)
-            tvPayMoney?.setText(bean.batchNum)
+            tvTime?.setText("${bean.time}")
+            tvWaterNumber?.setText("${bean.serialNumber}")
+            tvCredit?.setText("${bean.shouldRepayment}")
+            tvPayMoney?.setText("${bean.alreadyRepayment}")
         }
-            onHolderClick?.onHolderClick(btnPay,bean,position)
+        btnPay.setOnClickListener {
+            onHolderClick?.onHolderClick(it,bean,position)
+        }
+
     }
 
 

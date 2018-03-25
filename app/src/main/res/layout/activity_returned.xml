@@ -156,7 +156,7 @@
                 android:orientation="vertical">
 
                 <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
-                    android:id="@+id/rv_return_goods_list"
+                    android:id="@+id/rv_credit_info_list"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/return_goods_height"
                     android:paddingLeft="@dimen/margin_2" />
@@ -366,7 +366,7 @@
             </LinearLayout>
 
             <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
-                android:id="@+id/rv_receipt"
+                android:id="@+id/rv_credit_list"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_40" />
 

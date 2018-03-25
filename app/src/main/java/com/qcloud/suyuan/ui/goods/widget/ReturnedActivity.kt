@@ -39,7 +39,8 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
     private var returnDialog: ReturnDialog? = null
     private var goodsAdapter: ReturnGoodsListAdapter? = null
     private var receiptAdapter: ReturnedReceiptAdapter? = null
-    private var mEmptyView: NoDataView? = null
+    private var mGoodsEmptyView: NoDataView? = null
+    private var mReceiptEmptyView: NoDataView? = null
     override val layoutId: Int
         get() = R.layout.activity_returned
 
@@ -63,18 +64,19 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
     private fun initView() {
         goodsAdapter = ReturnGoodsListAdapter(this)
         receiptAdapter = ReturnedReceiptAdapter(this)
-        rv_return_goods_list.setLayoutManager(LinearLayoutManager(this))
-        rv_return_goods_list.setAdapter(goodsAdapter!!)
-        rv_receipt.setLayoutManager(LinearLayoutManager(this))
-        rv_receipt.setAdapter(receiptAdapter!!)
-        SwipeRefreshUtil.setLoadMore(rv_return_goods_list, true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_return_goods_list, AppConstants.loadColors)
-        SwipeRefreshUtil.setLoadMore(rv_receipt, true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_receipt, AppConstants.loadColors)
+        rv_credit_info_list.setLayoutManager(LinearLayoutManager(this))
+        rv_credit_info_list.setAdapter(goodsAdapter!!)
+        rv_credit_list.setLayoutManager(LinearLayoutManager(this))
+        rv_credit_list.setAdapter(receiptAdapter!!)
+        SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
+        SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
+        SwipeRefreshUtil.setLoadMore(rv_credit_list, true)
+        SwipeRefreshUtil.setColorSchemeColors(rv_credit_list, AppConstants.loadColors)
 
-        mEmptyView = NoDataView(this)
-        rv_return_goods_list.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-//        rv_receipt.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        mGoodsEmptyView = NoDataView(this)
+        mReceiptEmptyView = NoDataView(this)
+        rv_credit_info_list.setEmptyView(mGoodsEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_credit_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         et_search.setOnKeyListener { view, i, keyEvent ->
             if (keyEvent.action==KeyEvent.ACTION_UP){
@@ -150,12 +152,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     override fun replaceList(beans: List<ScanCodeBean.InfoListBean>?, isNext: Boolean) {
         if (isRunning) {
-            rv_receipt?.loadedFinish()
+            rv_credit_list?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {
                 if (receiptAdapter != null) {
                     receiptAdapter!!.replaceList(beans)
                 }
-                rv_receipt?.isMore(isNext)
+                rv_credit_list?.isMore(isNext)
                 hideEmptyView()
             } else {
                 showEmptyView(resources.getString(R.string.tip_no_data))
@@ -165,24 +167,24 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     override fun addListAtEnd(bean: ScanCodeBean.MerchandiseBean?, isNext: Boolean) {
         if (isRunning) {
-            rv_return_goods_list?.loadedFinish()
+            rv_credit_info_list?.loadedFinish()
             if (bean != null) {
                 goodsAdapter?.addBeanAtEnd(bean)
             } else {
                 loadErr(resources.getString(R.string.tip_no_data))
-                rv_return_goods_list?.isMore(false)
+                rv_credit_info_list?.isMore(false)
             }
         }
     }
 
     override fun showEmptyView(tip: String) {
-        rv_return_goods_list.showEmptyView()
-        rv_receipt.showEmptyView()
+        rv_credit_info_list.showEmptyView()
+        rv_credit_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
-        rv_return_goods_list.hideEmptyView()
-        rv_receipt.hideEmptyView()
+        rv_credit_info_list.hideEmptyView()
+        rv_credit_list.hideEmptyView()
     }
 
     companion object {
