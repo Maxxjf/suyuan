@@ -55,7 +55,7 @@
     <string name="btn_confirm_pay_and_print_suyuan_code">确认并打印溯源码</string>
     <string name="btn_confirm_in_storage">确定入库</string>
     <string name="btn_clear">清空</string>
-    <string name="btn_add_supplier">新增供应商</string>
+    <string name="btn_add_supplier">新增</string>
     <string name="btn_pay_credit">还款</string>
     <string name="btn_confirm_in_storage_and_print_code">确认并打印批次条形码</string>
     <string name="btn_my_product">我的产品</string>
@@ -83,6 +83,7 @@
     <string name="hint_input_product_code_and_name">请输入产品条形码或产品名称</string>
     <string name="hint_input_money">请输入有效的金额</string>
     <string name="hint_input_name_idcard_phone">请输入姓名/身份证号/电话号码</string>
+    <string name="hint_input_name_supplier">请输入供应商名称/负责人</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -129,6 +130,7 @@
     <string name="tab_goods_rule">产品规格</string>
     <string name="tab_handle_member">操作人</string>
 
+
     <string name="save">保存</string>
     <string name="edit">编辑</string>
     <string name="finish">完成</string>
@@ -170,6 +172,7 @@
     <string name="tag_repayment_all">全部还请</string>
     <string name="tag_repayment_money">还款金额</string>
     <string name="tag_repayment">还款</string>
+    <string name="tag_supplier_details">供应商详情</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>
@@ -256,6 +259,12 @@
     <string name="tag_pesticides_registration">农药登记证: </string>
     <string name="tag_production_license">生产许可证: </string>
     <string name="tag_product_standard">产品标准证: </string>
+    <string name="tag_order_number">序号: </string>
+    <string name="tag_supplier_name">供应商名称: </string>
+    <string name="tag_supplier_address">供应商地址: </string>
+    <string name="tag_remark">备注: </string>
+    <string name="tag_contact_person">联系人: </string>
+    <string name="tag_contact_phone">联系电话: </string>
 
 
 

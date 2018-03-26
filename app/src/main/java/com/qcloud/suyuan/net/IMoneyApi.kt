@@ -7,6 +7,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.CreditInfoBean
 import com.qcloud.suyuan.beans.CreditListBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 
@@ -25,5 +26,10 @@ object IMoneyApi {
     fun getCreditInfo(params: HttpParams):Observable<BaseResponse<ReturnDataBean<CreditInfoBean>>>{
         val type=object :TypeToken<BaseResponse<ReturnDataBean<CreditInfoBean>>>(){}.type
         return OkGoRequest.instance.getRequest(UrlConstants.GET_CREDIT_INFO,type,params)
+    }
+    /**赊账还款*/
+    fun repayment(params: HttpParams):Observable<BaseResponse<EmptyReturnBean>>{
+        val type=object :TypeToken<BaseResponse<EmptyReturnBean>>(){}.type
+        return OkGoRequest.instance.getRequest(UrlConstants.REPAYMENT,type,params)
     }
 }

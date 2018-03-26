@@ -16,7 +16,7 @@
         app:is_main="false"
         app:is_right="false"
         app:is_title="true"
-        app:title_text="@string/title_return" />
+        app:title_text="@string/title_credit_record" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,7 +1,5 @@
 package com.qcloud.suyuan.beans
 
-import java.math.BigDecimal
-
 /**
  * 类型：CreditListBean
  * Author: iceberg
@@ -33,7 +31,7 @@ class CreditListBean {
         var mobile: String? = null
         var name: String? = null
         var purchaserId: String? = null
-        var sumRepayment: BigDecimal = BigDecimal(0)
+        var sumRepayment: Double = 0.0
         override fun toString(): String {
             return "ListBean(idCard=$idCard, mobile=$mobile, name=$name, purchaserId=$purchaserId, sumRepayment=$sumRepayment)"
         }

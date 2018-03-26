@@ -39,18 +39,18 @@ class ScanCodeBean {
 
     class SaleSerialBean {
         /**
-         * amount : 74281
-         * discount : 24115
-         * id : 测试内容6j3d
-         * realPay : 38080
-         * serialNumber : 测试内容52va
-         * time : 测试内容7u1b
+         * amount : 合计
+         * discount : 优惠
+         * id : 销售单id
+         * realPay : 实收
+         * serialNumber : ；流水号
+         * time : 时间
          */
 
-        var amount: Int = 0
-        var discount: Int = 0
+        var amount: Double = 0.0
+        var discount: Double = 0.0
         var id: String? = null
-        var realPay: Int = 0
+        var realPay: Double = 0.0
         var serialNumber: String? = null
         var time: String? = null
         override fun toString(): String {
@@ -61,14 +61,15 @@ class ScanCodeBean {
 
     class InfoListBean {
         /**
-         * goodsName : 测试内容hox0
-         * goodsNum : 81386
-         * price : 81572
+         * goodsName : 名称
+         * goodsNum : 数量
+         * price : 单价
+         * specification : 规则
          */
 
         var goodsName: String? = null
         var goodsNum: Int = 0
-        var price: Int = 0
+        var price: Double = 0.0
         var specification: String = ""
         override fun toString(): String {
             return "InfoListBean(goodsName=$goodsName, goodsNum=$goodsNum, price=$price, specification='$specification')"

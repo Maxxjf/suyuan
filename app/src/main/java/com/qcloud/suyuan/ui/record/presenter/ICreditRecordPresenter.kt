@@ -6,6 +6,7 @@ package com.qcloud.suyuan.ui.record.presenter
  * 2018/3/15 上午12:54.
  */
 interface ICreditRecordPresenter {
-    fun getCreditList(pageNo: Int, pageSize: Int)
+    fun getCreditList(keyword:String,pageNo: Int, pageSize: Int)
     fun getCreditInfo(id: String, pageNo: Int, pageSize: Int)
+    fun repayment(id: String, pageNo: Double)
 }

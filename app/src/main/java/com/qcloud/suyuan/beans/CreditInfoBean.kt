@@ -16,12 +16,13 @@ class CreditInfoBean {
      * time : 时间
      */
 
-    var alreadyRepayment: Int = 0
+    var alreadyRepayment: Double = 0.0
     var serialNumber: String? = null
-    var shouldRepayment: Int = 0
+    var shouldRepayment:  Double = 0.0
     var time: String? = null
-    override fun toString(): String {
-        return "CreditInfoBean(alreadyRepayment=$alreadyRepayment, serialNumber=$serialNumber, shouldRepayment=$shouldRepayment, time=$time)"
-    }
+    var id: String? = null
+    override fun toString(): String =
+            "CreditInfoBean(alreadyRepayment=$alreadyRepayment, serialNumber=$serialNumber, shouldRepayment=$shouldRepayment, time=$time, id=$id)"
+
 
 }
