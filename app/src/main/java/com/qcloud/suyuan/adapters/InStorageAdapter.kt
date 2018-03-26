@@ -14,10 +14,17 @@ import com.qcloud.suyuan.beans.InStorageRecordBean
  * 2018/3/24 下午3:40.
  */
 class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<InStorageRecordBean>(mContext) {
+    private var moneyStr: String = "¥"
+
+    init {
+        moneyStr = mContext.resources.getString(R.string.money_str)
+    }
+
     override val viewId: Int
         get() = R.layout.item_of_in_storage
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+
         val bean = mList[position]
 
         val btnPrint = holder.get<Button>(R.id.btn_print)
@@ -29,13 +36,13 @@ class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<InStorageRecor
         }
 
         with(bean) {
-//            holder.setText(R.id.tv_batch_number, batch)
-//                    .setText(R.id.tv_time, time)
-//                    .setText(R.id.tv_number, number)
-//                    .setText(R.id.tv_stock, stock)
-//                    .setText(R.id.tv_product_valid, valid)
-//                    .setText(R.id.tv_price, price)
-//                    .setText(R.id.tv_operator, operator)
+            holder.setText(R.id.tv_batch_number, batchNum)
+                    .setText(R.id.tv_time, createDate)
+                    .setText(R.id.tv_number, goodsNumStr)
+                    .setText(R.id.tv_stock, surplusNumStr)
+                    .setText(R.id.tv_product_valid, stopDate)
+                    .setText(R.id.tv_price, String.format(moneyStr, price))
+                    .setText(R.id.tv_operator, operaName)
         }
 
         btnPrint.setOnClickListener {

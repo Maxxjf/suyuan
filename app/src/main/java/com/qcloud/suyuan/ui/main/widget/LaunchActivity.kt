@@ -32,7 +32,7 @@ class LaunchActivity: BaseActivity<ILaunchView, LaunchPresenterImpl>(), ILaunchV
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (StringUtil.isBlank(TokenUtil.getToken())) {
-                        toMain()
+                        toLogin()
                     } else {
                         toMain()
                     }

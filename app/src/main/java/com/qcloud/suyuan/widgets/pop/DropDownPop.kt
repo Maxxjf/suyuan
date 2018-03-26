@@ -8,13 +8,14 @@ import android.widget.AdapterView
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.DropDownAdapter
+import com.qcloud.suyuan.beans.ProductClassifyBean
 
 /**
  * Description: 下拉弹窗
  * Author: gaobaiqiang
  * 2018/3/22 下午11:18.
  */
-class DropDownPop(mContext: Context, val list: List<String>, xWidth: Int) : BasePopupWindow(mContext) {
+class DropDownPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopupWindow(mContext) {
     private var list_value: RecyclerView? = null
     private var mAdapter: DropDownAdapter? = null
 
@@ -39,14 +40,27 @@ class DropDownPop(mContext: Context, val list: List<String>, xWidth: Int) : Base
         mAdapter = DropDownAdapter(mContext)
         list_value?.adapter = mAdapter
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val value = mAdapter?.mList?.get(position) ?: ""
+            val value = mList[position]
             onItemClickListener?.onItemClick(position, value)
             dismiss()
         }
-        mAdapter?.replaceList(list)
+        mAdapter?.replaceList(disposeData())
+    }
+
+    /**
+     * 解析数据
+     * */
+    private fun disposeData(): List<String> {
+        val list: MutableList<String> = ArrayList()
+        for (bean in mList) {
+            if (bean is ProductClassifyBean) {
+                list.add(bean.name)
+            }
+        }
+        return list
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, value: String)
+        fun onItemClick(position: Int, value: Any?)
     }
 }

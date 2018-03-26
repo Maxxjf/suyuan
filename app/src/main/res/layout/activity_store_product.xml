@@ -80,7 +80,7 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
-                android:text="@string/tag_purchase_use"/>
+                android:text="@string/tag_product_detail_classify"/>
 
             <LinearLayout
                 android:id="@+id/btn_purchase_use"

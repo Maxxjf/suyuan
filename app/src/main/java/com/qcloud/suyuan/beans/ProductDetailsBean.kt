@@ -6,9 +6,10 @@ package com.qcloud.suyuan.beans
  * 2018/3/24 下午11:39.
  */
 class ProductDetailsBean {
-    var goods: ProductBean? = null      // 商品信息
+    var goods: ProductGoodsBean? = null      // 商品信息
     var info: ProductInfoBean? = null   // 商品明细
     var mill: ProductMillBean? = null   // 厂家信息
     var totalAmount: Int = 0            // 总库存
     var warehouseList: List<InStorageRecordBean>? = null    // 商品入库记录
+    var goodsMedio: List<ProductMedioBean>? = null
 }

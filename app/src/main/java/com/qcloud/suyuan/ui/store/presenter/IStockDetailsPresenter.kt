@@ -8,5 +8,12 @@ import com.qcloud.qclib.base.BtnClickPresenter
  * 2018/3/24 下午2:33.
  */
 interface IStockDetailsPresenter: BtnClickPresenter {
-    fun loadData()
+    /**获取商品详情*/
+    fun loadData(id: String)
+
+    /**调整警告线*/
+    fun editWarnLine(id: String, cordon: Int)
+
+    /**调整价格*/
+    fun editPrice(id: String, price: Double)
 }

@@ -9,15 +9,27 @@ import com.qcloud.qclib.utils.StringUtil
  */
 class InStorageRecordBean {
     var id: String? = null          // 入库记录id
+    var shopId: String? = null
+    var goodId: String? = null
+    var supplierId: String? = null
     var batchNum: String? = null    // 入库批次
         get() = if (StringUtil.isBlank(field)) "" else field
     var createDate: String? = null  // 入库时间
         get() = if (StringUtil.isBlank(field)) "" else field
     var goodsNum: Int = 0           // 入库数量
+    var goodsNumStr: String = "0"
+        get() = goodsNum.toString()
     var operaName: String? = null   // 操作人
         get() = if (StringUtil.isBlank(field)) "" else field
     var price: Double = 0.00	    // 进货价
     var stopDate: String? = null    // 有效截止时间
         get() = if (StringUtil.isBlank(field)) "" else field
     var surplusNum: Int = 0         // 当前剩余库存
+    var surplusNumStr: String = "0"
+        get() = surplusNum.toString()
+    var updateDate: String? = null
+        get() = if (StringUtil.isBlank(field)) "" else field
+    var productionDate: String? = null
+        get() = if (StringUtil.isBlank(field)) "" else field
+    var state: Int = 0
 }

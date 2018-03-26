@@ -6,6 +6,9 @@ import android.view.View
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
+import com.qcloud.suyuan.beans.ProductDetailsBean
+import kotlinx.android.synthetic.main.card_dialog_product_info.*
+import kotlinx.android.synthetic.main.card_dialog_product_introduce.*
 import kotlinx.android.synthetic.main.dialog_product_details.*
 
 /**
@@ -29,6 +32,28 @@ class ProductDetailsDialog constructor(context: Context) : BaseDialog(context), 
 
     private fun initView() {
         btn_close.setOnClickListener(this)
+    }
+
+    fun refreshData(bean: ProductDetailsBean) {
+        val millBean = bean.mill
+        val infoBean = bean.info
+        if (millBean != null) {
+            with(millBean) {
+                tv_factory.text = name
+                tv_factory_address.text = address
+                tv_factory_mobile.text = tel
+                tv_factory_web.text = url
+            }
+        }
+        if (infoBean != null) {
+            with(infoBean) {
+                tv_pesticides_registration.text = registerCard
+                tv_production_license.text = licenseCard
+                tv_product_standard.text = standardCard
+                tv_product_introduce.text = details
+            }
+        }
+
     }
 
     override fun onClick(v: View) {

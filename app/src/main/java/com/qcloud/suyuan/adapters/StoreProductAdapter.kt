@@ -7,14 +7,15 @@ import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.StoreProductBean
 
 /**
- * Description: 门店产品
+ * Description: 门店产品(库存管理列表)
  * Author: gaobaiqiang
  * 2018/3/24 下午1:49.
  */
-class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<StoreProductBean>(mContext) {
+class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<ProductBean>(mContext) {
     override val viewId: Int
         get() = R.layout.item_of_store_product
 
@@ -35,8 +36,8 @@ class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<StoreProduc
                     .setText(R.id.tv_product_spec, specification)
                     .setText(R.id.tv_product_manufacture, millName)
                     .setText(R.id.tv_product_total_stock, amountStr)
-                    .setText(R.id.tv_product_operator, operator)
-                    .setText(R.id.tv_product_last_in_time, lastTime)
+                    .setText(R.id.tv_product_operator, operaName)
+                    .setText(R.id.tv_product_last_in_time, createDate)
         }
     }
 }

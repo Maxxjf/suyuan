@@ -5,22 +5,30 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.StoreProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.ProductClassifyBean
 import com.qcloud.suyuan.beans.StoreProductBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.store.presenter.impl.StoreProductPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStoreProductView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.pop.DropDownPop
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_store_product.*
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 /**
  * Description: 门店产品
@@ -34,6 +42,8 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     private var mPurchaseUsePop: DropDownPop? = null
 
     private var pageNo = 1
+    private var classifyId: String? = null
+    private var keyword: String? = null
 
     override val layoutId: Int
         get() = R.layout.activity_store_product
@@ -44,7 +54,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
 
     override fun initViewAndData() {
         initRecyclerView()
-        initDropDown()
+        initEditView()
     }
 
     private fun initRecyclerView() {
@@ -68,8 +78,9 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
 
         mAdapter = StoreProductAdapter(this)
         list_product?.setAdapter(mAdapter!!)
-        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            StockDetailsActivity.openActivity(this@StoreProductActivity)
+        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            val id = mAdapter?.mList?.get(position)?.id ?: "-1"
+            StockDetailsActivity.openActivity(this@StoreProductActivity, id)
         }
 
         mEmptyView = NoDataView(this)
@@ -78,27 +89,73 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         loadData()
     }
 
+    private fun initEditView() {
+        et_search.setOnKeyListener { _, action, keyEvent ->
+            if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
+                if (action == KeyEvent.KEYCODE_ENTER) {
+                    KeyBoardUtil.hideKeybord(this, et_search)
+                    val inputValue = et_search.text.toString().trim()
+                    if (StringUtil.isNotBlank(inputValue)) {
+                        reSetEditText()
+                        keyword = inputValue
+                        classifyId = null
+                        pageNo = 1
+                        loadData()
+                    } else {
+                        QToast.show(this, R.string.toast_no_input_value)
+                    }
+                }
+            }
+            false
+        }
+        btn_search.setOnClickListener {
+            KeyBoardUtil.hideKeybord(this, et_search)
+            val inputValue = et_search.text.toString().trim()
+            if (StringUtil.isNotBlank(inputValue)) {
+                reSetEditText()
+                keyword = inputValue
+                classifyId = null
+                pageNo = 1
+                loadData()
+            } else {
+                QToast.show(this, R.string.toast_no_input_value)
+            }
+        }
+    }
+
     private fun loadData() {
-        mPresenter?.loadData(pageNo)
+        mPresenter?.loadData(pageNo, classifyId, keyword)
+    }
+
+    /**
+     * 获取扫码数据
+     * */
+    private fun reSetEditText() {
+        Observable.timer(500, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    et_search.setText("")
+                    et_search.requestFocus()
+                    tv_purchase_use.text = ""
+                }
     }
 
     /**
      * 初始化下拉弹窗
      * */
-    private fun initDropDown() {
-        val list: MutableList<String> = ArrayList()
-        list.add("病虫防治1")
-        list.add("病虫防治2")
-        list.add("病虫防治3")
-        list.add("病虫防治4")
-        list.add("病虫防治5")
+    private fun initClassify(list: List<ProductClassifyBean>) {
         btn_purchase_use.post {
             val width = btn_purchase_use.width
             mPurchaseUsePop = DropDownPop(this, list, width)
 
             mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
-                override fun onItemClick(position: Int, value: String) {
-                    tv_purchase_use.text = value
+                override fun onItemClick(position: Int, value: Any?) {
+                    val bean: ProductClassifyBean = value as ProductClassifyBean
+                    classifyId = bean.id
+                    keyword = null
+                    tv_purchase_use.text = bean.name
+                    pageNo = 1
+                    loadData()
                 }
             }
         }
@@ -108,7 +165,15 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         }
     }
 
-    override fun replaceList(beans: List<StoreProductBean>?, isNext: Boolean) {
+    override fun replaceClissifyList(list: List<ProductClassifyBean>?) {
+        if (isRunning) {
+            if (list != null && list.isNotEmpty()) {
+                initClassify(list)
+            }
+        }
+    }
+
+    override fun replaceList(beans: List<ProductBean>?, isNext: Boolean) {
         if (isRunning) {
             list_product?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {
@@ -123,7 +188,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         }
     }
 
-    override fun addListAtEnd(beans: List<StoreProductBean>?, isNext: Boolean) {
+    override fun addListAtEnd(beans: List<ProductBean>?, isNext: Boolean) {
         if (isRunning) {
             list_product?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {

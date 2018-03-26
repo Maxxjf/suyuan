@@ -96,6 +96,11 @@
     <string name="toast_logout_failure">退出登录失败</string>
     <string name="toast_no_input_value">请输入内容</string>
     <string name="toast_init_nfc_failure">初始化身份证识别器失败，请重新进入识别</string>
+    <string name="toast_get_product_details_failure">获取产品数据为空，请重试</string>
+    <string name="toast_input_warn_line">请输入警告线</string>
+    <string name="toast_input_price">请输入售价</string>
+    <string name="toast_edit_warn_line_success">调整警告线成功</string>
+    <string name="toast_edit_price_success">调整售价成功</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -139,6 +144,7 @@
     <string name="tag_credit">赊账</string>
     <string name="tag_return">退款</string>
     <string name="tag_valid_order">有效订单</string>
+    <string name="tag_valid_order_number">订单数</string>
     <string name="num_of_valid_order">%d笔</string>
     <string name="tag_stock_warn">库存告警</string>
     <string name="tag_stock_warn_line">库存警告线</string>

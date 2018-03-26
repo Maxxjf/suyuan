@@ -1,7 +1,12 @@
 package com.qcloud.suyuan.ui.store.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.ReturnDataBean
+import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.suyuan.beans.ProductReturnBean
 import com.qcloud.suyuan.beans.StoreProductBean
+import com.qcloud.suyuan.constant.AppConstants
+import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.store.presenter.IStoreProductPresenter
 import com.qcloud.suyuan.ui.store.view.IStoreProductView
 
@@ -12,78 +17,32 @@ import com.qcloud.suyuan.ui.store.view.IStoreProductView
  */
 class StoreProductPresenterImpl: BasePresenter<IStoreProductView>(), IStoreProductPresenter {
 
-    override fun loadData(pageNo: Int) {
-        val list: MutableList<StoreProductBean> = ArrayList()
-        var bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
+    val mModel = GoodsModelImpl()
 
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
+    override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 0, keyword, object : DataCallback<ProductReturnBean> {
+            override fun onSuccess(t: ProductReturnBean?, message: String?) {
+                if (t != null) {
+                    mView?.replaceClissifyList(t.classifyList)
+                    if (t.list != null) {
+                        if (pageNo == 1) {
+                            mView?.replaceList(t.list, t.isNext())
+                        } else {
+                            mView?.addListAtEnd(t.list, t.isNext())
+                        }
+                    } else {
+                        if (pageNo == 1) {
+                            mView?.showEmptyView("暂无数据")
+                        } else {
+                            mView?.loadErr("暂无更多数据", true)
+                        }
+                    }
+                }
+            }
 
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
-
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
-
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
-
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
-
-        bean = StoreProductBean()
-        bean.amount = 338
-        bean.barCode = "785763352032"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
-        bean.operator = "易辉"
-        bean.lastTime = "2018/03/14 12:03"
-        list.add(bean)
-
-        mView?.replaceList(list, false)
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message, true)
+            }
+        })
     }
 }

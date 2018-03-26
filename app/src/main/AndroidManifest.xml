@@ -93,6 +93,7 @@
         <activity
             android:name=".ui.store.widget.StoreProductActivity"
             android:label="@string/title_store_product"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ui.main.widget.SearchActivity"
@@ -138,10 +139,6 @@
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme"/>
-        <activity
-            android:name=".IdVerifyActivity"
-            android:label="@string/title_activity_test"
-            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

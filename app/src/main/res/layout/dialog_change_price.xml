@@ -72,12 +72,12 @@
             android:layout_marginLeft="@dimen/margin_1"
             android:layout_marginStart="@dimen/margin_1"
             android:gravity="center_vertical"
-            android:inputType="number"
-            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:imeOptions="actionDone"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/textSize"
             android:textColorHint="@color/colorGray"
-            android:hint="@string/hint_input_product_code_and_name"/>
+            android:hint="@string/toast_input_price"/>
 
     </LinearLayout>
 

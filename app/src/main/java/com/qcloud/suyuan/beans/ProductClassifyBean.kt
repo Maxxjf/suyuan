@@ -10,6 +10,11 @@ import com.qcloud.qclib.utils.StringUtil
 class ProductClassifyBean {
     var id: String = ""     // 分类
     var isleaf: Int = 0     // 是否是叶子节点 0代表不是，1代表是；0值不可以作为刷选条件
-    var name: String? = null    // 分类名称
+    var name: String = ""    // 分类名称
         get() = if (StringUtil.isBlank(field)) "" else field
+    var level: Int = 0
+    var remark: String? = null
+    var state: Int = 0
+    var parentId: String? = null
+    var ordinal: Int = 0
 }

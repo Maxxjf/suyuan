@@ -140,7 +140,7 @@
                     android:layout_marginTop="@dimen/padding_1"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_valid_order"/>
+                    android:text="@string/tag_valid_order_number"/>
             </LinearLayout>
 
             <LinearLayout

@@ -8,12 +8,30 @@ import com.qcloud.qclib.utils.StringUtil
  * 2018/3/24 下午11:47.
  */
 class ProductMillBean {
+    var id: String? = "-1"
+    var name: String? = null    // 厂家名称
+        get() = if (StringUtil.isBlank(field)) "" else field
     var address: String? = null // 厂家地址
         get() = if (StringUtil.isBlank(field)) "" else field
-    var name: String? = null    // 厂家名称
+    var street: String? = null  // 厂家街道
         get() = if (StringUtil.isBlank(field)) "" else field
     var tel: String? = null     // 电话
         get() = if (StringUtil.isBlank(field)) "" else field
     var url: String? = null     // 网址
         get() = if (StringUtil.isBlank(field)) "" else field
+    var email: String? = null
+    var fax: String? = null
+    var postcode: String? = null
+    var country: String? = null
+    var provinceCode: String? = null
+    var provinceName: String? = null
+    var type: String? = null
+    var linkman: String? = null
+    var number: String? = null
+    var updateTime: String? = null
+    var createTime: String? = null
+    var isRemove: Int = 0
+    var productionClassify: String? = null
+    var remark: String? = null
+
 }

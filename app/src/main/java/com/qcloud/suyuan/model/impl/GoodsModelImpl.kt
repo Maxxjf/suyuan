@@ -4,6 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.net.IGoodsApi
@@ -17,9 +18,20 @@ class GoodsModelImpl: IGoodsModel {
 
     /**
      * 获取库存列表(产品列表)
+     *
+     * @param pageNo
+     * @param pageSize
+     * @param classifyId 二级分类id
+     * @param isPlatform 是否私有产品 1是0不是
+     * @param keyWord 搜索关键字 条形码/名称/厂家
      * */
-    override fun list(pageNo: Int, pageSize: Int, callback: DataCallback<ProductReturnBean>) {
+    override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ProductReturnBean>) {
         val params = OkGoRequest.getAppParams()
+        if (StringUtil.isNotBlank(classifyId)) {
+            params.put("classifyId", classifyId)
+        }
+        params.put("isPlatform", isPlatform)
+        params.put("keyword", keyword)
         params.put("pageNo", pageNo)
         params.put("pageSize", pageSize)
 
@@ -61,7 +73,7 @@ class GoodsModelImpl: IGoodsModel {
     override fun editWarnLine(goodsId: String, cordon: Int, callback: DataCallback<EmptyReturnBean>) {
         val params = OkGoRequest.getAppParams()
         params.put("goodsId", goodsId)
-        params.put("cordon", cordon)
+        params.put("cardon", cordon)
 
         BaseApi.dispose(IGoodsApi.editCordon(params), callback)
     }

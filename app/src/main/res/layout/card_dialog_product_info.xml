@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.2"
             android:orientation="vertical"
             android:gravity="center_vertical">
 
@@ -188,7 +188,7 @@
                     android:layout_marginStart="@dimen/drawPadding"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/textSize"
-                    tools:text="@string/tag_mobile"/>
+                    tools:text="@string/tag_product_standard"/>
             </LinearLayout>
 
             <LinearLayout

@@ -189,8 +189,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             mPurchaseUsePop = DropDownPop(this, list, width)
 
             mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
-                override fun onItemClick(position: Int, value: String) {
-                    tv_purchase_use.text = value
+                override fun onItemClick(position: Int, value: Any?) {
+                    //tv_purchase_use.text = value
                 }
             }
         }

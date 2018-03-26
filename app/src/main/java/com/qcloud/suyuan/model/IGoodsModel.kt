@@ -11,7 +11,7 @@ import com.qcloud.suyuan.beans.*
  */
 interface IGoodsModel {
     /**获取库存列表(产品列表)*/
-    fun list(pageNo: Int, pageSize: Int, callback: DataCallback<ProductReturnBean>)
+    fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ProductReturnBean>)
 
     /**获取商品详情*/
     fun details(id: String, callback: DataCallback<ProductDetailsBean>)
