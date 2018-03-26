@@ -159,6 +159,9 @@
     <string name="tag_list_water">流水号</string>
     <string name="tag_list_payed_money">已还金额</string>
     <string name="tag_order_info">账单明细</string>
+    <string name="tag_repayment_all">全部还请</string>
+    <string name="tag_repayment_money">还款金额</string>
+    <string name="tag_repayment">还款</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>

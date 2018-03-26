@@ -30,7 +30,8 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
 
     var errtip: TipDialog? = null
-    private var mEmptyView: NoDataView? = null
+    private var mWaterEmptyView: NoDataView? = null
+    private var mReceiptEmptyView: NoDataView? = null
     private var waterAdapter: ReturnGoodsListAdapter? = null
     private var receiptAdapter: ReturnedReceiptAdapter? = null
 
@@ -67,9 +68,10 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         PullRefreshUtil.setRefresh(rv_selling_water_list,true,true)
         PullRefreshUtil.setRefresh(rv_credit_list,true,true)
 
-        mEmptyView = NoDataView(this)
-        rv_selling_water_list.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        rv_credit_list.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        mWaterEmptyView = NoDataView(this)
+        mReceiptEmptyView = NoDataView(this)
+        rv_selling_water_list.setEmptyView(mWaterEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_credit_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         waterAdapter = ReturnGoodsListAdapter(this)
         receiptAdapter = ReturnedReceiptAdapter(this)

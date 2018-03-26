@@ -26,4 +26,6 @@ interface ICreditRecordView :BaseView{
     fun getCreditInfo()
     /**的赊账列表*/
     fun getCreditList()
+    /**还款*/
+    fun repayment()
 }
