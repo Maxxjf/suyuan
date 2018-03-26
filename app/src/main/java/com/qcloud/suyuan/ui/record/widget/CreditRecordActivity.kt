@@ -27,7 +27,6 @@ import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.RepaymentDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_credit_record.*
-import java.math.BigDecimal
 
 /**
  * Description: 赊账记录
@@ -45,8 +44,9 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     private var creditPageNo: Int = 1       //列表页数
     private var orderPageNo: Int = 1        //列表页数
     private var mCurrentCreditId: String = ""//这是当前欠债人的id
-    private var creditMoney:BigDecimal = BigDecimal(100) //赊账金额
-    private var repayMoney:BigDecimal =BigDecimal(0) //已还金额
+    private var mCurrentId: String = ""//这是当前欠债单的id
+    private var creditMoney:Double =0.0//赊账金额
+    private var repayMoney:Double = 0.0//已还金额
     override val layoutId: Int
         get() = R.layout.activity_credit_record
 
@@ -107,6 +107,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         })
         orderAdapter?.onHolderClick=object :CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean>{
             override fun onHolderClick(view: View, t: CreditInfoBean, position: Int) {
+                mCurrentId= t.id!!
                 showRepaymentDialog()
             }
         }
@@ -134,23 +135,24 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
                 }
 
                 override fun onRepaymentClick() {
-                    repaymentDialog!!.setMoney("${creditMoney.subtract(repayMoney)}")
+                    repaymentDialog!!.setMoney("${creditMoney-repayMoney}")
                 }
             }
         }
         repaymentDialog!!.show()
     }
+
     /**还款**/
     override  fun repayment() {
         var needPay=repaymentDialog?.getMoney()
-        loadErr("${needPay}")
+       mPresenter?.repayment(mCurrentId, needPay!!.toDouble())
     }
 
     private fun initData(){
         getCreditList()
     }
     override fun getCreditList() {
-        mPresenter?.getCreditList(creditPageNo, AppConstants.PAGE_SIZE)
+        mPresenter?.getCreditList("",creditPageNo, AppConstants.PAGE_SIZE)
     }
 
     override fun getCreditInfo() {

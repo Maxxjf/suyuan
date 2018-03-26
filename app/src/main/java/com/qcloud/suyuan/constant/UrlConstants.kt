@@ -47,6 +47,8 @@ object UrlConstants {
     const val GET_CREDIT_LIST= URL_PREFIX_APP+"onCredit/list"
     /**赊账详细**/
     const val GET_CREDIT_INFO= URL_PREFIX_APP+"onCredit/info"
+    /**赊账还款**/
+    const val REPAYMENT= URL_PREFIX_APP+"onCredit/repayment"
 
 
 }

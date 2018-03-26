@@ -4,6 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.CreditInfoBean
 import com.qcloud.suyuan.beans.CreditListBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
 
 
 /**
@@ -15,7 +16,15 @@ interface IMoneyModel {
     /**
      * 得到赊账列表
      */
-    fun getCreditList(pageNo: Int, pageSize: Int, callback: DataCallback<CreditListBean>)
+    fun getCreditList(keyword:String,pageNo: Int, pageSize: Int, callback: DataCallback<CreditListBean>)
 
+    /**
+     * 得到赊账详细
+     */
     fun getCreditInfo(creditId: String, pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<CreditInfoBean>>)
+
+    /**
+     * 赊账还款
+     */
+    fun repayment(id: String, money: Double, callback: DataCallback<EmptyReturnBean>)
 }

@@ -78,6 +78,7 @@
             android:label="@string/title_selling_water"
             android:screenOrientation="landscape" />
         <activity
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.record.widget.CreditRecordActivity"
             android:label="@string/title_credit_record"
             android:screenOrientation="landscape" />
@@ -112,6 +113,7 @@
             android:label="@string/title_form"
             android:screenOrientation="landscape" />
         <activity
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.store.widget.MySupplierActivity"
             android:label="@string/title_my_supplier"
             android:screenOrientation="landscape" />

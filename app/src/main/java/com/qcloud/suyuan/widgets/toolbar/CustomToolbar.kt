@@ -175,7 +175,6 @@ class CustomToolbar @JvmOverloads constructor(
             override fun onError(status: Int, message: String) {
                 QToast.show(mContext, message)
             }
-
         })
     }
 
