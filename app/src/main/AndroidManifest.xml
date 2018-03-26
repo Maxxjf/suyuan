@@ -139,6 +139,10 @@
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".PrinterActivity"
+            android:label="@string/title_activity_test"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

@@ -3,4 +3,7 @@
     <!-- 身份证识别 -->
     <item name="id_verify_result" type="id"/>
 
+    <!-- 打印机连接返回 -->
+    <item name="id_printer_connect_result" type="id"/>
+
 </resources>

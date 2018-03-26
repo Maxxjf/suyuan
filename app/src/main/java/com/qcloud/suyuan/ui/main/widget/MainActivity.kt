@@ -93,7 +93,10 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_purchase -> PurchaseActivity.openActivity(this)
             R.id.layout_modify_price -> ModifyPriceActivity.openActivity(this)
             R.id.layout_selling_water -> SellingWaterActivity.openActivity(this)
-            R.id.layout_out_storage -> OutStorageActivity.openActivity(this)
+            R.id.layout_out_storage -> {
+                //PrinterActivity.openActivity(this)
+                OutStorageActivity.openActivity(this)
+            }
             R.id.layout_store_product -> StoreProductActivity.openActivity(this)
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
             R.id.layout_return -> ReturnedActivity.openActivity(this)
