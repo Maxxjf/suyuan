@@ -16,6 +16,7 @@ import com.qcloud.qclib.utils.SharedUtil
 import com.qcloud.suyuan.BuildConfig
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.utils.FileLoggingTree
+import com.qcloud.suyuan.utils.NFCHelper
 import com.tencent.bugly.crashreport.CrashReport
 import io.realm.Realm
 import okhttp3.OkHttpClient
@@ -54,6 +55,8 @@ class BaseApplication: Application() {
         } else {
             Timber.plant(FileLoggingTree())
         }
+
+        NFCHelper.instance.initSerialPort(this)
     }
 
     /**

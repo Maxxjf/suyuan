@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.ui.goods.view
 
+import com.qcloud.suyuan.beans.IDVerifyResultBean
 import com.qcloud.suyuan.beans.SellersBean
 
 /**
@@ -23,4 +24,7 @@ interface ISellersView {
 
     /**隐藏空布局 */
     fun hideEmptyView()
+
+    /**处理身份识别数据*/
+    fun disposeRfidReceivedData(bean: IDVerifyResultBean)
 }

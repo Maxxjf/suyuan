@@ -21,6 +21,7 @@ import com.qcloud.suyuan.ui.order.widget.SellingWaterActivity
 import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
 import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
+import com.qcloud.suyuan.utils.NFCHelper
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -144,6 +145,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
                         override fun onClick(dialog: MaterialDialog, which: DialogAction) {
                             RealmHelper.instance.closeRealm()
                             BaseApplication.mAppManager?.appExit(this@MainActivity)
+                            NFCHelper.instance.close()
                         }
                     })
                     .show()

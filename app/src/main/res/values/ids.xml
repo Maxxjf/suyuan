@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 身份证识别 -->
+    <item name="id_verify_result" type="id"/>
+
+</resources>

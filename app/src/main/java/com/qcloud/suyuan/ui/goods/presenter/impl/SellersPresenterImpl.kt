@@ -1,10 +1,13 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.RxBusEvent
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.beans.IDVerifyResultBean
 import com.qcloud.suyuan.beans.SellersBean
 import com.qcloud.suyuan.ui.goods.presenter.ISellersPresenter
 import com.qcloud.suyuan.ui.goods.view.ISellersView
+import io.reactivex.functions.Consumer
 
 /**
  * Description:卖货
@@ -12,6 +15,25 @@ import com.qcloud.suyuan.ui.goods.view.ISellersView
  * 2018/3/15 上午12:22.
  */
 class SellersPresenterImpl: BasePresenter<ISellersView>(), ISellersPresenter {
+
+    init {
+        initEventBus()
+    }
+
+    private fun initEventBus() {
+        if (mEventBus != null) {
+            mEventBus!!.registerSubscriber(this, mEventBus!!.obtainSubscriber(RxBusEvent::class.java, Consumer {
+                when (it.type) {
+                    R.id.id_verify_result -> {
+                        val bean: IDVerifyResultBean? = it.obj as IDVerifyResultBean
+                        if (bean != null) {
+                            mView?.disposeRfidReceivedData(bean)
+                        }
+                    }
+                }
+            }))
+        }
+    }
 
     override fun onBtnClick(viewId: Int) {
         when (viewId) {
