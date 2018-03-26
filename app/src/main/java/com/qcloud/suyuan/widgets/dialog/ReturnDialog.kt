@@ -21,7 +21,7 @@ class ReturnDialog @JvmOverloads constructor(
     var onConfirmClickListener: OnConfirmClickListener? = null
 
     init {
-        setContentView(R.layout.dialog_return_good)
+        setContentView(R.layout.dialog_return)
         initDialog()
         initView()
     }

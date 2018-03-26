@@ -24,8 +24,10 @@ import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.CreditRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.ICreditRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.RepaymentDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_credit_record.*
+import java.math.BigDecimal
 
 /**
  * Description: 赊账记录
@@ -35,14 +37,16 @@ import kotlinx.android.synthetic.main.activity_credit_record.*
 class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresenterImpl>(), ICreditRecordView {
 
     private var errtip: TipDialog? = null
+    private var repaymentDialog: RepaymentDialog? = null
     private var creditAdapter: CreditListAdapter? = null
     private var orderAdapter: OrderInfoAdapter? = null
     private var mCreditEmptyView: NoDataView? = null
     private var mOrderEmptyView: NoDataView? = null
-    private var creditPageNo: Int = 1
-    private var orderPageNo: Int = 1
-    private var mCurrentCreditId: String = ""
-
+    private var creditPageNo: Int = 1       //列表页数
+    private var orderPageNo: Int = 1        //列表页数
+    private var mCurrentCreditId: String = ""//这是当前欠债人的id
+    private var creditMoney:BigDecimal = BigDecimal(100) //赊账金额
+    private var repayMoney:BigDecimal =BigDecimal(0) //已还金额
     override val layoutId: Int
         get() = R.layout.activity_credit_record
 
@@ -103,7 +107,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         })
         orderAdapter?.onHolderClick=object :CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean>{
             override fun onHolderClick(view: View, t: CreditInfoBean, position: Int) {
-                loadErr("${t}")
+                showRepaymentDialog()
             }
         }
         mCreditEmptyView = NoDataView(this)
@@ -120,6 +124,28 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
             false
         }
     }
+
+    private fun showRepaymentDialog() {
+        if (repaymentDialog==null){
+            repaymentDialog= RepaymentDialog(this)
+            repaymentDialog!!.onConfirmClickListener=object :RepaymentDialog.OnConfirmClickListener{
+                override fun onConfirmClick() {
+                     repayment()
+                }
+
+                override fun onRepaymentClick() {
+                    repaymentDialog!!.setMoney("${creditMoney.subtract(repayMoney)}")
+                }
+            }
+        }
+        repaymentDialog!!.show()
+    }
+    /**还款**/
+    override  fun repayment() {
+        var needPay=repaymentDialog?.getMoney()
+        loadErr("${needPay}")
+    }
+
     private fun initData(){
         getCreditList()
     }
