@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.constant
 
+import android.os.Environment
+
 /**
  * 类说明：应用常量
  * Author: Kuzan
@@ -10,6 +12,9 @@ object AppConstants {
     const val PAGE_SIZE = 10
 
     val loadColors = intArrayOf(0x7fff0000, 0x700ff000, 0x7f0000ff)
+
+    // sd卡路径
+    val SDPATH = Environment.getExternalStorageDirectory().path
 
     /**账号key值 */
     const val account = "KEY_ACCOUNT"
@@ -27,4 +32,6 @@ object AppConstants {
     const val CIDSTRING = "/dev/ttyS1"
     /**身份识别串口*/
     const val BAUDRATT = 115200
+
+
 }

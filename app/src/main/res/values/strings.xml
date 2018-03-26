@@ -94,6 +94,8 @@
     <string name="toast_no_more_data">暂无更多数据</string>
     <string name="toast_logout_success">退出登录成功</string>
     <string name="toast_logout_failure">退出登录失败</string>
+    <string name="toast_no_input_value">请输入内容</string>
+    <string name="toast_init_nfc_failure">初始化身份证识别器失败，请重新进入识别</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
