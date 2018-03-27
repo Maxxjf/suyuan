@@ -3,7 +3,7 @@ package com.qcloud.suyuan.model.impl
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
-import com.qcloud.qclib.network.OkGoRequest
+import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.model.IGoodsModel
@@ -16,6 +16,8 @@ import com.qcloud.suyuan.net.IGoodsApi
  */
 class GoodsModelImpl: IGoodsModel {
 
+    private val mApi: IGoodsApi = FrameRequest.instance.createRequest(IGoodsApi::class.java)
+
     /**
      * 获取库存列表(产品列表)
      *
@@ -23,19 +25,19 @@ class GoodsModelImpl: IGoodsModel {
      * @param pageSize
      * @param classifyId 二级分类id
      * @param isPlatform 是否私有产品 1是0不是
-     * @param keyWord 搜索关键字 条形码/名称/厂家
+     * @param keyword 搜索关键字 条形码/名称/厂家
      * */
     override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ProductReturnBean>) {
-        val params = OkGoRequest.getAppParams()
+        val params = FrameRequest.getAppParams()
         if (StringUtil.isNotBlank(classifyId)) {
-            params.put("classifyId", classifyId)
+            params["classifyId"] = classifyId!!
         }
-        params.put("isPlatform", isPlatform)
-        params.put("keyword", keyword)
-        params.put("pageNo", pageNo)
-        params.put("pageSize", pageSize)
+        params["isPlatform"] = isPlatform
+        params["keyword"] = keyword ?: ""
+        params["pageNo"] = pageNo
+        params["pageSize"] = pageSize
 
-        BaseApi.dispose(IGoodsApi.list(params), callback)
+        BaseApi.dispose(mApi.list(params), callback)
     }
 
     /**
@@ -44,10 +46,10 @@ class GoodsModelImpl: IGoodsModel {
      * @param id 商品id
      * */
     override fun details(id: String, callback: DataCallback<ProductDetailsBean>) {
-        val params = OkGoRequest.getAppParams()
-        params.put("id", id)
+        val params = FrameRequest.getAppParams()
+        params["id"] = id
 
-        BaseApi.dispose(IGoodsApi.details(params), callback)
+        BaseApi.dispose(mApi.details(params), callback)
     }
 
     /**
@@ -57,11 +59,11 @@ class GoodsModelImpl: IGoodsModel {
      * @param retailPrice 价格
      * */
     override fun editPrice(goodsId: String, retailPrice: Double, callback: DataCallback<EmptyReturnBean>) {
-        val params = OkGoRequest.getAppParams()
-        params.put("goodsId", goodsId)
-        params.put("retailPrice", retailPrice)
+        val params = FrameRequest.getAppParams()
+        params["goodsId"] = goodsId
+        params["retailPrice"] = retailPrice
 
-        BaseApi.dispose(IGoodsApi.editPrice(params), callback)
+        BaseApi.dispose(mApi.editPrice(params), callback)
     }
 
     /**
@@ -71,63 +73,68 @@ class GoodsModelImpl: IGoodsModel {
      * @param cordon 警告线
      * */
     override fun editWarnLine(goodsId: String, cordon: Int, callback: DataCallback<EmptyReturnBean>) {
-        val params = OkGoRequest.getAppParams()
-        params.put("goodsId", goodsId)
-        params.put("cardon", cordon)
+        val params = FrameRequest.getAppParams()
+        params["goodsId"] = goodsId
+        params["cardon"] = cordon
 
-        BaseApi.dispose(IGoodsApi.editCordon(params), callback)
+        BaseApi.dispose(mApi.editCordon(params), callback)
     }
 
     /**
      * 获取库存告警列表
      * */
     override fun getStockWarnList(pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<StockWarnBean>>) {
-        val params = OkGoRequest.getAppParams()
-        params.put("pageNo", pageNo)
-        params.put("pageSize", pageSize)
+        val params = FrameRequest.getAppParams()
+        params["pageNo"] = pageNo
+        params["pageSize"] = pageSize
 
-        BaseApi.dispose(IGoodsApi.getStockWarnList(params), callback)
+        BaseApi.dispose(mApi.getStockWarnList(params), callback)
     }
 
     /**
      * 获取有效期告警列表
      * */
     override fun getValidWarnList(pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<ValidWarnBean>>) {
-        val params = OkGoRequest.getAppParams()
-        params.put("pageNo", pageNo)
-        params.put("pageSize", pageSize)
+        val params = FrameRequest.getAppParams()
+        params["pageNo"] = pageNo
+        params["pageSize"] = pageSize
 
-        BaseApi.dispose(IGoodsApi.getValidWarnList(params), callback)
+        BaseApi.dispose(mApi.getValidWarnList(params), callback)
     }
     /**
      * 扫码查询
      *  @param saleId   销售单id (首次为空,从第二次开始传)
      * */
     override fun scanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>) {
-        val params=OkGoRequest.getAppParams()
-        params.put("code",code)
-        params.put("saleId",saleId)
-        BaseApi.dispose(IGoodsApi.scanCode(params),callback)
+        val params = FrameRequest.getAppParams()
+        params["code"] = code
+        params["saleId"] = saleId
+
+        BaseApi.dispose(mApi.scanCode(params), callback)
     }
+
     /**
      * 退货
      * @param traceabilityIdStr   溯源记录id字符串(多个用 , 隔开)
      * */
     override fun salesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>) {
-        val params=OkGoRequest.getAppParams()
-        params.put("money",money)
-        params.put("traceabilityIdStr",traceabilityIdStr)
-        BaseApi.dispose(IGoodsApi.salesReturn(params),callback)
+        val params = FrameRequest.getAppParams()
+        params["money"] = money
+        params["traceabilityIdStr"] = traceabilityIdStr
+
+        BaseApi.dispose(mApi.salesReturn(params), callback)
     }
+
     /**
      * 获取退货记录列表
      * */
     override fun getReturnRecord(startTime: String, endTime: String, pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<CodeBean>>) {
-        val params=OkGoRequest.getAppParams()
-        params.put("startTime",startTime)
-        params.put("endTime",endTime)
-        params.put("pageNo",pageNo)
-        params.put("pageSize",pageSize)
-        BaseApi.dispose(IGoodsApi.getReturnedRecord(params),callback)
+        val params = FrameRequest.getAppParams()
+        params["startTime"] = startTime
+        params["endTime"] = endTime
+        params["pageNo"] = pageNo
+        params["pageSize"] = pageSize
+
+        BaseApi.dispose(mApi.getReturnedRecord(params), callback)
     }
 }

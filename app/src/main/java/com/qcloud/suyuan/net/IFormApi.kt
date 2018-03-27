@@ -1,25 +1,19 @@
 package com.qcloud.suyuan.net
 
-import com.google.gson.reflect.TypeToken
-import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.beans.BaseResponse
-import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
+import retrofit2.http.GET
+import retrofit2.http.QueryMap
 
 /**
  * Description: 报表有关
  * Author: gaobaiqiang
  * 2018/3/19 下午7:18.
  */
-object IFormApi {
+interface IFormApi {
     /** 首页报表 */
-    fun getMainForm(params: HttpParams): Observable<BaseResponse<MainFormBean>> {
-        val type = object : TypeToken<BaseResponse<MainFormBean>>() {
-
-        }.type
-
-        return OkGoRequest.instance.getRequest(UrlConstants.MAIN_FORM, type, params)
-    }
+    @GET(UrlConstants.MAIN_FORM)
+    fun getMainForm(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<MainFormBean>>
 }

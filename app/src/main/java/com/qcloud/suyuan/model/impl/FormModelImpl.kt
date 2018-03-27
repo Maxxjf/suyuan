@@ -1,9 +1,8 @@
 package com.qcloud.suyuan.model.impl
 
-import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
-import com.qcloud.qclib.network.OkGoRequest
+import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.model.IFormModel
 import com.qcloud.suyuan.net.IFormApi
@@ -15,12 +14,14 @@ import com.qcloud.suyuan.net.IFormApi
  */
 class FormModelImpl: IFormModel {
 
+    private val mApi: IFormApi = FrameRequest.instance.createRequest(IFormApi::class.java)
+
     /**
      * 获取首页报表数据
      * */
     override fun getMainForm(callback: DataCallback<MainFormBean>) {
-        val params: HttpParams = OkGoRequest.getAppParams()
+        val params = FrameRequest.getAppParams()
 
-        BaseApi.dispose(IFormApi.getMainForm(params), callback)
+        BaseApi.dispose(mApi.getMainForm(params), callback)
     }
 }

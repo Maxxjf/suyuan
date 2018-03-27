@@ -1,48 +1,41 @@
 package com.qcloud.suyuan.net
 
-import com.google.gson.reflect.TypeToken
-import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.qclib.beans.ReturnDataBean
-import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
+import retrofit2.http.GET
+import retrofit2.http.QueryMap
 
 /**
  * 类说明：金钱有关的
  * Author: iceberg
  * Date: 2018-3-25.
  */
-object IMoneyApi {
+interface IMoneyApi {
     /**赊账列表*/
-    fun getCreditList(params: HttpParams):Observable<BaseResponse<CreditListBean>>{
-        val type=object :TypeToken<BaseResponse<CreditListBean>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.GET_CREDIT_LIST,type,params)
-    }
+    @GET(UrlConstants.GET_CREDIT_LIST)
+    fun getCreditList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<CreditListBean>>
+
     /**赊账详细*/
-    fun getCreditInfo(params: HttpParams):Observable<BaseResponse<ReturnDataBean<CreditInfoBean>>>{
-        val type=object :TypeToken<BaseResponse<ReturnDataBean<CreditInfoBean>>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.GET_CREDIT_INFO,type,params)
-    }
+    @GET(UrlConstants.GET_CREDIT_INFO)
+    fun getCreditInfo(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<CreditInfoBean>>>
+
     /**赊账还款*/
-    fun repayment(params: HttpParams):Observable<BaseResponse<EmptyReturnBean>>{
-        val type=object :TypeToken<BaseResponse<EmptyReturnBean>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.REPAYMENT,type,params)
-    }
+    @GET(UrlConstants.REPAYMENT)
+    fun repayment(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
+
     /**商品查询*/
-    fun saleSearch(params: HttpParams):Observable<BaseResponse<SaleSearchBean>>{
-        val type=object :TypeToken<BaseResponse<SaleSearchBean>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.SALE_SEARCH,type,params)
-    }
+    @GET(UrlConstants.SALE_SEARCH)
+    fun saleSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SaleSearchBean>>
+
     /**销售列表*/
-    fun getSaleList(params: HttpParams):Observable<BaseResponse<ReturnDataBean<SaleListBean>>>{
-        val type=object :TypeToken<BaseResponse<ReturnDataBean<SaleListBean>>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.SALE_LIST,type,params)
-    }
+    @GET(UrlConstants.SALE_LIST)
+    fun getSaleList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<SaleListBean>>>
+
     /**销售详情*/
-    fun getSaleInfo(params: HttpParams):Observable<BaseResponse<SaleInfoBean>>{
-        val type=object :TypeToken<BaseResponse<SaleInfoBean>>(){}.type
-        return OkGoRequest.instance.getRequest(UrlConstants.SALE_INFO,type,params)
-    }
+    @GET(UrlConstants.SALE_INFO)
+    fun getSaleInfo(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SaleInfoBean>>
+
 }

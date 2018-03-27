@@ -1,34 +1,26 @@
 package com.qcloud.suyuan.net
 
-import com.google.gson.reflect.TypeToken
-import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.qclib.beans.ReturnDataBean
-import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
+import retrofit2.http.GET
+import retrofit2.http.QueryMap
 
 /**
  * 类说明：库存有关
  * Author: Kuzan
  * Date: 2018/3/27 15:17.
  */
-object IStorageApi {
+interface IStorageApi {
     /** 有效期告警列表撤消入库功能 */
-    fun outStorageInValidWarn(params: HttpParams): Observable<BaseResponse<EmptyReturnBean>> {
-        val type = object : TypeToken<BaseResponse<EmptyReturnBean>>() {
-
-        }.type
-        return OkGoRequest.instance.getRequest(UrlConstants.OUT_STORAGE_IN_VALID_WARN, type, params)
-    }
+    @GET(UrlConstants.OUT_STORAGE_IN_VALID_WARN)
+    fun outStorageInValidWarn(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 
     /** 搜索产品入库 */
-    fun searchList(params: HttpParams): Observable<BaseResponse<ReturnDataBean<ProductBean>>> {
-        val type = object : TypeToken<BaseResponse<ReturnDataBean<ProductBean>>>() {
+    @GET(UrlConstants.STORAGE_SEARCH)
+    fun searchList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductBean>>>
 
-        }.type
-        return OkGoRequest.instance.getRequest(UrlConstants.STORAGE_SEARCH, type, params)
-    }
 }
