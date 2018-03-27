@@ -15,9 +15,11 @@ import com.qcloud.suyuan.adapters.InStorageAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.InStorageRecordBean
+import com.qcloud.suyuan.beans.PrintBean
 import com.qcloud.suyuan.beans.ProductDetailsBean
 import com.qcloud.suyuan.ui.store.presenter.impl.StockDetailsPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
+import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.AdjustWarnDialog
 import com.qcloud.suyuan.widgets.dialog.ChangePriceDialog
@@ -69,7 +71,10 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         list_product.setAdapter(mAdapter!!)
         mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<InStorageRecordBean> {
             override fun onHolderClick(view: View, t: InStorageRecordBean, position: Int) {
-                QToast.show(this@StockDetailsActivity, "打印${t.batchNum}")
+                val printBean = PrintBean()
+                printBean.type = 1
+                printBean.barCode = t.batchNum
+                PrintHelper.instance.printData(printBean)
             }
         }
 

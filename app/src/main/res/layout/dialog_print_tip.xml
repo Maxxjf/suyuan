@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_1"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/icon_close"
             android:layout_gravity="right|top"
             android:layout_marginTop="@dimen/margin_10"
