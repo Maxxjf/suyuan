@@ -3,8 +3,10 @@ package com.qcloud.suyuan.widgets.dialog
 import android.content.Context
 import android.view.View
 import com.qcloud.qclib.utils.ScreenUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
+import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.utils.BarCodeUtil
 import kotlinx.android.synthetic.main.dialog_in_storage_confirm.*
 
@@ -24,19 +26,33 @@ class InStorageDialog constructor(context: Context) : BaseDialog(context), View.
     private fun initView() {
         btn_close.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
-
-        createCode()
     }
 
-    private fun createCode() {
+    fun refreshData(bean: ProductBean?, inStorageDate: String?, batchNum: String?) {
+        if (bean != null) {
+            with(bean!!) {
+                tv_product_name.text = name
+                tv_product_spec.text = specification
+                tv_product_manufacture.text = millName
+            }
+            if (StringUtil.isNotBlank(inStorageDate)) {
+                tv_give_change.text = inStorageDate
+            }
+            if (StringUtil.isNotBlank(batchNum)) {
+                createCode(batchNum!!)
+            }
+        }
+    }
+
+    private fun createCode(batchNum: String) {
         img_bar_code.post {
             val barCodeWidth = (ScreenUtil.getScreenWidth(mContext) * 3 / 8)
             val barCodeHeight = img_bar_code.height
 
-            val barCode = BarCodeUtil.createBarCode("189983004300", barCodeWidth, barCodeHeight)
+            val barCode = BarCodeUtil.createBarCode(batchNum, barCodeWidth, barCodeHeight)
             if (barCode != null) {
                 img_bar_code.setImageBitmap(barCode)
-                tv_bar_code.text = "189983004300"
+                tv_bar_code.text = batchNum
             }
         }
     }

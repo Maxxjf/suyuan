@@ -53,6 +53,8 @@ object UrlConstants {
     const val REPAYMENT= URL_PREFIX_APP+"onCredit/repayment"
     /**搜索产品入库*/
     const val STORAGE_SEARCH = URL_PREFIX_APP + "storage/search"
+    /**产品入库*/
+    const val STORAGE_SAVE = URL_PREFIX_APP + "storage/save"
 
     /**商品查询**/
     const val SALE_SEARCH= URL_PREFIX_APP+"sale/search"

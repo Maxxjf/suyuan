@@ -5,6 +5,7 @@ import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.InStorageBean
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.model.IStorageModel
 import com.qcloud.suyuan.net.IStorageApi
@@ -41,5 +42,27 @@ class StorageModelImpl: IStorageModel {
         params["keyword"] = keyword
 
         BaseApi.dispose(mApi.searchList(params), callback)
+    }
+
+    /**
+     * 提交入库
+     *
+     * @param goodId 商品ID
+     * @param number 入库数量
+     * @param price 进货价格
+     * @param expDate 生产日期
+     * @param stopDate 有效期截止日期
+     * @param supplierId supplierId
+     * */
+    override fun save(goodId: String, number: Int, price: Double, expDate: String, stopDate: String, supplierId: String?, callback: DataCallback<InStorageBean>) {
+        val params = FrameRequest.getAppParams()
+        params["goodId"] = goodId
+        params["number"] = number
+        params["price"] = price
+        params["expDate"] = expDate
+        params["stopDate"] = stopDate
+        params["supplierId"] = supplierId ?: ""
+
+        BaseApi.dispose(mApi.save(params), callback)
     }
 }

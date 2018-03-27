@@ -55,9 +55,9 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         mAdapter = PutProductAdapter(this)
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.replaceList(ArrayList())
-        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, id ->
-            val id: String = mAdapter?.mList?.get(position)?.id ?: ""
-            PurchaseDetailsActivity.openActivity(this, id)
+        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            val bean: ProductBean = mAdapter!!.mList[position]
+            PurchaseDetailsActivity.openActivity(this, bean)
         }
 
         mEmptyView = NoDataView(this)

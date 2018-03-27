@@ -1,13 +1,14 @@
 package com.qcloud.suyuan.beans
 
 import com.qcloud.qclib.utils.StringUtil
+import java.io.Serializable
 
 /**
  * Description: 产品
  * Author: gaobaiqiang
  * 2018/3/23 下午7:39.
  */
-class ProductBean {
+class ProductBean: Serializable {
     var id: String? = null  // id
     var name: String? = null    // 商品名称
         get() = if (StringUtil.isBlank(field)) "" else field
