@@ -4,9 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
-import com.qcloud.suyuan.beans.CreditInfoBean
-import com.qcloud.suyuan.beans.CreditListBean
-import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.model.IMoneyModel
 import com.qcloud.suyuan.net.IMoneyApi
 
@@ -54,5 +52,32 @@ class MoneyModelImpl : IMoneyModel {
         params.put("id",id)
         params.put("money",money)
         BaseApi.dispose(IMoneyApi.repayment(params),callback)
+    }
+    /**
+     *商品查询
+     * @param keyword
+     */
+    override fun saleSearch(keyword:String,callback: DataCallback<SaleSearchBean>){
+        val params=OkGoRequest.getAppParams()
+        params.put("keyword",keyword)
+        BaseApi.dispose(IMoneyApi.saleSearch(params),callback)
+    }
+    /**
+     *销售列表
+     * @param keyword
+     */
+    override fun getSaleList(keyword:String,callback: DataCallback<ReturnDataBean<SaleListBean>>){
+        val params=OkGoRequest.getAppParams()
+        params.put("keyword",keyword)
+        BaseApi.dispose(IMoneyApi.getSaleList(params),callback)
+    }
+    /**
+     *销售详情
+     * @param id
+     */
+    override fun getSaleInfo(id:String,callback: DataCallback<SaleInfoBean>){
+        val params=OkGoRequest.getAppParams()
+        params.put("id",id)
+        BaseApi.dispose(IMoneyApi.getSaleInfo(params),callback)
     }
 }

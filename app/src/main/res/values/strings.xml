@@ -63,6 +63,7 @@
     <string name="btn_product_price">产品售价</string>
     <string name="btn_adjust_warn">调整警告线</string>
     <string name="btn_print">打印</string>
+    <string name="btn_edit_info">修改信息</string>
 
     <string name="cb_remember_password">记住密码</string>
 
@@ -84,6 +85,11 @@
     <string name="hint_input_money">请输入有效的金额</string>
     <string name="hint_input_name_idcard_phone">请输入姓名/身份证号/电话号码</string>
     <string name="hint_input_name_supplier">请输入供应商名称/负责人</string>
+    <string name="hint_input_supplier_name">请输入供应商名称</string>
+    <string name="hint_input_supplier_address">请输入供应商地址</string>
+    <string name="hint_input_remark">请输入你要备注的话</string>
+    <string name="hint_input_contact_person">请输入称联系人</string>
+    <string name="hint_input_contact_phone">请输入联系电话</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -173,6 +179,7 @@
     <string name="tag_repayment_money">还款金额</string>
     <string name="tag_repayment">还款</string>
     <string name="tag_supplier_details">供应商详情</string>
+    <string name="tag_supplier_add">添加供应商</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>

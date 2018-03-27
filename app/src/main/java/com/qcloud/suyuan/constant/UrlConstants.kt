@@ -50,5 +50,12 @@ object UrlConstants {
     /**赊账还款**/
     const val REPAYMENT= URL_PREFIX_APP+"onCredit/repayment"
 
+    /**商品查询**/
+    const val SALE_SEARCH= URL_PREFIX_APP+"sale/search"
+    /**销售列表**/
+    const val SALE_LIST= URL_PREFIX_APP+"sale/list"
+    /**销售详情**/
+    const val SALE_INFO= URL_PREFIX_APP+"sale/info"
+
 
 }

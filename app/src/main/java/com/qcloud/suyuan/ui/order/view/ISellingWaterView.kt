@@ -2,6 +2,8 @@ package com.qcloud.suyuan.ui.order.view
 
 import com.qcloud.qclib.base.BaseView
 import com.qcloud.suyuan.beans.CodeBean
+import com.qcloud.suyuan.beans.SaleInfoBean
+import com.qcloud.suyuan.beans.SaleListBean
 
 /**
  * Description: 销售流水
@@ -10,7 +12,6 @@ import com.qcloud.suyuan.beans.CodeBean
  */
 interface ISellingWaterView:BaseView {
     /**替换数据 */
-    fun replaceList(beans: List<CodeBean>?, isNext: Boolean)
 
     /**添加数据 */
     fun addListAtEnd(beans: CodeBean?, isNext: Boolean)
@@ -20,4 +21,10 @@ interface ISellingWaterView:BaseView {
 
     /**隐藏空布局 */
     fun hideEmptyView()
+    /**替换数据 */
+    fun replaceSaleInfoList(beans: List<SaleInfoBean.ListBean>?, isNext: Boolean)
+    /**替换数据 */
+    fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean)
+    /**加载数据 */
+    fun loadData()
 }

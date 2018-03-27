@@ -2,9 +2,7 @@ package com.qcloud.suyuan.model
 
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
-import com.qcloud.suyuan.beans.CreditInfoBean
-import com.qcloud.suyuan.beans.CreditListBean
-import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.*
 
 
 /**
@@ -27,4 +25,17 @@ interface IMoneyModel {
      * 赊账还款
      */
     fun repayment(id: String, money: Double, callback: DataCallback<EmptyReturnBean>)
+
+    /**
+     * 商品查询
+     */
+    fun saleSearch(keyword: String, callback: DataCallback<SaleSearchBean>)
+    /**
+     * 销售列表
+     */
+    fun getSaleList(keyword: String, callback: DataCallback<ReturnDataBean<SaleListBean>>)
+    /**
+     * 销售详情
+     */
+    fun getSaleInfo(id: String, callback: DataCallback<SaleInfoBean>)
 }

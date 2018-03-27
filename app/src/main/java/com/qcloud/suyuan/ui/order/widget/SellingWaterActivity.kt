@@ -7,13 +7,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.widget.AdapterView
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.adapters.ReturnGoodsListAdapter
-import com.qcloud.suyuan.adapters.ReturnedReceiptAdapter
+import com.qcloud.suyuan.adapters.SaleInfoAdapter
+import com.qcloud.suyuan.adapters.SaleListAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.CodeBean
+import com.qcloud.suyuan.beans.SaleInfoBean
+import com.qcloud.suyuan.beans.SaleListBean
 import com.qcloud.suyuan.ui.order.presenter.impl.SellingWaterPresenterImpl
 import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.widgets.customview.NoDataView
@@ -32,8 +35,8 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     var errtip: TipDialog? = null
     private var mWaterEmptyView: NoDataView? = null
     private var mReceiptEmptyView: NoDataView? = null
-    private var waterAdapter: ReturnGoodsListAdapter? = null
-    private var receiptAdapter: ReturnedReceiptAdapter? = null
+    private var saleListAdapter: SaleListAdapter? = null
+    private var saleInfoAdapter: SaleInfoAdapter? = null
 
 
     override val layoutId: Int
@@ -45,6 +48,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
     override fun initViewAndData() {
         initView()
+        loadData()
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -59,27 +63,32 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     }
 
     private fun initView() {
-        waterAdapter=ReturnGoodsListAdapter(this)
-        receiptAdapter=ReturnedReceiptAdapter(this)
-        rv_selling_water_list.setLayoutManager(LinearLayoutManager(this))
-        rv_selling_water_list.setAdapter(waterAdapter!!)
-        rv_credit_list.setLayoutManager(LinearLayoutManager(this))
-        rv_credit_list.setAdapter(receiptAdapter!!)
-        PullRefreshUtil.setRefresh(rv_selling_water_list,true,true)
-        PullRefreshUtil.setRefresh(rv_credit_list,true,true)
+        saleListAdapter = SaleListAdapter(this)
+        saleInfoAdapter = SaleInfoAdapter(this)
+        saleListAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ _, _, i, _ ->
+            Timber.e("${saleListAdapter!!.mList[i]}")
+            mPresenter?.getSaleInfo(saleListAdapter!!.mList[i].id!!)
+        })
+        rv_sale_list.setLayoutManager(LinearLayoutManager(this))
+        rv_sale_list.setAdapter(saleListAdapter!!)
+        rv_sale_info_list.setLayoutManager(LinearLayoutManager(this))
+        rv_sale_info_list.setAdapter(saleInfoAdapter!!)
+        PullRefreshUtil.setRefresh(rv_sale_list, true, true)
+        PullRefreshUtil.setRefresh(rv_sale_info_list, true, true)
 
         mWaterEmptyView = NoDataView(this)
         mReceiptEmptyView = NoDataView(this)
-        rv_selling_water_list.setEmptyView(mWaterEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        rv_credit_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_sale_list.setEmptyView(mWaterEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
-        waterAdapter = ReturnGoodsListAdapter(this)
-        receiptAdapter = ReturnedReceiptAdapter(this)
-        et_search.setOnKeyListener{view: View?, i: Int, keyEvent: KeyEvent? ->
-            if ((i == KeyEvent.KEYCODE_ENTER)) {
-                KeyBoardUtil.hideKeybord(this, et_search)
-//                getDate()
-                Timber.e("keyEvent = $i, enter = ${KeyEvent.KEYCODE_ENTER}")
+        et_search.setOnKeyListener { view: View?, i: Int, keyEvent: KeyEvent? ->
+            if (keyEvent != null) {
+                if (keyEvent.action == KeyEvent.ACTION_UP) {
+                    if ((i == KeyEvent.KEYCODE_ENTER)) {
+                        KeyBoardUtil.hideKeybord(this, et_search)
+                        loadData()
+                    }
+                }
             }
             false
         }
@@ -89,38 +98,55 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
     }
 
-    override fun replaceList(beans: List<CodeBean>?, isNext: Boolean) {
-        if (isRunning){
-            rv_credit_list.loadedFinish()
-            if (beans!=null && beans.isNotEmpty()){
-//                receiptAdapter?.replaceList(beans)
+    override fun loadData() {
+        var keyword = et_search.text.toString()
+        mPresenter?.getSaleList(keyword)
+    }
+
+    override fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean) {
+        if (isRunning) {
+            rv_sale_list.loadedFinish()
+            if (beans != null && beans.isNotEmpty()) {
+                saleListAdapter?.replaceList(beans)
                 hideEmptyView()
-            }else{
+            } else {
+                showEmptyView(getString(R.string.tip_no_data))
+            }
+        }
+    }
+
+    override fun replaceSaleInfoList(beans: List<SaleInfoBean.ListBean>?, isNext: Boolean) {
+        if (isRunning) {
+            rv_sale_info_list.loadedFinish()
+            if (beans != null && beans.isNotEmpty()) {
+                saleInfoAdapter?.replaceList(beans)
+                hideEmptyView()
+            } else {
                 showEmptyView(getString(R.string.tip_no_data))
             }
         }
     }
 
     override fun addListAtEnd(bean: CodeBean?, isNext: Boolean) {
-        if (isRunning){
-            rv_selling_water_list.loadedFinish()
-            if (bean!=null){
-//                waterAdapter?.addBeanAtEnd(bean)
+        if (isRunning) {
+            rv_sale_list.loadedFinish()
+            if (bean != null) {
+//                saleListAdapter?.addBeanAtEnd(bean)
                 hideEmptyView()
-            }else{
+            } else {
                 loadErr(getString(R.string.tip_no_data))
             }
         }
     }
 
     override fun showEmptyView(tip: String) {
-        rv_selling_water_list.showEmptyView()
-        rv_credit_list.showEmptyView()
+        rv_sale_list.showEmptyView()
+        rv_sale_info_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
-         rv_selling_water_list.hideEmptyView()
-         rv_credit_list.hideEmptyView()
+        rv_sale_list.hideEmptyView()
+        rv_sale_info_list.hideEmptyView()
     }
 
     companion object {

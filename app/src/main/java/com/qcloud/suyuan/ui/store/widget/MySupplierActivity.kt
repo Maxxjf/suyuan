@@ -8,6 +8,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.store.presenter.impl.MySupplierPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IMySupplierView
+import kotlinx.android.synthetic.main.activity_my_supplier.*
 
 /**
  * Description: 我的供应商
@@ -29,11 +30,18 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
     }
 
     override fun initViewAndData() {
+       initView()
+    }
 
+    private fun initView() {
+        showAddFragment()
+        btn_add.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-
+        when(v){
+            btn_add -> showDetailFragment()
+        }
     }
 
     fun showAddFragment(){
