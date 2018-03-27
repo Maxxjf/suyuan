@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_12"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="75%毒药"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="2018-03-22 00:00"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
+
+    <TextView
+        android:id="@+id/tv_rule"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="10000.00"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="小李"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/textSize" />
+
+
+
+</LinearLayout>

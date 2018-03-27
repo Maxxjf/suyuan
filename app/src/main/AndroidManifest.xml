@@ -50,10 +50,6 @@
             android:label="@string/title_login"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ui.shop.widget.CartActivity"
-            android:label="@string/title_cart"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".ui.goods.widget.SellersActivity"
             android:label="@string/title_sellers"
             android:launchMode="singleTop"

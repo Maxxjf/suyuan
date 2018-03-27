@@ -46,6 +46,8 @@
     <dimen name="itemImgHeight">180dp</dimen>
     <!--输入框高度-->
     <dimen name="editHeight">64dp</dimen>
+    <!--特别高的输入框高度-->
+    <dimen name="largeEditHeight">256dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_width">618dp</dimen>

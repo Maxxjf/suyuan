@@ -66,17 +66,17 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         receiptAdapter = ReturnedReceiptAdapter(this)
         rv_credit_info_list.setLayoutManager(LinearLayoutManager(this))
         rv_credit_info_list.setAdapter(goodsAdapter!!)
-        rv_credit_list.setLayoutManager(LinearLayoutManager(this))
-        rv_credit_list.setAdapter(receiptAdapter!!)
+        rv_sale_info_list.setLayoutManager(LinearLayoutManager(this))
+        rv_sale_info_list.setAdapter(receiptAdapter!!)
         SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
         SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
-        SwipeRefreshUtil.setLoadMore(rv_credit_list, true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_credit_list, AppConstants.loadColors)
+        SwipeRefreshUtil.setLoadMore(rv_sale_info_list, true)
+        SwipeRefreshUtil.setColorSchemeColors(rv_sale_info_list, AppConstants.loadColors)
 
         mGoodsEmptyView = NoDataView(this)
         mReceiptEmptyView = NoDataView(this)
         rv_credit_info_list.setEmptyView(mGoodsEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        rv_credit_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
+        rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         et_search.setOnKeyListener { view, i, keyEvent ->
             if (keyEvent.action==KeyEvent.ACTION_UP){
@@ -152,12 +152,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     override fun replaceList(beans: List<ScanCodeBean.InfoListBean>?, isNext: Boolean) {
         if (isRunning) {
-            rv_credit_list?.loadedFinish()
+            rv_sale_info_list?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {
                 if (receiptAdapter != null) {
                     receiptAdapter!!.replaceList(beans)
                 }
-                rv_credit_list?.isMore(isNext)
+                rv_sale_info_list?.isMore(isNext)
                 hideEmptyView()
             } else {
                 showEmptyView(resources.getString(R.string.tip_no_data))
@@ -179,12 +179,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     override fun showEmptyView(tip: String) {
         rv_credit_info_list.showEmptyView()
-        rv_credit_list.showEmptyView()
+        rv_sale_info_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
         rv_credit_info_list.hideEmptyView()
-        rv_credit_list.hideEmptyView()
+        rv_sale_info_list.hideEmptyView()
     }
 
     companion object {

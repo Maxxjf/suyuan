@@ -155,7 +155,7 @@
                 android:orientation="vertical">
 
                 <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
-                    android:id="@+id/rv_selling_water_list"
+                    android:id="@+id/rv_sale_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="@dimen/margin_2" />
@@ -320,7 +320,7 @@
             </LinearLayout>
 
             <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
-                android:id="@+id/rv_credit_list"
+                android:id="@+id/rv_sale_info_list"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_50" />
 

@@ -1,13 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:layout_centerInParent="true"
-        android:textSize="@dimen/bigTitleSize"
-        android:text="新增"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    app:cardCornerRadius="1dp"
+    app:cardElevation="1dp"
+    tools:context=".ui.goods.widget.PurchaseDetailsActivity">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layout_margin"
+                android:layout_marginStart="@dimen/layout_margin"
+                android:gravity="center_vertical"
+                android:text="@string/tag_supplier_add"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize" />
+
+        </RelativeLayout>
+
+        <View style="@style/LineHorizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/layoutMargin">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_supplier_name"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_supplier_address"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_contact_person"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_contact_phone"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_remark"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/margin_2">
+
+                <TextView
+                    android:id="@+id/tv_in_storage_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_input_supplier_name"
+                    android:paddingLeft="@dimen/margin_2"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_in_storage_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_input_supplier_address"
+                    android:paddingLeft="@dimen/margin_2"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:id="@+id/btn_in_storage_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_input_contact_person"
+                    android:paddingLeft="@dimen/margin_2"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:id="@+id/btn_in_storage_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_input_contact_phone"
+                    android:paddingLeft="@dimen/margin_2"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+                <TextView
+                    android:id="@+id/tv_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/largeEditHeight"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hint_input_remark"
+                    android:paddingLeft="@dimen/margin_2"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/typeTextSize" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/largeBtnHeight"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/btn_radius_selector"
+            android:gravity="center"
+            android:text="@string/btn_confirm_in_storage"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+
