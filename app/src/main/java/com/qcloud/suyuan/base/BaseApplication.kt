@@ -17,6 +17,7 @@ import com.qcloud.suyuan.BuildConfig
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.utils.FileLoggingTree
 import com.qcloud.suyuan.utils.NFCHelper
+import com.qcloud.suyuan.utils.PrintHelper
 import com.tencent.bugly.crashreport.CrashReport
 import io.realm.Realm
 import okhttp3.OkHttpClient
@@ -57,6 +58,7 @@ class BaseApplication: Application() {
         }
 
         NFCHelper.instance.initSerialPort(this)
+        PrintHelper.instance.initPrinter(this)
     }
 
     /**
@@ -87,7 +89,7 @@ class BaseApplication: Application() {
         OkGo.getInstance().init(this)
                 .setOkHttpClient(builder.build())
                 .setCacheMode(CacheMode.NO_CACHE)
-                .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE).retryCount = 0
+                .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE).retryCount = 1
     }
 
     private inner class SafeHostnameVerifier : HostnameVerifier {

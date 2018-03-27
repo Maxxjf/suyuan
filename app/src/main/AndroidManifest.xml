@@ -133,12 +133,13 @@
             android:name=".ui.store.widget.StockDetailsActivity"
             android:label="@string/title_stock_details"
             android:screenOrientation="landscape" />
+        <!--打印机提示框-->
+        <service
+            android:name=".widgets.dialog.PrinterDialog"
+            android:enabled="true"
+            android:exported="false" />
         <activity
             android:name=".TestActivity"
-            android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme"/>
-        <activity
-            android:name=".PrinterActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme"/>
     </application>

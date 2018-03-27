@@ -31,7 +31,7 @@ class UsbController (@NonNull val mContext: Context) {
     private val mPermissionReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             mContext.unregisterReceiver(this)
-            if (intent.action == "com.hs.usbconn.USB" && intent.getBooleanExtra("permission", false)) {
+            if (intent.action == ACTION_USB_PERMISSION && intent.getBooleanExtra("permission", false)) {
                 val dev: UsbDevice? = intent.getParcelableExtra<Parcelable>("device") as UsbDevice
                 if (dev != null) {
                     BusProvider.instance.post(RxBusEvent.newBuilder(R.id.id_verify_result).setObj(USB_CONNECTED).build())
@@ -43,7 +43,10 @@ class UsbController (@NonNull val mContext: Context) {
     }
 
     /**
-     * 获取打印机设备
+     * 根据vid和pid获取打印机设备
+     *
+     * @param vid
+     * @param pid
      * */
     @Synchronized
     fun getDev(vid: Int, pid: Int): UsbDevice? {
@@ -56,7 +59,7 @@ class UsbController (@NonNull val mContext: Context) {
 
         while (devIterator.hasNext()) {
             val d = devIterator.next() as UsbDevice
-            Timber.d(d.deviceName + "  " + String.format("%04X:%04X", *arrayOf<Any>(Integer.valueOf(d.vendorId), Integer.valueOf(d.productId))))
+            Timber.d(d.deviceName + ":" + String.format("%04X:%04X", Integer.valueOf(d.vendorId), Integer.valueOf(d.productId)))
             if (d.vendorId == vid && d.productId == pid) {
                 dev = d
                 break
@@ -68,21 +71,25 @@ class UsbController (@NonNull val mContext: Context) {
 
     /**
      * 是否有打印机权限
+     *
+     * @param dev 设备
      * */
     @Synchronized
     fun isHasPermission(dev: UsbDevice): Boolean {
-        return this.mUsbManager.hasPermission(dev)
+        return mUsbManager.hasPermission(dev)
     }
 
     /**
      * 获取打印机权限
+     *
+     * @param dev 设备
      * */
     @Synchronized
     fun getPermission(dev: UsbDevice?) {
         if (dev != null) {
             if (!isHasPermission(dev)) {
-                val msg1 = PendingIntent.getBroadcast(mContext, 0, Intent("com.hs.usbconn.USB"), 0)
-                mContext.registerReceiver(mPermissionReceiver, IntentFilter("com.hs.usbconn.USB"))
+                val msg1 = PendingIntent.getBroadcast(mContext, 0, Intent(ACTION_USB_PERMISSION), 0)
+                mContext.registerReceiver(mPermissionReceiver, IntentFilter(ACTION_USB_PERMISSION))
                 mUsbManager.requestPermission(dev, msg1)
             } else {
                 BusProvider.instance.post(RxBusEvent.newBuilder(R.id.id_verify_result).setObj(USB_CONNECTED).build())
@@ -92,6 +99,10 @@ class UsbController (@NonNull val mContext: Context) {
 
     /**
      * 发送数据到打印机
+     *
+     * @param msg 数据
+     * @param charset 字体格式
+     * @param dev 设备
      * */
     @Synchronized
     fun sendMsg(msg: String, charset: String, dev: UsbDevice) {
@@ -109,6 +120,9 @@ class UsbController (@NonNull val mContext: Context) {
 
     /**
      * 发送字节数组到打印机
+     *
+     * @param bits 发送的字节数组
+     * @param dev 设备
      * */
     @Synchronized
     fun sendByte(bits: ByteArray?, dev: UsbDevice): Int {
@@ -145,7 +159,9 @@ class UsbController (@NonNull val mContext: Context) {
     }
 
     /**
-     * 接收打印机返回数据
+     * 获取打印机信息
+     *
+     * @param dev
      * */
     fun revByte(dev: UsbDevice): Byte {
         val timeout = 5000
@@ -159,7 +175,10 @@ class UsbController (@NonNull val mContext: Context) {
     }
 
     /**
-     * 剪纸
+     * 跑纸切刀
+     *
+     * @param dev 设备
+     * @param n 跑多长
      * */
     @Synchronized
     fun cutPaper(dev: UsbDevice, n: Int) {
@@ -186,31 +205,31 @@ class UsbController (@NonNull val mContext: Context) {
             }
         }
 
-        this.sendByte(bits, dev)
+        sendByte(bits, dev)
     }
 
     @Synchronized
     fun openCashBox(dev: UsbDevice) {
         val bits = byteArrayOf(27.toByte(), 112.toByte(), 0.toByte(), 64.toByte(), 80.toByte())
-        this.sendByte(bits, dev)
+        sendByte(bits, dev)
     }
 
     @Synchronized
     fun defaultBuzzer(dev: UsbDevice) {
         val bits = byteArrayOf(27.toByte(), 66.toByte(), 4.toByte(), 1.toByte())
-        this.sendByte(bits, dev)
+        sendByte(bits, dev)
     }
 
     @Synchronized
     fun buzzer(dev: UsbDevice, n: Int, time: Int) {
         val bits = byteArrayOf(27.toByte(), 66.toByte(), n.toByte(), time.toByte())
-        this.sendByte(bits, dev)
+        sendByte(bits, dev)
     }
 
     @Synchronized
     fun setBuzzerMode(dev: UsbDevice, n: Int, time: Int, mode: Int) {
         val bits = byteArrayOf(27.toByte(), 67.toByte(), n.toByte(), time.toByte(), mode.toByte())
-        this.sendByte(bits, dev)
+        sendByte(bits, dev)
     }
 
     @Synchronized

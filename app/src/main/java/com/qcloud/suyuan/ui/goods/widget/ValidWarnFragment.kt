@@ -2,17 +2,21 @@ package com.qcloud.suyuan.ui.goods.widget
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import android.view.View
+import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.ValidWarnAdapter
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.base.BaseFragment
 import com.qcloud.suyuan.beans.ValidWarnBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.ValidWarnPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IValidWarnView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.fragment_valid_warn.*
 import timber.log.Timber
 
@@ -25,7 +29,8 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
     private var mAdapter: ValidWarnAdapter? = null
     private var mEmptyView: NoDataView? = null
 
-    var pageNo: Int = 1
+    private var pageNo: Int = 1
+    private var mTipDialog: TipDialog? = null
 
     override val layoutId: Int
         get() = R.layout.fragment_valid_warn
@@ -63,6 +68,11 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
 
         mAdapter = ValidWarnAdapter(activity!!)
         list_valid_warn?.setAdapter(mAdapter!!)
+        mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<ValidWarnBean> {
+            override fun onHolderClick(view: View, t: ValidWarnBean, position: Int) {
+                showTip(t)
+            }
+        }
 
         mEmptyView = NoDataView(activity!!)
         list_valid_warn?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
@@ -72,6 +82,29 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
 
     private fun loadData() {
         mPresenter?.loadData(pageNo)
+    }
+
+    private fun showTip(bean: ValidWarnBean?) {
+        if (mTipDialog == null) {
+            mTipDialog = TipDialog(mContext!!)
+        }
+        if (bean != null) {
+            // 出库弹窗
+            mTipDialog?.setTip(R.string.tip_out_storage_confirm)
+            mTipDialog?.setConfirmBtn(R.string.btn_confirm)
+        } else {
+            // 提示弹窗
+            mTipDialog?.setTip(R.string.tip_out_storage_success)
+            mTipDialog?.setConfirmBtn(R.string.btn_i_know)
+        }
+        mTipDialog?.show()
+        mTipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                if (bean != null) {
+                    mPresenter?.outStorage(bean.id ?: "0", bean.surplusNum)
+                }
+            }
+        }
     }
 
     override fun replaceList(beans: List<ValidWarnBean>?, isNext: Boolean) {
@@ -121,5 +154,11 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
 
     override fun hideEmptyView() {
         list_valid_warn?.hideEmptyView()
+    }
+
+    override fun outStorageSuccess() {
+        if (isInFragment) {
+            showTip(null)
+        }
     }
 }

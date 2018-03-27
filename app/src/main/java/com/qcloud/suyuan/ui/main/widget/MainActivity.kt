@@ -22,6 +22,7 @@ import com.qcloud.suyuan.ui.record.widget.CreditRecordActivity
 import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
 import com.qcloud.suyuan.utils.NFCHelper
+import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -93,10 +94,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
             R.id.layout_purchase -> PurchaseActivity.openActivity(this)
             R.id.layout_modify_price -> ModifyPriceActivity.openActivity(this)
             R.id.layout_selling_water -> SellingWaterActivity.openActivity(this)
-            R.id.layout_out_storage -> {
-                //PrinterActivity.openActivity(this)
-                OutStorageActivity.openActivity(this)
-            }
+            R.id.layout_out_storage -> OutStorageActivity.openActivity(this)
             R.id.layout_store_product -> StoreProductActivity.openActivity(this)
             R.id.layout_credit_record -> CreditRecordActivity.openActivity(this)
             R.id.layout_return -> ReturnedActivity.openActivity(this)
@@ -149,6 +147,7 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
                             RealmHelper.instance.closeRealm()
                             BaseApplication.mAppManager?.appExit(this@MainActivity)
                             NFCHelper.instance.close()
+                            PrintHelper.instance.close()
                         }
                     })
                     .show()
