@@ -3,8 +3,10 @@ package com.qcloud.suyuan.net
 import com.google.gson.reflect.TypeToken
 import com.lzy.okgo.model.HttpParams
 import com.qcloud.qclib.beans.BaseResponse
+import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 
@@ -20,5 +22,13 @@ object IStorageApi {
 
         }.type
         return OkGoRequest.instance.getRequest(UrlConstants.OUT_STORAGE_IN_VALID_WARN, type, params)
+    }
+
+    /** 搜索产品入库 */
+    fun searchList(params: HttpParams): Observable<BaseResponse<ReturnDataBean<ProductBean>>> {
+        val type = object : TypeToken<BaseResponse<ReturnDataBean<ProductBean>>>() {
+
+        }.type
+        return OkGoRequest.instance.getRequest(UrlConstants.STORAGE_SEARCH, type, params)
     }
 }

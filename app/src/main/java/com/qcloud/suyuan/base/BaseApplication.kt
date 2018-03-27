@@ -80,11 +80,11 @@ class BaseApplication: Application() {
         //自动管E理cookie（或者叫session的保持）
         builder.cookieJar(CookieJarImpl(DBCookieStore(this)))
         //配置https的域名匹配规则，详细看demo的初始化介绍，不需要就不要加入，使用不当会导致https握手失败
-        builder.hostnameVerifier(SafeHostnameVerifier())
+        //builder.hostnameVerifier(SafeHostnameVerifier())
 
         //信任所有证书,不安全有风险
-        val sslparams = HttpsUtils.getSslSocketFactory()
-        builder.sslSocketFactory(sslparams.sSLSocketFactory, sslparams.trustManager)
+        val sslParams = HttpsUtils.getSslSocketFactory()
+        builder.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
 
         OkGo.getInstance().init(this)
                 .setOkHttpClient(builder.build())

@@ -52,5 +52,6 @@ object UrlConstants {
     /**赊账还款**/
     const val REPAYMENT= URL_PREFIX_APP+"onCredit/repayment"
 
-
+    /**搜索产品入库*/
+    const val STORAGE_SEARCH = URL_PREFIX_APP + "storage/search"
 }

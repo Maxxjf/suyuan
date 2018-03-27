@@ -1,9 +1,11 @@
 package com.qcloud.suyuan.model.impl
 
+import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.OkGoRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.model.IStorageModel
 import com.qcloud.suyuan.net.IStorageApi
 
@@ -24,5 +26,16 @@ class StorageModelImpl: IStorageModel {
         params.put("id", id)
         params.put("number", number)
         BaseApi.dispose(IStorageApi.outStorageInValidWarn(params), callback)
+    }
+
+    /**
+     * 搜索产品入库
+     *
+     * @param keyword 条码、商品名、厂家名
+     * */
+    override fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<ProductBean>>) {
+        val params = OkGoRequest.getAppParams()
+        params.put("keyword", keyword)
+        BaseApi.dispose(IStorageApi.searchList(params), callback)
     }
 }

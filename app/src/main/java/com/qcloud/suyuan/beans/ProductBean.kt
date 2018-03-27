@@ -12,9 +12,13 @@ class ProductBean {
     var name: String? = null    // 商品名称
         get() = if (StringUtil.isBlank(field)) "" else field
     var imageUrl: String? = null    // 商品图片
+    var image: String? = null       // 商品图片(入库使用)
     var retailPrice: Double = 0.00  // 零售价
     var classifyName: String? = null    // 分类名称
         get() = if (StringUtil.isBlank(field)) "" else field
+    var stock: Int = 0      // 当前库存
+    var stockStr: String = "0"
+        get() = stock.toString()
     var amount: Int = 0     // 总库存
     var amountStr: String = "0"
         get() = amount.toString()

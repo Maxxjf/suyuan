@@ -11,6 +11,7 @@ import android.view.KeyEvent
 import android.view.View
 import android_serialport_api.sample.Util
 import com.ivsign.android.IDCReader.IDCReaderSDK
+import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.rxtask.RxScheduler
 import com.qcloud.qclib.rxtask.task.NewTask
@@ -18,6 +19,7 @@ import com.qcloud.qclib.rxtask.task.UITask
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.qclib.utils.ValidateUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.base.BaseActivity
@@ -329,6 +331,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                             people.endDate = mIDCReaderSDK.GetEndDate()
                             people.userImg = AppConstants.SDPATH + "/wltlib/zp.bmp"
 
+                            refreshPurchaser(people)
                             Timber.e("people = $people")
                         }
                         REPEAT5001 -> {
@@ -340,6 +343,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     }
                 }
             })
+        }
+    }
+
+    private fun refreshPurchaser(bean: IDBean) {
+        with(bean) {
+            GlideUtil.loadCircleImageForFile(this@SellersActivity, img_user_head, bean.userImg, R.drawable.bmp_user_head)
+            tv_user_name.text = bean.name
+            tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
         }
     }
 

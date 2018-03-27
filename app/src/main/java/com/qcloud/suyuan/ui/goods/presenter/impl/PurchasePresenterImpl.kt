@@ -1,7 +1,11 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.ReturnDataBean
+import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.model.IStorageModel
+import com.qcloud.suyuan.model.impl.StorageModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IPurchasePresenter
 import com.qcloud.suyuan.ui.goods.view.IPurchaseView
 
@@ -12,15 +16,22 @@ import com.qcloud.suyuan.ui.goods.view.IPurchaseView
  */
 class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter {
 
-    override fun loadProduct(barCode: String) {
-        val bean = ProductBean()
-        bean.amount = 998
-        bean.barCode = barCode
-        bean.id = "24240807"
-        bean.name = "莠去津50%(悬浮剂)"
-        bean.specification = "100g*20瓶/件"
-        bean.millName = "甘肃省武山县农药厂"
+    private val mModel: IStorageModel = StorageModelImpl()
 
-        mView?.addProductAtEnd(bean)
+    override fun loadProduct(keyword: String) {
+        mModel.searchList(keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+            override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
+                if (t != null) {
+                    mView?.replaceList(t.list)
+                } else {
+                    mView?.loadErr("暂无数据")
+                }
+            }
+
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message, true)
+                mView?.showEmptyView()
+            }
+        })
     }
 }

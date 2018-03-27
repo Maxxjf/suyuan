@@ -103,6 +103,7 @@
     <string name="toast_edit_warn_line_success">调整警告线成功</string>
     <string name="toast_edit_price_success">调整售价成功</string>
     <string name="toast_out_storage_success">撤消入库成功</string>
+    <string name="toast_login_timeout">登录超时，请重新登录</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

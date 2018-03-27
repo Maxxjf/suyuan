@@ -53,7 +53,7 @@
                 android:layout_marginLeft="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_1"
                 android:gravity="center_vertical"
-                android:inputType="number"
+                android:inputType="text"
                 android:imeOptions="actionSearch"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"

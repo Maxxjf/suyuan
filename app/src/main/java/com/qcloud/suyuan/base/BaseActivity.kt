@@ -5,9 +5,18 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.TypedValue
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.RxBusEvent
+import com.qcloud.qclib.enums.RequestStatusEnum
+import com.qcloud.qclib.rxbus.Bus
+import com.qcloud.qclib.rxbus.BusProvider
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.SystemBarUtil
+import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.qclib.widget.dialog.LoadingDialog
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.ui.main.widget.LoginActivity
+import com.qcloud.suyuan.utils.UserInfoUtil
+import io.reactivex.functions.Consumer
 import timber.log.Timber
 
 /**
@@ -26,6 +35,8 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
 
     private var loadingDialog: LoadingDialog? = null
 
+    private var mEventBus: Bus? = BusProvider.instance
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initSystemBarTint()
@@ -41,7 +52,33 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
 
         isRunning = true
 
+        if (mEventBus == null) {
+            mEventBus = BusProvider.instance
+        }
+        try {
+            mEventBus?.register(this)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        initEventBus()
+
         initViewAndData()
+    }
+
+    private fun initEventBus() {
+        if (mEventBus != null) {
+            mEventBus!!.registerSubscriber(this, mEventBus!!.obtainSubscriber(RxBusEvent::class.java, Consumer {
+                when (it.type) {
+                    RequestStatusEnum.NO_ROOT.status -> {
+                        QToast.show(this, R.string.toast_login_timeout)
+                        TokenUtil.clearToken()
+                        UserInfoUtil.mUser = null
+                        BaseApplication.mAppManager?.killAllActivity()
+                        LoginActivity.openActivity(this)
+                    }
+                }
+            }))
+        }
     }
 
     fun addFragment(fragment: BaseFragment<*, *>?) {
@@ -62,6 +99,15 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
             detach(fragment)
         }
         fragments.clear()
+
+        mEventBus?.let {
+            try {
+                mEventBus?.unregister(this)
+                mEventBus = null
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 
     private fun detach(fragment: BaseFragment<*, *>?) {

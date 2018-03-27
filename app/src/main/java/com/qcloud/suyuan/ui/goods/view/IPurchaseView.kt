@@ -10,7 +10,7 @@ import com.qcloud.suyuan.beans.ProductBean
  */
 interface IPurchaseView: BaseView {
     /**添加产品到列表*/
-    fun addProductAtEnd(bean: ProductBean?)
+    fun replaceList(beans: List<ProductBean>?)
 
     /**显示空布局 */
     fun showEmptyView()

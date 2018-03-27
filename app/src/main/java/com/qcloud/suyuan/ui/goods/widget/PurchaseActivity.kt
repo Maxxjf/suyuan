@@ -5,11 +5,12 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
-import android.view.inputmethod.EditorInfo
+import android.view.KeyEvent
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.PutProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
@@ -31,6 +32,8 @@ import java.util.concurrent.TimeUnit
 class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IPurchaseView {
     private var mAdapter: PutProductAdapter? = null
     private var mEmptyView: NoDataView? = null
+
+    private var keyword: String? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase
@@ -67,44 +70,55 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
      * 初始化搜索输入框
      * */
     private fun initEditView() {
-        et_search.setOnEditorActionListener { _, action, keyEvent ->
-            if (action == EditorInfo.IME_ACTION_SEARCH
-                    || action == EditorInfo.IME_ACTION_DONE) {
-                et_search.requestFocus()
-                KeyBoardUtil.hideKeybord(this, et_search)
-                loadData(et_search.text.toString())
+        et_search.setOnKeyListener { _, action, keyEvent ->
+            if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
+                if (action == KeyEvent.KEYCODE_ENTER) {
+                    KeyBoardUtil.hideKeybord(this, et_search)
+                    keyword = et_search.text.toString().trim()
+                    if (StringUtil.isNotBlank(keyword)) {
+                        loadData()
+                    } else {
+                        QToast.show(this, R.string.toast_no_input_value)
+                    }
+                }
             }
             false
         }
         btn_search.setOnClickListener {
-            et_search.requestFocus()
             KeyBoardUtil.hideKeybord(this, et_search)
-            loadData(et_search.text.toString())
+            keyword = et_search.text.toString().trim()
+            if (StringUtil.isNotBlank(keyword)) {
+                loadData()
+            } else {
+                QToast.show(this, R.string.toast_no_input_value)
+            }
         }
     }
 
-    private fun loadData(barCode: String) {
+    private fun loadData() {
+        mPresenter?.loadProduct(keyword!!)
+    }
+
+    /**
+     * 获取扫码数据
+     * */
+    private fun reSetEditText() {
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     et_search.setText("")
                     et_search.requestFocus()
-                    mPresenter?.loadProduct(barCode)
                 }
-
     }
 
-    override fun addProductAtEnd(bean: ProductBean?) {
+    override fun replaceList(beans: List<ProductBean>?) {
         if (isRunning) {
-            if (bean != null) {
-                if (mAdapter != null) {
-                    mAdapter?.addBeanAtEnd(bean)
-                    if (mAdapter!!.itemCount <= 1) {
-                        hideEmptyView()
-                    }
-                }
+            reSetEditText()
+            if (beans != null && beans.isNotEmpty()) {
+                mAdapter?.replaceList(beans)
+                hideEmptyView()
             } else {
-                loadErr(resources.getString(R.string.tip_no_any_product), true)
+                showEmptyView()
             }
         }
     }
