@@ -20,4 +20,7 @@ interface IValidWarnView: BaseView {
 
     /**隐藏空布局 */
     fun hideEmptyView()
+
+    /**撤消入库成功*/
+    fun outStorageSuccess()
 }

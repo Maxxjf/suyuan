@@ -7,4 +7,6 @@ package com.qcloud.suyuan.ui.goods.presenter
  */
 interface IValidWarnPresenter {
     fun loadData(pageNo: Int)
+
+    fun outStorage(id: String, number: Int)
 }
