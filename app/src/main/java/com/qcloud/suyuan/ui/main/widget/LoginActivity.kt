@@ -84,6 +84,14 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     override fun loginSuccess() {
+        if (cb_rember_password.isChecked) {
+            SharedUtil.writeString(AppConstants.account, account)
+            SharedUtil.writeString(AppConstants.password, password)
+        } else {
+//            SharedUtil.writeString(AppConstants.account, "")
+            SharedUtil.writeString(AppConstants.password, "")
+        }
+        SharedUtil.writeBoolean(AppConstants.isCheck, cb_rember_password.isChecked)
 
         stopLoadingDialog()
         MainActivity.openActivity(this)
@@ -105,18 +113,6 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
         }
 
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (cb_rember_password.isChecked) {
-            SharedUtil.writeString(AppConstants.account, account)
-            SharedUtil.writeString(AppConstants.password, password)
-        } else {
-//            SharedUtil.writeString(AppConstants.account, "")
-            SharedUtil.writeString(AppConstants.password, "")
-        }
-        SharedUtil.writeBoolean(AppConstants.isCheck, cb_rember_password.isChecked)
     }
 
     override fun showInput(@NotNull view: TextView?) {

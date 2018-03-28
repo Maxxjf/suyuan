@@ -3,6 +3,7 @@ package com.qcloud.suyuan.ui.goods.view
 import android.widget.TextView
 import com.qcloud.qclib.base.BaseView
 import com.qcloud.suyuan.beans.InStorageBean
+import com.qcloud.suyuan.beans.SupplierBean
 import org.jetbrains.annotations.NotNull
 
 /**
@@ -22,6 +23,8 @@ interface IPurchaseDetailsView: BaseView {
     fun onPriceClick()
 
     fun showInput(@NotNull view: TextView)
+
+    fun replaceSupplierList(beans: List<SupplierBean>)
 
     fun saveSuccess(bean: InStorageBean)
 }

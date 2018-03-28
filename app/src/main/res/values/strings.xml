@@ -111,6 +111,12 @@
     <string name="toast_out_storage_success">撤消入库成功</string>
     <string name="toast_login_timeout">登录超时，请重新登录</string>
     <string name="toast_product_is_empty">获取产品信息出错，请重新进入</string>
+    <string name="toast_input_in_storage_number">请输入入库数量</string>
+    <string name="toast_input_in_storage_price">请输入进货价格</string>
+    <string name="toast_select_product_birthday">请选择产品生产日期</string>
+    <string name="toast_select_product_end_day">请选择产品有效期截止时间</string>
+    <string name="toast_end_day_min_birthday">产品有效期截止时间不能小于生产日期</string>
+    <string name="toast_select_in_storage_supplier">请选择供应商</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

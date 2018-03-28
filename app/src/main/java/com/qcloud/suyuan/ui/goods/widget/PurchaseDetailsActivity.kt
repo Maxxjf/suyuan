@@ -6,14 +6,18 @@ import android.support.annotation.NonNull
 import android.view.View
 import android.widget.TextView
 import com.qcloud.qclib.base.BasePopupWindow
+import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.DateUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.InStorageBean
 import com.qcloud.suyuan.beans.PrintBean
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.utils.PrintHelper
@@ -36,6 +40,11 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     private var suppliperPop: DropDownBtnPop? = null
     private var inputDialog: InputDialog? = null
     private var inStorageDialog: InStorageDialog? = null
+    private var number: Int = 0
+    private var price: Double = 0.00
+    private var birthday: String? = null
+    private var endDay: String? = null
+    private var currSupplier: SupplierBean? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase_details
@@ -53,10 +62,10 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         tv_in_storage_number.setOnClickListener(this)
         tv_in_storage_price.setOnClickListener(this)
 
-        initSupplierPop()
         initInputView()
 
         refreshData()
+        mPresenter?.loadSupplier()
     }
 
     /**
@@ -90,30 +99,6 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         }
     }
 
-    private fun initSupplierPop() {
-        val list: MutableList<String> = ArrayList()
-        list.add("条目1")
-        list.add("条目2")
-        list.add("条目3")
-        list.add("条目4")
-        list.add("条目5")
-        btn_in_storage_supplier.post {
-            val width = btn_in_storage_supplier.width
-            suppliperPop = DropDownBtnPop(this, list, width)
-
-            suppliperPop?.onItemClickListener = object : DropDownBtnPop.OnItemClickListener {
-                override fun onItemClick(position: Int, value: String) {
-                    tv_in_storage_supplier.text = value
-                }
-            }
-            suppliperPop?.onPopWindowViewClick = object : BasePopupWindow.OnPopWindowViewClick {
-                override fun onViewClick(view: View) {
-
-                }
-            }
-        }
-    }
-
     override fun onClick(v: View?) {
         if (v != null) {
             mPresenter?.onBtnClick(v.id)
@@ -125,20 +110,19 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     override fun onConfirmClick() {
-        if (productBean != null) {
-            val number = tv_in_storage_number.text.toString().toInt()
-            val price = tv_in_storage_price.text.toString().toDouble()
-            val expDate = btn_in_storage_birthday.text.toString()
-            val stopDate = btn_in_storage_end_date.text.toString()
-
-            mPresenter?.save(productBean!!.id ?: "0", number, price, expDate, stopDate, "1124")
-        } else {
-            QToast.show(this, R.string.toast_product_is_empty)
+        if (check()) {
+            mPresenter?.save(productBean!!.id ?: "0", number, price, birthday!!, endDay!!, currSupplier!!.id)
         }
     }
 
     override fun onClearClick() {
-
+        if (isRunning) {
+            tv_in_storage_number.text = "0"
+            tv_in_storage_price.text = "0.00"
+            btn_in_storage_birthday.text = ""
+            btn_in_storage_end_date.text = ""
+            tv_in_storage_supplier.text = ""
+        }
     }
 
     override fun onStockNumberClick() {
@@ -161,6 +145,29 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         inputDialog?.setInputValue(view.text.toString().trim())
 
         inputDialog?.show()
+    }
+
+    override fun replaceSupplierList(beans: List<SupplierBean>) {
+        if (isRunning) {
+            btn_in_storage_supplier.post {
+                val width = btn_in_storage_supplier.width
+                suppliperPop = DropDownBtnPop(this, beans, width)
+
+                suppliperPop?.onItemClickListener = object : DropDownBtnPop.OnItemClickListener {
+                    override fun onItemClick(position: Int, value: Any?) {
+                        if (value != null) {
+                            currSupplier = value as SupplierBean
+                            tv_in_storage_supplier.text = currSupplier!!.name
+                        }
+                    }
+                }
+                suppliperPop?.onPopWindowViewClick = object : BasePopupWindow.OnPopWindowViewClick {
+                    override fun onViewClick(view: View) {
+                        QToast.show(this@PurchaseDetailsActivity, "跳转到新增，功能未开发，等等马上好")
+                    }
+                }
+            }
+        }
     }
 
     override fun saveSuccess(bean: InStorageBean) {
@@ -189,6 +196,45 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                 Timber.e(errMsg)
             }
         }
+    }
+
+    private fun check(): Boolean {
+        val numberStr = tv_in_storage_number.text.toString()
+        val priceStr = tv_in_storage_price.text.toString()
+        birthday = btn_in_storage_birthday.text.toString()
+        endDay = btn_in_storage_end_date.text.toString()
+        if (productBean == null) {
+            QToast.show(this, R.string.toast_product_is_empty)
+            return false
+        }
+        if (!StringUtil.isNumberStr(numberStr) || numberStr.toInt() <= 0) {
+            QToast.show(this, R.string.toast_input_in_storage_number)
+            return false
+        }
+        if (!StringUtil.isMoneyStr(priceStr) || priceStr.toDouble() <= 0.00) {
+            QToast.show(this, R.string.toast_input_in_storage_price)
+            return false
+        }
+        if (StringUtil.isBlank(birthday)) {
+            QToast.show(this, R.string.toast_select_product_birthday)
+            return false
+        }
+        if (StringUtil.isBlank(endDay)) {
+            QToast.show(this, R.string.toast_select_product_end_day)
+            return false
+        }
+        if (DateUtil.compareTime(birthday, endDay, DateStyleEnum.YYYY_MM_DD.value) > 1) {
+            QToast.show(this, R.string.toast_end_day_min_birthday)
+            return false
+        }
+        if (currSupplier == null) {
+            QToast.show(this, R.string.toast_select_in_storage_supplier)
+            return false
+        }
+        number = numberStr.toInt()
+        price = priceStr.toDouble()
+
+        return true
     }
 
     override fun onDestroy() {
