@@ -8,5 +8,7 @@ import com.qcloud.qclib.base.BtnClickPresenter
  * 2018/3/23 下午9:26.
  */
 interface IPurchaseDetailsPresenter: BtnClickPresenter {
+    fun loadSupplier()
+
     fun save(goodId: String, number: Int, price: Double, expDate: String, stopDate: String, supplierId: String?)
 }

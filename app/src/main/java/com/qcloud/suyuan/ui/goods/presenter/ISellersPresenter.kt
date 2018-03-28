@@ -8,5 +8,5 @@ import com.qcloud.qclib.base.BtnClickPresenter
  * 2018/3/15 上午12:21.
  */
 interface ISellersPresenter: BtnClickPresenter {
-    fun loadData()
+    fun loadData(keyword: String)
 }

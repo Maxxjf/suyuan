@@ -53,12 +53,12 @@ class RefreshNumView @JvmOverloads constructor(
 
     private fun refreshNum(number: Int) {
         tv_number?.text = number.toString()
-        currBean?.number = number
+        //currBean?.number = number
     }
 
     fun refreshBean(bean: SellersBean) {
         currBean = bean
-        currNum = bean.number
-        tv_number?.text = bean.number.toString()
+        //currNum = bean.number
+        //tv_number?.text = bean.number.toString()
     }
 }

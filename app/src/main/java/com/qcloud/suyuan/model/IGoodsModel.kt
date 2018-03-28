@@ -34,4 +34,7 @@ interface IGoodsModel {
     fun scanCode(code: String, saleId: String, callback: DataCallback<ScanCodeBean>)
 
     fun salesReturn(money: String, traceabilityIdStr: String, callback: DataCallback<EmptyReturnBean>)
+
+    /**卖货扫码搜索*/
+    fun saleSearchProduct(keyword: String?, callback: DataCallback<SellersBean>)
 }

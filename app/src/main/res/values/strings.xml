@@ -111,6 +111,12 @@
     <string name="toast_out_storage_success">撤消入库成功</string>
     <string name="toast_login_timeout">登录超时，请重新登录</string>
     <string name="toast_product_is_empty">获取产品信息出错，请重新进入</string>
+    <string name="toast_input_in_storage_number">请输入入库数量</string>
+    <string name="toast_input_in_storage_price">请输入进货价格</string>
+    <string name="toast_select_product_birthday">请选择产品生产日期</string>
+    <string name="toast_select_product_end_day">请选择产品有效期截止时间</string>
+    <string name="toast_end_day_min_birthday">产品有效期截止时间不能小于生产日期</string>
+    <string name="toast_select_in_storage_supplier">请选择供应商</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -190,6 +196,8 @@
     <string name="tip_buy_highly_toxic">购买高毒农药需要刷二代身份证~</string>
     <string name="tip_printing_suyuan_code">订单完成，正在打印溯源码…</string>
     <string name="tip_no_any_product">抱歉！没有找到符合条件的相关产品名称或产品条形码</string>
+    <string name="tip_to_scan_or_search">请扫溯源码或输入溯源码获取产品~</string>
+    <string name="tip_no_any_product_get">抱歉！没有找到符合条件的相关产品，请重新扫码或输入</string>
     <string name="tip_printing_bar_code">入库完成，正在批次打印溯源码…</string>
     <string name="tip_err_return_tip">提示：确认后产品库存将会恢复，\n该溯源记录将被删除</string>
     <string name="tip_print_success">打印成功</string>

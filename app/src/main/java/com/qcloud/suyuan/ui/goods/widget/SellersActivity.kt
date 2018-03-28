@@ -26,7 +26,7 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.IDBean
 import com.qcloud.suyuan.beans.IDVerifyResultBean
-import com.qcloud.suyuan.beans.SellersBean
+import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
@@ -79,6 +79,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var isload = false
     private val mIDCBuffer = ByteArray(1600)
 
+    private var keyword: String? = null
+
     override val layoutId: Int
         get() = R.layout.activity_sellers
 
@@ -127,6 +129,10 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         btn_input_purchase_info.setOnClickListener(this)
     }
 
+    private fun loadData() {
+        mPresenter?.loadData(keyword!!)
+    }
+
     /**
      * 初始化列表
      * */
@@ -136,12 +142,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         PullRefreshUtil.setRefresh(list_product, false, false)
 
         mAdapter = SellersAdapter(this)
+        mAdapter?.replaceList(ArrayList())
         list_product?.setAdapter(mAdapter!!)
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-
-        mPresenter?.loadData()
+        showEmptyView(getString(R.string.tip_to_scan_or_search))
     }
 
     /**
@@ -152,9 +158,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
                 if (action == KeyEvent.KEYCODE_ENTER) {
                     KeyBoardUtil.hideKeybord(this, et_search)
-                    val inputValue = et_search.text.toString().trim()
-                    if (StringUtil.isNotBlank(inputValue)) {
-                        getScanData(inputValue)
+                    keyword = et_search.text.toString().trim()
+                    if (StringUtil.isNotBlank(keyword)) {
+                        loadData()
                     } else {
                         QToast.show(this, R.string.toast_no_input_value)
                     }
@@ -162,12 +168,18 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             }
             false
         }
+        btn_search.setOnClickListener {
+            KeyBoardUtil.hideKeybord(this, et_search)
+            keyword = et_search.text.toString().trim()
+            if (StringUtil.isNotBlank(keyword)) {
+                loadData()
+            } else {
+                QToast.show(this, R.string.toast_no_input_value)
+            }
+        }
     }
 
-    /**
-     * 获取扫码数据
-     * */
-    private fun getScanData(inputValue: String) {
+    private fun reSetEditText() {
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
@@ -180,12 +192,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
      * 初始化下拉弹窗
      * */
     private fun initDropDown() {
+        val purchase = resources.getStringArray(R.array.purchase)
         val list: MutableList<String> = ArrayList()
-        list.add("病虫防治1")
-        list.add("病虫防治2")
-        list.add("病虫防治3")
-        list.add("病虫防治4")
-        list.add("病虫防治5")
+        list.addAll(purchase)
         btn_purchase_use.post {
             val width = btn_purchase_use.width
             mPurchaseUsePop = DropDownPop(this, list, width)
@@ -253,7 +262,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog?.show()
     }
 
-    override fun replaceList(beans: List<SellersBean>?) {
+    override fun replaceList(beans: List<SaleProductBean>?) {
         if (isRunning) {
             if (beans != null && beans.isNotEmpty()) {
                 mAdapter?.replaceList(beans)
@@ -261,14 +270,44 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
-    override fun addBeanAtEnd(bean: SellersBean) {
+    override fun addBeanAtEnd(bean: SaleProductBean) {
         if (isRunning) {
+            if (!isFirstAdd()) {
+                hideEmptyView()
+            }
+            reSetEditText()
             mAdapter?.addBeanAtEnd(bean)
         }
     }
 
+    override fun searchFailure() {
+        if (isRunning) {
+            QToast.show(this, R.string.tip_no_any_product_get)
+        }
+    }
+
+    override fun loadErr(errMsg: String, isShow: Boolean) {
+        if (isRunning) {
+            if (isShow) {
+                QToast.show(this, errMsg)
+            } else {
+                Timber.e(errMsg)
+            }
+        }
+    }
+
+    private fun isFirstAdd(): Boolean {
+        if (mAdapter == null) {
+            return false
+        }
+        return mAdapter!!.mList.size > 0
+    }
+
     override fun showEmptyView(tip: String) {
-        list_product?.showEmptyView()
+        if (isRunning) {
+            mEmptyView?.noData(tip)
+            list_product?.showEmptyView()
+        }
     }
 
     override fun hideEmptyView() {

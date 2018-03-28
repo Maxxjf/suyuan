@@ -9,13 +9,14 @@ import android.widget.LinearLayout
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.DropDownAdapter
+import com.qcloud.suyuan.beans.SupplierBean
 
 /**
  * Description: 下拉带按钮弹窗
  * Author: gaobaiqiang
  * 2018/3/22 下午11:18.
  */
-class DropDownBtnPop(mContext: Context, val list: List<String>, xWidth: Int) : BasePopupWindow(mContext) {
+class DropDownBtnPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopupWindow(mContext) {
     private var list_value: RecyclerView? = null
     private var mAdapter: DropDownAdapter? = null
 
@@ -40,19 +41,32 @@ class DropDownBtnPop(mContext: Context, val list: List<String>, xWidth: Int) : B
         mAdapter = DropDownAdapter(mContext)
         list_value?.adapter = mAdapter
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val value = mAdapter?.mList?.get(position) ?: ""
+            val value = mList[position]
             onItemClickListener?.onItemClick(position, value)
             dismiss()
         }
-        mAdapter?.replaceList(list)
+        mAdapter?.replaceList(disposeData())
 
-        val btn_add = mView?.findViewById<LinearLayout>(R.id.btn_add)
-        btn_add?.setOnClickListener {
+        val btnAdd = mView?.findViewById<LinearLayout>(R.id.btn_add)
+        btnAdd?.setOnClickListener {
             onPopWindowViewClick?.onViewClick(it)
         }
     }
 
+    /**
+     * 解析数据
+     * */
+    private fun disposeData(): List<String> {
+        val list: MutableList<String> = ArrayList()
+        for (bean in mList) {
+            if (bean is SupplierBean) {
+                list.add(bean.name)
+            }
+        }
+        return list
+    }
+
     interface OnItemClickListener {
-        fun onItemClick(position: Int, value: String)
+        fun onItemClick(position: Int, value: Any?)
     }
 }

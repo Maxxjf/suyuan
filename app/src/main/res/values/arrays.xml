@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="purchase">
+        <item>病虫害防治</item>
+        <item>草害防治</item>
+    </string-array>
+</resources>

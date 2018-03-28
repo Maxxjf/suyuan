@@ -137,4 +137,16 @@ class GoodsModelImpl: IGoodsModel {
 
         BaseApi.dispose(mApi.getReturnedRecord(params), callback)
     }
+
+    /**
+     * 卖货扫码搜索
+     *
+     * @param keyword 入库批次码（溯源码）
+     * */
+    override fun saleSearchProduct(keyword: String?, callback: DataCallback<SellersBean>) {
+        val params = FrameRequest.getAppParams()
+        params["keyword"] = keyword ?: ""
+
+        BaseApi.dispose(mApi.saleSearchProduct(params), callback)
+    }
 }

@@ -1,11 +1,15 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.InStorageBean
+import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.model.IStorageModel
+import com.qcloud.suyuan.model.IStoreModel
 import com.qcloud.suyuan.model.impl.StorageModelImpl
+import com.qcloud.suyuan.model.impl.StoreModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IPurchaseDetailsPresenter
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 
@@ -16,6 +20,7 @@ import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
  */
 class PurchaseDetailsPresenterImpl: BasePresenter<IPurchaseDetailsView>(), IPurchaseDetailsPresenter {
     private val mModel: IStorageModel = StorageModelImpl()
+    private val mStoreModel: IStoreModel = StoreModelImpl()
 
     override fun onBtnClick(viewId: Int) {
         when (viewId) {
@@ -25,6 +30,23 @@ class PurchaseDetailsPresenterImpl: BasePresenter<IPurchaseDetailsView>(), IPurc
             R.id.tv_in_storage_number -> mView?.onStockNumberClick()
             R.id.tv_in_storage_price -> mView?.onPriceClick()
         }
+    }
+
+    /** 获取供应商 */
+    override fun loadSupplier() {
+        mStoreModel.supplierList(object : DataCallback<ReturnDataBean<SupplierBean>> {
+            override fun onSuccess(t: ReturnDataBean<SupplierBean>?, message: String?) {
+                if (t?.list != null) {
+                    mView?.replaceSupplierList(t.list!!)
+                } else {
+                    mView?.loadErr("没有供应商信息", false)
+                }
+            }
+
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message, false)
+            }
+        })
     }
 
     override fun save(goodId: String, number: Int, price: Double, expDate: String, stopDate: String, supplierId: String?) {
