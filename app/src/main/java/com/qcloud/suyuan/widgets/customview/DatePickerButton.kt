@@ -40,9 +40,9 @@ class DatePickerButton @JvmOverloads constructor(
         //初始化年月日
         val calendar = Calendar.getInstance()
         year = calendar.get(Calendar.YEAR)
-        month = calendar.get(Calendar.MONTH) + 1
+        month = calendar.get(Calendar.MONTH)
         day = calendar.get(Calendar.DAY_OF_MONTH)
-        showDate(year, month, day)
+        showDate(year, month+1, day)
 
         datePicker = DatePickerDialog(mContext, DatePickerDialog.OnDateSetListener { _, year, month, day ->
             showDate(year, month + 1, day)
@@ -68,7 +68,7 @@ class DatePickerButton @JvmOverloads constructor(
     /**
      * 设置日期格式
      * */
-    fun setDateFormate(yearFormat: String = "-", monthFormat: String = "", dayFormat: String = "") {
+    fun setDateFormate(yearFormat: String = "-", monthFormat: String = "-", dayFormat: String = "") {
         this.yearFormat = yearFormat
         this.monthFormat = monthFormat
         this.dayFormat = dayFormat

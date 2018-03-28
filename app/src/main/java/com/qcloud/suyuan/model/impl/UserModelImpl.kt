@@ -5,7 +5,6 @@ import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.LoginReturnBean
-import com.qcloud.suyuan.constant.AppConstants.account
 import com.qcloud.suyuan.model.IUserModel
 import com.qcloud.suyuan.net.IUserApi
 
@@ -23,7 +22,7 @@ class UserModelImpl : IUserModel {
      */
     override fun login(loginAccount: String, password: String, callback: DataCallback<LoginReturnBean>) {
         val params = FrameRequest.getAppParams()
-        params["account"] = account
+        params["account"] = loginAccount
         params["password"] = password
 
         BaseApi.dispose(mApi.login(params), callback)

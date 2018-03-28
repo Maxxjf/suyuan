@@ -282,6 +282,12 @@
     <string name="tag_remark">备注: </string>
     <string name="tag_contact_person">联系人: </string>
     <string name="tag_contact_phone">联系电话: </string>
+    <string name="tag_all_income">总收入: </string>
+    <string name="tag_cash_income">现金收入: </string>
+    <string name="tag_alipay_income">支付宝收入: </string>
+    <string name="tag_wechat_income">微信收入: </string>
+    <string name="tag_valid_order_mao">有效订单: </string>
+    <string name="tag_credit_mao">赊账: </string>
 
 
 
