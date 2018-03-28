@@ -1,23 +1,27 @@
 package com.qcloud.suyuan.ui.goods.view
 
+import com.qcloud.qclib.base.BaseView
 import com.qcloud.suyuan.beans.IDVerifyResultBean
-import com.qcloud.suyuan.beans.SellersBean
+import com.qcloud.suyuan.beans.SaleProductBean
 
 /**
  * Description: 卖货
  * Author: gaobaiqiang
  * 2018/3/15 上午12:20.
  */
-interface ISellersView {
+interface ISellersView: BaseView {
     fun onSettlementClick()
 
     fun onInputPurchaserClick()
 
     /**替换数据 */
-    fun replaceList(beans: List<SellersBean>?)
+    fun replaceList(beans: List<SaleProductBean>?)
 
     /**添加数据 */
-    fun addBeanAtEnd(bean: SellersBean)
+    fun addBeanAtEnd(bean: SaleProductBean)
+
+    /**获取商品出错*/
+    fun searchFailure()
 
     /**显示空布局 */
     fun showEmptyView(tip: String)

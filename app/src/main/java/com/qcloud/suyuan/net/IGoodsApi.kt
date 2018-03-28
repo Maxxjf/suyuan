@@ -51,4 +51,8 @@ interface IGoodsApi {
     @GET(UrlConstants.SALES_RETURN)
     fun salesReturn(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 
+    /** 卖货扫码查询 */
+    @GET(UrlConstants.SALE_SEARCH_PRODUCT)
+    fun saleSearchProduct(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SellersBean>>
+
 }
