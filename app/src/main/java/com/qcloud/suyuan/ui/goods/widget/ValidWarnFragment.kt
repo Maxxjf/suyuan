@@ -101,7 +101,7 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
         mTipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (bean != null) {
-                    mPresenter?.outStorage(bean.id ?: "0", bean.surplusNum)
+                    mPresenter?.outStorage(bean.recordId, bean.surplusNum)
                 }
             }
         }

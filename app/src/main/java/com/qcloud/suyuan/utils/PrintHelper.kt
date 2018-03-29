@@ -235,7 +235,9 @@ class PrintHelper private constructor() {
                 }
             }
             mUsbController?.sendMsg(content.content!!, "GBK", mUsbDevice!!)
-            mUsbController?.sendByte(cmdWalkPaper, mUsbDevice!!)
+            if (content.isWalk == 1) {
+                mUsbController?.sendByte(cmdWalkPaper, mUsbDevice!!)
+            }
             mUsbController?.sendByte(cmdInitPrinter, mUsbDevice!!)
             1
         } catch (e: Exception) {

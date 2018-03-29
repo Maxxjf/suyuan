@@ -7,6 +7,7 @@ import android.view.View
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
+import com.qcloud.suyuan.enums.PayMethod
 import kotlinx.android.synthetic.main.dialog_settlement.*
 
 /**
@@ -18,7 +19,7 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
 
     private var totalAccount: Double = 0.00
     var realPay: Double = 0.00
-    var payMethod: Int = 0
+    var payMethod: Int = 1
 
     private var moneyStr = "%1$.2f元"
 
@@ -42,6 +43,10 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
             }
 
             override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
                 val priceStr = p0.toString().trim()
                 if (StringUtil.isMoneyStr(priceStr)) {
                     val price = priceStr.toDouble()
@@ -50,17 +55,29 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
                 }
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
         })
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_close -> dismiss()
-            R.id.btn_credit, R.id.btn_cash, R.id.btn_alipay, R.id.btn_wechat -> {
+            R.id.btn_credit -> {
+                payMethod = PayMethod.payCredit.key
+                dismiss()
+                onBtnClickListener?.onBtnClick(v)
+            }
+            R.id.btn_cash -> {
+                payMethod = PayMethod.payByCash.key
+                dismiss()
+                onBtnClickListener?.onBtnClick(v)
+            }
+            R.id.btn_alipay -> {
+                payMethod = PayMethod.payByAlipay.key
+                dismiss()
+                onBtnClickListener?.onBtnClick(v)
+            }
+            R.id.btn_wechat -> {
+                payMethod = PayMethod.payByWechat.key
                 dismiss()
                 onBtnClickListener?.onBtnClick(v)
             }

@@ -72,4 +72,6 @@ object UrlConstants {
     const val SALE_SEARCH_PRODUCT = URL_PREFIX_APP + "sale/search"
     /**结算*/
     const val SALE_SETTLEMENT = URL_PREFIX_APP + "sale/settlement"
+    /**门店信息*/
+    const val STORE_INFO = URL_PREFIX_APP + "store/getInfo"
 }

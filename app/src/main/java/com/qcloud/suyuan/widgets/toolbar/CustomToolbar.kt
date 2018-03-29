@@ -167,7 +167,8 @@ class CustomToolbar @JvmOverloads constructor(
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 QToast.show(mContext, R.string.toast_logout_success)
                 TokenUtil.clearToken()
-                UserInfoUtil.mUser = null
+                UserInfoUtil.delUser()
+                UserInfoUtil.delStore()
                 BaseApplication.mAppManager?.killAllActivity()
                 LoginActivity.openActivity(mContext)
             }

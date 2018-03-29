@@ -70,6 +70,28 @@ class RealmHelper {
     }
 
     /**
+     * 删除对象(表)
+     *
+     * @param clazz 继承RealmObject的实体类
+     * @param fieldName 数据库对应的字段
+     * @param id 数据库对应的值
+     */
+    fun <T : RealmObject> deleteBeanById(clazz: Class<T>, fieldName: String, id: String) {
+        if (mRealm == null) {
+            Timber.e("realm is null")
+            return
+        }
+
+        val bean = mRealm!!.where(clazz).equalTo(fieldName, id).findFirst()
+
+        if (bean != null) {
+            mRealm!!.beginTransaction()
+            bean.deleteFromRealm()
+            mRealm!!.commitTransaction()
+        }
+    }
+
+    /**
      * 查找所有
      *
      * @param clazz 继承RealmObject的实体类

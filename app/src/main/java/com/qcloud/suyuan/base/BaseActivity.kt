@@ -72,7 +72,8 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
                     RequestStatusEnum.NO_ROOT.status -> {
                         QToast.show(this, R.string.toast_login_timeout)
                         TokenUtil.clearToken()
-                        UserInfoUtil.mUser = null
+                        UserInfoUtil.delUser()
+                        UserInfoUtil.delStore()
                         BaseApplication.mAppManager?.killAllActivity()
                         LoginActivity.openActivity(this)
                     }

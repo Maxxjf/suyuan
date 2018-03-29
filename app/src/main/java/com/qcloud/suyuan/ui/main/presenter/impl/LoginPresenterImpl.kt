@@ -25,7 +25,8 @@ class LoginPresenterImpl : BasePresenter<ILoginView>(), ILoginPresenter {
                 if (bean != null && bean.loginState == 1) {
                     bean.let {
                         TokenUtil.saveToken(it.token)
-                        UserInfoUtil.mUser = it.user
+                        UserInfoUtil.saveUser(it.user)
+                        UserInfoUtil.loadStore()
                     }
                     mView?.loginSuccess()
                 } else {

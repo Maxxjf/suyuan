@@ -32,8 +32,7 @@ import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
-import com.qcloud.suyuan.utils.IDCardUtil
-import com.qcloud.suyuan.utils.NFCHelper
+import com.qcloud.suyuan.utils.*
 import com.qcloud.suyuan.utils.NFCHelper.Companion.PLEASECHECKNETWORKERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.REPEAT5001
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP5001ERR
@@ -45,8 +44,6 @@ import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP5022OK
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6002ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013OK
-import com.qcloud.suyuan.utils.PrintHelper
-import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.*
 import com.qcloud.suyuan.widgets.pop.DropDownPop
@@ -93,9 +90,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var remark: String? = null  // 备注
     private var discount: Double = 0.00 // 优惠价格
     private var realPay: Double = 0.00  // 实付
+    private var giveMoney: Double = 0.00// 找零
     private var payMethod: Int = 0      // 支付方式
 
-    private var purchaseInfo: IDBean? = null
+    private var purchaseInfo: IDBean? = null    // 购买者信息
+
+    private var submitProducts: MutableList<TicketProductBean> = ArrayList()
 
     override val layoutId: Int
         get() = R.layout.activity_sellers
@@ -252,9 +252,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
      * 刷新收银员
      * */
     private fun refreshCashier() {
-        Timber.e("userInfo = ${UserInfoUtil.mUser}")
-        if (UserInfoUtil.mUser != null) {
-            tv_money_getter.text = UserInfoUtil.mUser!!.nickname
+        val loginUser = UserInfoUtil.getUser()
+        if (loginUser != null) {
+            tv_money_getter.text = loginUser.nickname
         }
     }
 
@@ -275,13 +275,20 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     private fun initSaleProduct() {
         if (mAdapter != null) {
+            submitProducts = ArrayList()
             val array = ArrayList<SubmitProductBean>()
             for (bean in mAdapter!!.mList) {
                 val submit = SubmitProductBean()
+                val ticket = TicketProductBean()
                 submit.recordId = bean.recordId ?: "0"
                 submit.goodsNum = bean.number
                 submit.price = bean.price
                 array.add(submit)
+
+                ticket.name = bean.name ?: ""
+                ticket.number = bean.number
+                ticket.price = bean.price
+                submitProducts.add(ticket)
             }
             list = Gson().toJson(array)
             Timber.e("list = $list")
@@ -351,9 +358,13 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             cashDialog = CashDialog(this)
         }
         cashDialog?.show()
+        cashDialog?.refreshData(realPay)
         cashDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                QToast.info(this@SellersActivity, R.string.tip_printing_suyuan_code, false)
+                realPay = cashDialog!!.realPay
+                giveMoney = cashDialog!!.giveMoney
+
+                mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
             }
         }
     }
@@ -442,20 +453,48 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         if (isRunning) {
             QToast.info(this@SellersActivity, R.string.tip_printing_suyuan_code, false)
             if (bean != null) {
-                if (bean?.traceabilityList != null) {
+                // 打印溯源码
+                if (bean.traceabilityList != null) {
                     for (it in bean.traceabilityList!!) {
                         val printBean = PrintBean()
                         printBean.type = 1
                         printBean.barCode = it.code
                         PrintHelper.instance.printData(printBean)
                     }
+                    initTicketData(bean.orderNo, bean.orderTime)
+                } else {
+                    initTicketData(bean.orderNo, bean.orderTime)
                 }
                 if (purchaseInfo != null) {
                     purchaseInfo?.id = bean.purchaserId
                     IDCardUtil.addOrUpdate(purchaseInfo)
                 }
+
             }
         }
+    }
+
+    /**
+     * 初始化打印小票内容
+     * */
+    private fun initTicketData(orderNo: String?, orderTime: String?) {
+        val ticketInfo = TicketBean()
+
+        val storeInfo = UserInfoUtil.getStore()
+        if (storeInfo != null) {
+            ticketInfo.storeName = storeInfo.name ?: ""     // 门店名称
+        }
+        ticketInfo.orderNo = orderNo ?: ""          // 订单编号
+        ticketInfo.orderTime = orderTime ?: ""      // 下单时间
+        ticketInfo.list = submitProducts            // 购买的产品
+        ticketInfo.totalNumber = totalNumber        // 商品总数
+        ticketInfo.totalAccount = totalAccount      // 合计
+        ticketInfo.payMethod = payMethod            // 支付方式
+        ticketInfo.discount = discount              // 优惠
+        ticketInfo.realPay = realPay                // 实收
+        ticketInfo.giveMoney = giveMoney            // 找零
+
+        TicketUtil.printTicket(ticketInfo)
     }
 
     /**
@@ -468,9 +507,11 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     when (bean.funret) {
                         STEP5001ERR, STEP5012ERR, STEP5022ERR, STEP6002ERR, STEP6013ERR -> {
                             Timber.e("读证错误:" + Util.bytesToHexString(Util.intTo2byte(bean.funret))!!)
+                            QToast.show(this@SellersActivity, R.string.toast_read_card_error)
                         }
                         PLEASECHECKNETWORKERR -> {
                             Timber.e( "请检查网络连接")
+                            QToast.show(this@SellersActivity, R.string.toast_read_card_timeout)
                         }
                         STEP5001OK -> {
                             NFCHelper.instance.uartSend2Head(12, bean.uartRecv)
@@ -532,9 +573,15 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private fun refreshPurchaser(bean: IDBean?) {
         if (bean != null) {
             with(bean) {
-                val bitmap = BitmapFactory.decodeFile(userImg)
-                purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
-                img_user_head.setImageBitmap(bitmap)
+                if (userImgBase64 != null) {
+                    val bitmap = BitmapUtil.base64ToBitmap(userImgBase64!!)
+                    img_user_head.setImageBitmap(bitmap)
+                } else {
+                    val bitmap = BitmapFactory.decodeFile(userImg)
+                    purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
+                    img_user_head.setImageBitmap(bitmap)
+                }
+
                 tv_user_name.text = bean.name
                 tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
                 tv_mobile.text = bean.mobile

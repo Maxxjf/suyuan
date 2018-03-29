@@ -254,8 +254,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/layout_number"
                 android:layout_toEndOf="@+id/layout_number"
-                android:layout_marginLeft="@dimen/margin_8"
-                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_12"
+                android:layout_marginStart="@dimen/margin_12"
                 android:orientation="vertical">
 
                 <LinearLayout

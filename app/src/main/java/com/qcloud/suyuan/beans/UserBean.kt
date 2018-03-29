@@ -1,14 +1,17 @@
 package com.qcloud.suyuan.beans
 
 import com.qcloud.qclib.utils.StringUtil
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
 /**
  * Description: 用户信息
  * Author: gaobaiqiang
  * 2018/3/22 下午2:38.
  */
-class UserBean {
-
+open class UserBean: RealmObject() {
+    @PrimaryKey
+    var saveId: String = "suyuan_user"  // 保证库里只存一个登录用户
     var id: String = "-1"   // 用户id
     var mobile: String? = null  // 手机号
         get() = if (StringUtil.isBlank(field)) "" else field

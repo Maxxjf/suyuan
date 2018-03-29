@@ -4,6 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
+import com.qcloud.suyuan.beans.StoreBean
 import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.model.IStoreModel
 import com.qcloud.suyuan.net.IStoreApi
@@ -16,6 +17,17 @@ import com.qcloud.suyuan.net.IStoreApi
 class StoreModelImpl: IStoreModel {
 
     private val mApi: IStoreApi = FrameRequest.instance.createRequest(IStoreApi::class.java)
+
+    /**
+     * 获取门店信息
+     *
+     * @time 2018/3/29 17:01
+     */
+    override fun getInfo(callback: DataCallback<StoreBean>) {
+        val params = FrameRequest.getAppParams()
+
+        BaseApi.dispose(mApi.getInfo(params), callback)
+    }
 
     /**
      * 获取供应商列表

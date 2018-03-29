@@ -30,6 +30,7 @@ class ValidWarnBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var stopDate: String? = null    // 入库批次
         get() = if (StringUtil.isBlank(field)) "" else field
+    var recordId: String = "0"      // 入库批次id
 
     override fun toString(): String {
         return "ValidWarnBean(pastDue=$pastDue, surplusNum=$surplusNum, id=$id, imageUrl=$imageUrl)"
