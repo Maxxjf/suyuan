@@ -123,5 +123,5 @@ dependencies {
     implementation files('libs/IDNRSocket V1.26.jar')
     implementation files('libs/Native_Libs.jar')
     //日期选择器
-    compile 'com.haibin:calendarview:3.2.4'
+    compile 'com.haibin:calendarview:3.2.8'
 }
