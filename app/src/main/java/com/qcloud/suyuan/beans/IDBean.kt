@@ -14,11 +14,12 @@ open class IDBean: RealmObject() {
     // 身份证号
     @PrimaryKey
     var idCode: String? = null
+    var id: Long = -1L
     // 名称
     var name: String? = null
     // 姓别
     var sex: String? = null
-    var sexIndex: Int = 1
+    var gender: Int = 1
         get() = if (sex.equals("男")) 1 else 0
     // 民族
     var nation: String? = null
@@ -64,6 +65,7 @@ open class IDBean: RealmObject() {
         }
     // 头像路径，数据解析成功会自动保存到sd卡
     var userImg: String = AppConstants.SDPATH + "/wltlib/zp.bmp"
+    var userImgBase64: String? = null
     // 用户电话
     var mobile: String? = null
 

@@ -117,6 +117,9 @@
     <string name="toast_select_product_end_day">请选择产品有效期截止时间</string>
     <string name="toast_end_day_min_birthday">产品有效期截止时间不能小于生产日期</string>
     <string name="toast_select_in_storage_supplier">请选择供应商</string>
+    <string name="toast_get_product_to_buy">请先获取购买商品</string>
+    <string name="toast_input_purchaser_info">请先输入购买者信息</string>
+    <string name="toast_input_purchase_mobile">请先输入购买者电话</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -290,7 +293,7 @@
     <string name="tag_remark">备注: </string>
     <string name="tag_contact_person">联系人: </string>
     <string name="tag_contact_phone">联系电话: </string>
-
+    <string name="tag_has_pass_valid_date">超过有效期</string>
 
 
 </resources>

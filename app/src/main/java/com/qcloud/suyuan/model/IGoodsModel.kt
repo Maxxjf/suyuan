@@ -37,4 +37,9 @@ interface IGoodsModel {
 
     /**卖货扫码搜索*/
     fun saleSearchProduct(keyword: String?, callback: DataCallback<SellersBean>)
+
+    /**卖货结算*/
+    fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double,
+                       saleRealPay: Double, salePayMethod: Int, salePurpose: String?, saleRemark: String?,
+                       callback: DataCallback<SettlementResBean>)
 }

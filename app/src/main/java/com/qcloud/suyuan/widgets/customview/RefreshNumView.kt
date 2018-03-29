@@ -5,7 +5,8 @@ import android.util.AttributeSet
 import android.view.View
 import com.qcloud.qclib.base.BaseLinearLayout
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.beans.SellersBean
+import com.qcloud.suyuan.adapters.SellersAdapter
+import com.qcloud.suyuan.beans.SaleProductBean
 import kotlinx.android.synthetic.main.layout_refresh_num.view.*
 
 /**
@@ -18,9 +19,11 @@ class RefreshNumView @JvmOverloads constructor(
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0) : BaseLinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
 
-    var currNum = 1
-    var maxNum = 100
-    var currBean: SellersBean? = null
+    private var currNum = 1
+    private var maxNum = 100
+    private var currBean: SaleProductBean? = null
+
+    var onRefreshNumClickListener: SellersAdapter.OnRefreshNumClickListener? = null
 
     override val viewId: Int
         get() = R.layout.layout_refresh_num
@@ -37,12 +40,14 @@ class RefreshNumView @JvmOverloads constructor(
                 if (currNum > 1) {
                     currNum--
                     refreshNum(currNum)
+                    onRefreshNumClickListener?.onRefreshNum(-1, currBean!!)
                 }
             }
             R.id.btn_plus -> {
                 if (currNum < maxNum) {
                     currNum++
                     refreshNum(currNum)
+                    onRefreshNumClickListener?.onRefreshNum(1, currBean!!)
                 }
             }
             R.id.tv_number -> {
@@ -52,13 +57,13 @@ class RefreshNumView @JvmOverloads constructor(
     }
 
     private fun refreshNum(number: Int) {
+        currBean?.number = number
         tv_number?.text = number.toString()
-        //currBean?.number = number
     }
 
-    fun refreshBean(bean: SellersBean) {
+    fun refreshBean(bean: SaleProductBean) {
         currBean = bean
-        //currNum = bean.number
-        //tv_number?.text = bean.number.toString()
+        currNum = bean.number
+        tv_number?.text = bean.numberStr
     }
 }

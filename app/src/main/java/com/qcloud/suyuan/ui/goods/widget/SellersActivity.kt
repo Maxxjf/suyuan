@@ -2,6 +2,7 @@ package com.qcloud.suyuan.ui.goods.widget
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.media.AudioManager
 import android.media.SoundPool
 import android.support.annotation.NonNull
@@ -9,14 +10,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.widget.TextView
 import android_serialport_api.sample.Util
+import com.google.gson.Gson
 import com.ivsign.android.IDCReader.IDCReaderSDK
-import com.qcloud.qclib.image.GlideUtil
+import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.rxtask.RxScheduler
 import com.qcloud.qclib.rxtask.task.NewTask
 import com.qcloud.qclib.rxtask.task.UITask
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.BitmapUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.qclib.utils.ValidateUtil
@@ -24,9 +28,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
-import com.qcloud.suyuan.beans.IDBean
-import com.qcloud.suyuan.beans.IDVerifyResultBean
-import com.qcloud.suyuan.beans.SaleProductBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
@@ -42,11 +44,9 @@ import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP5022OK
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6002ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013OK
+import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
-import com.qcloud.suyuan.widgets.dialog.CashDialog
-import com.qcloud.suyuan.widgets.dialog.InputPurchaseDialog
-import com.qcloud.suyuan.widgets.dialog.SettlementDialog
-import com.qcloud.suyuan.widgets.dialog.TipDialog
+import com.qcloud.suyuan.widgets.dialog.*
 import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -54,6 +54,7 @@ import kotlinx.android.synthetic.main.card_sellers_product_list.*
 import kotlinx.android.synthetic.main.card_sellers_purchaser_info.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
+
 
 /**
  * Description: 卖货
@@ -66,6 +67,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     private var mPurchaseUsePop: DropDownPop? = null
 
+    private var inputDialog: InputDialog? = null
     private var tipDialog: TipDialog? = null
     private var settlementDialog: SettlementDialog? = null
     private var cashDialog: CashDialog? = null
@@ -81,6 +83,18 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     private var keyword: String? = null
 
+    private val moneyStr: String = "¥%1$.2f"
+    private var totalNumber = 0
+    private var totalAccount: Double = 0.00
+    private var list: String = ""    // 商品列表
+    private var purpose: String? = null // 购买用途
+    private var remark: String? = null  // 备注
+    private var discount: Double = 0.00 // 优惠价格
+    private var realPay: Double = 0.00  // 实付
+    private var payMethod: Int = 0      // 支付方式
+
+    private var purchaseInfo: IDBean? = null
+
     override val layoutId: Int
         get() = R.layout.activity_sellers
 
@@ -93,6 +107,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         initRecyclerView()
         initEditView()
         initDropDown()
+        refreshCashier()
+        refreshPrice()
     }
 
     override fun onResume() {
@@ -125,6 +141,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     }
 
     private fun initView() {
+        tv_mobile.setOnClickListener(this)
+        tv_other_instructions.setOnClickListener(this)
         btn_settlement.setOnClickListener(this)
         btn_input_purchase_info.setOnClickListener(this)
     }
@@ -144,6 +162,21 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         mAdapter = SellersAdapter(this)
         mAdapter?.replaceList(ArrayList())
         list_product?.setAdapter(mAdapter!!)
+        mAdapter?.onRefreshNumClickListener = object : SellersAdapter.OnRefreshNumClickListener {
+            override fun onRefreshNum(number: Int, bean: SaleProductBean) {
+                totalNumber += number
+                totalAccount += number * bean.price
+                refreshPrice()
+            }
+        }
+        mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<SaleProductBean> {
+            override fun onHolderClick(view: View, t: SaleProductBean, position: Int) {
+                totalNumber -= t.number
+                totalAccount -= t.number * t.price
+                refreshPrice()
+                mAdapter?.remove(position)
+            }
+        }
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
@@ -201,7 +234,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
             mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
                 override fun onItemClick(position: Int, value: Any?) {
-                    //tv_purchase_use.text = value
+                    if (value != null) {
+                        tv_purchase_use.text = value.toString()
+                    }
                 }
             }
         }
@@ -211,11 +246,69 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
+    /**
+     * 刷新收银员
+     * */
+    private fun refreshCashier() {
+        Timber.e("userInfo = ${UserInfoUtil.mUser}")
+        if (UserInfoUtil.mUser != null) {
+            tv_money_getter.text = UserInfoUtil.mUser!!.nickname
+        }
+    }
+
+    private fun refreshPrice() {
+        tv_goods_number.text = totalNumber.toString()
+        tv_total_account.text = String.format(moneyStr, totalAccount)
+    }
+
+    private fun showInput(view: TextView) {
+        if (inputDialog == null) {
+            inputDialog = InputDialog(this)
+        }
+        inputDialog?.setBindView(view)
+        inputDialog?.setInputValue(view.text.toString().trim())
+
+        inputDialog?.show()
+    }
+
+    private fun initSaleProduct() {
+        if (mAdapter != null) {
+            val array = ArrayList<SubmitProductBean>()
+            for (bean in mAdapter!!.mList) {
+                val submit = SubmitProductBean()
+                submit.recordId = bean.recordId ?: "0"
+                submit.goodsNum = bean.number
+                submit.price = bean.price
+                array.add(submit)
+            }
+            list = Gson().toJson(array)
+            Timber.e("list = $list")
+        }
+    }
+
     override fun onClick(v: View) {
         mPresenter?.onBtnClick(v.id)
     }
 
     override fun onSettlementClick() {
+        if (totalNumber < 1) {
+            QToast.show(this, R.string.toast_get_product_to_buy)
+            return
+        }
+        initSaleProduct()
+        if (purchaseInfo == null) {
+            QToast.show(this, R.string.toast_input_purchaser_info)
+            return
+        }
+        val mobile = tv_mobile.text.toString().trim()
+        if (StringUtil.isBlank(mobile)) {
+            QToast.show(this, R.string.toast_input_purchase_mobile)
+            return
+        }
+        purchaseInfo?.mobile = mobile
+        purpose = tv_purchase_use.text.toString().trim()
+        remark = tv_other_instructions.text.toString().trim()
+
         if (tipDialog == null) {
             tipDialog = TipDialog(this)
         }
@@ -233,11 +326,19 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         if (settlementDialog == null) {
             settlementDialog = SettlementDialog(this)
         }
+        settlementDialog?.refreshSettlementData(totalNumber, totalAccount)
         settlementDialog?.show()
         settlementDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 when (view.id) {
                     R.id.btn_cash -> showCashDialog()
+                    else -> {
+                        realPay = settlementDialog!!.realPay
+                        discount = totalAccount - realPay
+                        payMethod = settlementDialog!!.payMethod
+
+                        mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
+                    }
                 }
             }
         }
@@ -262,6 +363,18 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog?.show()
     }
 
+    override fun onMobileClick() {
+        if (isRunning) {
+            showInput(tv_mobile)
+        }
+    }
+
+    override fun onRemarkClick() {
+        if (isRunning) {
+            showInput(tv_other_instructions)
+        }
+    }
+
     override fun replaceList(beans: List<SaleProductBean>?) {
         if (isRunning) {
             if (beans != null && beans.isNotEmpty()) {
@@ -276,7 +389,10 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 hideEmptyView()
             }
             reSetEditText()
-            mAdapter?.addBeanAtEnd(bean)
+            mAdapter?.refreshBean(bean)
+            totalNumber += bean.number
+            totalAccount += bean.number * bean.price
+            refreshPrice()
         }
     }
 
@@ -312,6 +428,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun hideEmptyView() {
        list_product?.hideEmptyView()
+    }
+
+    override fun settlementSuccess(bean: SettlementResBean?) {
+        if (isRunning) {
+            if (bean != null) {
+
+            }
+        }
     }
 
     /**
@@ -351,27 +475,27 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                             }
                             // 解码图片：
                             mIDCReaderSDK.DoDecodeCardInfo(mIDCBuffer)
-                            val birthday: String? = mIDCReaderSDK.GetPeopleBirthday()
+                            val birthday: String? = mIDCReaderSDK.GetPeopleBirthday().trim()
 
-                            val people = IDBean()
-                            people.idCode = mIDCReaderSDK.GetPeopleIDCode()
-                            people.name = mIDCReaderSDK.GetPeopleName()
-                            people.sex = mIDCReaderSDK.GetPeopleSex()
-                            people.nation = mIDCReaderSDK.GetPeopleNation()
+                            purchaseInfo = IDBean()
+                            purchaseInfo?.idCode = mIDCReaderSDK.GetPeopleIDCode().trim()
+                            purchaseInfo?.name = mIDCReaderSDK.GetPeopleName().trim()
+                            purchaseInfo?.sex = mIDCReaderSDK.GetPeopleSex().trim()
+                            purchaseInfo?.nation = mIDCReaderSDK.GetPeopleNation().trim()
                             if (StringUtil.isNotBlank(birthday)) {
-                                people.birthday = birthday
-                                people.year = birthday!!.substring(0, 4)
-                                people.month = birthday.substring(4, 6)
-                                people.day = birthday.substring(6, 8)
+                                purchaseInfo?.birthday = birthday
+                                purchaseInfo?.year = birthday!!.substring(0, 4)
+                                purchaseInfo?.month = birthday.substring(4, 6)
+                                purchaseInfo?.day = birthday.substring(6, 8)
                             }
-                            people.address = mIDCReaderSDK.GetPeopleAddress()
-                            people.department = mIDCReaderSDK.GetDepartment()
-                            people.startDate = mIDCReaderSDK.GetStartDate()
-                            people.endDate = mIDCReaderSDK.GetEndDate()
-                            people.userImg = AppConstants.SDPATH + "/wltlib/zp.bmp"
+                            purchaseInfo?.address = mIDCReaderSDK.GetPeopleAddress().trim()
+                            purchaseInfo?.department = mIDCReaderSDK.GetDepartment().trim()
+                            purchaseInfo?.startDate = mIDCReaderSDK.GetStartDate().trim()
+                            purchaseInfo?.endDate = mIDCReaderSDK.GetEndDate().trim()
+                            purchaseInfo?.userImg = AppConstants.SDPATH + "/wltlib/zp.bmp"
 
-                            refreshPurchaser(people)
-                            Timber.e("people = $people")
+                            refreshPurchaser(purchaseInfo!!)
+                            Timber.e("people = $purchaseInfo")
                         }
                         REPEAT5001 -> {
                             Timber.e( "Repeat 5001...")
@@ -387,9 +511,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     private fun refreshPurchaser(bean: IDBean) {
         with(bean) {
-            GlideUtil.loadCircleImageForFile(this@SellersActivity, img_user_head, bean.userImg, R.drawable.bmp_user_head)
+            val bitmap = BitmapFactory.decodeFile(userImg)
+            purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
+            img_user_head.setImageBitmap(bitmap)
             tv_user_name.text = bean.name
             tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
+            tv_mobile.text = bean.mobile
         }
     }
 
@@ -428,6 +555,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog.let {
             if (inputPurchaseDialog != null && inputPurchaseDialog!!.isShowing) {
                 inputPurchaseDialog?.dismiss()
+            }
+        }
+
+        inputDialog.let {
+            if (inputDialog != null && inputDialog!!.isShowing) {
+                inputDialog?.dismiss()
             }
         }
     }

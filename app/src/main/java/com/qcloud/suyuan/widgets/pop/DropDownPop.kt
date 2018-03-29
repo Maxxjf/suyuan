@@ -55,6 +55,8 @@ class DropDownPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopu
         for (bean in mList) {
             if (bean is ProductClassifyBean) {
                 list.add(bean.name)
+            } else if (bean is String) {
+                list.add(bean)
             }
         }
         return list

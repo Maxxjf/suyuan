@@ -149,4 +149,40 @@ class GoodsModelImpl: IGoodsModel {
 
         BaseApi.dispose(mApi.saleSearchProduct(params), callback)
     }
+
+    /**
+     * 订单结算
+     *
+     * @param list json格式 [{"recordId":id,"goodsNum":1,"price":1}]
+     * @param saleDiscount 优惠金额
+     * @param saleRealPay 实付金额，现金支付传，其他方式可不传
+     * @param salePayMethod 支付方式
+     * @param salePurpose 购买用途
+     * @param saleRemark 备注
+     * @param callback
+     * */
+    override fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double, saleRealPay: Double, salePayMethod: Int,
+                                salePurpose: String?, saleRemark: String?, callback: DataCallback<SettlementResBean>) {
+
+        val params = FrameRequest.getAppParams()
+        params["list"] = list
+        params["purchaser.address"] = idInfo.address ?: ""          // 地址
+        params["purchaser.gender"] = idInfo.gender                  // 购买者性别 1男0女
+        params["purchaser.headImage"] = idInfo.userImgBase64 ?: ""  // 照片(base64格式)
+        params["purchaser.id"] = idInfo.id                          // 购买者ID
+        params["purchaser.idCard"] = idInfo.idCode ?: ""            // 身份证号
+        params["purchaser.issuingOrganization"] = idInfo.department ?: ""   // 签发机关
+        params["purchaser.mobile"] = idInfo.mobile ?: ""            // 联系电话
+        params["purchaser.nation"] = idInfo.nation ?: ""            // 民族
+        params["purchaser.purchaserNmae"] = idInfo.name ?: ""       // 购买者名称
+        params["purchaser.validBegin"] = idInfo.startDate ?: ""     // 有效期始
+        params["purchaser.validEnd"] = idInfo.endDate ?: ""         // 有效期止
+        params["saleDiscount"] = saleDiscount
+        params["saleRealPay"] = saleRealPay
+        params["salePayMethod"] = salePayMethod
+        params["salePurpose"] = salePurpose ?: ""
+        params["saleRemark"] = saleRemark ?: ""
+
+        BaseApi.dispose(mApi.saleSettlement(params), callback)
+    }
 }

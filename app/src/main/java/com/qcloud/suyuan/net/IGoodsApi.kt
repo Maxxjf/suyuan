@@ -55,4 +55,7 @@ interface IGoodsApi {
     @GET(UrlConstants.SALE_SEARCH_PRODUCT)
     fun saleSearchProduct(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SellersBean>>
 
+    /** 卖货结算 */
+    @GET(UrlConstants.SALE_SETTLEMENT)
+    fun saleSettlement(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SettlementResBean>>
 }
