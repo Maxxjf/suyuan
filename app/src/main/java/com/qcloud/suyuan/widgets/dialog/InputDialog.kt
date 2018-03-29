@@ -144,6 +144,7 @@ class InputDialog @JvmOverloads constructor(
 
     fun setInputValue(value: String) {
         et_text.setText(value)
+        et_text.setSelection(value.length)
     }
 
     fun initInputHint(@StringRes hintRes: Int) {
@@ -152,6 +153,15 @@ class InputDialog @JvmOverloads constructor(
 
     fun initInputHint(hintValue: String) {
         et_text?.hint = hintValue
+    }
+
+    /**
+     * 设置输入类型
+     *
+     * @param inputType eg InputType.TYPE_CLASS_NUMBER
+     * */
+    fun setInputMethod(inputType: Int) {
+        et_text?.inputType = inputType
     }
 
     fun setBindView(@NonNull view: TextView) {

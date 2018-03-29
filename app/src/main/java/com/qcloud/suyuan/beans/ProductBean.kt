@@ -15,6 +15,8 @@ class ProductBean: Serializable {
     var imageUrl: String? = null    // 商品图片
     var image: String? = null       // 商品图片(入库使用)
     var retailPrice: Double = 0.00  // 零售价
+    var retailPriceStr: String = "0.00"
+        get() = retailPrice.toString()
     var classifyName: String? = null    // 分类名称
         get() = if (StringUtil.isBlank(field)) "" else field
     var stock: Int = 0      // 当前库存

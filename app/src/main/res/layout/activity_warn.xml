@@ -41,6 +41,7 @@
             android:layout_marginRight="@dimen/layoutMargin"
             android:layout_marginEnd="@dimen/layoutMargin"
             android:drawableLeft="@drawable/icon_edit_stock_warn"
+            android:drawableStart="@drawable/icon_edit_stock_warn"
             android:drawablePadding="@dimen/drawPadding"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/typeTextSize"

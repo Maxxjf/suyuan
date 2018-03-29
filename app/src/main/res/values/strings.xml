@@ -11,7 +11,7 @@
     <string name="title_cart">购物车</string>
     <string name="title_sellers">销售产品</string>
     <string name="title_purchase">产品入库</string>
-    <string name="title_modify_price">修改售价</string>
+    <string name="title_modify_price">售价和库存警告线设置</string>
     <string name="title_selling_water">销售流水</string>
     <string name="title_out_storage">撤消入库</string>
     <string name="title_store_product">门店产品</string>
@@ -106,6 +106,7 @@
     <string name="toast_get_product_details_failure">获取产品数据为空，请重试</string>
     <string name="toast_input_warn_line">请输入警告线</string>
     <string name="toast_input_price">请输入售价</string>
+    <string name="toast_input_stock_warn">请输入库存警告线</string>
     <string name="toast_edit_warn_line_success">调整警告线成功</string>
     <string name="toast_edit_price_success">调整售价成功</string>
     <string name="toast_out_storage_success">撤消入库成功</string>
@@ -123,6 +124,8 @@
     <string name="toast_settlement_success">结算成功</string>
     <string name="toast_read_card_error">读证错误</string>
     <string name="toast_read_card_timeout">读证超时，请检查网络连接</string>
+    <string name="toast_modify_price_success">修改售价成功</string>
+    <string name="toast_modify_stock_warn_success">修改库存警告线成功</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

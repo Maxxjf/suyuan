@@ -339,13 +339,13 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         settlementDialog?.show()
         settlementDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
+                realPay = settlementDialog!!.realPay
+                discount = totalAccount - realPay
+                payMethod = settlementDialog!!.payMethod
                 when (view.id) {
                     R.id.btn_cash -> showCashDialog()
-                    else -> {
-                        realPay = settlementDialog!!.realPay
-                        discount = totalAccount - realPay
-                        payMethod = settlementDialog!!.payMethod
 
+                    else -> {
                         mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
                     }
                 }

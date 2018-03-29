@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.goods.widget.ModifyPriceActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
@@ -11,4 +13,124 @@
         android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_modify_price"/>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/barHeight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/margin_40"
+            android:layout_marginStart="@dimen/margin_40"
+            android:layout_marginRight="@dimen/margin_40"
+            android:layout_marginEnd="@dimen/margin_40"
+            android:background="@drawable/frame_gray">
+
+            <ImageView
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:layout_marginRight="@dimen/margin_1"
+                android:layout_marginEnd="@dimen/margin_1"
+                android:src="@drawable/icon_search"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            <View
+                style="@style/LineVertical"
+                android:layout_margin="@dimen/margin_1"/>
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:textColorHint="@color/colorGray"
+                android:hint="@string/hint_input_product_code_and_name"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/LineHorizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabHeight"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_image"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_name"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_spec"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_product_manufacturer"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_selling_price"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize"
+            android:text="@string/tag_stock_warn_line"/>
+    </LinearLayout>
+
+    <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+        android:id="@+id/list_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

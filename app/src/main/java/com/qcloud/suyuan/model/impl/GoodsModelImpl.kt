@@ -75,7 +75,7 @@ class GoodsModelImpl: IGoodsModel {
     override fun editWarnLine(goodsId: String, cordon: Int, callback: DataCallback<EmptyReturnBean>) {
         val params = FrameRequest.getAppParams()
         params["goodsId"] = goodsId
-        params["cardon"] = cordon
+        params["cordon"] = cordon
 
         BaseApi.dispose(mApi.editCordon(params), callback)
     }

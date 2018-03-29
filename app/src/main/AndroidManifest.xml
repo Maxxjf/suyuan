@@ -68,7 +68,8 @@
         <activity
             android:name=".ui.goods.widget.ModifyPriceActivity"
             android:label="@string/title_modify_price"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".ui.order.widget.SellingWaterActivity"
             android:label="@string/title_selling_water"

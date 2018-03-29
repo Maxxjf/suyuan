@@ -32,6 +32,10 @@ class WarnActivity: BaseActivity<IWarnView, WarnPresenterImpl>(), IWarnView {
 
     override fun initViewAndData() {
         initIndicator()
+        btn_edit_stock.setOnClickListener {
+            ModifyPriceActivity.openActivity(this)
+            finish()
+        }
     }
 
     /**

@@ -47,7 +47,7 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
                     realPay = priceStr.toDouble()
                     giveMoney = realPay - totalAccount
                     if (giveMoney > 0) {
-                        tv_real_price.text = String.format(moneyStr, realPay)
+                        tv_give_change.text = String.format(moneyStr, giveMoney)
                     }
                 }
             }
