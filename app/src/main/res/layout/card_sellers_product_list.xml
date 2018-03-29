@@ -208,16 +208,34 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:textColor="@color/colorTitle"-->
+                        <!--android:textSize="@dimen/textSize"-->
+                        <!--android:text="@string/tag_serial_number"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_serial_number"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/margin_1"-->
+                        <!--android:layout_marginStart="@dimen/margin_1"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:textColor="@color/colorTitle"-->
+                        <!--android:textSize="@dimen/typeTextSize"-->
+                        <!--tools:text="KSLS128973"/>-->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/textSize"
-                        android:text="@string/tag_serial_number"/>
+                        android:text="@string/tag_money_getter"/>
 
                     <TextView
-                        android:id="@+id/tv_serial_number"
+                        android:id="@+id/tv_money_getter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_1"
@@ -225,7 +243,7 @@
                         android:gravity="center_vertical"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize"
-                        tools:text="KSLS128973"/>
+                        tools:text="库赞"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -269,7 +287,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -280,7 +299,6 @@
                         android:text="@string/tag_money_getter"/>
 
                     <TextView
-                        android:id="@+id/tv_money_getter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_1"

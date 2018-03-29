@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/editHeight"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_context"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/layoutMargin"
+        android:paddingStart="@dimen/layoutMargin"
+        android:lines="1"
+        tools:text="我的搜索"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/textSize" />
+
+    <View
+        style="@style/LineHorizontal"/>
+
+</LinearLayout>

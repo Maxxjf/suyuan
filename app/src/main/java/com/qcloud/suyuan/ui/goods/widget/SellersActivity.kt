@@ -32,6 +32,7 @@ import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.SellersPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.ISellersView
+import com.qcloud.suyuan.utils.IDCardUtil
 import com.qcloud.suyuan.utils.NFCHelper
 import com.qcloud.suyuan.utils.NFCHelper.Companion.PLEASECHECKNETWORKERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.REPEAT5001
@@ -362,6 +363,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             inputPurchaseDialog = InputPurchaseDialog(this)
         }
         inputPurchaseDialog?.show()
+        inputPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                purchaseInfo = inputPurchaseDialog!!.currPurchaser
+                refreshPurchaser(purchaseInfo)
+            }
+        }
     }
 
     override fun onMobileClick() {
@@ -434,12 +441,18 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     override fun settlementSuccess(bean: SettlementResBean?) {
         if (isRunning) {
             QToast.info(this@SellersActivity, R.string.tip_printing_suyuan_code, false)
-            if (bean?.traceabilityList != null) {
-                for (it in bean.traceabilityList!!) {
-                    val printBean = PrintBean()
-                    printBean.type = 1
-                    printBean.barCode = it.code
-                    PrintHelper.instance.printData(printBean)
+            if (bean != null) {
+                if (bean?.traceabilityList != null) {
+                    for (it in bean.traceabilityList!!) {
+                        val printBean = PrintBean()
+                        printBean.type = 1
+                        printBean.barCode = it.code
+                        PrintHelper.instance.printData(printBean)
+                    }
+                }
+                if (purchaseInfo != null) {
+                    purchaseInfo?.id = bean.purchaserId
+                    IDCardUtil.addOrUpdate(purchaseInfo)
                 }
             }
         }
@@ -516,14 +529,16 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
-    private fun refreshPurchaser(bean: IDBean) {
-        with(bean) {
-            val bitmap = BitmapFactory.decodeFile(userImg)
-            purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
-            img_user_head.setImageBitmap(bitmap)
-            tv_user_name.text = bean.name
-            tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
-            tv_mobile.text = bean.mobile
+    private fun refreshPurchaser(bean: IDBean?) {
+        if (bean != null) {
+            with(bean) {
+                val bitmap = BitmapFactory.decodeFile(userImg)
+                purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
+                img_user_head.setImageBitmap(bitmap)
+                tv_user_name.text = bean.name
+                tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
+                tv_mobile.text = bean.mobile
+            }
         }
     }
 
