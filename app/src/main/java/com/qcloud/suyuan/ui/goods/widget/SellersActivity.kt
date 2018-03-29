@@ -44,6 +44,7 @@ import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP5022OK
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6002ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013OK
+import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.*
@@ -432,8 +433,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun settlementSuccess(bean: SettlementResBean?) {
         if (isRunning) {
-            if (bean != null) {
-
+            QToast.info(this@SellersActivity, R.string.tip_printing_suyuan_code, false)
+            if (bean?.traceabilityList != null) {
+                for (it in bean.traceabilityList!!) {
+                    val printBean = PrintBean()
+                    printBean.type = 1
+                    printBean.barCode = it.code
+                    PrintHelper.instance.printData(printBean)
+                }
             }
         }
     }

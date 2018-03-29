@@ -120,6 +120,7 @@
     <string name="toast_get_product_to_buy">请先获取购买商品</string>
     <string name="toast_input_purchaser_info">请先输入购买者信息</string>
     <string name="toast_input_purchase_mobile">请先输入购买者电话</string>
+    <string name="toast_settlement_success">结算成功</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
