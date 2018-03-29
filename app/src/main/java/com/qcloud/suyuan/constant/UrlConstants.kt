@@ -27,6 +27,9 @@ object UrlConstants {
     /**获取有效期告警列表*/
     const val GET_VALID_WARN_LIST = URL_PREFIX_APP + "index/indateList"
 
+    /**销售报表*/
+    const val  GET_SALE_STATEMENT = URL_PREFIX_APP+"statement/statement"
+
     /**扫码查询*/
     const val SCAN_CODE = URL_PREFIX_APP + "salesReturn/scanCode"
     /**退货*/

@@ -32,4 +32,8 @@ class InStorageRecordBean {
     var productionDate: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var state: Int = 0
+    override fun toString(): String {
+        return "InStorageRecordBean(id=$id, shopId=$shopId, goodId=$goodId, supplierId=$supplierId, goodsNum=$goodsNum, price=$price, surplusNum=$surplusNum, state=$state)"
+    }
+
 }

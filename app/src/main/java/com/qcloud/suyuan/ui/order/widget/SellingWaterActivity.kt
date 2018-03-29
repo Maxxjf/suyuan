@@ -22,7 +22,6 @@ import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_selling_water.*
-import timber.log.Timber
 
 /**
  * Description: 销售流水
@@ -66,15 +65,14 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         saleListAdapter = SaleListAdapter(this)
         saleInfoAdapter = SaleInfoAdapter(this)
         saleListAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ _, _, i, _ ->
-            Timber.e("${saleListAdapter!!.mList[i]}")
             mPresenter?.getSaleInfo(saleListAdapter!!.mList[i].id!!)
         })
         rv_sale_list.setLayoutManager(LinearLayoutManager(this))
         rv_sale_list.setAdapter(saleListAdapter!!)
         rv_sale_info_list.setLayoutManager(LinearLayoutManager(this))
         rv_sale_info_list.setAdapter(saleInfoAdapter!!)
-        PullRefreshUtil.setRefresh(rv_sale_list, true, true)
-        PullRefreshUtil.setRefresh(rv_sale_info_list, true, true)
+        PullRefreshUtil.setRefresh(rv_sale_list, false, false)
+        PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
 
         mWaterEmptyView = NoDataView(this)
         mReceiptEmptyView = NoDataView(this)

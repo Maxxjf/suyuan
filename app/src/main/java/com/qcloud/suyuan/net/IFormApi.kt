@@ -2,6 +2,7 @@ package com.qcloud.suyuan.net
 
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.suyuan.beans.MainFormBean
+import com.qcloud.suyuan.beans.SaleFormBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -16,4 +17,7 @@ interface IFormApi {
     /** 首页报表 */
     @GET(UrlConstants.MAIN_FORM)
     fun getMainForm(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<MainFormBean>>
+    /** 首页报表 */
+    @GET(UrlConstants.GET_SALE_STATEMENT)
+    fun getSaleForm(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SaleFormBean>>
 }
