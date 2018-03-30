@@ -4,6 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.InStorageBean
+import com.qcloud.suyuan.beans.OutStorageBean
 import com.qcloud.suyuan.beans.ProductBean
 
 /**
@@ -26,4 +27,8 @@ interface IStorageModel {
      * 提交入库
      * */
     fun save(goodId: String, number: Int, price: Double, expDate: String, stopDate: String, supplierId: String?, callback: DataCallback<InStorageBean>)
+    /**
+     * 出库商品查询
+     * */
+    fun outStorageSearch(keyword: String, callback: DataCallback<OutStorageBean>)
 }

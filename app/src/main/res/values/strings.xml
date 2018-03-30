@@ -66,6 +66,7 @@
     <string name="btn_adjust_warn">调整警告线</string>
     <string name="btn_print">打印</string>
     <string name="btn_edit_info">修改信息</string>
+    <string name="btn_ok_out_storge">确认出库</string>
 
     <string name="cb_remember_password">记住密码</string>
 
@@ -92,6 +93,7 @@
     <string name="hint_input_remark">请输入你要备注的话</string>
     <string name="hint_input_contact_person">请输入称联系人</string>
     <string name="hint_input_contact_phone">请输入联系电话</string>
+    <string name="hint_input_storge_number">请输入出货数量</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -201,6 +203,7 @@
     <string name="tag_supplier_details">供应商详情</string>
     <string name="tag_supplier_add">添加供应商</string>
     <string name="tag_supplier_edit">修改供应商</string>
+    <string name="tag_number_edit">选择数量</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>
@@ -283,6 +286,7 @@
     <string name="tag_in_storage_batch">入库批次</string>
     <string name="tag_in_storage_time">入库时间</string>
     <string name="tag_in_storage_number">入库数量</string>
+    <string name="tag_out_storage_number">出库数量</string>
     <string name="tag_in_storage_valid">产品有效期</string>
     <string name="tag_in_storage_price">进货价格</string>
     <string name="tag_change_price">修改售价</string>

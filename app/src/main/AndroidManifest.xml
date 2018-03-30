@@ -85,6 +85,7 @@
             android:label="@string/title_return"
             android:screenOrientation="landscape" />
         <activity
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.storage.widget.OutStorageActivity"
             android:label="@string/title_out_storage"
             android:screenOrientation="landscape" />

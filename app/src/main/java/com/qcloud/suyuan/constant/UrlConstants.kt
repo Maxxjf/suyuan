@@ -49,6 +49,8 @@ object UrlConstants {
     const val EDIT_CORDON = URL_PREFIX_APP + "stock/editCardon"
     /**有效期告警列表撤消入库接口*/
     const val OUT_STORAGE_IN_VALID_WARN = URL_PREFIX_APP + "storage/output"
+    /**出库商品查询*/
+    const val OUT_STORAGE_SEARCH = URL_PREFIX_APP + "storage/searchByCode"
 
     /**赊账列表**/
     const val GET_CREDIT_LIST= URL_PREFIX_APP+"onCredit/list"
