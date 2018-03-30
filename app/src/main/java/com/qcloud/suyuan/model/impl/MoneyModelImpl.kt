@@ -59,16 +59,6 @@ class MoneyModelImpl : IMoneyModel {
         BaseApi.dispose(mApi.repayment(params), callback)
     }
 
-    /**
-     *商品查询
-     * @param keyword
-     */
-    override fun saleSearch(keyword:String, callback: DataCallback<SaleSearchBean>){
-        val params = FrameRequest.getAppParams()
-        params["keyword"] = keyword
-
-        BaseApi.dispose(mApi.saleSearch(params), callback)
-    }
 
     /**
      *销售列表

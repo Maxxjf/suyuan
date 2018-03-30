@@ -7,7 +7,6 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.storage.presenter.impl.OutStoragePresenterImpl
 import com.qcloud.suyuan.ui.storage.view.IOutStorageView
-import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 
 /**
  * Description: 撤消入库
@@ -23,7 +22,7 @@ class OutStorageActivity: BaseActivity<IOutStorageView, OutStoragePresenterImpl>
     }
 
     override fun initViewAndData() {
-        DatePickerDialog(this).show()
+
     }
 
     companion object {

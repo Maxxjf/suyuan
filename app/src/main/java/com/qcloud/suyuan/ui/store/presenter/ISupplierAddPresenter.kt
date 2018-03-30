@@ -7,5 +7,6 @@ package com.qcloud.suyuan.ui.store.presenter
  * TODO:
  */
 interface ISupplierAddPresenter{
-
+    /**新增供应商**/
+    fun addSupplier(address: String,  name: String, phone: String, principal: String, remark: String)
 }

@@ -15,4 +15,8 @@ class SupplierBean {
     var phone: String? = null
     var principal: String? = null   // 负责人
     var remark: String? = null
+    override fun toString(): String {
+        return "SupplierBean(id=$id, address=$address, phone=$phone, principal=$principal, remark=$remark)"
+    }
+
 }

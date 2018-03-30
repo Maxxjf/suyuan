@@ -102,7 +102,7 @@
                 android:paddingLeft="@dimen/margin_2">
 
                 <TextView
-                    android:id="@+id/tv_in_storage_number"
+                    android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -114,7 +114,7 @@
                     android:textSize="@dimen/typeTextSize" />
 
                 <TextView
-                    android:id="@+id/tv_in_storage_price"
+                    android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -126,7 +126,7 @@
                     android:textSize="@dimen/typeTextSize" />
 
                 <TextView
-                    android:id="@+id/btn_in_storage_birthday"
+                    android:id="@+id/tv_person"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -138,7 +138,7 @@
                     android:textSize="@dimen/typeTextSize" />
 
                 <TextView
-                    android:id="@+id/btn_in_storage_end_date"
+                    android:id="@+id/tv_phone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/editHeight"
                     android:layout_marginTop="@dimen/modelMargin"
@@ -155,7 +155,7 @@
                     android:layout_height="@dimen/largeEditHeight"
                     android:layout_marginTop="@dimen/modelMargin"
                     android:background="@drawable/frame_gray"
-                    android:gravity="center_vertical"
+                    android:gravity="left|top"
                     android:hint="@string/hint_input_remark"
                     android:paddingLeft="@dimen/margin_2"
                     android:textColor="@color/colorTitle"

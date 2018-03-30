@@ -2,7 +2,6 @@ package com.qcloud.suyuan.net
 
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.qclib.beans.ReturnDataBean
-import com.qcloud.suyuan.beans.StoreBean
 import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
@@ -22,5 +21,9 @@ interface IStoreApi {
     /** 供应商列表 */
     @GET(UrlConstants.SUPPLIER_LIST)
     fun supplierList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<SupplierBean>>>
+
+    /** 修改或增加供应商 */
+    @GET(UrlConstants.SUPPLIER_SAVE_UPDATE)
+    fun supplierSaveOrUpdate(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 
 }

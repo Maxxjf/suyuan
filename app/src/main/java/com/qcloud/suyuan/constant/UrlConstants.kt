@@ -59,8 +59,6 @@ object UrlConstants {
     /**产品入库*/
     const val STORAGE_SAVE = URL_PREFIX_APP + "storage/save"
 
-    /**商品查询**/
-    const val SALE_SEARCH= URL_PREFIX_APP+"sale/search"
     /**销售列表**/
     const val SALE_LIST= URL_PREFIX_APP+"sale/list"
     /**销售详情**/
@@ -68,6 +66,8 @@ object UrlConstants {
 
     /**供应商列表*/
     const val SUPPLIER_LIST = URL_PREFIX_APP + "store/supplierList"
+    /**供应商保存或更改*/
+    const val SUPPLIER_SAVE_UPDATE = URL_PREFIX_APP + "store/supplierSaveUpdate"
     /**卖货搜索*/
     const val SALE_SEARCH_PRODUCT = URL_PREFIX_APP + "sale/search"
     /**结算*/

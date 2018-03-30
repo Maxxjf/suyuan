@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.ui.store.view
 
 import com.qcloud.qclib.base.BaseView
+import com.qcloud.suyuan.beans.SupplierBean
 
 /**
  * 类型：ISupplierDetailView
@@ -9,4 +10,5 @@ import com.qcloud.qclib.base.BaseView
  * TODO:
  */
 interface ISupplierDetailView :BaseView {
+    fun replaceInfo(bean: SupplierBean)
 }

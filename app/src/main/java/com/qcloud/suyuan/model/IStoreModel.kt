@@ -2,7 +2,6 @@ package com.qcloud.suyuan.model
 
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
-import com.qcloud.suyuan.beans.StoreBean
 import com.qcloud.suyuan.beans.SupplierBean
 
 /**
@@ -15,5 +14,8 @@ interface IStoreModel {
     fun getInfo(callback: DataCallback<StoreBean>)
 
     /** 供应商列表 */
-    fun supplierList(callback: DataCallback<ReturnDataBean<SupplierBean>>)
+    fun supplierList(keyword:String,callback: DataCallback<ReturnDataBean<SupplierBean>>)
+
+    /** 新增或修改供应商 */
+    fun supplierSaveOrUpdate(address: String, classifyId: String, id: String, name: String, phone: String, principal: String, remark: String, callback: DataCallback<EmptyReturnBean>)
 }
