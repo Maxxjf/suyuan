@@ -1,13 +1,14 @@
 package com.qcloud.suyuan.beans
 
 import com.qcloud.qclib.utils.StringUtil
+import java.io.Serializable
 
 /**
  * 类说明：供应商
  * Author: Kuzan
  * Date: 2018/3/28 15:44.
  */
-class SupplierBean {
+open class SupplierBean: Serializable {
     var id: String? = null
     var name: String = ""
         get() = if (StringUtil.isBlank(field)) "" else field

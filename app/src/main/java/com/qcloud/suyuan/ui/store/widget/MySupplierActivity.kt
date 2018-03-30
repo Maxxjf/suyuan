@@ -103,7 +103,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
     //显示修改供应商
     fun showEditFragment() {
         if (mEditFragment == null) {
-            mEditFragment = SupplierEditFragment()
+            mEditFragment = SupplierEditFragment.newInstance(mCurrentSupplier!!)
         }
         replaceFragment(mEditFragment, R.id.fragment_container, false)
 //        mEditFragment?.replaceInfo(mCurrentSupplier!!)
@@ -111,7 +111,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
     //显示供应商详情
     fun showDetailFragment() {
         if (mDetailFragment == null) {
-            mDetailFragment = SupplierDetailFragment(this!!.mCurrentSupplier!!)
+            mDetailFragment = SupplierDetailFragment(this.mCurrentSupplier!!)
         }else{
             mDetailFragment?.replaceInfo(mCurrentSupplier!!)
         }

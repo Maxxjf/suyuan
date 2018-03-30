@@ -59,12 +59,12 @@ class SupplierDetailFragment (mSupplierBean: SupplierBean) :BaseFragment<ISuppli
             tv_phone.setText("${mCurrentBean!!.phone}")
             tv_remark.setText("${mCurrentBean!!.remark}")
         }
-        btn_edit.setOnClickListener({_ ->
+        btn_edit.setOnClickListener{_ ->
             if (mContext is MySupplierActivity){
                 (mContext as MySupplierActivity).showEditFragment()
             }
             BusProvider.instance.post(RxBusEvent.newBuilder(R.id.id_clidk_edit_supplier).setObj(mCurrentBean).build())
-        })
+        }
     }
 
     override fun beginLoad() {

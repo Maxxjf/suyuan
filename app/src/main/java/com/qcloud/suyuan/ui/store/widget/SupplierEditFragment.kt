@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.ui.store.widget
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.qcloud.qclib.utils.StringUtil
@@ -121,6 +122,16 @@ class SupplierEditFragment :BaseFragment<ISupplierEditView,SupplierEditPresenter
 
     override fun beginLoad() {
 
+    }
+
+    companion object {
+        fun newInstance(bean: SupplierBean): SupplierEditFragment {
+            val fragment = SupplierEditFragment()
+            val bundle = Bundle()
+            bundle.putSerializable("DATA", bean)
+            fragment.arguments = bundle
+            return fragment
+        }
     }
 
 }

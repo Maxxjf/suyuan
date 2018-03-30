@@ -23,7 +23,7 @@ class SupplierEditPresenterImpl :BasePresenter<ISupplierEditView>(), ISupplierEd
     private var mModel: IStoreModel = StoreModelImpl()
 
     init {
-        Timber.e("--init")
+        Timber.e("--$mEventBus")
         mEventBus!!.registerSubscriber(this,mEventBus!!.obtainSubscriber(RxBusEvent::class.java, Consumer {
             when(it.type){
                 R.id.id_clidk_edit_supplier ->{
