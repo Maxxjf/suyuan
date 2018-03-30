@@ -37,6 +37,8 @@ object UrlConstants {
     /**获取退货记录列表*/
     const val GET_RETURNED_RECORD_LIST = URL_PREFIX_APP + "salesReturn/salesReturnList"
 
+    /**获取产品分类列表*/
+    const val GET_CLASSIFY_LIST = URL_PREFIX_APP + "stock/classifyList"
     /**获取库存(产品)列表*/
     const val GET_STOCK_LIST = URL_PREFIX_APP + "stock/list"
     /**获取商品详情*/

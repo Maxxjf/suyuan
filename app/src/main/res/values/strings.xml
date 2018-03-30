@@ -15,6 +15,7 @@
     <string name="title_selling_water">销售流水</string>
     <string name="title_out_storage">撤消入库</string>
     <string name="title_store_product">门店产品</string>
+    <string name="title_my_product">我的私有产品</string>
     <string name="title_credit_record">赊账记录</string>
     <string name="title_return">退货</string>
     <string name="title_return_record">退货记录</string>
@@ -59,6 +60,7 @@
     <string name="btn_pay_credit">还款</string>
     <string name="btn_confirm_in_storage_and_print_code">确认并打印批次条形码</string>
     <string name="btn_my_product">我的产品</string>
+    <string name="btn_create_product">创建私有产品</string>
     <string name="btn_product_details">详情说明</string>
     <string name="btn_product_price">产品售价</string>
     <string name="btn_adjust_warn">调整警告线</string>

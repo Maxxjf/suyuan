@@ -6,7 +6,6 @@ import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
-import android.view.View
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
@@ -18,7 +17,6 @@ import com.qcloud.suyuan.adapters.StoreProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
-import com.qcloud.suyuan.beans.StoreProductBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.store.presenter.impl.StoreProductPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStoreProductView
@@ -55,6 +53,10 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     override fun initViewAndData() {
         initRecyclerView()
         initEditView()
+        btn_my_product.setOnClickListener {
+            MyProductActivity.openActivity(this)
+        }
+        mPresenter?.loadClassify()
     }
 
     private fun initRecyclerView() {
@@ -161,11 +163,12 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         }
 
         btn_purchase_use.setOnClickListener {
+            Timber.e("click $list")
             mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
         }
     }
 
-    override fun replaceClissifyList(list: List<ProductClassifyBean>?) {
+    override fun replaceClassifyList(list: List<ProductClassifyBean>?) {
         if (isRunning) {
             if (list != null && list.isNotEmpty()) {
                 initClassify(list)

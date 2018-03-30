@@ -2,6 +2,8 @@ package com.qcloud.suyuan.net
 
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.qclib.beans.ReturnDataBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.StoreBean
 import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable

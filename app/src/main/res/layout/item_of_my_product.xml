@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_product_bar_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.8"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="9785644239047588"/>
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
+
+    <TextView
+        android:id="@+id/tv_product_spec"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_spec"/>
+
+    <TextView
+        android:id="@+id/tv_product_manufacture"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_manufacturer"/>
+
+    <TextView
+        android:id="@+id/tv_product_operator"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_operator"/>
+
+    <TextView
+        android:id="@+id/tv_product_last_in_time"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/textSize"
+        tools:text="@string/tag_product_last_in_time"/>
+</LinearLayout>

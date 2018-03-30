@@ -2,6 +2,8 @@ package com.qcloud.suyuan.model
 
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.suyuan.beans.EmptyReturnBean
+import com.qcloud.suyuan.beans.StoreBean
 import com.qcloud.suyuan.beans.SupplierBean
 
 /**

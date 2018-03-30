@@ -8,15 +8,15 @@ import com.qcloud.suyuan.beans.ProductClassifyBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
-import com.qcloud.suyuan.ui.store.presenter.IStoreProductPresenter
-import com.qcloud.suyuan.ui.store.view.IStoreProductView
+import com.qcloud.suyuan.ui.store.presenter.IMyProductPresenter
+import com.qcloud.suyuan.ui.store.view.IMyProductView
 
 /**
- * Description: 门店产品
- * Author: gaobaiqiang
- * 2018/3/15 上午12:50.
+ * 类说明：我的产品
+ * Author: Kuzan
+ * Date: 2018/3/30 11:03.
  */
-class StoreProductPresenterImpl: BasePresenter<IStoreProductView>(), IStoreProductPresenter {
+class MyProductPresenterImpl: BasePresenter<IMyProductView>(), IMyProductPresenter {
 
     val mModel: IGoodsModel = GoodsModelImpl()
 
@@ -41,7 +41,7 @@ class StoreProductPresenterImpl: BasePresenter<IStoreProductView>(), IStoreProdu
      * 获取产品数据
      * */
     override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 0, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 1, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t?.list != null) {
                     if (t.list != null) {
