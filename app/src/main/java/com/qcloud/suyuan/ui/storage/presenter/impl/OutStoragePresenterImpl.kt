@@ -27,6 +27,7 @@ class OutStoragePresenterImpl : BasePresenter<IOutStorageView>(), IOutStoragePre
 
             override fun onError(status: Int, message: String) {
                 mView?.loadErr(message)
+//
             }
 
         })
