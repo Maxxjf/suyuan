@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_white_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabHeight"
+        android:background="@drawable/bg_cyan_top_radius">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:paddingRight="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/tag_input_purchase_info"/>
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_close"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/layoutMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/editHeight"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/textSize"
+            android:textColor="@color/colorTitle"
+            android:text="@string/tag_input_attr_style"/>
+
+        <EditText
+            android:id="@+id/et_attr"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_50"
+            android:background="@drawable/btn_frame_normal"
+            android:gravity="top|left"
+            android:padding="@dimen/modelMargin"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_attr"
+            tools:ignore="RtlHardcoded" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/largeBtnHeight"
+        android:background="@drawable/btn_radius_selector"
+        android:layout_marginTop="@dimen/margin_6"
+        android:layout_marginLeft="@dimen/layoutMargin"
+        android:layout_marginRight="@dimen/layoutMargin"
+        android:layout_marginBottom="@dimen/layoutMargin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btnTextSize"
+        android:text="@string/btn_confirm_add"/>
+</LinearLayout>

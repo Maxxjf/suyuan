@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/editHeight"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginTop="@dimen/layoutMargin">
+
+    <TextView
+        android:id="@+id/tv_required"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/smallTextSize"
+        android:text="@string/tag_required"/>
+
+    <TextView
+        android:id="@+id/tv_attr_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="毒性："/>
+
+    <LinearLayout
+        android:id="@+id/btn_select_value"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editHeight"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:layout_marginStart="@dimen/margin_2"
+        android:background="@drawable/frame_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tv_value"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/editHeight"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/layout_margin"
+            android:paddingStart="@dimen/layout_margin"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:hint="请选择"/>
+
+        <ImageView
+            android:id="@+id/btn_drop_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_drop_down"/>
+    </LinearLayout>
+
+</LinearLayout>

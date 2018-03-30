@@ -31,6 +31,7 @@
     <string name="title_warn">告警提示</string>
     <string name="title_stock_details">库存详情</string>
     <string name="title_dialog_return">退货确认</string>
+    <string name="title_create_product">我的私有产品</string>
 
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
@@ -66,6 +67,10 @@
     <string name="btn_adjust_warn">调整警告线</string>
     <string name="btn_print">打印</string>
     <string name="btn_edit_info">修改信息</string>
+    <string name="btn_next">下一步</string>
+    <string name="btn_confirm_create">确定创建</string>
+    <string name="btn_add">添加</string>
+    <string name="btn_confirm_add">确认添加</string>
     <string name="btn_ok_out_storge">确认出库</string>
 
     <string name="cb_remember_password">记住密码</string>
@@ -93,6 +98,18 @@
     <string name="hint_input_remark">请输入你要备注的话</string>
     <string name="hint_input_contact_person">请输入称联系人</string>
     <string name="hint_input_contact_phone">请输入联系电话</string>
+    <string name="hint_input_product_bar_code">请输入产品条形码</string>
+    <string name="hint_input_product_name">请输入产品名称</string>
+    <string name="hint_select_product_classify">请选择产品分类</string>
+    <string name="hint_input_product_spec">请输入产品规格</string>
+    <string name="hint_select_product_mill">请选择生产厂家</string>
+    <string name="hint_input_mill_address">请输入厂家地址</string>
+    <string name="hint_input_registration_code">请输入登记证号</string>
+    <string name="hint_input_production_license">请输入生产许可证号</string>
+    <string name="hint_input_product_standard">请输入产品标准证号</string>
+    <string name="hint_input_product_introduce">请输入产品详情</string>
+    <string name="hint_input_value">请输入值</string>
+    <string name="hint_input_attr">安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件#安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件</string>
     <string name="hint_input_storge_number">请输入出货数量</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
@@ -313,5 +330,14 @@
     <string name="tag_wechat_income">微信收入: </string>
     <string name="tag_valid_order_mao">有效订单: </string>
     <string name="tag_credit_mao">赊账: </string>
+    <string name="tag_input_product_info">录入产品信息</string>
+    <string name="tag_required">*</string>
+    <string name="tag_mill_address">厂家地址: </string>
+    <string name="tag_registration_code">登记证号: </string>
+    <string name="tag_registration_code_valid">登记证有效期: </string>
+    <string name="tag_production_license_code">生产许可证号: </string>
+    <string name="tag_product_standard_code">产品标准证号: </string>
+    <string name="tag_product_introduce">产品详情: </string>
+    <string name="tag_input_attr_style">请按照以下格式填写(注不同属性以#号区分,同一属性不同值以.号区分)</string>
 
 </resources>

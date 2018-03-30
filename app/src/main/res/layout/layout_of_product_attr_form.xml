@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/modelMargin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editHeight"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_required"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/tag_required"/>
+
+        <TextView
+            android:id="@+id/tv_attr_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/smallTextSize"
+            tools:text="有效成份信息："/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btnHeight"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginStart="@dimen/margin_2"
+            android:paddingLeft="@dimen/margin_8"
+            android:paddingRight="@dimen/margin_8"
+            android:background="@drawable/btn_radius_selector"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:text="@string/btn_add"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btnHeight"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/modelMargin"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/tag_form_title_i"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            tools:text="成分编号"/>
+
+        <TextView
+            android:id="@+id/tag_form_title_ii"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2.2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            tools:text="成分数量"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/tag_goods_control"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_small_gray"/>
+
+</LinearLayout>

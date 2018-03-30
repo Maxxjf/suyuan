@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/btnHeight"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_value_i"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="1"/>
+
+    <TextView
+        android:id="@+id/tv_value_ii"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.2"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_value_delete"/>
+    </LinearLayout>
+
+</LinearLayout>
