@@ -18,4 +18,6 @@ interface IMySupplierView :BaseView{
     //隐藏空布局
     fun hideEmptyView()
 
+    fun hasEdit()
+    fun loadData()
 }

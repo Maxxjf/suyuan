@@ -31,6 +31,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
     private var mAdapter: SupplierAdapter? = null
     private var mEmptyView: NoDataView? = null
     private var mAddFragment: SupplierAddFragment?=null
+    private var mEditFragment: SupplierEditFragment? = null
     private var mDetailFragment: SupplierDetailFragment? = null
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -71,11 +72,20 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
         }
         showAddFragment()
         btn_add.setOnClickListener(this)
+
+//        mEditFragment= SupplierEditFragment()
+//        mAddFragment= SupplierAddFragment()
+//        mDetailFragment=SupplierDetailFragment()
     }
 
-    fun loadData() {
+    override fun loadData() {
         keyword = et_search.text.toString().trim()
         mPresenter?.getSupplierList(keyword)
+    }
+
+    override fun hasEdit(){
+       loadData()
+        showAddFragment()
     }
 
     override fun onClick(v: View?) {
@@ -90,9 +100,16 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
         }
         replaceFragment(mAddFragment, R.id.fragment_container, false)
     }
+    //显示修改供应商
+    fun showEditFragment() {
+        if (mEditFragment == null) {
+            mEditFragment = SupplierEditFragment()
+        }
+        replaceFragment(mEditFragment, R.id.fragment_container, false)
+//        mEditFragment?.replaceInfo(mCurrentSupplier!!)
+    }
     //显示供应商详情
     fun showDetailFragment() {
-
         if (mDetailFragment == null) {
             mDetailFragment = SupplierDetailFragment(this!!.mCurrentSupplier!!)
         }else{
@@ -102,6 +119,8 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
             replaceFragment(mDetailFragment, R.id.fragment_container, false)
         }
     }
+
+
 
     override fun replaceList(beans: List<SupplierBean>?, isNext: Boolean) {
         if (isRunning) {

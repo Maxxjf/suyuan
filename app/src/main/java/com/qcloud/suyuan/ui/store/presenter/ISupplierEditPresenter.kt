@@ -4,9 +4,9 @@ package com.qcloud.suyuan.ui.store.presenter
  * 类型：ISupplierAddPresenter
  * Author: iceberg
  * Date: 2018/3/26.
- * TODO:
+ * 修改供应商
  */
-interface ISupplierAddPresenter{
+interface ISupplierEditPresenter {
     /**
      * @param address	供应商地址
      * @param  classifyId	供应品类id字符串( , 隔开)
@@ -17,5 +17,5 @@ interface ISupplierAddPresenter{
      * @param remark	备注
      * 新增/修改供应商
      */
-    fun addSupplier(address: String,  name: String, phone: String, principal: String, remark: String)
+    fun editSupplier(address: String,id:String,  name: String, phone: String, principal: String, remark: String)
 }

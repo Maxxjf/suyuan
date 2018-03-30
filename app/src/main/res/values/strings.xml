@@ -128,6 +128,7 @@
     <string name="toast_read_card_timeout">读证超时，请检查网络连接</string>
     <string name="toast_modify_price_success">修改售价成功</string>
     <string name="toast_modify_stock_warn_success">修改库存警告线成功</string>
+    <string name="toast_supplier_id_err">供应商id为空</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -199,6 +200,7 @@
     <string name="tag_repayment">还款</string>
     <string name="tag_supplier_details">供应商详情</string>
     <string name="tag_supplier_add">添加供应商</string>
+    <string name="tag_supplier_edit">修改供应商</string>
 
     <string name="tip_title">温馨提示</string>
     <string name="tip_no_any_data">oh，没有数据吖~</string>

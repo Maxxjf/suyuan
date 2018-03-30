@@ -1,6 +1,8 @@
 package com.qcloud.suyuan.ui.store.widget
 
 import android.annotation.SuppressLint
+import com.qcloud.qclib.beans.RxBusEvent
+import com.qcloud.qclib.rxbus.BusProvider
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseFragment
 import com.qcloud.suyuan.beans.SupplierBean
@@ -14,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_supplier_detail.*
  * 类型：SupplierDetailFragment
  * Author: iceberg
  * Date: 2018/3/26.
- * TODO:
+ * 供应商详情
  */
 class SupplierDetailFragment (mSupplierBean: SupplierBean) :BaseFragment<ISupplierDetailView,SupplierDetailPresenterImpl>(),ISupplierDetailView{
 
@@ -57,7 +59,12 @@ class SupplierDetailFragment (mSupplierBean: SupplierBean) :BaseFragment<ISuppli
             tv_phone.setText("${mCurrentBean!!.phone}")
             tv_remark.setText("${mCurrentBean!!.remark}")
         }
-
+        btn_edit.setOnClickListener({_ ->
+            if (mContext is MySupplierActivity){
+                (mContext as MySupplierActivity).showEditFragment()
+            }
+            BusProvider.instance.post(RxBusEvent.newBuilder(R.id.id_clidk_edit_supplier).setObj(mCurrentBean).build())
+        })
     }
 
     override fun beginLoad() {
