@@ -1,9 +1,10 @@
 package com.qcloud.suyuan.ui.goods.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.EmptyReturnBean
-import com.qcloud.suyuan.beans.ProductReturnBean
+import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IModifyPricePresenter
@@ -19,14 +20,14 @@ class ModifyPricePresenterImpl: BasePresenter<IModifyPriceView>(), IModifyPriceP
     val mModel = GoodsModelImpl()
 
     override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 0, keyword, object : DataCallback<ProductReturnBean> {
-            override fun onSuccess(t: ProductReturnBean?, message: String?) {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 0, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+            override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t != null) {
                     if (t.list != null) {
                         if (pageNo == 1) {
-                            mView?.replaceList(t.list, t.isNext())
+                            mView?.replaceList(t.list, t.isNext(AppConstants.PAGE_SIZE))
                         } else {
-                            mView?.addListAtEnd(t.list, t.isNext())
+                            mView?.addListAtEnd(t.list, t.isNext(AppConstants.PAGE_SIZE))
                         }
                     } else {
                         if (pageNo == 1) {

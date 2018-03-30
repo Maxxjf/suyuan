@@ -1,4 +1,4 @@
-package com.qcloud.suyuan.ui.goods.widget
+package com.qcloud.suyuan.ui.store.widget
 
 import android.content.Context
 import android.content.Intent
@@ -13,43 +13,47 @@ import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.adapters.ModifyPriceStockAdapter
+import com.qcloud.suyuan.adapters.StoreProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.ProductClassifyBean
 import com.qcloud.suyuan.constant.AppConstants
-import com.qcloud.suyuan.ui.goods.presenter.impl.ModifyPricePresenterImpl
-import com.qcloud.suyuan.ui.goods.view.IModifyPriceView
-import com.qcloud.suyuan.ui.store.widget.StockDetailsActivity
+import com.qcloud.suyuan.ui.store.presenter.impl.MyProductPresenterImpl
+import com.qcloud.suyuan.ui.store.view.IMyProductView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.activity_modify_price.*
+import kotlinx.android.synthetic.main.activity_my_product.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
- * Description: 修改售价
- * Author: gaobaiqiang
- * 2018/3/15 上午12:38.
+ * 类说明：我的产品
+ * Author: Kuzan
+ * Date: 2018/3/30 11:14.
  */
-class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterImpl>(), IModifyPriceView {
-    private var mAdapter: ModifyPriceStockAdapter? = null
+class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(), IMyProductView {
+    private var mAdapter: StoreProductAdapter? = null
     private var mEmptyView: NoDataView? = null
+
+    private var mPurchaseUsePop: DropDownPop? = null
 
     private var pageNo = 1
     private var classifyId: String? = null
     private var keyword: String? = null
 
     override val layoutId: Int
-        get() = R.layout.activity_modify_price
+        get() = R.layout.activity_my_product
 
-    override fun initPresenter(): ModifyPricePresenterImpl? {
-        return ModifyPricePresenterImpl()
+    override fun initPresenter(): MyProductPresenterImpl? {
+        return MyProductPresenterImpl()
     }
 
     override fun initViewAndData() {
         initRecyclerView()
         initEditView()
+        mPresenter?.loadClassify()
     }
 
     private fun initRecyclerView() {
@@ -62,6 +66,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                 pageNo = 1
                 loadData()
             }
+
         }
         list_product?.onLoadMoreListener = object : SwipeRefreshLayout.OnLoadMoreListener {
             override fun onLoadMore() {
@@ -70,22 +75,11 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
             }
         }
 
-        mAdapter = ModifyPriceStockAdapter(this)
+        mAdapter = StoreProductAdapter(this)
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val id = mAdapter?.mList?.get(position)?.id ?: "-1"
-            StockDetailsActivity.openActivity(this@ModifyPriceActivity, id)
-        }
-        mAdapter?.onModifyListener = object : ModifyPriceStockAdapter.OnModifyListener {
-            override fun onModify(bean: ProductBean?, type: Int) {
-                if (bean != null) {
-                    if (type == 1) {
-                        mPresenter?.modifyPrice(bean.id ?: "0", bean.retailPrice)
-                    } else {
-                        mPresenter?.modifyWarnLine(bean.id ?: "0", bean.cordon)
-                    }
-                }
-            }
+            StockDetailsActivity.openActivity(this@MyProductActivity, id)
         }
 
         mEmptyView = NoDataView(this)
@@ -94,9 +88,6 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         loadData()
     }
 
-    /**
-     * 初始化搜索输入框
-     * */
     private fun initEditView() {
         et_search.setOnKeyListener { _, action, keyEvent ->
             if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
@@ -106,6 +97,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                     if (StringUtil.isNotBlank(inputValue)) {
                         reSetEditText()
                         keyword = inputValue
+                        classifyId = null
                         pageNo = 1
                         loadData()
                     } else {
@@ -121,6 +113,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
             if (StringUtil.isNotBlank(inputValue)) {
                 reSetEditText()
                 keyword = inputValue
+                classifyId = null
                 pageNo = 1
                 loadData()
             } else {
@@ -133,13 +126,51 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         mPresenter?.loadData(pageNo, classifyId, keyword)
     }
 
+    /**
+     * 获取扫码数据
+     * */
     private fun reSetEditText() {
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     et_search.setText("")
                     et_search.requestFocus()
+                    tv_purchase_use.text = ""
                 }
+    }
+
+    /**
+     * 初始化下拉弹窗
+     * */
+    private fun initClassify(list: List<ProductClassifyBean>) {
+        btn_purchase_use.post {
+            val width = btn_purchase_use.width
+            mPurchaseUsePop = DropDownPop(this, list, width)
+
+            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
+                override fun onItemClick(position: Int, value: Any?) {
+                    val bean: ProductClassifyBean = value as ProductClassifyBean
+                    classifyId = bean.id
+                    keyword = null
+                    tv_purchase_use.text = bean.name
+                    pageNo = 1
+                    loadData()
+                }
+            }
+        }
+
+        btn_purchase_use.setOnClickListener {
+            Timber.e("click $list")
+            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
+        }
+    }
+
+    override fun replaceClassifyList(list: List<ProductClassifyBean>?) {
+        if (isRunning) {
+            if (list != null && list.isNotEmpty()) {
+                initClassify(list)
+            }
+        }
     }
 
     override fun replaceList(beans: List<ProductBean>?, isNext: Boolean) {
@@ -152,7 +183,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                 list_product?.isMore(isNext)
                 hideEmptyView()
             } else {
-                showEmptyView()
+                showEmptyView(resources.getString(R.string.tip_no_data))
             }
         }
     }
@@ -183,7 +214,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         }
     }
 
-    override fun showEmptyView() {
+    override fun showEmptyView(tip: String) {
         list_product?.showEmptyView()
     }
 
@@ -191,17 +222,9 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         list_product?.hideEmptyView()
     }
 
-    override fun modifyPriceSuccess() {
-        QToast.success(this, R.string.toast_modify_price_success)
-    }
-
-    override fun modifyStockWarnSuccess() {
-        QToast.success(this, R.string.toast_modify_stock_warn_success)
-    }
-
     companion object {
         fun openActivity(@NonNull context: Context) {
-            context.startActivity(Intent(context, ModifyPriceActivity::class.java))
+            context.startActivity(Intent(context, MyProductActivity::class.java))
         }
     }
 }

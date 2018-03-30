@@ -34,7 +34,7 @@ class PurchaseDetailsPresenterImpl: BasePresenter<IPurchaseDetailsView>(), IPurc
 
     /** 获取供应商 */
     override fun loadSupplier() {
-        mStoreModel.supplierList(object : DataCallback<ReturnDataBean<SupplierBean>> {
+        mStoreModel.supplierList("",object : DataCallback<ReturnDataBean<SupplierBean>> {
             override fun onSuccess(t: ReturnDataBean<SupplierBean>?, message: String?) {
                 if (t?.list != null) {
                     mView?.replaceSupplierList(t.list!!)

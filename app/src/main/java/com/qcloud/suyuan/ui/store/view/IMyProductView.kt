@@ -5,11 +5,11 @@ import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
 
 /**
- * Description: 门店产品
- * Author: gaobaiqiang
- * 2018/3/15 上午12:49.
+ * 类说明：我的产品
+ * Author: Kuzan
+ * Date: 2018/3/30 10:59.
  */
-interface IStoreProductView: BaseView {
+interface IMyProductView: BaseView {
     /**产品分类*/
     fun replaceClassifyList(list: List<ProductClassifyBean>?)
 
@@ -24,5 +24,4 @@ interface IStoreProductView: BaseView {
 
     /**隐藏空布局 */
     fun hideEmptyView()
-
 }

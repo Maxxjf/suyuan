@@ -47,7 +47,7 @@
     <!--输入框高度-->
     <dimen name="editHeight">64dp</dimen>
     <!--特别高的输入框高度-->
-    <dimen name="largeEditHeight">256dp</dimen>
+    <dimen name="largeEditHeight">192dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_width">618dp</dimen>
@@ -59,6 +59,6 @@
     <!--退货列表高度-->
     <dimen name="return_goods_height">600dp</dimen>
     <!--日期选择高度-->
-    <dimen name="date_picker_height">450dp</dimen>
+    <dimen name="date_picker_height">430dp</dimen>
 
 </resources>

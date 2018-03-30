@@ -27,10 +27,6 @@ interface IMoneyModel {
     fun repayment(id: String, money: Double, callback: DataCallback<EmptyReturnBean>)
 
     /**
-     * 商品查询
-     */
-    fun saleSearch(keyword: String, callback: DataCallback<SaleSearchBean>)
-    /**
      * 销售列表
      */
     fun getSaleList(keyword: String, callback: DataCallback<ReturnDataBean<SaleListBean>>)

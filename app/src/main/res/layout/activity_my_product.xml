@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.store.widget.StoreProductActivity">
+    tools:context=".ui.store.widget.MyProductActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
-        app:title_text="@string/title_store_product"/>
+        app:title_text="@string/title_my_product"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -114,7 +114,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/btn_my_product"
+            android:id="@+id/btn_create_product"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -130,7 +130,7 @@
             android:layout_marginEnd="@dimen/layoutMargin"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/btnTextSize"
-            android:text="@string/btn_my_product"/>
+            android:text="@string/btn_create_product"/>
     </RelativeLayout>
 
     <View
@@ -145,16 +145,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:gravity="center"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
-            android:text="@string/tag_product_image"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/typeTextSize"
@@ -163,7 +154,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
+            android:layout_weight="1.5"
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/typeTextSize"
@@ -190,16 +181,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:gravity="center"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
-            android:text="@string/tag_product_total_stock"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="1.0"
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/typeTextSize"

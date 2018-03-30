@@ -94,6 +94,11 @@
             android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".ui.store.widget.MyProductActivity"
+            android:label="@string/title_my_product"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".ui.main.widget.SearchActivity"
             android:label="@string/title_search_suyuan"
             android:screenOrientation="landscape" />

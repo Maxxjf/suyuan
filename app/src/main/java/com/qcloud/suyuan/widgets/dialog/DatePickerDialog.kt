@@ -3,12 +3,14 @@ package com.qcloud.suyuan.widgets.dialog
 import android.content.Context
 import android.text.TextUtils
 import android.view.View
+import android.view.ViewGroup
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_date_picker.*
+
 
 /**
  * Description: 日期选择
@@ -17,8 +19,10 @@ import kotlinx.android.synthetic.main.dialog_date_picker.*
  */
 class DatePickerDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener, CalendarView.OnYearChangeListener, CalendarView.OnDateSelectedListener, CalendarView.OnMonthChangeListener, CalendarView.OnDateLongClickListener {
 
-   var listener: OnDateSelectedListener? = null
+    var listener: OnDateSelectedListener? = null
+    private var calendar: Calendar? = null
     var mYear: Int = 0
+    private var lp: ViewGroup.LayoutParams? = null
     override val viewId: Int
         get() = R.layout.dialog_date_picker
 
@@ -31,6 +35,11 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
             calendar_view.showYearSelectLayout(mYear)
             tv_lunar.setVisibility(View.GONE)
             tv_year.setVisibility(View.GONE)
+            btn_ok.visibility=View.GONE
+            lp = calendar_view.layoutParams
+            lp?.width = ViewGroup.LayoutParams.WRAP_CONTENT
+            lp?.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            calendar_view.layoutParams = lp
             tv_month_day.setText(mYear.toString())
         })
         fl_current.setOnClickListener({ _ -> calendar_view.scrollToCurrent() })
@@ -43,10 +52,23 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
         tv_month_day.setText("${calendar_view.curMonth}月${calendar_view.curDay}日")
         tv_lunar.setText("今日")
         tv_current_day.setText(calendar_view.getCurDay().toString())
+        btn_ok.setOnClickListener({ _ -> selectDate() })
     }
-    fun setDateChangeListener(listener: OnDateSelectedListener?){
-        this.listener=listener
+
+    //点击确认选择
+    private fun selectDate() {
+        if (calendar == null) {
+            return
+        }
+        listener?.dateSelected(calendar)
+        QToast.show(mContext, getCalendarText(calendar!!))
+        hide()
     }
+
+    fun setDateChangeListener(listener: OnDateSelectedListener?) {
+        this.listener = listener
+    }
+
     override fun onClick(v: View) {
         calendar_view.scrollToCurrent()
     }
@@ -63,18 +85,22 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
 
     }
 
+
     override fun onDateSelected(calendar: Calendar?, isClick: Boolean) {
         tv_lunar.setVisibility(View.VISIBLE)
         tv_year.setVisibility(View.VISIBLE)
+        btn_ok.visibility = View.VISIBLE
+        lp = calendar_view.layoutParams
+        lp?.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        lp?.height = mContext.resources.getDimensionPixelSize(R.dimen.date_picker_height)
+        calendar_view.layoutParams = lp
         if (calendar != null) {
             tv_year.setText(calendar.getYear().toString())
             tv_lunar.setText(calendar.getLunar())
             mYear = calendar.getYear()
-            tv_month_day.text="${calendar.month}月${calendar.day}日"
+            tv_month_day.text = "${calendar.month}月${calendar.day}日"
         }
-        listener?.dateSelected(calendar)
-        QToast.show(mContext, getCalendarText(calendar!!))
-        hide()
+        this.calendar = calendar
     }
 
     private fun getCalendarText(calendar: Calendar): String {

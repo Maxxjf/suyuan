@@ -26,9 +26,6 @@ interface IMoneyApi {
     @GET(UrlConstants.REPAYMENT)
     fun repayment(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 
-    /**商品查询*/
-    @GET(UrlConstants.SALE_SEARCH)
-    fun saleSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SaleSearchBean>>
 
     /**销售列表*/
     @GET(UrlConstants.SALE_LIST)

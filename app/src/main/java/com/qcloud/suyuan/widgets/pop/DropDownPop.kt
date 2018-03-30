@@ -3,7 +3,6 @@ package com.qcloud.suyuan.widgets.pop
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
 import android.widget.AdapterView
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
@@ -29,7 +28,7 @@ class DropDownPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopu
 
     init {
         width = xWidth
-        height = ViewGroup.LayoutParams.WRAP_CONTENT
+        height = mContext.resources.getDimensionPixelSize(R.dimen.margin_40)
         initView()
     }
 

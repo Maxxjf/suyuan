@@ -25,7 +25,7 @@
                 android:layout_marginLeft="@dimen/layout_margin"
                 android:layout_marginStart="@dimen/layout_margin"
                 android:gravity="center_vertical"
-                android:text="@string/tag_supplier_add"
+                android:text="@string/tag_supplier_edit"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/titleTextSize" />
 
@@ -167,7 +167,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_confirm"
+            android:id="@+id/btn_edit"
             android:layout_width="match_parent"
             android:layout_height="@dimen/largeBtnHeight"
             android:layout_marginEnd="@dimen/layoutMargin"
@@ -177,7 +177,7 @@
             android:layout_marginTop="@dimen/modelMargin"
             android:background="@drawable/btn_radius_selector"
             android:gravity="center"
-            android:text="@string/btn_confirm_in_storage"
+            android:text="@string/btn_edit_info"
             android:textColor="@color/white"
             android:textSize="@dimen/btnTextSize" />
     </LinearLayout>

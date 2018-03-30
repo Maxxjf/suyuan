@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.widget.dialog.LoadingDialog
-import com.qcloud.suyuan.utils.IFragmentBack
 
 /**
  * 类说明：Fragment基类
@@ -29,10 +28,7 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        if (mPresenter == null) {
-            mPresenter = initPresenter()
-        }
-        mPresenter?.attach(this as V)
+
 
         if (activity is BaseActivity<*, *>) {
             val activity = activity as BaseActivity<*, *>?
@@ -50,6 +46,10 @@ abstract class BaseFragment<V, T: BasePresenter<V>>: Fragment() {
         if (mView == null) {
             mView = inflater.inflate(layoutId, container, false)
         }
+        if (mPresenter == null) {
+            mPresenter = initPresenter()
+        }
+        mPresenter?.attach(this as V)
         return mView
     }
 

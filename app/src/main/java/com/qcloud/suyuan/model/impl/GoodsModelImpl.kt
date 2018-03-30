@@ -19,6 +19,17 @@ class GoodsModelImpl: IGoodsModel {
     private val mApi: IGoodsApi = FrameRequest.instance.createRequest(IGoodsApi::class.java)
 
     /**
+     * 获取产品分类列表
+     *
+     * @param callback
+     * */
+    override fun classifyList(callback: DataCallback<ReturnDataBean<ProductClassifyBean>>) {
+        val params = FrameRequest.getAppParams()
+
+        BaseApi.dispose(mApi.classifyList(params), callback)
+    }
+
+    /**
      * 获取库存列表(产品列表)
      *
      * @param pageNo
@@ -27,7 +38,7 @@ class GoodsModelImpl: IGoodsModel {
      * @param isPlatform 是否私有产品 1是0不是
      * @param keyword 搜索关键字 条形码/名称/厂家
      * */
-    override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ProductReturnBean>) {
+    override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ReturnDataBean<ProductBean>>) {
         val params = FrameRequest.getAppParams()
         if (StringUtil.isNotBlank(classifyId)) {
             params["classifyId"] = classifyId!!

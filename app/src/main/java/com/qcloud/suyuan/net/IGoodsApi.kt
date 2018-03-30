@@ -14,10 +14,13 @@ import retrofit2.http.QueryMap
  * 2018/3/21 上午9:04.
  */
 interface IGoodsApi {
+    /** 产品分类列表 */
+    @GET(UrlConstants.GET_CLASSIFY_LIST)
+    fun classifyList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductClassifyBean>>>
 
     /** 产品列表 */
     @GET(UrlConstants.GET_STOCK_LIST)
-    fun list(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ProductReturnBean>>
+    fun list(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductBean>>>
 
     /** 产品详情 */
     @GET(UrlConstants.GET_PRODUCT_DETAILS)
