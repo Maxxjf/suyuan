@@ -6,4 +6,7 @@ package com.qcloud.suyuan.ui.store.presenter
  * 2018/3/30 下午1:52.
  */
 interface ICreateProductIPresenter {
+    fun loadProduct(id: String?)
+
+    fun loadFactory(classifyId: String)
 }

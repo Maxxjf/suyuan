@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.dialog_input_product_component.*
  * 2018/3/30 下午5:29.
  */
 class InputProductComponentDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener {
+    var attrValue: String? = null
+
     override val viewId: Int
         get() = R.layout.dialog_input_product_component
 
@@ -28,6 +30,7 @@ class InputProductComponentDialog constructor(context: Context) : BaseDialog(con
         when (v.id) {
             R.id.btn_close -> dismiss()
             R.id.btn_confirm -> {
+                attrValue = et_attr.text.toString()
                 dismiss()
                 onBtnClickListener?.onBtnClick(v)
             }

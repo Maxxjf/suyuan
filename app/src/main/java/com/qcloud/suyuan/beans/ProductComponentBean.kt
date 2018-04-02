@@ -7,6 +7,5 @@ package com.qcloud.suyuan.beans
  */
 class ProductComponentBean {
     var id: String = "0"    // id
-    var key: String? = null
-    var value: String? = null
+    var valueList: List<String> = ArrayList()
 }

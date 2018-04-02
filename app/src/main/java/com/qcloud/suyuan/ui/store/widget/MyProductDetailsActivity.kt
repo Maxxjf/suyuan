@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.card_my_product_info.*
  * 2018/4/1 下午5:16.
  */
 class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDetailsPresenterImpl>(), IMyProductDetailsView {
+    private var currId: String? = null
+
     override val layoutId: Int
         get() = R.layout.activity_my_product_details
 
@@ -23,7 +25,11 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
     }
 
     override fun initViewAndData() {
+        currId = intent.getStringExtra("ID")
 
+        btn_create_product.setOnClickListener {
+            CreateProductIActivity.openActivity(this, currId)
+        }
     }
 
     private fun refreshData() {
@@ -44,7 +50,7 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context, id: String) {
+        fun openActivity(@NonNull context: Context, id: String?) {
             val intent = Intent(context, MyProductDetailsActivity::class.java)
             intent.putExtra("ID", id)
             context.startActivity(intent)

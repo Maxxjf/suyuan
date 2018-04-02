@@ -34,16 +34,19 @@ class CreateProductAttrAdapter(mContext: Context) : CommonRecyclerAdapter<Produc
                         dropDownView.visibility = View.VISIBLE
                         inputView.visibility = View.GONE
                         formView.visibility = View.GONE
+                        dropDownView.refreshData(bean)
                     }
                     2 -> {
                         dropDownView.visibility = View.GONE
                         inputView.visibility = View.VISIBLE
                         formView.visibility = View.GONE
+                        inputView.refreshData(bean)
                     }
                     3 -> {
                         dropDownView.visibility = View.GONE
                         inputView.visibility = View.GONE
                         formView.visibility = View.VISIBLE
+                        formView.refreshData(bean)
                     }
                 }
             }

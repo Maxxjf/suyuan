@@ -41,8 +41,11 @@ class AttrDropDownView @JvmOverloads constructor(
             dropDownPop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
                 override fun onItemClick(position: Int, value: Any?) {
                     if (value != null) {
-                        tv_value.text = value.toString()
-                        currBean?.value = value.toString()
+                        val bean: ProductAttrValueBean? = value as ProductAttrValueBean
+                        if (bean != null) {
+                            tv_value.text = bean.name
+                            currBean?.attrValueSubmitStr = bean.name
+                        }
                     }
                 }
             }
@@ -62,7 +65,7 @@ class AttrDropDownView @JvmOverloads constructor(
             if (attrName != null) {
                 with(attrName) {
                     tv_required.visibility = if (isCrux == 1) View.VISIBLE else View.GONE
-                    tv_attr_tag.text = name
+                    tv_attr_tag.text = "$name: "
                 }
             }
             val attrValues = currBean!!.attributeValues

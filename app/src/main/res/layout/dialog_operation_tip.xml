@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_dialog"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_bottom_radius"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/layout_margin"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:textSize="@dimen/largeTextSize"
+            android:text="@string/tip_title" />
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/itemHeight"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_2"
+            android:paddingLeft="@dimen/padding_4"
+            android:paddingRight="@dimen/padding_4"
+            android:textColor="@color/colorSubTitle"
+            android:textSize="@dimen/typeTextSize"
+            tools:text="@string/tip_title"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight"
+            android:layout_below="@+id/calendar_view"
+            android:layout_marginTop="@dimen/layoutMargin"
+            android:orientation="horizontal"
+            android:gravity="right"
+            tools:ignore="RtlHardcoded">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_marginRight="@dimen/layoutMargin"
+                android:layout_marginEnd="@dimen/layoutMargin"
+                android:paddingLeft="@dimen/margin_4"
+                android:paddingStart="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_4"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/btn_cancel" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_marginRight="@dimen/layoutMargin"
+                android:layout_marginEnd="@dimen/layoutMargin"
+                android:paddingLeft="@dimen/margin_4"
+                android:paddingStart="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_4"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/btn_ok" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

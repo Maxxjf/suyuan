@@ -78,4 +78,13 @@ object UrlConstants {
     const val SALE_SETTLEMENT = URL_PREFIX_APP + "sale/settlement"
     /**门店信息*/
     const val STORE_INFO = URL_PREFIX_APP + "store/getInfo"
+
+    /**创建修改私有产品*/
+    const val EDIT_MY_PRODUCT = URL_PREFIX_APP + "goods/toAdd"
+    /**获取生产厂家*/
+    const val GET_FACTORY = URL_PREFIX_APP + "goods/getFactory"
+    /**创建修改私有产品-下一步*/
+    const val CREATE_PRODUCT_NEXT = URL_PREFIX_APP + "goods/toNextStep"
+    /**保存私有产品*/
+    const val ADD_PRODUCT = URL_PREFIX_APP + "goods/add"
 }

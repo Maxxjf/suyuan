@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
-import com.qcloud.qclib.toast.QToast
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
 import kotlinx.android.synthetic.main.dialog_date_picker.*
@@ -70,7 +69,6 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
             return
         }
         onDateSelectListener?.dateSelected(calendar)
-        QToast.show(mContext, getCalendarText(calendar!!))
         dismiss()
     }
 

@@ -139,7 +139,13 @@ class CustomToolbar @JvmOverloads constructor(
 
     override fun onClick(p0: View) {
         when (p0.id) {
-            R.id.btn_back -> (mContext as Activity).finish()
+            R.id.btn_back -> {
+                if (onBtnClickListener != null) {
+                    onBtnClickListener?.onBtnClick(p0)
+                } else {
+                    (mContext as Activity).finish()
+                }
+            }
             R.id.btn_logout -> toLogout()
             R.id.btn_right -> onBtnClickListener?.onBtnClick(p0)
         }

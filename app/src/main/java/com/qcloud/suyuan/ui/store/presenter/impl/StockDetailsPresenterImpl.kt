@@ -4,7 +4,6 @@ import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.EmptyReturnBean
-import com.qcloud.suyuan.beans.InStorageRecordBean
 import com.qcloud.suyuan.beans.ProductDetailsBean
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.store.presenter.IStockDetailsPresenter
@@ -29,6 +28,11 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
         }
     }
 
+    /**
+     * 加载产品详情
+     *
+     * @param id 产品id
+     * */
     override fun loadData(id: String) {
         mModel.details(id, object : DataCallback<ProductDetailsBean> {
             override fun onSuccess(t: ProductDetailsBean?, message: String?) {
@@ -41,6 +45,12 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
         })
     }
 
+    /**
+     * 修改库存警告线
+     *
+     * @param id 产品id
+     * @param cordon 库存警告线
+     * */
     override fun editWarnLine(id: String, cordon: Int) {
         mModel.editWarnLine(id, cordon, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
@@ -53,6 +63,12 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
         })
     }
 
+    /**
+     * 修改零售价
+     *
+     * @param id 产品id
+     * @param price 零售价
+     * */
     override fun editPrice(id: String, price: Double) {
         mModel.editPrice(id, price, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {

@@ -6,6 +6,7 @@ import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.QueryMap
 
 /**
@@ -61,4 +62,20 @@ interface IGoodsApi {
     /** 卖货结算 */
     @GET(UrlConstants.SALE_SETTLEMENT)
     fun saleSettlement(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SettlementResBean>>
+
+    /** 创建修改私有产品 */
+    @GET(UrlConstants.EDIT_MY_PRODUCT)
+    fun editMyProduct(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<CreateProductBean>>
+
+    /** 选择分类-获取厂家 */
+    @GET(UrlConstants.GET_FACTORY)
+    fun getFactoryByClassify(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductMillBean>>>
+
+    /**创建修改私有产品 -下一步*/
+    @GET(UrlConstants.CREATE_PRODUCT_NEXT)
+    fun createProductNext(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductAttrBean>>>
+
+    /**保存私有产品*/
+    @POST(UrlConstants.ADD_PRODUCT)
+    fun add(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 }

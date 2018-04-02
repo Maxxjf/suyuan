@@ -54,7 +54,7 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
         initRecyclerView()
         initEditView()
         btn_create_product.setOnClickListener {
-            CreateProductIActivity.openActivity(this)
+            CreateProductIActivity.openActivity(this, null)
         }
         mPresenter?.loadClassify()
     }

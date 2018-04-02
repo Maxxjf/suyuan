@@ -18,6 +18,11 @@ class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter 
 
     private val mModel: IStorageModel = StorageModelImpl()
 
+    /**
+     * 获取产品
+     *
+     * @param keyword 入库批次码
+     * */
     override fun loadProduct(keyword: String) {
         mModel.searchList(keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {

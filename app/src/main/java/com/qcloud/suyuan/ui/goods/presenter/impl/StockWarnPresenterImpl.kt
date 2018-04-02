@@ -23,6 +23,9 @@ class StockWarnPresenterImpl: BasePresenter<IStockWarnView>(), IStockWarnPresent
         mModel = GoodsModelImpl()
     }
 
+    /**
+     * 加载数据
+     * */
     override fun loadData(pageNo: Int) {
         mModel?.getStockWarnList(pageNo, AppConstants.PAGE_SIZE, object : DataCallback<ReturnDataBean<StockWarnBean>> {
             override fun onSuccess(t: ReturnDataBean<StockWarnBean>?, message: String?) {

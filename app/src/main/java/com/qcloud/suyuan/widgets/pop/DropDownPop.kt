@@ -9,6 +9,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.DropDownAdapter
 import com.qcloud.suyuan.beans.ProductAttrValueBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
+import com.qcloud.suyuan.beans.ProductMillBean
 
 /**
  * Description: 下拉弹窗
@@ -57,6 +58,7 @@ class DropDownPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopu
                 is ProductClassifyBean -> list.add(bean.name)
                 is String -> list.add(bean)
                 is ProductAttrValueBean -> list.add(bean.name ?: "")
+                is ProductMillBean -> list.add(bean.name ?: "")
             }
         }
         return list

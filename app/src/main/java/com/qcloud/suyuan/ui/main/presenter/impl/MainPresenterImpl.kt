@@ -20,6 +20,9 @@ class MainPresenterImpl: BasePresenter<IMainView>(), IMainPresenter {
         mModel = FormModelImpl()
     }
 
+    /**
+     * 获取今日报表
+     * */
     override fun getMainForm() {
         mModel?.getMainForm(object : DataCallback<MainFormBean> {
             override fun onSuccess(t: MainFormBean?, message: String?) {
