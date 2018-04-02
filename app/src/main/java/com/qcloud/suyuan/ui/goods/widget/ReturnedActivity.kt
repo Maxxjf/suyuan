@@ -23,7 +23,6 @@ import com.qcloud.suyuan.widgets.dialog.TipDialog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_returned.*
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -85,7 +84,6 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
                     //et_search.isFocusable = false
                     KeyBoardUtil.hideKeybord(this, et_search)
                     getScanData()
-                    Timber.e("keyEvent = $i, enter = ${KeyEvent.KEYCODE_ENTER}")
                 }
             }
             false

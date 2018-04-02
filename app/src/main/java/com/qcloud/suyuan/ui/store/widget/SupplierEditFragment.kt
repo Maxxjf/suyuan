@@ -47,6 +47,10 @@ class SupplierEditFragment :BaseFragment<ISupplierEditView,SupplierEditPresenter
     override fun initPresenter(): SupplierEditPresenterImpl? = SupplierEditPresenterImpl()
 
     override fun initViewAndData() {
+
+        var bundel:Bundle= this.arguments!!
+        mCurrentBean= bundel.getSerializable("DATA") as SupplierBean?
+        replaceInfo(mCurrentBean!!)
         tv_name.setOnClickListener(this)
         tv_address.setOnClickListener(this)
         tv_person.setOnClickListener(this)

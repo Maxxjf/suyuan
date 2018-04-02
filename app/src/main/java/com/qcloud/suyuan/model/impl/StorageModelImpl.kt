@@ -6,6 +6,7 @@ import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.InStorageBean
+import com.qcloud.suyuan.beans.OutStorageBean
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.model.IStorageModel
 import com.qcloud.suyuan.net.IStorageApi
@@ -30,6 +31,17 @@ class StorageModelImpl: IStorageModel {
         params["number"] = number
 
         BaseApi.dispose(mApi.outStorageInValidWarn(params), callback)
+    }
+
+    /**
+     * 出库商品查询
+     *
+     * @param keyword 入库批次码
+     * */
+    override fun outStorageSearch(keyword: String, callback: DataCallback<OutStorageBean>) {
+        val params = FrameRequest.getAppParams()
+        params["keyword"] = keyword
+        BaseApi.dispose(mApi.outStorageSearch(params), callback)
     }
 
     /**
