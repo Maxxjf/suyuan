@@ -53,6 +53,9 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
     override fun initViewAndData() {
         initRecyclerView()
         initEditView()
+        btn_create_product.setOnClickListener {
+            CreateProductIActivity.openActivity(this)
+        }
         mPresenter?.loadClassify()
     }
 
@@ -79,7 +82,7 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val id = mAdapter?.mList?.get(position)?.id ?: "-1"
-            StockDetailsActivity.openActivity(this@MyProductActivity, id)
+            MyProductDetailsActivity.openActivity(this@MyProductActivity, id)
         }
 
         mEmptyView = NoDataView(this)

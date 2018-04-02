@@ -9,7 +9,9 @@ import android.view.View
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.enums.SearchType
-import com.qcloud.suyuan.ui.main.widget.SearchActivity
+import com.qcloud.suyuan.ui.search.widget.SearchBatchActivity
+import com.qcloud.suyuan.ui.search.widget.SearchProductActivity
+import com.qcloud.suyuan.ui.search.widget.SearchSuyuanActivity
 import kotlinx.android.synthetic.main.dialog_search_select.*
 
 /**
@@ -47,15 +49,15 @@ class SearchSelectDialog @JvmOverloads constructor(
             R.id.btn_close -> dismiss()
             R.id.btn_search_suyuan_code -> {
                 dismiss()
-                SearchActivity.openActivity(mContext, SearchType.searchSuyuan.key)
+                SearchSuyuanActivity.openActivity(mContext)
             }
             R.id.btn_search_bitch_bar_code -> {
                 dismiss()
-                SearchActivity.openActivity(mContext, SearchType.searchBatch.key)
+                SearchBatchActivity.openActivity(mContext)
             }
             R.id.btn_search_product_bar_code -> {
                 dismiss()
-                SearchActivity.openActivity(mContext, SearchType.searchProduct.key)
+                SearchProductActivity.openActivity(mContext)
             }
         }
     }

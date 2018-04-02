@@ -1,10 +1,12 @@
 package com.qcloud.suyuan.ui.goods.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.view.View
 import android.widget.TextView
+import com.haibin.calendarview.Calendar
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.image.GlideUtil
@@ -22,6 +24,7 @@ import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.customview.DatePickerButton
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InStorageDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.pop.DropDownBtnPop
@@ -45,6 +48,10 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     private var birthday: String? = null
     private var endDay: String? = null
     private var currSupplier: SupplierBean? = null
+    // 生产时间
+    private var birthdayPicker: DatePickerDialog? = null
+    // 结束时间
+    private var endPicker: DatePickerDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase_details
@@ -61,6 +68,8 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         btn_clear.setOnClickListener(this)
         tv_in_storage_number.setOnClickListener(this)
         tv_in_storage_price.setOnClickListener(this)
+        btn_in_storage_birthday.setOnClickListener(this)
+        btn_in_storage_end_date.setOnClickListener(this)
 
         initInputView()
 
@@ -72,17 +81,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
      * 初始化输入控件
      * */
     private fun initInputView() {
-        btn_in_storage_birthday.onDateChangeListener = object : DatePickerButton.OnDateChangeListener {
-            override fun onDateChange(year: Int, mouth: Int, day: Int, dateStr: String) {
 
-            }
-        }
-
-        btn_in_storage_end_date.onDateChangeListener = object : DatePickerButton.OnDateChangeListener {
-            override fun onDateChange(year: Int, mouth: Int, day: Int, dateStr: String) {
-
-            }
-        }
     }
 
     private fun refreshData() {
@@ -95,6 +94,30 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                 tv_product_unit.text = unit
                 tv_product_manufacturer.text = millName
                 tv_product_curr_stock.text = stockStr
+            }
+        }
+    }
+
+    private fun initStartPicker() {
+        birthdayPicker = DatePickerDialog(this)
+        birthdayPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+            @SuppressLint("SetTextI18n")
+            override fun dateSelected(calendar: Calendar?) {
+                if (calendar != null) {
+                    btn_in_storage_birthday.text = "${calendar.year}-${calendar.month}-${calendar.day}"
+                }
+            }
+        }
+    }
+
+    private fun initEndPicker() {
+        endPicker = DatePickerDialog(this)
+        endPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+            @SuppressLint("SetTextI18n")
+            override fun dateSelected(calendar: Calendar?) {
+                if (calendar != null) {
+                    btn_in_storage_end_date.text = "${calendar.year}-${calendar.month}-${calendar.day}"
+                }
             }
         }
     }
@@ -135,6 +158,20 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         if (isRunning) {
             showInput(tv_in_storage_price)
         }
+    }
+
+    override fun onBirthdayClick() {
+        if (birthdayPicker == null) {
+            initStartPicker()
+        }
+        birthdayPicker?.show()
+    }
+
+    override fun onEndDateClick() {
+        if (endPicker == null) {
+            initEndPicker()
+        }
+        endPicker?.show()
     }
 
     override fun showInput(view: TextView) {
@@ -254,6 +291,18 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         inputDialog.let {
             if (inputDialog != null && inputDialog!!.isShowing) {
                 inputDialog?.dismiss()
+            }
+        }
+
+         birthdayPicker.let {
+            if (birthdayPicker != null && birthdayPicker!!.isShowing) {
+                birthdayPicker?.dismiss()
+            }
+        }
+
+        endPicker.let {
+            if (endPicker != null && endPicker!!.isShowing) {
+                endPicker?.dismiss()
             }
         }
     }

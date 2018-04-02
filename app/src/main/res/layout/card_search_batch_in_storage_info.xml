@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="1dp"
+    tools:context=".ui.search.widget.SearchBatchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layoutMargin"
+                android:layout_marginStart="@dimen/layoutMargin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize"
+                android:text="@string/tag_in_storage_info"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/LineHorizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/layoutMargin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_product_detail_in_time"/>
+
+                <TextView
+                    android:id="@+id/tv_in_storage_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_product_detail_in_time"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_product_detail_number"/>
+
+                <TextView
+                    android:id="@+id/tv_in_storage_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_in_storage_number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_product_detail_valid"/>
+
+                <TextView
+                    android:id="@+id/tv_product_valid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_product_detail_valid"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_product_detail_price"/>
+
+                <TextView
+                    android:id="@+id/tv_in_storage_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_product_detail_price"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_batch_stock"/>
+
+                <TextView
+                    android:id="@+id/tv_batch_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_batch_stock"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+

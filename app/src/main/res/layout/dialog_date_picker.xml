@@ -1,137 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_outside"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/rl_tool"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@color/white">
+        android:layout_height="@dimen/tabHeight"
+        android:background="@color/colorAccent">
 
         <TextView
             android:id="@+id/tv_month_day"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingLeft="16dp"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/layoutMargin"
+            android:paddingStart="@dimen/layoutMargin"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/typeTextSize"
+            tools:text="4月1日"
             tools:ignore="RtlSymmetry" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/tv_month_day"
+            android:layout_toEndOf="@id/tv_month_day"
             android:orientation="vertical"
-            android:paddingBottom="12dp"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
-            android:paddingTop="12dp"
+            android:gravity="center_vertical"
             tools:ignore="RelativeOverlap">
 
             <TextView
                 android:id="@+id/tv_year"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/typeTextSize"
+                tools:text="2018"/>
 
             <TextView
                 android:id="@+id/tv_lunar"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/miniTextSize"
+                tools:text="今日"
                 tools:ignore="SmallSp" />
         </LinearLayout>
 
         <FrameLayout
             android:id="@+id/fl_current"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/editHeight"
+            android:layout_height="@dimen/editHeight"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="12dp"
-            android:background="@drawable/bg_ripple">
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin">
 
             <ImageView
                 android:id="@+id/ib_calendar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:tint="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerInside"
                 android:src="@mipmap/menu_action_calendar_mvp" />
 
             <TextView
                 android:id="@+id/tv_current_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="2dp"
                 android:gravity="center"
-                android:text="13"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/miniTextSize"
+                tools:text="13"/>
         </FrameLayout>
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rl_calendar_view"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.haibin.calendarview.CalendarView
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            app:current_day_lunar_text_color="#ff0000"
-            app:current_day_text_color="#ff0000"
-            app:current_month_lunar_text_color="#CFCFCF"
-            app:current_month_text_color="#333333"
+            android:background="@color/white"
+            app:current_day_lunar_text_color="@color/colorSubTitle"
+            app:current_day_text_color="@color/colorSubTitle"
+            app:current_month_lunar_text_color="@color/colorSubTitle"
+            app:current_month_text_color="@color/colorSubTitle"
             app:lunar_text_size="10sp"
-            app:max_year="2022"
+            app:day_text_size="@dimen/typeTextSize"
+            app:max_year="2050"
             app:max_year_month="12"
             app:min_year="2016"
-            app:min_year_month="9"
-            app:month_view_show_mode="mode_only_current"
-            app:other_month_lunar_text_color="#e1e1e1"
-            app:other_month_text_color="#e1e1e1"
-            app:scheme_lunar_text_color="#CFCFCF"
+            app:min_year_month="1"
+            app:month_view_show_mode="mode_fix"
+            app:other_month_lunar_text_color="@color/colorSubTitle"
+            app:other_month_text_color="@color/colorLine"
+            app:scheme_lunar_text_color="@color/colorSubTitle"
             app:scheme_text="假"
-            app:scheme_text_color="#333"
-            app:scheme_theme_color="#128c4b"
-            app:selected_lunar_text_color="#128c4b"
-            app:selected_text_color="#128c4b"
-            app:selected_theme_color="#80cfcfcf"
-            app:week_background="#fff"
-            app:week_bar_height="46dp"
-            app:month_view="com.qcloud.suyuan.widgets.DatePicker.IMonthView"
-            app:week_view="com.qcloud.suyuan.widgets.DatePicker.IWeekView"
-            app:week_line_background="#00000000"
-            app:year_view_background="#f6f6f6"
-            app:year_view_day_text_color="#333333"
-            app:year_view_day_text_size="9sp"
-            app:year_view_month_text_color="#ff0000"
-            app:year_view_month_text_size="20sp"
-            app:year_view_scheme_color="#f17706"/>
-        <Button
-            android:id="@+id/btn_ok"
-            android:layout_margin="@dimen/layout_margin"
-            android:layout_below="@+id/calendar_view"
-            android:background="@drawable/btn_radius_selector"
-            android:text="@string/btn_ok"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btnHeight" />
-    </RelativeLayout>
+            app:scheme_text_color="@color/colorSubTitle"
+            app:scheme_theme_color="@color/btnNormal"
+            app:selected_lunar_text_color="@color/colorPrimary"
+            app:selected_text_color="@color/colorPrimary"
+            app:selected_theme_color="@color/colorModelBgF9"
+            app:week_background="@color/white"
+            app:week_bar_height="@dimen/tabHeight"
+            app:week_line_background="@color/transparent"
+            app:week_text_color="@color/colorSubTitle"
+            app:year_view_background="@color/colorModelBgF2"
+            app:year_view_day_text_color="@color/colorSubTitle"
+            app:year_view_day_text_size="@dimen/miniTextSize"
+            app:year_view_month_text_color="@color/colorPrimary"
+            app:year_view_month_text_size="@dimen/textSize"
+            app:year_view_scheme_color="@color/colorPrimary"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight"
+            android:layout_below="@+id/calendar_view"
+            android:layout_marginTop="@dimen/layoutMargin"
+            android:orientation="horizontal"
+            android:gravity="right"
+            tools:ignore="RtlHardcoded">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_marginRight="@dimen/layoutMargin"
+                android:layout_marginEnd="@dimen/layoutMargin"
+                android:paddingLeft="@dimen/margin_4"
+                android:paddingStart="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_4"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/btn_cancel" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btnHeight"
+                android:layout_marginRight="@dimen/layoutMargin"
+                android:layout_marginEnd="@dimen/layoutMargin"
+                android:paddingLeft="@dimen/margin_4"
+                android:paddingStart="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_4"
+                android:background="?attr/selectableItemBackground"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/btn_ok" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

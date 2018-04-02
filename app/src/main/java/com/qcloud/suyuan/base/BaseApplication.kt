@@ -5,6 +5,7 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import com.qcloud.qclib.AppManager
 import com.qcloud.qclib.FrameConfig
+import com.qcloud.qclib.toast.ToastConfig
 import com.qcloud.qclib.utils.SharedUtil
 import com.qcloud.suyuan.BuildConfig
 import com.qcloud.suyuan.R
@@ -30,6 +31,7 @@ class BaseApplication: Application() {
         mAppManager = AppManager.instance
 
         Realm.init(this)
+        initBaseAttr()
 
         // 初始化缓存
         SharedUtil.initSharedPreferences(this)
@@ -45,6 +47,10 @@ class BaseApplication: Application() {
 
         NFCHelper.instance.initSerialPort(this)
         PrintHelper.instance.initPrinter(this)
+    }
+
+    private fun initBaseAttr() {
+        ToastConfig.instance.setTextSize(resources.getDimension(R.dimen.textSize)).apply()
     }
 
     /**

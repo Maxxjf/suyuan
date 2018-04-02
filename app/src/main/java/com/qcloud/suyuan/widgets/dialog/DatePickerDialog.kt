@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.widgets.dialog
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.TextUtils
 import android.view.View
@@ -19,10 +20,11 @@ import kotlinx.android.synthetic.main.dialog_date_picker.*
  */
 class DatePickerDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener, CalendarView.OnYearChangeListener, CalendarView.OnDateSelectedListener, CalendarView.OnMonthChangeListener, CalendarView.OnDateLongClickListener {
 
-    var listener: OnDateSelectedListener? = null
+    var onDateSelectListener: OnDateSelectedListener? = null
     private var calendar: Calendar? = null
     var mYear: Int = 0
     private var lp: ViewGroup.LayoutParams? = null
+
     override val viewId: Int
         get() = R.layout.dialog_date_picker
 
@@ -30,43 +32,46 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
         initView()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initView() {
         tv_month_day.setOnClickListener({ _ ->
             calendar_view.showYearSelectLayout(mYear)
-            tv_lunar.setVisibility(View.GONE)
-            tv_year.setVisibility(View.GONE)
-            btn_ok.visibility=View.GONE
+            tv_lunar.visibility = View.GONE
+            tv_year.visibility = View.GONE
+            btn_ok.visibility = View.GONE
+
             lp = calendar_view.layoutParams
             lp?.width = ViewGroup.LayoutParams.WRAP_CONTENT
             lp?.height = ViewGroup.LayoutParams.WRAP_CONTENT
             calendar_view.layoutParams = lp
-            tv_month_day.setText(mYear.toString())
+            tv_month_day.text = mYear.toString()
         })
-        fl_current.setOnClickListener({ _ -> calendar_view.scrollToCurrent() })
+
+        fl_current.setOnClickListener{ calendar_view.scrollToCurrent() }
         calendar_view.setOnYearChangeListener(this)
         calendar_view.setOnDateSelectedListener(this)
         calendar_view.setOnMonthChangeListener(this)
         calendar_view.setOnDateLongClickListener(this)
-        tv_year.setText(calendar_view.getCurYear().toString())
-        mYear = calendar_view.getCurYear()
-        tv_month_day.setText("${calendar_view.curMonth}月${calendar_view.curDay}日")
-        tv_lunar.setText("今日")
-        tv_current_day.setText(calendar_view.getCurDay().toString())
-        btn_ok.setOnClickListener({ _ -> selectDate() })
+
+        tv_year.text = calendar_view.curYear.toString()
+        mYear = calendar_view.curYear
+        tv_month_day.text = "${calendar_view.curMonth}月${calendar_view.curDay}日"
+        tv_lunar.text = "今日"
+        tv_current_day.text = calendar_view.curDay.toString()
+        btn_ok.setOnClickListener{ onConfirmClick() }
+        btn_cancel.setOnClickListener { dismiss() }
     }
 
-    //点击确认选择
-    private fun selectDate() {
+    /**
+     * 点击确认选择
+     * */
+    private fun onConfirmClick() {
         if (calendar == null) {
             return
         }
-        listener?.dateSelected(calendar)
+        onDateSelectListener?.dateSelected(calendar)
         QToast.show(mContext, getCalendarText(calendar!!))
-        hide()
-    }
-
-    fun setDateChangeListener(listener: OnDateSelectedListener?) {
-        this.listener = listener
+        dismiss()
     }
 
     override fun onClick(v: View) {
@@ -74,7 +79,7 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
     }
 
     override fun onYearChange(year: Int) {
-        tv_month_day.setText("$year")
+        tv_month_day.text = "$year"
     }
 
     override fun onDateLongClick(calendar: Calendar?) {
@@ -85,19 +90,20 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
 
     }
 
-
     override fun onDateSelected(calendar: Calendar?, isClick: Boolean) {
-        tv_lunar.setVisibility(View.VISIBLE)
-        tv_year.setVisibility(View.VISIBLE)
+        tv_lunar.visibility = View.VISIBLE
+        tv_year.visibility = View.VISIBLE
         btn_ok.visibility = View.VISIBLE
+
         lp = calendar_view.layoutParams
         lp?.width = ViewGroup.LayoutParams.WRAP_CONTENT
         lp?.height = mContext.resources.getDimensionPixelSize(R.dimen.date_picker_height)
         calendar_view.layoutParams = lp
+
         if (calendar != null) {
-            tv_year.setText(calendar.getYear().toString())
-            tv_lunar.setText(calendar.getLunar())
-            mYear = calendar.getYear()
+            tv_year.text = calendar.year.toString()
+            tv_lunar.text = calendar.lunar
+            mYear = calendar.year
             tv_month_day.text = "${calendar.month}月${calendar.day}日"
         }
         this.calendar = calendar
@@ -113,8 +119,10 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
                 if (calendar.leapMonth == 0) "否" else String.format("闰%s月", calendar.leapMonth))
     }
 
+    /**
+     * 日期选择
+     * */
     interface OnDateSelectedListener {
         fun dateSelected(calendar: Calendar?)
     }
-
 }

@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.ui.record.widget
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -24,10 +25,9 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
 
     private var startTime:String=""
     private var endTime:String=""
-    private var startDatePicker:DatePickerDialog?= null
-    private var endDatePicker:DatePickerDialog?=null
+    private var startDatePicker:DatePickerDialog? = null
+    private var endDatePicker:DatePickerDialog? = null
     private var errtip: TipDialog? = null
-
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
         if (errtip == null) {
@@ -61,13 +61,10 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
         loadData()
     }
 
-
-
     private fun initView() {
         tv_date_from.setOnClickListener(this)
         tv_date_to.setOnClickListener(this)
     }
-
 
     override fun onClick(v: View?) {
        when(v){
@@ -75,34 +72,39 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
            tv_date_to ->showEndPicker()
        }
     }
-    private fun showStartPicker(){
-        if (startDatePicker==null){
+
+    private fun showStartPicker() {
+        if (startDatePicker == null){
             startDatePicker= DatePickerDialog(this)
-            startDatePicker?.setDateChangeListener(object :DatePickerDialog.OnDateSelectedListener{
+            startDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+                @SuppressLint("SetTextI18n")
                 override fun dateSelected(calendar: Calendar?) {
                     if (calendar != null) {
                         tv_date_from.text="${calendar.year}-${calendar.month}-${calendar.day}"
                         loadData()
                     }
                 }
-            })
+            }
         }
         startDatePicker?.show()
     }
+
     private fun showEndPicker(){
-        if (endDatePicker==null){
+        if (endDatePicker == null){
             endDatePicker= DatePickerDialog(this)
-            endDatePicker?.setDateChangeListener(object :DatePickerDialog.OnDateSelectedListener{
+            endDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+                @SuppressLint("SetTextI18n")
                 override fun dateSelected(calendar: Calendar?) {
                     if (calendar != null) {
                         tv_date_to.text="${calendar.year}-${calendar.month}-${calendar.day}"
                         loadData()
                     }
                 }
-            })
+            }
         }
         endDatePicker?.show()
     }
+
     private fun loadData() {
         startTime=tv_date_from.text.toString().trim()
         endTime=tv_date_to.text.toString().trim()

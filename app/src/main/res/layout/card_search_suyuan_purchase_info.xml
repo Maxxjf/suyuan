@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="1dp"
+    tools:context=".ui.search.widget.SearchSuyuanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layoutMargin"
+                android:layout_marginStart="@dimen/layoutMargin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize"
+                android:text="@string/tag_purchaser_info"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/LineHorizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/layoutMargin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.qcloud.qclib.widget.customview.RatioImageView
+                    android:id="@+id/img_purchaser_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bmp_user_head"
+                    app:width="120"
+                    app:ratio="1.0"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/layout_margin"
+                    android:layout_marginLeft="@dimen/layout_margin">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            android:text="@string/tag_user_name"/>
+
+                        <TextView
+                            android:id="@+id/tv_purchaser_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_1"
+                            android:layout_marginStart="@dimen/margin_1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            tools:text="库赞"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            android:text="@string/tag_user_id"/>
+
+                        <TextView
+                            android:id="@+id/tv_purchaser_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_1"
+                            android:layout_marginStart="@dimen/margin_1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            tools:text="447858***7586"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_mobile"/>
+
+                <TextView
+                    android:id="@+id/tv_purchaser_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_mobile"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_purchase_use"/>
+
+                <TextView
+                    android:id="@+id/tv_purchase_use"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_purchase_use"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_buy_time"/>
+
+                <TextView
+                    android:id="@+id/tv_buy_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_buy_time"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/modelMargin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:text="@string/tag_other_instructions"/>
+
+                <TextView
+                    android:id="@+id/tv_other_instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/drawPadding"
+                    android:layout_marginStart="@dimen/drawPadding"
+                    android:lineSpacingExtra="@dimen/drawPadding"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    tools:text="@string/tag_other_instructions"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+

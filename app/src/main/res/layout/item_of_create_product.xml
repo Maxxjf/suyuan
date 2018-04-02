@@ -15,7 +15,23 @@
         android:layout_height="wrap_content"
         android:layout_weight="2">
 
+        <com.qcloud.suyuan.widgets.customview.AttrDropDownView
+            android:id="@+id/view_of_drop_down"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:visibility="gone"/>
 
+        <com.qcloud.suyuan.widgets.customview.AttrInputView
+            android:id="@+id/view_of_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:visibility="gone"/>
+
+        <com.qcloud.suyuan.widgets.customview.AttrFormView
+            android:id="@+id/view_of_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

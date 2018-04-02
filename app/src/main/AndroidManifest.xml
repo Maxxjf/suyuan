@@ -109,8 +109,24 @@
             android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".ui.main.widget.SearchActivity"
+            android:name=".ui.store.widget.MyProductDetailsActivity"
+            android:label="@string/title_my_product_details"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.search.widget.SearchSuyuanActivity"
             android:label="@string/title_search_suyuan"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.search.widget.SearchBatchActivity"
+            android:label="@string/title_search_batch"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.search.widget.SearchProductActivity"
+            android:label="@string/title_search_product"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="landscape" />
         <activity
             android:name=".ui.record.widget.ReturnRecordActivity"

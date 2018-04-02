@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search.widget.SearchSuyuanActivity"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barHeight">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/layoutMargin"
+                android:layout_marginStart="@dimen/layoutMargin"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/titleTextSize"
+                android:text="@string/tag_product_info"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/editHeight"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_2"
+                android:layout_marginEnd="@dimen/margin_2"
+                android:background="@drawable/frame_gray"
+                android:visibility="invisible">
+
+                <ImageView
+                    android:id="@+id/btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_1"
+                    android:layout_marginStart="@dimen/margin_1"
+                    android:layout_marginRight="@dimen/margin_1"
+                    android:layout_marginEnd="@dimen/margin_1"
+                    android:src="@drawable/icon_search"
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                <View
+                    style="@style/LineVertical"
+                    android:layout_margin="@dimen/margin_1"/>
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:minWidth="@dimen/margin_40"
+                    android:background="@null"
+                    android:layout_marginLeft="@dimen/margin_1"
+                    android:layout_marginStart="@dimen/margin_1"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:imeOptions="actionSearch"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:textColorHint="@color/colorGray"
+                    android:hint="@string/hint_suyuan_code_search"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <View
+            style="@style/LineHorizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="@dimen/layoutMargin">
+
+                <com.qcloud.qclib.widget.customview.RatioImageView
+                    android:id="@+id/img_suyuan_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bmp_product"
+                    app:ratio="1.0"/>
+            </LinearLayout>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/layoutMargin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="top">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            android:text="@string/tag_suyuan_code"/>
+
+                        <TextView
+                            android:id="@+id/tv_suyuan_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/drawPadding"
+                            android:layout_marginStart="@dimen/drawPadding"
+                            android:lineSpacingExtra="@dimen/drawPadding"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/textSize"
+                            tools:text="@string/tag_suyuan_code"/>
+                    </LinearLayout>
+
+                    <include
+                        layout="@layout/layout_product_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/modelMargin"/>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+

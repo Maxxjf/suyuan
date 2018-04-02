@@ -64,6 +64,16 @@ class AttrFormView  @JvmOverloads constructor(
             if (attrName != null) {
                 with(attrName) {
                     tv_required.visibility = if (isCrux == 1) View.VISIBLE else View.GONE
+                    tv_attr_tag.text = name
+                }
+            }
+            val attrType = currBean!!.attrType
+            if (attrType != null && attrType.isNotEmpty()) {
+                if (attrType.size > 1) {
+                    tag_form_title_i.text = attrType[0]
+                }
+                if (attrType.size > 2) {
+                    tag_form_title_ii.text = attrType[1]
                 }
             }
         }

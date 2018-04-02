@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_detail_bar_code"/>
+
+        <TextView
+            android:id="@+id/tv_bar_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_detail_bar_code"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_detail_name"/>
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_detail_spec"/>
+
+        <TextView
+            android:id="@+id/tv_product_spec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_detail_spec"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_detail_classify"/>
+
+        <TextView
+            android:id="@+id/tv_product_classify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_detail_classify"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_toxicity"/>
+
+        <TextView
+            android:id="@+id/tv_product_toxicity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_toxicity"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_pesticides_registration"/>
+
+        <TextView
+            android:id="@+id/tv_pesticides_registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginStart="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_pesticides_registration"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_production_license_code"/>
+
+        <TextView
+            android:id="@+id/tv_production_license_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginStart="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_production_license_code"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_standard_code"/>
+
+        <TextView
+            android:id="@+id/tv_product_standard_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_marginStart="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_standard_code"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_detail_unit"/>
+
+        <TextView
+            android:id="@+id/tv_product_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_detail_unit"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_factory"/>
+
+        <TextView
+            android:id="@+id/tv_product_manufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_product_detail_manufacturer"/>
+    </LinearLayout>
+
+</LinearLayout>

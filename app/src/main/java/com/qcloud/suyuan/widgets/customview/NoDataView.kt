@@ -7,7 +7,7 @@ import com.qcloud.qclib.widget.customview.BaseEmptyView
 import com.qcloud.suyuan.R
 
 /**
- * Description:
+ * Description: 空布局
  * Author: gaobaiqiang
  * 2018/3/21 下午5:25.
  */
@@ -22,6 +22,9 @@ class NoDataView @JvmOverloads constructor(
 
     override val tipColor: Int
         get() = ApiReplaceUtil.getColor(mContext, R.color.colorPrimary)
+
+    override val tipSize: Float
+        get() = mContext.resources.getDimension(R.dimen.textSize)
 
     override val defaultTip: String
         get() = mContext.resources.getString(R.string.tip_no_any_data)

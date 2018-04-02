@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.DropDownAdapter
+import com.qcloud.suyuan.beans.ProductAttrValueBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
 
 /**
@@ -52,10 +53,10 @@ class DropDownPop(mContext: Context, val mList: List<*>, xWidth: Int) : BasePopu
     private fun disposeData(): List<String> {
         val list: MutableList<String> = ArrayList()
         for (bean in mList) {
-            if (bean is ProductClassifyBean) {
-                list.add(bean.name)
-            } else if (bean is String) {
-                list.add(bean)
+            when (bean) {
+                is ProductClassifyBean -> list.add(bean.name)
+                is String -> list.add(bean)
+                is ProductAttrValueBean -> list.add(bean.name ?: "")
             }
         }
         return list
