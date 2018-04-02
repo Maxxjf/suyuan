@@ -52,7 +52,6 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
                     KeyBoardUtil.hideKeybord(this, et_search)
                     searchProductInfo()
                     et_search.setText("")
-                    Timber.e("-------<<<<<<<<<<<<<<<<<<<<<searchProductInfo")
                 }
             }
             false

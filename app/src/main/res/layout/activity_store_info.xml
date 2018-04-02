@@ -1,14 +1,322 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
-        app:title_text="@string/title_store_info"/>
+        app:title_text="@string/title_store_info" />
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_11"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/btn_updata_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:layout_toLeftOf="@+id/btn_edit_info"
+            android:drawableLeft="@drawable/selector_btn_edit_password"
+            android:text="@string/btn_updata_password"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/btn_edit_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/layout_margin"
+            android:drawableLeft="@drawable/selector_btn_edit"
+            android:text="@string/btn_edit_info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/underLine"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_40"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_store_detail_number"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="HN9527"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_store_detail_name"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="四虎山镇农资门店"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_store_detail_address"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="福建省"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_store_detail_shopkeeper"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="一辉"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_list_phone"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="13456898414"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_area"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="福建省"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_login_account"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_login_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="13456898414"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_login_password"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:id="@+id/tv_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:inputType="numberPassword"
+                    android:text="2020/06/30"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_business_license"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <ImageView
+                    android:scaleType="fitCenter"
+                    android:id="@+id/iv_bussiness_license"
+                    android:layout_width="@dimen/margin_40"
+                    android:layout_height="@dimen/margin_20"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:background="@color/colorLine"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <TextView
+                    android:scaleType="fitCenter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:gravity="center_vertical"
+                    android:text="@string/tag_business_certificate"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+
+                <ImageView
+                    android:id="@+id/iv_bussiness_certificate"
+                    android:layout_width="@dimen/margin_40"
+                    android:layout_height="@dimen/margin_20"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:layout_marginTop="@dimen/margin_3"
+                    android:background="@color/colorLine"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

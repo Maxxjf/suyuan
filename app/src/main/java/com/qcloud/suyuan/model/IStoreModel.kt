@@ -20,4 +20,10 @@ interface IStoreModel {
 
     /** 新增或修改供应商 */
     fun supplierSaveOrUpdate(address: String, classifyId: String, id: String, name: String, phone: String, principal: String, remark: String, callback: DataCallback<EmptyReturnBean>)
+
+    /** 修改门店密码*/
+    fun editStorePassword(oldPwd: String, newPwd: String, againNewPwd: String, callback: DataCallback<EmptyReturnBean>)
+
+    /** 修改门店信息*/
+    fun editStoreInfo(address: String, phone: String, shopkeeperName: String, businessLicenseId: String, businessLicenseImage: String, businessCertificateId: String, businessCertificateImage: String, callback: DataCallback<EmptyReturnBean>)
 }

@@ -34,4 +34,7 @@ open class StoreInfoBean: RealmObject() {
     var isRemove: Int = 0
     var createUser: String? = null
     var status: Int = 0
+    var areaName:String?=null   //归属区域
+    var userName:String?=null   //登录账号
+
 }

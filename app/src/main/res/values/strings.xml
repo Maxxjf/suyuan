@@ -83,6 +83,7 @@
     <string name="hint_product_code_search">请输入产品条形码</string>
     <string name="et_hint_account">请输入您的账号</string>
     <string name="et_hint_password">请输入您的密码</string>
+    <string name="et_hint_original_password">请输入原来的密码</string>
     <string name="et_hint_phone">请输入手机号</string>
     <string name="et_hint_code">请输入验证码</string>
     <string name="et_hint_new_password">请输入您的新密码</string>
@@ -115,6 +116,8 @@
     <string name="hint_input_value">请输入值</string>
     <string name="hint_input_attr">安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件#安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件</string>
     <string name="hint_input_storge_number">请输入出货数量</string>
+    <string name="hint_input_store_address">请输入门店地址</string>
+    <string name="hint_input_store_person">请输入店主名字</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -282,6 +285,7 @@
     <string name="tag_purchase_use">购买用途: </string>
     <string name="tag_other_instructions">其他说明: </string>
     <string name="tag_settlement_confirm">结算确认</string>
+    <string name="tag_update_password">修改登录密码</string>
     <string name="tag_discount_price">优惠价格</string>
     <string name="tag_real_price">应收金额: </string>
     <string name="tag_real_cash">实收金额</string>
@@ -363,5 +367,13 @@
     <string name="tag_buy_time">购买时间: </string>
     <string name="tag_in_storage_info">入库信息</string>
     <string name="tag_batch_stock">当前批次库存: </string>
+    <string name="tag_area">归属区域: </string>
+    <string name="tag_login_account">登录账号: </string>
+    <string name="tag_login_password">登录密码: </string>
+    <string name="tag_business_license">营业执照: </string>
+    <string name="tag_business_certificate">经营许可证: </string>
+    <string name="tag_original_password">输入原密码: </string>
+    <string name="tag_new_password">输入新密码: </string>
+    <string name="tag_new_password_2rd">确认新密码: </string>
 
 </resources>
