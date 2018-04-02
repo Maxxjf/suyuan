@@ -107,6 +107,7 @@
     <string name="hint_input_product_name">请输入产品名称</string>
     <string name="hint_select_product_classify">请选择产品分类</string>
     <string name="hint_input_product_spec">请输入产品规格</string>
+    <string name="hint_input_product_unit">请输入产品单位</string>
     <string name="hint_select_product_mill">请选择生产厂家</string>
     <string name="hint_input_mill_address">请输入厂家地址</string>
     <string name="hint_input_registration_code">请输入登记证号</string>
@@ -114,7 +115,7 @@
     <string name="hint_input_product_standard">请输入产品标准证号</string>
     <string name="hint_input_product_introduce">请输入产品详情</string>
     <string name="hint_input_value">请输入值</string>
-    <string name="hint_input_attr">安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件#安环曹素昂.100g*20瓶/件#莠去津50%(悬浮济).100g*20瓶/件</string>
+    <string name="hint_input_attr">安环曹素昂#100g*20瓶/件;莠去津50%(悬浮济)#100g*20瓶/件</string>
     <string name="hint_input_storge_number">请输入出货数量</string>
     <string name="hint_input_store_address">请输入门店地址</string>
     <string name="hint_input_store_person">请输入店主名字</string>
@@ -218,6 +219,13 @@
     <string name="tip_scan_batch_code">请扫批次条形码~</string>
     <string name="tip_scan_product_code">请扫产品条形码~</string>
     <string name="tip_scan_code_error">抱歉！没有找到符合条件的相关产品，请重新扫码~</string>
+    <string name="tip_product_create_success">门店产品创建成功.</string>
+    <string name="tip_edit_old">检测到您上次未提交创建的产品，是否继续编辑？</string>
+    <string name="tip_edit_cancel">继续编辑</string>
+    <string name="tip_edit_ok">不了，我要创建新的</string>
+    <string name="tip_save_product">您的产品还没有提交创建，是否保存下次继续编辑？</string>
+    <string name="tip_save_cancel">不保存</string>
+    <string name="tip_save_ok">保存</string>
 
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>
@@ -353,7 +361,7 @@
     <string name="tag_production_license_code">生产许可证号: </string>
     <string name="tag_product_standard_code">产品标准证号: </string>
     <string name="tag_product_introduce">产品详情: </string>
-    <string name="tag_input_attr_style">请按照以下格式填写(注不同属性以#号区分,同一属性不同值以.号区分)</string>
+    <string name="tag_input_attr_style">请按照以下格式填写(注不同属性以;号区分,同一属性不同值以#号区分)</string>
     <string name="tag_details_introduce">详细说明</string>
     <string name="tag_suyuan_code">溯源码: </string>
     <string name="tag_batch_code">批次条形码: </string>

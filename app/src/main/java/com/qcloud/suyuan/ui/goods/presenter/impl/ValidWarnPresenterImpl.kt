@@ -23,6 +23,9 @@ class ValidWarnPresenterImpl: BasePresenter<IValidWarnView>(), IValidWarnPresent
     private var mModel: IGoodsModel = GoodsModelImpl()
     private var storageModel: IStorageModel = StorageModelImpl()
 
+    /**
+     * 加载数据
+     * */
     override fun loadData(pageNo: Int) {
         mModel.getValidWarnList(pageNo, AppConstants.PAGE_SIZE, object : DataCallback<ReturnDataBean<ValidWarnBean>> {
             override fun onSuccess(t: ReturnDataBean<ValidWarnBean>?, message: String?) {

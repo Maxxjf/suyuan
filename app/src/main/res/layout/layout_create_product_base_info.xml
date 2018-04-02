@@ -143,6 +143,31 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/smallTextSize"
+                    android:text="@string/tag_product_detail_unit"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|right"
+                android:layout_marginTop="@dimen/modelMargin"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/smallTextSize"
+                    android:text="@string/tag_required"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/smallTextSize"
                     android:text="@string/tag_product_detail_manufacturer"/>
             </LinearLayout>
 
@@ -271,6 +296,21 @@
                 android:textSize="@dimen/textSize"
                 android:hint="@string/hint_input_product_spec"/>
 
+            <TextView
+                android:id="@+id/et_product_unit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:layout_marginTop="@dimen/modelMargin"
+                android:background="@drawable/frame_gray"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin_2"
+                android:paddingStart="@dimen/margin_2"
+                android:paddingRight="@dimen/margin_2"
+                android:paddingEnd="@dimen/margin_2"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:hint="@string/hint_input_product_unit"/>
+
             <LinearLayout
                 android:id="@+id/btn_select_product_mill"
                 android:layout_width="match_parent"
@@ -306,15 +346,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/editHeight"
                 android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/margin_2"
                 android:paddingStart="@dimen/margin_2"
                 android:paddingRight="@dimen/margin_2"
                 android:paddingEnd="@dimen/margin_2"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_mill_address"/>
+                android:textSize="@dimen/textSize"/>
 
             <TextView
                 android:id="@+id/et_registration_code"

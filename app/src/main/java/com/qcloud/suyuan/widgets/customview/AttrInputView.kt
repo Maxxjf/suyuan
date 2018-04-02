@@ -40,7 +40,7 @@ class AttrInputView  @JvmOverloads constructor(
 
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
             override fun onFinishInput(message: String?) {
-                currBean?.value = message
+                currBean?.attrValueSubmitStr = message
             }
         }
     }
@@ -54,7 +54,7 @@ class AttrInputView  @JvmOverloads constructor(
             if (attrName != null) {
                 with(attrName) {
                     tv_required.visibility = if (isCrux == 1) View.VISIBLE else View.GONE
-                    tv_attr_tag.text = name
+                    tv_attr_tag.text = "$name: "
                 }
             }
         }

@@ -36,11 +36,11 @@
             android:layout_height="@dimen/btnHeight"
             android:layout_marginLeft="@dimen/margin_2"
             android:layout_marginStart="@dimen/margin_2"
-            android:paddingLeft="@dimen/margin_8"
-            android:paddingRight="@dimen/margin_8"
+            android:paddingLeft="@dimen/margin_6"
+            android:paddingRight="@dimen/margin_6"
             android:background="@drawable/btn_radius_selector"
             android:textColor="@color/white"
-            android:textSize="@dimen/btnTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/btn_add"/>
     </LinearLayout>
 
@@ -51,34 +51,10 @@
         android:layout_marginTop="@dimen/modelMargin"
         android:background="@color/colorAccent">
 
-        <TextView
-            android:id="@+id/tag_form_title_i"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/smallTextSize"
-            tools:text="成分编号"/>
-
-        <TextView
-            android:id="@+id/tag_form_title_ii"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.2"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/smallTextSize"
-            tools:text="成分数量"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/smallTextSize"
-            android:text="@string/tag_goods_control"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btnHeight"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

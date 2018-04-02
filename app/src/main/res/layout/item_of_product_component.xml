@@ -6,10 +6,11 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/tv_value_i"
+        android:id="@+id/tv_value_0"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:visibility="gone"
         android:background="@drawable/frame_small_gray"
         android:gravity="center"
         android:textColor="@color/colorSubTitle"
@@ -17,10 +18,107 @@
         tools:text="1"/>
 
     <TextView
-        android:id="@+id/tv_value_ii"
+        android:id="@+id/tv_value_1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2.2"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_4"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_5"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_6"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_7"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_8"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/frame_small_gray"
+        android:gravity="center"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="@dimen/smallTextSize"
+        tools:text="10g/100ml"/>
+
+    <TextView
+        android:id="@+id/tv_value_9"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="gone"
         android:background="@drawable/frame_small_gray"
         android:gravity="center"
         android:textColor="@color/colorSubTitle"

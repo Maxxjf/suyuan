@@ -82,4 +82,13 @@ object UrlConstants {
     const val STORE_EDIT_PASSWORD = URL_PREFIX_APP + "store/editPassword"
     /**我的门店-修改信息*/
     const val STORE_EDIT_INFO = URL_PREFIX_APP + "store/editStore"
+
+    /**创建修改私有产品*/
+    const val EDIT_MY_PRODUCT = URL_PREFIX_APP + "goods/toAdd"
+    /**获取生产厂家*/
+    const val GET_FACTORY = URL_PREFIX_APP + "goods/getFactory"
+    /**创建修改私有产品-下一步*/
+    const val CREATE_PRODUCT_NEXT = URL_PREFIX_APP + "goods/toNextStep"
+    /**保存私有产品*/
+    const val ADD_PRODUCT = URL_PREFIX_APP + "goods/add"
 }

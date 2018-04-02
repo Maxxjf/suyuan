@@ -45,4 +45,16 @@ interface IGoodsModel {
     fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double,
                        saleRealPay: Double, salePayMethod: Int, salePurpose: String?, saleRemark: String?,
                        callback: DataCallback<SettlementResBean>)
+
+    /**创建修改私有产品*/
+    fun editMyProduct(id: String?, callback: DataCallback<CreateProductBean>)
+
+    /**获取门店信息*/
+    fun getFactoryByClassify(classifyId: String, callback: DataCallback<ReturnDataBean<ProductMillBean>>)
+
+    /**获取门店信息*/
+    fun createProductNext(id: String?, classifyId: String, callback: DataCallback<ReturnDataBean<ProductAttrBean>>)
+
+    /**获取门店信息*/
+    fun add(bean: CreateProductSubmitBean, callback: DataCallback<EmptyReturnBean>)
 }

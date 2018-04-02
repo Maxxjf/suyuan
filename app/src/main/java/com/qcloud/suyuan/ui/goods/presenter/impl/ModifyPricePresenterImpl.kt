@@ -19,8 +19,13 @@ class ModifyPricePresenterImpl: BasePresenter<IModifyPriceView>(), IModifyPriceP
 
     val mModel = GoodsModelImpl()
 
+    /**
+     * 获取产品列表
+     *
+     * @param classifyId 分类id
+     * */
     override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, 0, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, -1, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t != null) {
                     if (t.list != null) {
@@ -45,6 +50,12 @@ class ModifyPricePresenterImpl: BasePresenter<IModifyPriceView>(), IModifyPriceP
         })
     }
 
+    /**
+     * 修改库存警告线
+     *
+     * @param id 产品id
+     * @param cordon 库存警告线
+     * */
     override fun modifyWarnLine(id: String, cordon: Int) {
         mModel.editWarnLine(id, cordon, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
@@ -57,6 +68,12 @@ class ModifyPricePresenterImpl: BasePresenter<IModifyPriceView>(), IModifyPriceP
         })
     }
 
+    /**
+     * 修改价格
+     *
+     * @param id 产品id
+     * @param price 建议零售价
+     * */
     override fun modifyPrice(id: String, price: Double) {
         mModel.editPrice(id, price, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {

@@ -19,18 +19,21 @@
             android:id="@+id/view_of_drop_down"
             android:layout_width="match_parent"
             android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
             android:visibility="gone"/>
 
         <com.qcloud.suyuan.widgets.customview.AttrInputView
             android:id="@+id/view_of_input"
             android:layout_width="match_parent"
             android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
             android:visibility="gone"/>
 
         <com.qcloud.suyuan.widgets.customview.AttrFormView
             android:id="@+id/view_of_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/modelMargin"
             android:visibility="gone"/>
 
     </RelativeLayout>

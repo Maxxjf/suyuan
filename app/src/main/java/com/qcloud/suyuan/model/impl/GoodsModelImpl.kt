@@ -35,7 +35,7 @@ class GoodsModelImpl: IGoodsModel {
      * @param pageNo
      * @param pageSize
      * @param classifyId 二级分类id
-     * @param isPlatform 是否私有产品 1是0不是
+     * @param isPlatform 是否私有产品 1不是0是
      * @param keyword 搜索关键字 条形码/名称/厂家
      * */
     override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ReturnDataBean<ProductBean>>) {
@@ -195,5 +195,73 @@ class GoodsModelImpl: IGoodsModel {
         params["saleRemark"] = saleRemark ?: ""
 
         BaseApi.dispose(mApi.saleSettlement(params), callback)
+    }
+
+    /**
+     * 创建修改私有产品
+     *
+     * @param id 商品id,用于修改,可不传或传空
+     * */
+    override fun editMyProduct(id: String?, callback: DataCallback<CreateProductBean>) {
+        val params = FrameRequest.getAppParams()
+        params["id"] = id ?: ""
+
+        BaseApi.dispose(mApi.editMyProduct(params), callback)
+    }
+
+    /**
+     * 选择分类-获取厂家
+     *
+     * @param classifyId 分类id
+     * */
+    override fun getFactoryByClassify(classifyId: String, callback: DataCallback<ReturnDataBean<ProductMillBean>>) {
+        val params = FrameRequest.getAppParams()
+        params["classifyId"] = classifyId
+
+        BaseApi.dispose(mApi.getFactoryByClassify(params), callback)
+    }
+
+    /**
+     * 创建修改私有产品-下一步
+     *
+     * @param id 产品id，修改的时候不为空，新增时可为空
+     * @param classifyId 分类id
+     * */
+    override fun createProductNext(id: String?, classifyId: String, callback: DataCallback<ReturnDataBean<ProductAttrBean>>) {
+        val params = FrameRequest.getAppParams()
+        params["id"] = id ?: ""
+        params["classifyId"] = classifyId
+
+        BaseApi.dispose(mApi.createProductNext(params), callback)
+    }
+
+    /**
+     * 新增或修改私有产品
+     *
+     * @param bean 提交的数据
+     * */
+    override fun add(bean: CreateProductSubmitBean, callback: DataCallback<EmptyReturnBean>) {
+        val params = FrameRequest.getAppParams()
+
+        params["goods.id"] = bean.goodsId                   // 产品id，新建的时候传null或""或不传
+        params["goods.barCode"] = bean.barCode              // 产品条码,最大长度20字符
+        params["goods.classifyId"] = bean.classifyId        // 产品分类
+        params["goods.millId"] = bean.millId                // 产品厂家id
+        params["info.id"] = bean.infoId                     // 产品明细id
+        params["info.name"] = bean.name                     // 产品名称,最大长度30字符
+        params["info.image"] = bean.image                   // 产品图片
+        params["info.specification"] = bean.specification   // 规格,最大长度20字符
+        params["info.unit"] = bean.unit                     // 单位
+        params["info.registerCard"] = bean.registerCard     // 登记证号,最大长度20字符
+        params["info.startTime"] = bean.startTime           // 登记证有效期开始
+        params["info.endTime"] = bean.endTime               // 登记证有效期结束
+        params["info.licenseCard"] = bean.licenseCard       // 生产许可证
+        params["info.standardCard"] = bean.standardCard     // 产品标准证号,最大长度20字符
+        params["info.details"] = bean.details               // 产品明细,最大2000字符
+        params["info.remark"] = bean.remark                 // 备注
+        params["attrId"] = bean.attrId                      // 属性，多个属性名用,号隔开
+        params["attrValues"] = bean.attrValues              // 属性对应的属性值,多条数据之间用";@;"分隔，每条数据每列之间用"# @ #"隔开
+
+        BaseApi.dispose(mApi.add(params), callback)
     }
 }

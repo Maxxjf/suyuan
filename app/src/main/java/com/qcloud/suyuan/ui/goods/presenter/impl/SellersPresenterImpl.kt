@@ -53,6 +53,8 @@ class SellersPresenterImpl: BasePresenter<ISellersView>(), ISellersPresenter {
 
     /**
      * 扫码搜索
+     *
+     * @param keyword 入库批次码
      * */
     override fun loadData(keyword: String) {
         mModel.saleSearchProduct(keyword, object : DataCallback<SellersBean> {
