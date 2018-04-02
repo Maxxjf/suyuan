@@ -3,16 +3,23 @@ package com.qcloud.suyuan.ui.search.widget
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.image.GlideUtil
+import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchBatchPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchBatchView
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_search_batch.*
 import kotlinx.android.synthetic.main.card_search_batch_in_storage_info.*
 import kotlinx.android.synthetic.main.card_search_batch_product_info.*
 import kotlinx.android.synthetic.main.layout_product_info.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Description: 搜索批次条形码
@@ -20,6 +27,8 @@ import kotlinx.android.synthetic.main.layout_product_info.*
  * 2018/4/1 下午11:03.
  */
 class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterImpl>(), ISearchBatchView {
+    private var keyword: String? = null
+
     override val layoutId: Int
         get() = R.layout.activity_search_batch
 
@@ -29,6 +38,42 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
 
     override fun initViewAndData() {
         showEmptyView(getString(R.string.tip_scan_batch_code))
+        initEditView()
+    }
+
+    /**
+     * 初始化搜索输入框
+     * */
+    private fun initEditView() {
+        et_search.setOnKeyListener { _, action, keyEvent ->
+            if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
+                if (action == KeyEvent.KEYCODE_ENTER) {
+                    KeyBoardUtil.hideKeybord(this, et_search)
+                    keyword = et_search.text.toString().trim()
+                    if (StringUtil.isNotBlank(keyword)) {
+                        loadData()
+                    } else {
+                        QToast.show(this, R.string.toast_no_input_value)
+                    }
+                }
+            }
+            false
+        }
+    }
+
+    private fun loadData() {
+        QToast.show(this, keyword)
+        reSetEditText()
+        //mPresenter?.loadProduct(keyword!!)
+    }
+
+    private fun reSetEditText() {
+        Observable.timer(500, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    et_search.setText("")
+                    et_search.requestFocus()
+                }
     }
 
     private fun refreshData() {

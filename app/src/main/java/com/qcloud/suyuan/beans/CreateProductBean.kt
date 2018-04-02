@@ -7,4 +7,6 @@ package com.qcloud.suyuan.beans
  */
 class CreateProductBean {
     var categoryAll: List<ProductClassifyBean>? = null  // 分类集合
+    var goods: ProductGoodsBean? = null      // 产品信息
+    var info: ProductInfoBean? = null   // 商品明细
 }

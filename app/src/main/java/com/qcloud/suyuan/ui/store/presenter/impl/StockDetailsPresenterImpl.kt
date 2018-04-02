@@ -5,6 +5,7 @@ import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.ProductDetailsBean
+import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.store.presenter.IStockDetailsPresenter
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
@@ -16,7 +17,7 @@ import com.qcloud.suyuan.ui.store.view.IStockDetailsView
  */
 class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetailsPresenter {
 
-    val mModel = GoodsModelImpl()
+    private val mModel: IGoodsModel = GoodsModelImpl()
 
     override fun onBtnClick(viewId: Int) {
         when (viewId) {

@@ -83,6 +83,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         currId = intent.getStringExtra("ID")
 
         initView()
+        startLoadingDialog()
         mPresenter?.loadProduct(currId)
 
         showOldProductTip()
@@ -319,7 +320,39 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
 
     override fun refreshData(bean: CreateProductBean) {
         if (isRunning) {
+            stopLoadingDialog()
 
+            val goodsBean = bean.goods
+            if (goodsBean != null) {
+                with(goodsBean) {
+                    et_product_bar_code.text = barCode
+                    tv_product_classify.text = classifyId
+                }
+                classifyId = goodsBean.classifyId ?: ""
+                millId = goodsBean.millId ?: ""
+
+                // 加载厂家列表
+                startLoadingDialog()
+                mPresenter?.loadFactory(classifyId)
+            }
+            val infoBean = bean.info
+            if (infoBean != null) {
+                with(infoBean) {
+                    et_product_name.text = name
+                    et_product_spec.text = specification
+                    et_product_unit.text = unit
+                    et_registration_code.text = registerCard
+                    et_production_license.text = licenseCard
+                    et_product_standard.text = standardCard
+                    et_product_introduce.text = details
+                    tv_registration_start.text = startTime
+                    tv_registration_end.text = endTime
+                }
+            }
+
+            // TODO
+            tv_product_mill.text = ""
+            et_mill_address.text = ""
         }
     }
 

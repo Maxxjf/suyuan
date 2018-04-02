@@ -29,6 +29,8 @@ class PurchaseDetailsPresenterImpl: BasePresenter<IPurchaseDetailsView>(), IPurc
             R.id.btn_clear -> mView?.onClearClick()
             R.id.tv_in_storage_number -> mView?.onStockNumberClick()
             R.id.tv_in_storage_price -> mView?.onPriceClick()
+            R.id.btn_in_storage_birthday -> mView?.onBirthdayClick()
+            R.id.btn_in_storage_end_date -> mView?.onEndDateClick()
         }
     }
 

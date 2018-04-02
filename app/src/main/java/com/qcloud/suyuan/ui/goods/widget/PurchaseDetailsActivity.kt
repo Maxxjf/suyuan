@@ -23,7 +23,6 @@ import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.utils.PrintHelper
-import com.qcloud.suyuan.widgets.customview.DatePickerButton
 import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InStorageDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
@@ -98,7 +97,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         }
     }
 
-    private fun initStartPicker() {
+    private fun initBirthdayPicker() {
         birthdayPicker = DatePickerDialog(this)
         birthdayPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
             @SuppressLint("SetTextI18n")
@@ -162,7 +161,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun onBirthdayClick() {
         if (birthdayPicker == null) {
-            initStartPicker()
+            initBirthdayPicker()
         }
         birthdayPicker?.show()
     }

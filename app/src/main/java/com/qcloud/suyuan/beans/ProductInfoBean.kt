@@ -20,6 +20,8 @@ class ProductInfoBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var registerCard: String? = null    // 登记证号
         get() = if (StringUtil.isBlank(field)) "" else field
+    var startTime: String? = null           // 登记证开始时间
+    var endTime: String? = null             // 登记证结束时间
     var specification: String? = null   // 商品规格
         get() = if (StringUtil.isBlank(field)) "" else field
     var standardCard: String? = null    // 产品标准证号
@@ -30,10 +32,8 @@ class ProductInfoBean {
     var dosageForm: String? = null
     var remark: String? = null
     var activeprinciple: String? = null
-    var attributeNameId: String? = null
-    var attributeValueId: String? = null
+    var attributeNameId: String? = null     // 产品属性名称id
+    var attributeValueId: String? = null    // 产品属性对应值
     var basicParam: String? = null
-    var startTime: String? = null
-    var endTime: String? = null
     var ratio: String? = null
 }

@@ -14,7 +14,7 @@ class ProductGoodsBean {
     var createTime: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var classifyId: String? = null
-    var isPlatform: Int = 0
+    var isPlatform: Int = 0     // 是否平台 0不是 1是
     var isRemove: Int = 0
     var updateTime: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
