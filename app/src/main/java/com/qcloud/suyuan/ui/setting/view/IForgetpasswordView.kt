@@ -13,4 +13,6 @@ interface IForgetpasswordView:BaseView {
      * 修改密码成功
      */
     fun forgetPasswordSuccess()
+
+    fun getCodeSuccess()
 }

@@ -75,7 +75,11 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
 
         mWaterEmptyView = NoDataView(this)
+        mWaterEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
+        mWaterEmptyView?.noData(R.string.tip_no_list)
         mReceiptEmptyView = NoDataView(this)
+        mReceiptEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
+        mReceiptEmptyView?.noData(R.string.tip_no_list)
         rv_sale_list.setEmptyView(mWaterEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
@@ -139,12 +143,12 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
     override fun showEmptyView(tip: String) {
         rv_sale_list.showEmptyView()
-        rv_sale_info_list.showEmptyView()
+//        rv_sale_info_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
         rv_sale_list.hideEmptyView()
-        rv_sale_info_list.hideEmptyView()
+//        rv_sale_info_list.hideEmptyView()
     }
 
     companion object {

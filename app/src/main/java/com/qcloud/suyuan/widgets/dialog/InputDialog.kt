@@ -15,10 +15,8 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.WindowManager
 import android.widget.TextView
-import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import kotlinx.android.synthetic.main.dialog_input.*
 import timber.log.Timber
@@ -134,10 +132,10 @@ class InputDialog @JvmOverloads constructor(
     private fun check(): Boolean {
         mInputValue = et_text.text.toString().trim { it <= ' ' }
 
-        if (StringUtil.isBlank(mInputValue)) {
-            QToast.show(mContext, R.string.toast_input_not_null)
-            return false
-        }
+//        if (StringUtil.isBlank(mInputValue)) {
+//            QToast.show(mContext, R.string.toast_input_not_null)
+//            return false
+//        }
 
         return true
     }

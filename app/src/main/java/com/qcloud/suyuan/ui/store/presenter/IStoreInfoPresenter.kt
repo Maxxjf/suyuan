@@ -8,5 +8,5 @@ package com.qcloud.suyuan.ui.store.presenter
 interface IStoreInfoPresenter {
     fun getInfo()
     fun editPassword(oldPwd: String, newPwd: String, againNewPwd: String)
-    fun editInfo(address: String, phone: String, shopkeeperName: String, businessLicenseId: String, businessLicenseImage: String, businessCertificateId: String, businessCertificateImage: String)
+    fun editInfo(address: String, phone: String, shopkeeperName: String)
 }
