@@ -39,16 +39,16 @@
                 android:layout_marginTop="@dimen/margin_7"
                 android:drawableLeft="@drawable/icon_account"
                 android:drawableStart="@drawable/icon_account"
-                android:hint="@string/et_hint_account"
                 android:gravity="center_vertical"
+                android:hint="@string/et_hint_account"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/textSize"/>
+                android:textSize="@dimen/textSize" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/underLine"
-                android:background="@color/colorDivider"/>
+                android:background="@color/colorDivider" />
 
             <TextView
                 android:id="@+id/et_password"
@@ -57,17 +57,17 @@
                 android:layout_marginTop="@dimen/margin_4"
                 android:drawableLeft="@drawable/icon_password"
                 android:drawableStart="@drawable/icon_password"
-                android:inputType="textPassword"
-                android:hint="@string/et_hint_password"
                 android:gravity="center_vertical"
+                android:hint="@string/et_hint_password"
+                android:inputType="textPassword"
                 android:textColor="@color/colorText"
                 android:textColorHint="@color/colorHint"
-                android:textSize="@dimen/textSize"/>
+                android:textSize="@dimen/textSize" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/underLine"
-                android:background="@color/colorDivider"/>
+                android:background="@color/colorDivider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -91,15 +91,16 @@
                     android:layout_centerVertical="true"
                     android:text="@string/btn_forrget_login"
                     android:textColor="@drawable/selector_green_click"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/textSize"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btnHeight"
-                android:layout_marginTop="@dimen/margin_6"
                 android:layout_marginBottom="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_6"
                 android:background="@drawable/btn_radius_selector"
                 android:text="@string/btn_login"
                 android:textSize="@dimen/btnTextSize" />

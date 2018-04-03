@@ -107,7 +107,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/tag_goods_order"
+                    android:text="@string/tag_list_water"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/typeTextSize" />
 
@@ -116,7 +116,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/tag_goods_name"
+                    android:text="@string/tab_time"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/typeTextSize" />
 
@@ -125,7 +125,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/tag_goods_rule"
+                    android:text="@string/tag_real_cash"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/typeTextSize" />
 
@@ -134,18 +134,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/tag_goods_data"
+                    android:text="@string/tag_list_buyer"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/typeTextSize" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/tag_goods_control"
-                    android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
 
             </LinearLayout>
 
@@ -191,7 +183,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="@string/tag_receipt_info"
+                    android:text="@string/tag_selling_detail"
                     android:textSize="@dimen/titleTextSize" />
 
             </RelativeLayout>

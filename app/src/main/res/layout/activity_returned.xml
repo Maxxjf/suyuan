@@ -72,7 +72,6 @@
                         android:layout_margin="@dimen/margin_1"/>
 
                     <EditText
-                        android:text="HN433900679o86"
                         android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
                         android:id="@+id/et_search"
                         android:layout_width="wrap_content"
@@ -107,7 +106,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/tag_goods_order"
+                    android:text="@string/tag_list_suyuan_code"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/typeTextSize" />
 

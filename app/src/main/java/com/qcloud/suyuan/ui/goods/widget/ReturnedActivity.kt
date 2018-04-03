@@ -73,7 +73,11 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         SwipeRefreshUtil.setColorSchemeColors(rv_sale_info_list, AppConstants.loadColors)
 
         mGoodsEmptyView = NoDataView(this)
+        mGoodsEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
+        mGoodsEmptyView?.noData(R.string.tip_no_list)
         mReceiptEmptyView = NoDataView(this)
+        mReceiptEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
+        mReceiptEmptyView?.noData(R.string.tip_no_list)
         rv_credit_info_list.setEmptyView(mGoodsEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 

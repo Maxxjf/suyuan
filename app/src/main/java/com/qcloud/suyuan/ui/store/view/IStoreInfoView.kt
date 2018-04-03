@@ -13,6 +13,12 @@ interface IStoreInfoView :BaseView {
      * 加载信息
      */
     fun getInfoSuccess(bean: StoreBean)
-
+    /**
+     * 展示修改信息对话框
+     */
     fun showInfoDialog()
+    /**
+     * 展示修改密码对话框
+     */
+    fun showPasswordDialog()
 }

@@ -25,7 +25,8 @@ class EditStoreInfoDialog constructor(context: Context) : BaseDialog(context), V
     }
 
     private fun initView() {
-
+        btn_close.setOnClickListener(this)
+        btn_confirm.setOnClickListener(this)
     }
 
 

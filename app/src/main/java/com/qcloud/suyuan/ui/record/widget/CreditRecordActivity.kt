@@ -108,11 +108,17 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         orderAdapter?.onHolderClick=object :CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean>{
             override fun onHolderClick(view: View, t: CreditInfoBean, position: Int) {
                 mCurrentId= t.id!!
+                creditMoney=t.shouldRepayment
+                repayMoney=t.alreadyRepayment
                 showRepaymentDialog()
             }
         }
         mCreditEmptyView = NoDataView(this)
+        mCreditEmptyView?.noData(R.string.tip_no_list)
+        mCreditEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
         mOrderEmptyView = NoDataView(this)
+        mOrderEmptyView?.noData(R.string.tip_no_list)
+        mOrderEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
         rv_credit_info_list.setEmptyView(mCreditEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mOrderEmptyView!!, Gravity.CENTER_HORIZONTAL)
         et_search.setOnKeyListener { view, i, keyEvent ->

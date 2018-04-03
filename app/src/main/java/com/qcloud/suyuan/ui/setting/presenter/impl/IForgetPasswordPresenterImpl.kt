@@ -18,7 +18,7 @@ class IForgetPasswordPresenterImpl : BasePresenter<IForgetpasswordView>(), IForg
     override fun getCode(mobile: String) {
         mModel.getCode(mobile, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
-
+                mView?.getCodeSuccess()
             }
 
             override fun onError(status: Int, message: String) {

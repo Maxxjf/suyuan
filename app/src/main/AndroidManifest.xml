@@ -48,124 +48,134 @@
         <activity
             android:name=".ui.main.widget.LoginActivity"
             android:label="@string/title_login"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.goods.widget.SellersActivity"
             android:label="@string/title_sellers"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.goods.widget.PurchaseActivity"
             android:label="@string/title_purchase"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.goods.widget.PurchaseDetailsActivity"
             android:label="@string/title_purchase"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.goods.widget.ModifyPriceActivity"
             android:label="@string/title_modify_price"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.order.widget.SellingWaterActivity"
             android:label="@string/title_selling_water"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.record.widget.CreditRecordActivity"
             android:label="@string/title_credit_record"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.goods.widget.ReturnedActivity"
             android:label="@string/title_return"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.storage.widget.OutStorageActivity"
             android:label="@string/title_out_storage"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.StoreProductActivity"
             android:label="@string/title_store_product"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.MyProductActivity"
             android:label="@string/title_my_product"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.CreateProductIActivity"
             android:label="@string/title_create_product"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.CreateProductIIActivity"
             android:label="@string/title_create_product"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.MyProductDetailsActivity"
             android:label="@string/title_my_product_details"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.search.widget.SearchSuyuanActivity"
             android:label="@string/title_search_suyuan"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.search.widget.SearchBatchActivity"
             android:label="@string/title_search_batch"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.search.widget.SearchProductActivity"
             android:label="@string/title_search_product"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.record.widget.ReturnRecordActivity"
             android:label="@string/title_return_record"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.record.widget.SuyuanRecordActivity"
             android:label="@string/title_suyuan_record"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.record.widget.FormActivity"
             android:label="@string/title_form"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:name=".ui.store.widget.MySupplierActivity"
             android:label="@string/title_my_supplier"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.StoreInfoActivity"
             android:label="@string/title_store_info"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.setting.widget.DeviceStateActivity"
             android:label="@string/title_device_state"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.setting.widget.ForgetPasswordActivity"
             android:label="@string/title_forget_password"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.goods.widget.WarnActivity"
             android:label="@string/title_warn"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.store.widget.StockDetailsActivity"
             android:label="@string/title_stock_details"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <!--打印机提示框-->
         <service
             android:name=".widgets.dialog.PrinterDialog"
@@ -174,7 +184,7 @@
         <activity
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

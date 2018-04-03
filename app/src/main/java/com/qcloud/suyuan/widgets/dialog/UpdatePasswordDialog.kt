@@ -23,7 +23,8 @@ class UpdatePasswordDialog constructor(context: Context) : BaseDialog(context), 
     }
 
     private fun initView() {
-
+        btn_close.setOnClickListener(this)
+        btn_confirm.setOnClickListener(this)
     }
 
 

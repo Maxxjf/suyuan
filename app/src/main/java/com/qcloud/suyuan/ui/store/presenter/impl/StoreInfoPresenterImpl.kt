@@ -58,11 +58,12 @@ class StoreInfoPresenterImpl: BasePresenter<IStoreInfoView>(), IStoreInfoPresent
     /**
      * 修改信息
      */
-    override fun editInfo(address: String, phone: String, shopkeeperName: String, businessLicenseId: String, businessLicenseImage: String, businessCertificateId: String, businessCertificateImage: String){
-        mModel.editStoreInfo(address,phone,shopkeeperName,businessLicenseId,businessLicenseImage,businessCertificateId,businessCertificateImage,object :DataCallback<EmptyReturnBean>{
+    override fun editInfo(address: String, phone: String, shopkeeperName: String){
+        mModel.editStoreInfo(address,phone,shopkeeperName,"","","","",object :DataCallback<EmptyReturnBean>{
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
                     mView?.loadErr(message)
+                    getInfo()//修改成功后重新加载
                 }
             }
 
