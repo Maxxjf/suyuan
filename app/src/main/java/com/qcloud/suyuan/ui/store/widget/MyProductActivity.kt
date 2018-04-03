@@ -13,7 +13,7 @@ import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
-import com.qcloud.suyuan.adapters.StoreProductAdapter
+import com.qcloud.suyuan.adapters.MyProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit
  * Date: 2018/3/30 11:14.
  */
 class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(), IMyProductView {
-    private var mAdapter: StoreProductAdapter? = null
+    private var mAdapter: MyProductAdapter? = null
     private var mEmptyView: NoDataView? = null
 
     private var mPurchaseUsePop: DropDownPop? = null
@@ -78,7 +78,7 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
             }
         }
 
-        mAdapter = StoreProductAdapter(this)
+        mAdapter = MyProductAdapter(this)
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val id = mAdapter?.mList?.get(position)?.id ?: "-1"

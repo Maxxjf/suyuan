@@ -30,7 +30,7 @@
             layout="@layout/card_my_product_introduce"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.6"
+            android:layout_weight="1.4"
             android:layout_marginLeft="@dimen/margin_2"
             android:layout_marginStart="@dimen/margin_2"/>
     </LinearLayout>

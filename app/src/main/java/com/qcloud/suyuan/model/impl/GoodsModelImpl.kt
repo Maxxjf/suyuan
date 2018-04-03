@@ -259,6 +259,7 @@ class GoodsModelImpl: IGoodsModel {
         params["info.standardCard"] = bean.standardCard     // 产品标准证号,最大长度20字符
         params["info.details"] = bean.details               // 产品明细,最大2000字符
         params["info.remark"] = bean.remark                 // 备注
+        params["price"] = bean.price                        // 零售价
         params["attrId"] = bean.attrId                      // 属性，多个属性名用,号隔开
         params["attrValues"] = bean.attrValues              // 属性对应的属性值,多条数据之间用";@;"分隔，每条数据每列之间用"# @ #"隔开
 

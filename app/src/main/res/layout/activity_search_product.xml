@@ -34,7 +34,7 @@
                 android:gravity="center_vertical"
                 android:focusableInTouchMode="false"
                 android:imeOptions="actionSearch"
-                android:textColor="@color/colorTitle"
+                android:textColor="@color/transparent"
                 android:textSize="@dimen/textSize"
                 android:textColorHint="@color/colorGray"/>
         </LinearLayout>

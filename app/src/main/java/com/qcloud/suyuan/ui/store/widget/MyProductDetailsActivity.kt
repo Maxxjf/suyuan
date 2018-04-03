@@ -60,8 +60,7 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
         if (goodsBean != null) {
             with(goodsBean) {
                 tv_product_bar_code.text = barCode
-                tv_product_classify.text = classifyId
-
+                tv_product_classify.text = classifyName
             }
         }
         val infoBean = bean.info
@@ -84,7 +83,8 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
                 tv_factory_address.text = address
             }
         }
-        tv_product_retail_price.text = ""
+        val moneyStr = "%1$.2f元"
+        tv_product_retail_price.text = String.format(moneyStr, bean.price)
     }
 
     companion object {

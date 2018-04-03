@@ -55,11 +55,15 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     // 结束时间
     private var endPicker: DatePickerDialog? = null
 
+    // 是否编辑本地
+    private var isEdit = false
+
     private var barCode: String = ""            // 条形码
     private var name: String = ""               // 名称
     private var classifyId: String = ""         // 分类id
     private var millId: String = ""             // 产品厂家id
     private var spec: String = ""               // 规格
+    private var price: Double = 0.00            // 零售价
     private var unit: String = ""               // 单位
     private var address: String? = null         // 地址
     private var registrationCode: String = ""   // 登记证号
@@ -68,6 +72,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     private var license: String = ""            // 生产许可证
     private var standardCode: String = ""       // 标准证号
     private var introduce: String? = null       // 产品介绍
+    private var infoId: String = ""             // 产品明细id
 
     // 用来提交产品
     private var createProduct = CreateProductSubmitBean()
@@ -100,6 +105,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         et_product_bar_code.setOnClickListener(this)
         et_product_name.setOnClickListener(this)
         et_product_spec.setOnClickListener(this)
+        et_product_price.setOnClickListener(this)
         et_product_unit.setOnClickListener(this)
         et_registration_code.setOnClickListener(this)
         et_production_license.setOnClickListener(this)
@@ -114,11 +120,15 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      * 显示上次未提交的产品信息
      * */
     private fun showOldProductTip() {
+        isEdit = false
+        Timber.e("currId = $currId")
         if (StringUtil.isBlank(currId) || StringUtil.isEquals(currId, "0") || StringUtil.isEquals(currId, "-1")) {
             val createUser = UserInfoUtil.getUser()
+            Timber.e("createUser = $createUser")
             if (createUser != null) {
                 val submitBean: CreateProductSubmitBean? =
                         RealmHelper.instance.queryBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
+                Timber.e("submitBean = $submitBean")
                 if (submitBean != null) {
                     if (editOldDialog == null) {
                         editOldDialog = OperationTipDialog(this)
@@ -145,6 +155,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      * 刷新上次保存的数据
      * */
     private fun refreshOldData(submitBean: CreateProductSubmitBean) {
+        isEdit = true
         createProduct = CreateProductSubmitBean()
         with(submitBean) {
             et_product_bar_code.text = barCode
@@ -160,6 +171,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             et_product_introduce.text = details
             tv_registration_start.text = startTime
             tv_registration_end.text = endTime
+            et_product_price.text = "$price"
 
             // 保存之前的数据
             createProduct.createUserId = createUserId
@@ -174,6 +186,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             createProduct.name = name
             createProduct.image = image
             createProduct.specification = specification
+            createProduct.price = price
             createProduct.unit = unit
             createProduct.registerCard = registerCard
             createProduct.startTime = startTime
@@ -212,7 +225,6 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      * 初始化分类下拉弹窗
      * */
     private fun initClassifyDropDown(list: List<ProductClassifyBean>) {
-        classifyId = ""
         btn_select_product_classify.post {
             val width = btn_select_product_classify.width
             classifyPop = DropDownPop(this, list, width)
@@ -294,7 +306,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             when (v.id) {
                 R.id.et_product_bar_code, R.id.et_product_name, R.id.et_product_spec,
                 R.id.et_registration_code, R.id.et_production_license, R.id.et_product_standard,
-                R.id.et_product_introduce, R.id.et_product_unit -> {
+                R.id.et_product_introduce, R.id.et_product_unit, R.id.et_product_price -> {
                     showInput(v as TextView)
                 }
                 R.id.tv_registration_start -> {
@@ -311,7 +323,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                 }
                 R.id.btn_next -> {
                     if (check()) {
-                        CreateProductIIActivity.openActivity(this, createProduct)
+                        CreateProductIIActivity.openActivity(this, createProduct, isEdit)
                     }
                 }
             }
@@ -326,7 +338,9 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             if (goodsBean != null) {
                 with(goodsBean) {
                     et_product_bar_code.text = barCode
-                    tv_product_classify.text = classifyId
+                    tv_product_classify.text = classifyName
+                    tv_product_mill.text = millName
+                    et_mill_address.text = millAddress
                 }
                 classifyId = goodsBean.classifyId ?: ""
                 millId = goodsBean.millId ?: ""
@@ -347,12 +361,10 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                     et_product_introduce.text = details
                     tv_registration_start.text = startTime
                     tv_registration_end.text = endTime
+                    infoId = id ?: ""
                 }
             }
-
-            // TODO
-            tv_product_mill.text = ""
-            et_mill_address.text = ""
+            et_product_price.text = bean.priceStr
         }
     }
 
@@ -392,6 +404,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         introduce = et_product_introduce.text.toString()
         startDate = tv_registration_start.text.toString()
         endDate = tv_registration_end.text.toString()
+        val priceStr = et_product_price.text.toString()
 
         if (StringUtil.isBlank(barCode)) {
             QToast.show(this, R.string.hint_input_product_bar_code)
@@ -409,12 +422,24 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             QToast.show(this, R.string.hint_input_product_spec)
             return false
         }
+        if (StringUtil.isBlank(priceStr)) {
+            QToast.show(this, R.string.hint_input_product_price)
+            return false
+        }
+        if (!StringUtil.isMoneyStr(priceStr)) {
+            QToast.show(this, R.string.hint_input_product_price)
+            return false
+        }
         if (StringUtil.isBlank(unit)) {
             QToast.show(this, R.string.hint_input_product_unit)
             return false
         }
         if (StringUtil.isBlank(millId)) {
             QToast.show(this, R.string.hint_select_product_mill)
+            return false
+        }
+        if (StringUtil.isBlank(registrationCode)) {
+            QToast.show(this, R.string.hint_input_registration_code)
             return false
         }
         if (StringUtil.isBlank(startDate)) {
@@ -429,19 +454,18 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             QToast.show(this, R.string.toast_select_registration_code_error)
             return false
         }
-        if (StringUtil.isBlank(registrationCode)) {
-            QToast.show(this, R.string.hint_input_registration_code)
-            return false
-        }
         if (StringUtil.isBlank(license)) {
             QToast.show(this, R.string.hint_input_production_license)
             return false
         }
-//        if (StringUtil.isBlank(introduce)) {
-//            QToast.show(this, R.string.hint_input_product_introduce)
-//            return false
-//        }
-        createProduct.goodsId = currId ?: ""
+        if (StringUtil.isBlank(standardCode)) {
+            QToast.show(this, R.string.hint_input_product_standard)
+            return false
+        }
+
+        price = priceStr.toDouble()
+        createProduct.goodsId = if (isEdit) "" else currId ?: ""
+        createProduct.infoId = infoId
         createProduct.barCode = barCode
         createProduct.name = name
         createProduct.classifyId = classifyId
@@ -451,6 +475,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         createProduct.millAddress = et_mill_address.text.toString()
         createProduct.name = name
         createProduct.specification = spec
+        createProduct.price = price
         createProduct.unit = unit
         createProduct.registerCard = registrationCode
         createProduct.startTime = startDate
@@ -473,6 +498,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         saveDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_ok) {
+                    saveValue()
                     val createUser = UserInfoUtil.getUser()
                     if (createUser != null) {
                         createProduct.createUserId = createUser.id
@@ -486,6 +512,69 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                 }
             }
         }
+    }
+
+    private fun saveValue() {
+        barCode = et_product_bar_code.text.toString()
+        name = et_product_name.text.toString()
+        spec = et_product_spec.text.toString()
+        unit = et_product_unit.text.toString()
+        address = et_mill_address.text.toString()
+        registrationCode = et_registration_code.text.toString()
+        license = et_production_license.text.toString()
+        standardCode = et_product_standard.text.toString()
+        introduce = et_product_introduce.text.toString()
+        startDate = tv_registration_start.text.toString()
+        endDate = tv_registration_end.text.toString()
+        val priceStr = et_product_price.text.toString()
+
+        if (StringUtil.isNotBlank(barCode)) {
+            createProduct.barCode = barCode
+        }
+        if (StringUtil.isNotBlank(name)) {
+            createProduct.name = name
+        }
+        if (StringUtil.isNotBlank(classifyId)) {
+            createProduct.classifyId = classifyId
+            createProduct.classifyName = tv_product_classify.text.toString()
+        }
+        if (StringUtil.isNotBlank(spec)) {
+            createProduct.specification = spec
+        }
+        if (StringUtil.isNotBlank(priceStr)) {
+            if (StringUtil.isMoneyStr(priceStr)) {
+                price = priceStr.toDouble()
+                createProduct.price = price
+            }
+        }
+        if (StringUtil.isNotBlank(unit)) {
+            createProduct.unit = unit
+        }
+        if (StringUtil.isNotBlank(millId)) {
+            createProduct.millId = millId
+            createProduct.millName = tv_product_mill.text.toString()
+            createProduct.millAddress = et_mill_address.text.toString()
+        }
+        if (StringUtil.isNotBlank(registrationCode)) {
+            createProduct.registerCard = registrationCode
+        }
+        if (StringUtil.isNotBlank(startDate)) {
+            createProduct.startTime = startDate
+        }
+        if (StringUtil.isNotBlank(endDate)) {
+            createProduct.endTime = endDate
+        }
+        if (StringUtil.isNotBlank(license)) {
+            createProduct.licenseCard = license
+        }
+        if (StringUtil.isNotBlank(standardCode)) {
+            createProduct.standardCard = standardCode
+        }
+        if (StringUtil.isNotBlank(introduce)) {
+            createProduct.details = introduce ?: ""
+        }
+
+        Timber.e("CreateProduct = $createProduct")
     }
 
     override fun onDestroy() {

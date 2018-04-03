@@ -13,7 +13,9 @@ class ProductGoodsBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var createTime: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
-    var classifyId: String? = null
+    var classifyId: String? = null  // 产品分类id
+    var classifyName: String? = null    // 产品分类
+        get() = if (StringUtil.isBlank(field)) "" else field
     var isPlatform: Int = 0     // 是否平台 0不是 1是
     var isRemove: Int = 0
     var updateTime: String? = null
@@ -21,4 +23,8 @@ class ProductGoodsBean {
     var shopId: String? = null
     var state: Int = 0
     var millId: String? = null
+    var millName: String? = null        // 厂家名称
+        get() = if (StringUtil.isBlank(field)) "" else field
+    var millAddress: String? = null     // 厂家地址
+        get() = if (StringUtil.isBlank(field)) "" else field
 }

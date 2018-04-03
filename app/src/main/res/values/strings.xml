@@ -107,6 +107,7 @@
     <string name="hint_input_product_name">请输入产品名称</string>
     <string name="hint_select_product_classify">请选择产品分类</string>
     <string name="hint_input_product_spec">请输入产品规格</string>
+    <string name="hint_input_product_price">请输入零售价</string>
     <string name="hint_input_product_unit">请输入产品单位</string>
     <string name="hint_select_product_mill">请选择生产厂家</string>
     <string name="hint_input_mill_address">请输入厂家地址</string>

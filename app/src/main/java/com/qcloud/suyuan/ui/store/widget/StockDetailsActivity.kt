@@ -171,7 +171,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
                 // 条形码
                 tv_product_bar_code?.text = goodsBean.barCode
                 // 分类
-                tv_product_classify.text = goodsBean.classifyId
+                tv_product_classify.text = goodsBean.classifyName
             }
             // 库存
             val totalNumberStr = resources.getString(R.string.tag_total_stock_number)

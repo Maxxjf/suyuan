@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import com.qcloud.qclib.base.BaseLinearLayout
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ProductAttrBean
 import com.qcloud.suyuan.widgets.dialog.InputDialog
@@ -56,6 +57,11 @@ class AttrInputView  @JvmOverloads constructor(
                     tv_required.visibility = if (isCrux == 1) View.VISIBLE else View.GONE
                     tv_attr_tag.text = "$name: "
                 }
+            }
+            // 给予默认值
+            if (StringUtil.isNotBlank(currBean!!.value)) {
+                et_value.text = currBean!!.value
+                currBean?.attrValueSubmitStr = currBean!!.value
             }
         }
     }

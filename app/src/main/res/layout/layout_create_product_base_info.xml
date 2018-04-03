@@ -1,374 +1,403 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/layoutMargin">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/layoutMargin"
-        android:paddingBottom="@dimen/layoutMargin"
-        android:paddingLeft="@dimen/margin_8"
-        android:paddingStart="@dimen/margin_8"
-        android:paddingRight="@dimen/margin_8"
-        android:paddingEnd="@dimen/margin_8">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            tools:ignore="RtlHardcoded">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                tools:ignore="RtlHardcoded">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_bar_code"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_name"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_classify"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_spec"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_unit"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_product_detail_manufacturer"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_mill_address"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|right"
-                android:layout_marginTop="@dimen/modelMargin"
-                tools:ignore="RtlHardcoded">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:textColor="@color/colorRed"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_required"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/smallTextSize"
-                    android:text="@string/tag_registration_code"/>
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_bar_code"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2.5"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/margin_2"
-            android:layout_marginStart="@dimen/margin_2">
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
 
             <TextView
-                android:id="@+id/et_product_bar_code"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:background="@drawable/frame_gray"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
-                android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_product_bar_code"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
 
             <TextView
-                android:id="@+id/et_product_name"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_product_name"/>
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_name"/>
+        </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/btn_select_product_classify"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:clickable="true"
-                android:focusable="true">
-
-                <TextView
-                    android:id="@+id/tv_product_classify"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/layout_margin"
-                    android:paddingStart="@dimen/layout_margin"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/textSize"
-                    android:hint="@string/hint_select_product_classify"/>
-
-                <ImageView
-                    android:id="@+id/btn_drop_down_classify"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_drop_down"/>
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
 
             <TextView
-                android:id="@+id/et_product_spec"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
-                android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_product_spec"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
 
             <TextView
-                android:id="@+id/et_product_unit"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_product_unit"/>
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_classify"/>
+        </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/btn_select_product_mill"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:clickable="true"
-                android:focusable="true">
-
-                <TextView
-                    android:id="@+id/tv_product_mill"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/layout_margin"
-                    android:paddingStart="@dimen/layout_margin"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/textSize"
-                    android:hint="@string/hint_select_product_mill"/>
-
-                <ImageView
-                    android:id="@+id/btn_drop_down_mill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icon_drop_down"/>
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
 
             <TextView
-                android:id="@+id/et_mill_address"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
-                android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
 
             <TextView
-                android:id="@+id/et_registration_code"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/editHeight"
-                android:layout_marginTop="@dimen/modelMargin"
-                android:background="@drawable/frame_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/margin_2"
-                android:paddingStart="@dimen/margin_2"
-                android:paddingRight="@dimen/margin_2"
-                android:paddingEnd="@dimen/margin_2"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/textSize"
-                android:hint="@string/hint_input_registration_code"/>
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_spec"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_retail_price"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_unit"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_product_detail_manufacturer"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_mill_address"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_marginTop="@dimen/modelMargin"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_required"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/smallTextSize"
+                android:text="@string/tag_registration_code"/>
         </LinearLayout>
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:layout_marginStart="@dimen/margin_2">
+
+        <TextView
+            android:id="@+id/et_product_bar_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_product_bar_code"/>
+
+        <TextView
+            android:id="@+id/et_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_product_name"/>
+
+        <LinearLayout
+            android:id="@+id/btn_select_product_classify"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/tv_product_classify"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editHeight"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/layout_margin"
+                android:paddingStart="@dimen/layout_margin"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:hint="@string/hint_select_product_classify"/>
+
+            <ImageView
+                android:id="@+id/btn_drop_down_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_drop_down"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/et_product_spec"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_product_spec"/>
+
+        <TextView
+            android:id="@+id/et_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_product_price"/>
+
+        <TextView
+            android:id="@+id/et_product_unit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_product_unit"/>
+
+        <LinearLayout
+            android:id="@+id/btn_select_product_mill"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/tv_product_mill"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editHeight"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/layout_margin"
+                android:paddingStart="@dimen/layout_margin"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:hint="@string/hint_select_product_mill"/>
+
+            <ImageView
+                android:id="@+id/btn_drop_down_mill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_drop_down"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/et_mill_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"/>
+
+        <TextView
+            android:id="@+id/et_registration_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editHeight"
+            android:layout_marginTop="@dimen/modelMargin"
+            android:background="@drawable/frame_gray"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingStart="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            android:paddingEnd="@dimen/margin_2"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:hint="@string/hint_input_registration_code"/>
+
+    </LinearLayout>
+</LinearLayout>

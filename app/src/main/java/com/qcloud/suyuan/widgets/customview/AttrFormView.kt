@@ -16,7 +16,10 @@ import com.qcloud.suyuan.beans.ProductAttrBean
 import com.qcloud.suyuan.beans.ProductComponentBean
 import com.qcloud.suyuan.utils.ProductUtil
 import com.qcloud.suyuan.widgets.dialog.InputProductComponentDialog
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.layout_of_product_attr_form.view.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Description: 产品属性值表格
@@ -52,13 +55,21 @@ class AttrFormView  @JvmOverloads constructor(
             override fun onBtnClick(view: View) {
                 val inputValue = inputComponentDialog!!.attrValue
                 if (StringUtil.isNotBlank(inputValue)) {
-                    mAdapter?.replaceList(ProductUtil.productAttrStr2List(inputValue))
+                    mAdapter?.addListAtEnd(ProductUtil.productAttrStr2List(inputValue))
+                    initSubmitValue()
+                }
+            }
+        }
+    }
+
+    private fun initSubmitValue() {
+        Observable.timer(800, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
                     if (mAdapter != null) {
                         currBean?.attrValueSubmitStr = ProductUtil.productAttrStr2Submit(mAdapter!!.mList)
                     }
                 }
-            }
-        }
     }
 
     private fun initHeadRecyclerView(size: Int, list: List<String>) {
@@ -79,9 +90,7 @@ class AttrFormView  @JvmOverloads constructor(
         mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<ProductComponentBean> {
             override fun onHolderClick(view: View, t: ProductComponentBean, position: Int) {
                 mAdapter?.remove(position)
-                if (mAdapter != null) {
-                    currBean?.attrValueSubmitStr = ProductUtil.productAttrStr2Submit(mAdapter!!.mList)
-                }
+                initSubmitValue()
             }
         }
     }
@@ -109,7 +118,14 @@ class AttrFormView  @JvmOverloads constructor(
                 initHeadRecyclerView(attrType.size, attrType)
                 initRecyclerView(attrType.size - 1)
             }
-            //val attrValue =
+            val attrList = currBean!!.attrList
+            if (attrList != null && attrList.isNotEmpty()) {
+                val list: List<ProductComponentBean> = ProductUtil.productStrList2FormList(attrList)
+                mAdapter?.replaceList(list)
+                if (mAdapter != null) {
+                    currBean?.attrValueSubmitStr = ProductUtil.productAttrStr2Submit(mAdapter!!.mList)
+                }
+            }
         }
     }
 

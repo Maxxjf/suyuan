@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import com.qcloud.qclib.base.BaseLinearLayout
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ProductAttrBean
 import com.qcloud.suyuan.beans.ProductAttrValueBean
@@ -71,6 +72,10 @@ class AttrDropDownView @JvmOverloads constructor(
             val attrValues = currBean!!.attributeValues
             if (attrValues != null) {
                 initDropDown(attrValues)
+            }
+            if (StringUtil.isNotBlank(currBean!!.value)) {
+                tv_value.text = currBean!!.value
+                currBean?.attrValueSubmitStr = currBean!!.value
             }
         }
     }

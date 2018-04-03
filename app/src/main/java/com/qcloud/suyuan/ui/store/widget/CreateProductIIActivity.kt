@@ -18,6 +18,7 @@ import com.qcloud.suyuan.beans.ProductAttrBean
 import com.qcloud.suyuan.realm.RealmHelper
 import com.qcloud.suyuan.ui.store.presenter.impl.CreateProductIIPresenterImpl
 import com.qcloud.suyuan.ui.store.view.ICreateProductIIView
+import com.qcloud.suyuan.utils.ProductUtil
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.dialog.OperationTipDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
@@ -34,6 +35,9 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     private var tipDialog: TipDialog? = null
     private var saveDialog: OperationTipDialog? = null
 
+    // 是否编辑本地
+    private var isEdit = false
+
     private var mAdapter: CreateProductAttrAdapter? = null
 
     // 用来提交产品
@@ -48,8 +52,16 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
 
     override fun initViewAndData() {
         createProduct = intent.getSerializableExtra("SUBMIT") as CreateProductSubmitBean
+        isEdit = intent.getBooleanExtra("IS_EDIT", false)
 
+        initView()
         initAttrList()
+        // 加载数据
+        mPresenter?.createProductNext(createProduct.goodsId, createProduct.classifyId)
+    }
+
+    private fun initView() {
+        // 返回按钮
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_back) {
@@ -57,12 +69,12 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
                 }
             }
         }
+        // 提交数据
         btn_confirm_create.setOnClickListener {
             if (check()) {
                 mPresenter?.add(createProduct)
             }
         }
-        mPresenter?.createProductNext(createProduct.goodsId, createProduct.classifyId)
     }
 
     private fun initAttrList() {
@@ -88,7 +100,11 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     override fun replaceList(beans: List<ProductAttrBean>?) {
         if (isRunning) {
             if (beans != null) {
-                mAdapter?.replaceList(beans)
+                if (isEdit) {
+                    mAdapter?.replaceList(ProductUtil.disposeRealmData(beans))
+                } else {
+                    mAdapter?.replaceList(beans)
+                }
             }
         }
     }
@@ -119,12 +135,10 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     }
 
     private fun check(): Boolean {
-        if (mAdapter == null) {
+        if (mAdapter == null || mAdapter!!.mList.isEmpty()) {
             return true
         }
-        if (mAdapter!!.mList.isEmpty()) {
-            return true
-        }
+
         val idList: MutableList<String> = ArrayList()
         val valueList: MutableList<String> = ArrayList()
         for (bean in mAdapter!!.mList) {
@@ -156,6 +170,7 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
         saveDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_ok) {
+                    saveAttrValue()
                     val createUser = UserInfoUtil.getUser()
                     if (createUser != null) {
                         createProduct.createUserId = createUser.id
@@ -168,6 +183,28 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
                 finish()
             }
         }
+    }
+
+    /**
+     * 保存数据到本地
+     * */
+    private fun saveAttrValue() {
+        if (mAdapter == null || mAdapter!!.mList.isEmpty()) {
+            return
+        }
+        val idList: MutableList<String> = ArrayList()
+        val valueList: MutableList<String> = ArrayList()
+        for (bean in mAdapter!!.mList) {
+            val attrName = bean.attributeName
+            if (attrName != null) {
+                idList.add(attrName.id ?: "")
+                valueList.add(bean.attrValueSubmitStr ?: "")
+            }
+        }
+        createProduct.attrId = StringUtil.combineList(idList, ",")
+        createProduct.attrValues = StringUtil.combineList(valueList, ",")
+
+        Timber.e("submit = $createProduct")
     }
 
     override fun onDestroy() {
@@ -192,9 +229,10 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context, bean: CreateProductSubmitBean) {
+        fun openActivity(@NonNull context: Context, bean: CreateProductSubmitBean, isEdit: Boolean = false) {
             val intent = Intent(context, CreateProductIIActivity::class.java)
             intent.putExtra("SUBMIT", bean)
+            intent.putExtra("IS_EDIT", isEdit)
             context.startActivity(intent)
         }
     }

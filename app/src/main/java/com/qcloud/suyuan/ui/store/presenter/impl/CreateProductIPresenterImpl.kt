@@ -3,6 +3,7 @@ package com.qcloud.suyuan.ui.store.presenter.impl
 import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.beans.CreateProductBean
 import com.qcloud.suyuan.beans.ProductMillBean
 import com.qcloud.suyuan.model.IGoodsModel
@@ -33,12 +34,20 @@ class CreateProductIPresenterImpl: BasePresenter<ICreateProductIView>(), ICreate
                         mView?.replaceClassify(t.categoryAll!!)
                     }
                 } else {
-                    mView?.loadErr("加载出错")
+                    if (StringUtil.isBlank(id) || StringUtil.isEquals(id, "0") || StringUtil.isEquals(id, "-1")) {
+                        mView?.loadErr(message ?: "加载出错", false)
+                    } else {
+                        mView?.loadErr(message ?: "加载出错", true)
+                    }
                 }
             }
 
             override fun onError(status: Int, message: String) {
-                mView?.loadErr(message, true)
+                if (StringUtil.isBlank(id) || StringUtil.isEquals(id, "0") || StringUtil.isEquals(id, "-1")) {
+                    mView?.loadErr(message, false)
+                } else {
+                    mView?.loadErr(message, true)
+                }
             }
         })
     }

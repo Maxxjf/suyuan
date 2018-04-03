@@ -10,6 +10,9 @@ class ProductDetailsBean {
     var info: ProductInfoBean? = null   // 商品明细
     var mill: ProductMillBean? = null   // 厂家信息
     var totalAmount: Int = 0            // 总库存
+    var price: Double = 0.00            // 零售价
+    var priceStr: String = "0.00"
+        get() = price.toString()
     var warehouseList: List<InStorageRecordBean>? = null    // 商品入库记录
     var goodsMedio: List<ProductMedioBean>? = null
 }

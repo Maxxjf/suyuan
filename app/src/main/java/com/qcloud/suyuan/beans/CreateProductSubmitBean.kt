@@ -19,7 +19,8 @@ open class CreateProductSubmitBean: RealmObject(), Serializable {
     var classifyName: String = ""   // 产品分类
     var millId: String = ""         // 产品厂家id
     var millName: String = ""       // 产品厂家
-    var millAddress: String? = ""    // 厂家地址
+    var millAddress: String = ""    // 厂家地址
+    var price: Double = 0.00        // 零售价
 
     // info
     var infoId: String = ""         // 产品明细id
@@ -35,7 +36,7 @@ open class CreateProductSubmitBean: RealmObject(), Serializable {
     var details: String = ""        // 产品明细,最大2000字符
     var remark: String = ""         // 备注
     var attrId: String = ""         // 属性，多个属性名用,号隔开
-    var attrValues: String = ""     // 属性对应的属性值,多条数据之间用";@;"分隔，每条数据每列之间用"#@#"隔开
+    var attrValues: String = ""     // 属性对应的属性值,多条数据之间用";@;"分隔，每条数据每列之间用"# @ #"隔开,多个属性用,号隔开
 
     override fun toString(): String {
         return "CreateProductSubmitBean(createUserId='$createUserId', goodsId='$goodsId', barCode='$barCode', classifyId='$classifyId', classifyName='$classifyName', millId='$millId', millName='$millName', millAddress=$millAddress, infoId='$infoId', name='$name', image='$image', specification='$specification', unit='$unit', registerCard='$registerCard', startTime='$startTime', endTime='$endTime', licenseCard='$licenseCard', standardCard='$standardCard', details='$details', remark='$remark', attrId='$attrId', attrValues='$attrValues')"
