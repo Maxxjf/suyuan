@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -21,7 +23,21 @@ class ProductInfoBean {
     var registerCard: String? = null    // 登记证号
         get() = if (StringUtil.isBlank(field)) "" else field
     var startTime: String? = null           // 登记证开始时间
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var endTime: String? = null             // 登记证结束时间
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var specification: String? = null   // 商品规格
         get() = if (StringUtil.isBlank(field)) "" else field
     var standardCard: String? = null    // 产品标准证号

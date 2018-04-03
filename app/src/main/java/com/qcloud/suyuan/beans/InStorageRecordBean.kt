@@ -29,7 +29,7 @@ class InStorageRecordBean {
         get() = surplusNum.toString()
     var updateDate: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
-    var productionDate: String? = null
+    var productionDate: String? = null  // 生产日期
         get() = if (StringUtil.isBlank(field)) "" else field
     var state: Int = 0
     override fun toString(): String {

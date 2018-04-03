@@ -18,7 +18,7 @@ class NoDataView @JvmOverloads constructor(
 ) : BaseEmptyView(context, attrs, defStyleAttr) {
 
     override val imageIcon: Int
-        get() = R.drawable.bmp_product
+        get() = R.drawable.bmp_list_empty
 
     override val tipColor: Int
         get() = ApiReplaceUtil.getColor(mContext, R.color.colorPrimary)
@@ -30,5 +30,5 @@ class NoDataView @JvmOverloads constructor(
         get() = mContext.resources.getString(R.string.tip_no_any_data)
 
     override val padTop: Int
-        get() = 180
+        get() = 80
 }
