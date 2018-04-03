@@ -21,7 +21,7 @@ class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter 
     /**
      * 获取产品
      *
-     * @param keyword 入库批次码
+     * @param keyword 产品批次码
      * */
     override fun loadProduct(keyword: String) {
         mModel.searchList(keyword, object : DataCallback<ReturnDataBean<ProductBean>> {

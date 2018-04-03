@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.layout_product_info.*
 import java.util.concurrent.TimeUnit
 
 /**
- * Description: 搜索产品条形码
+ * Description: 搜索产品条形码(搜索入库批次码)
  * Author: gaobaiqiang
  * 2018/4/1 下午11:16.
  */

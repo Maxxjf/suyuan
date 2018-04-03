@@ -13,7 +13,9 @@ class ProductBean : Serializable {
     var name: String? = null    // 商品名称
         get() = if (StringUtil.isBlank(field)) "" else field
     var imageUrl: String? = null    // 商品图片
+        get() = if (StringUtil.isBlank(field)) image else field
     var image: String? = null       // 商品图片(入库使用)
+        get() = if (StringUtil.isBlank(field)) imageUrl else field
     var retailPrice: Double = 0.00  // 零售价
     var retailPriceStr: String = "0.00"
         get() = retailPrice.toString()

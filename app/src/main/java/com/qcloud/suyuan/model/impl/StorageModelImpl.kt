@@ -47,7 +47,7 @@ class StorageModelImpl: IStorageModel {
     /**
      * 搜索产品入库
      *
-     * @param keyword 条码、商品名、厂家名
+     * @param keyword 产品批次码/条码、商品名、厂家名
      * */
     override fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<ProductBean>>) {
         val params = FrameRequest.getAppParams()
