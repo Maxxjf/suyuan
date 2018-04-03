@@ -13,7 +13,7 @@
     <string name="title_purchase">产品入库</string>
     <string name="title_modify_price">售价和库存警告线设置</string>
     <string name="title_selling_water">销售流水</string>
-    <string name="title_out_storage">撤消入库</string>
+    <string name="title_out_storage">撤销入库</string>
     <string name="title_store_product">门店产品</string>
     <string name="title_my_product">我的私有产品</string>
     <string name="title_credit_record">赊账记录</string>
@@ -48,7 +48,7 @@
     <string name="btn_returned_good">退货</string>
     <string name="btn_settlement">结算</string>
     <string name="btn_edit_stock_warn">编辑库存警告线</string>
-    <string name="btn_out_storage">撤消入库</string>
+    <string name="btn_out_storage">撤销入库</string>
     <string name="btn_input_purchaser_info">输入购买者信息</string>
     <string name="btn_credit">赊账</string>
     <string name="btn_cash">现金</string>
@@ -120,6 +120,7 @@
     <string name="hint_input_storge_number">请输入出货数量</string>
     <string name="hint_input_store_address">请输入门店地址</string>
     <string name="hint_input_store_person">请输入店主名字</string>
+    <string name="hint_input_suyuan_name">请输入溯源码/产品名称/生产厂家</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -171,7 +172,7 @@
     <string name="tab_main_modify_price">修改售价</string>
     <string name="tab_main_modify_price_pinyin">XIUGAISHOUJIA</string>
     <string name="tab_main_selling_water">销售流水</string>
-    <string name="tab_main_out_storage">撤消入库</string>
+    <string name="tab_main_out_storage">撤销入库</string>
     <string name="tab_main_store_product">门店产品</string>
     <string name="tab_main_credit_record">赊账记录</string>
     <string name="tab_main_return">退货</string>
@@ -384,5 +385,9 @@
     <string name="tag_original_password">输入原密码: </string>
     <string name="tag_new_password">输入新密码: </string>
     <string name="tag_new_password_2rd">确认新密码: </string>
+    <string name="tag_suyuan_record_suyuan_code">溯源码</string>
+    <string name="tag_purchaser">购买人</string>
+    <string name="tag_store_address">门店地址</string>
+    <string name="tag_sale_time">销售时间</string>
 
 </resources>

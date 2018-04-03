@@ -119,4 +119,12 @@ object UrlConstants {
     const val CREATE_PRODUCT_NEXT = URL_PREFIX_APP + "goods/toNextStep"
     /**保存私有产品*/
     const val ADD_PRODUCT = URL_PREFIX_APP + "goods/add"
+
+    /**
+     * 溯源有关
+     * */
+    /**溯源记录*/
+    const val SUYUAN_LIST = URL_PREFIX_APP + "traceability/list"
+    /**溯源详情*/
+    const val SUYUAN_SEARCH = URL_PREFIX_APP + "traceability/info"
 }

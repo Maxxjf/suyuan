@@ -14,6 +14,10 @@ object IDCardUtil {
      * */
     fun addOrUpdate(bean: IDBean?) {
         if (bean != null) {
+            val createUser = UserInfoUtil.getUser()
+            if (createUser != null) {
+                bean.loginUserId = createUser.id
+            }
             RealmHelper.instance.addOrUpdateBean(bean)
         }
     }
@@ -22,6 +26,11 @@ object IDCardUtil {
      * 获取所有身份证
      * */
     fun listAll(): List<IDBean> {
-        return RealmHelper.instance.queryBeans(IDBean::class.java)
+        var loginUserId = "0"
+        val createUser = UserInfoUtil.getUser()
+        if (createUser != null) {
+            loginUserId = createUser.id
+        }
+        return RealmHelper.instance.queryListByValue(IDBean::class.java, "loginUserId", loginUserId)
     }
 }

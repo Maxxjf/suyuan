@@ -258,4 +258,30 @@
             tools:text="@string/tag_product_detail_manufacturer"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/modelMargin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_factory_address"/>
+
+        <TextView
+            android:id="@+id/tv_product_manufacturer_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/drawPadding"
+            android:layout_marginStart="@dimen/drawPadding"
+            android:lineSpacingExtra="@dimen/drawPadding"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            tools:text="@string/tag_factory_address"/>
+    </LinearLayout>
+
 </LinearLayout>

@@ -377,7 +377,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 purchaseInfo = inputPurchaseDialog!!.currPurchaser
-                refreshPurchaser(purchaseInfo)
+                refreshPurchaser(purchaseInfo, false)
             }
         }
     }
@@ -555,7 +555,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                             purchaseInfo?.endDate = mIDCReaderSDK.GetEndDate().trim()
                             purchaseInfo?.userImg = AppConstants.SDPATH + "/wltlib/zp.bmp"
 
-                            refreshPurchaser(purchaseInfo!!)
+                            refreshPurchaser(purchaseInfo!!, true)
                             Timber.e("people = $purchaseInfo")
                         }
                         REPEAT5001 -> {
@@ -570,16 +570,18 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
-    private fun refreshPurchaser(bean: IDBean?) {
+    private fun refreshPurchaser(bean: IDBean?, isFromRead: Boolean = true) {
         if (bean != null) {
             with(bean) {
                 if (userImgBase64 != null) {
                     val bitmap = BitmapUtil.base64ToBitmap(userImgBase64!!)
                     img_user_head.setImageBitmap(bitmap)
-                } else {
+                } else if (isFromRead) {
                     val bitmap = BitmapFactory.decodeFile(userImg)
                     purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
                     img_user_head.setImageBitmap(bitmap)
+                } else {
+                    img_user_head.setImageResource(R.drawable.bmp_user_head)
                 }
 
                 tv_user_name.text = bean.name

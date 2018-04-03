@@ -78,4 +78,12 @@ interface IGoodsApi {
     /**保存私有产品*/
     @POST(UrlConstants.ADD_PRODUCT)
     fun add(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
+
+    /**溯源记录列表*/
+    @GET(UrlConstants.SUYUAN_LIST)
+    fun suyuanList(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<SuyuanRecordBean>>>
+
+    /**溯源记录搜索*/
+    @POST(UrlConstants.SUYUAN_SEARCH)
+    fun suyuanSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SuyuanDetailsBean>>
 }

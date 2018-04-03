@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.record.presenter
  * 2018/3/20 上午8:53.
  */
 interface ISuyuanRecordPresenter {
+    fun loadData(keyword: String?, pageNo: Int)
 }

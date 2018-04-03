@@ -265,4 +265,32 @@ class GoodsModelImpl: IGoodsModel {
 
         BaseApi.dispose(mApi.add(params), callback)
     }
+
+    /**
+     * 溯源记录列表
+     *
+     * @param keyword 溯源码/产品名称/生产厂家
+     * @param pageNo
+     * @param pageSize
+     * */
+    override fun suyuanList(keyword: String?, pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<SuyuanRecordBean>>) {
+        val params = FrameRequest.getAppParams()
+        params["keyword"] = keyword ?: ""
+        params["pageNo"] = pageNo
+        params["pageSize"] = pageSize
+
+        BaseApi.dispose(mApi.suyuanList(params), callback)
+    }
+
+    /**
+     * 溯源记录详情
+     *
+     * @param traceabilityCode 溯源码
+     * */
+    override fun suyuanSearch(traceabilityCode: String, callback: DataCallback<SuyuanDetailsBean>) {
+        val params = FrameRequest.getAppParams()
+        params["traceabilityCode"] = traceabilityCode
+
+        BaseApi.dispose(mApi.suyuanSearch(params), callback)
+    }
 }

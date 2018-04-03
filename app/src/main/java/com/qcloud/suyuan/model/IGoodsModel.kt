@@ -52,9 +52,15 @@ interface IGoodsModel {
     /**获取门店信息*/
     fun getFactoryByClassify(classifyId: String, callback: DataCallback<ReturnDataBean<ProductMillBean>>)
 
-    /**获取门店信息*/
+    /**创建修改私有产品 -下一步*/
     fun createProductNext(id: String?, classifyId: String, callback: DataCallback<ReturnDataBean<ProductAttrBean>>)
 
-    /**获取门店信息*/
+    /**保存私有产品*/
     fun add(bean: CreateProductSubmitBean, callback: DataCallback<EmptyReturnBean>)
+
+    /**溯源记录列表*/
+    fun suyuanList(keyword: String?, pageNo: Int, pageSize: Int, callback: DataCallback<ReturnDataBean<SuyuanRecordBean>>)
+
+    /**溯源详情*/
+    fun suyuanSearch(traceabilityCode: String, callback: DataCallback<SuyuanDetailsBean>)
 }

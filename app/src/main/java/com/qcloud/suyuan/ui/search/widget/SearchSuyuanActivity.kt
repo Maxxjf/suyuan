@@ -7,12 +7,16 @@ import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.BaseUrlUtil
+import com.qcloud.qclib.utils.BitmapUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.beans.SuyuanDetailsBean
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchSuyuanPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchSuyuanView
+import com.qcloud.suyuan.utils.BarCodeUtil
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_search_suyuan.*
@@ -20,6 +24,7 @@ import kotlinx.android.synthetic.main.card_search_suyuan_product_info.*
 import kotlinx.android.synthetic.main.card_search_suyuan_purchase_info.*
 import kotlinx.android.synthetic.main.card_search_suyuan_store_info.*
 import kotlinx.android.synthetic.main.layout_product_info.*
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -38,8 +43,18 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
     }
 
     override fun initViewAndData() {
-        showEmptyView(getString(R.string.tip_scan_suyuan_code))
+        initEmptyView()
+        keyword = intent.getStringExtra("SUYUAN_NUMBER")
+        if (StringUtil.isNotBlank(keyword)) {
+            mPresenter?.loadData(keyword!!)
+        } else {
+            showEmptyView(getString(R.string.tip_scan_suyuan_code))
+        }
         initEditView()
+    }
+
+    private fun initEmptyView() {
+        layout_empty.setImageIcon(R.drawable.bmp_search_empty)
     }
 
     /**
@@ -53,6 +68,7 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
                     keyword = et_search.text.toString().trim()
                     if (StringUtil.isNotBlank(keyword)) {
                         loadData()
+                        reSetEditText()
                     } else {
                         QToast.show(this, R.string.toast_no_input_value)
                     }
@@ -63,9 +79,7 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
     }
 
     private fun loadData() {
-        QToast.show(this, keyword)
-        reSetEditText()
-        //mPresenter?.loadProduct(keyword!!)
+        mPresenter?.loadData(keyword!!)
     }
 
     private fun reSetEditText() {
@@ -77,33 +91,66 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
                 }
     }
 
-    private fun refreshData() {
-        GlideUtil.loadImage(this, img_suyuan_code, "", R.drawable.bmp_product)
-        tv_suyuan_code.text = ""
-        tv_bar_code.text = ""
-        tv_product_name.text = ""
-        tv_product_spec.text = ""
-        tv_product_classify.text = ""
-        tv_product_toxicity.text = ""
-        tv_pesticides_registration.text = ""
-        tv_production_license_code.text = ""
-        tv_product_standard_code.text = ""
-        tv_product_unit.text = ""
-        tv_product_manufacturer.text = ""
+    override fun replaceData(bean: SuyuanDetailsBean) {
+        if (isRunning) {
+            val infoBean = bean.traceabilityInfo
+            if (infoBean != null) {
+                hideEmptyView()
 
-        tv_store_number.text = ""
-        tv_shopkeeper_name.text = ""
-        tv_store_name.text = ""
-        tv_shopkeeper_mobile.text = ""
-        tv_store_address.text = ""
+                img_suyuan_code.post {
+                    val width = img_suyuan_code.width
+                    val url = BaseUrlUtil.getBaseUrl() + infoBean.codeUrl
+                    val bitmap = BarCodeUtil.createQrCode(url, width, width)
+                    if (bitmap != null) {
+                        img_suyuan_code.setImageBitmap(bitmap)
+                    }
+                }
 
-        //img_purchaser_head.setImageBitmap()
-        tv_purchaser_name.text = ""
-        tv_purchaser_id.text = ""
-        tv_purchaser_mobile.text = ""
-        tv_purchase_use.text = ""
-        tv_buy_time.text = ""
-        tv_other_instructions.text = ""
+                with(infoBean) {
+                    tv_suyuan_code.text = traceabilityCode
+                    tv_bar_code.text = barCode
+                    tv_product_name.text = goodsName
+                    tv_product_spec.text = specification
+                    tv_product_classify.text = classifyName
+                    tv_product_toxicity.text = virulence
+                    tv_pesticides_registration.text = registerCard
+                    tv_production_license_code.text = licenseCard
+                    tv_product_standard_code.text = standardCard
+                    tv_product_unit.visibility = View.GONE
+                    tv_product_manufacturer.text = millName
+                    tv_product_manufacturer_address.text = millAddress
+
+                    tv_store_number.text = storeCode
+                    tv_shopkeeper_name.text = shopkeeperName
+                    tv_store_name.text = storeName
+                    tv_shopkeeper_mobile.text = storePhone
+                    tv_store_address.text = storeAddress
+
+                    if (StringUtil.isNotBlank(purchaserImage)) {
+                        val bitmap = BitmapUtil.base64ToBitmap(purchaserImage!!)
+                        img_purchaser_head.setImageBitmap(bitmap)
+                    }
+                    tv_purchaser_name.text = purchaser
+                    tv_purchaser_id.text = purchaserCard
+                    tv_purchaser_mobile.text = purchaserPhone
+                    tv_purchase_use.text = purchaserUse
+                    tv_buy_time.text = purchaserTime
+                    tv_other_instructions.text = remark
+                }
+            } else {
+                showEmptyView(getString(R.string.tip_scan_code_error))
+            }
+        }
+    }
+
+    override fun loadErr(errMsg: String, isShow: Boolean) {
+        if (isRunning) {
+            if (isShow) {
+                QToast.show(this, errMsg)
+            } else {
+                Timber.e(errMsg)
+            }
+        }
     }
 
     override fun showEmptyView(tip: String) {
@@ -122,8 +169,10 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context) {
-            context.startActivity(Intent(context, SearchSuyuanActivity::class.java))
+        fun openActivity(@NonNull context: Context, suyuanNumber: String? = null) {
+            val intent = Intent(context, SearchSuyuanActivity::class.java)
+            intent.putExtra("SUYUAN_NUMBER", suyuanNumber)
+            context.startActivity(intent)
         }
     }
 }

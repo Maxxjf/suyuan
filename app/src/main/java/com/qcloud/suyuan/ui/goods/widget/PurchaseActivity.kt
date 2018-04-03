@@ -99,9 +99,6 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         mPresenter?.loadProduct(keyword!!)
     }
 
-    /**
-     * 获取扫码数据
-     * */
     private fun reSetEditText() {
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())

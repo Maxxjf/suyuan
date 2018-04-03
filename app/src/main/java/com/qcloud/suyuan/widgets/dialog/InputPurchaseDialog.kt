@@ -38,7 +38,7 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
     /**初始化身份证*/
     private fun initIdText() {
         val adapter = ArrayAdapter(mContext, R.layout.item_of_id_search, R.id.tv_context, disposeId())
-        et_id.setAdapter(adapter)
+        et_id.setAdapter<ArrayAdapter<String>?>(adapter)
         et_id.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             currPurchaser = idList[position]
             refreshPurchase()

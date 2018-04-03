@@ -11,6 +11,7 @@ import io.realm.annotations.PrimaryKey
  * Date: 2018/3/26 15:27.
  */
 open class IDBean: RealmObject() {
+    var loginUserId: String = "0"
     // 身份证号
     @PrimaryKey
     var idCode: String? = null
