@@ -97,6 +97,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
 
     private fun loadData() {
         mPresenter?.loadProduct(keyword!!)
+        startLoadingDialog()
     }
 
     private fun reSetEditText() {
@@ -110,6 +111,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
 
     override fun replaceList(beans: List<ProductBean>?) {
         if (isRunning) {
+            stopLoadingDialog()
             reSetEditText()
             if (beans != null && beans.isNotEmpty()) {
                 mAdapter?.replaceList(beans)
@@ -130,6 +132,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
         if (isRunning) {
+            stopLoadingDialog()
             if (isShow) {
                 QToast.show(this, errMsg)
             } else {

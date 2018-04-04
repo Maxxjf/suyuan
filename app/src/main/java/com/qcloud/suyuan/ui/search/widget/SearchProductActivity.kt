@@ -11,6 +11,7 @@ import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.beans.BarCodeDetailsBean
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchProductPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchProductView
 import io.reactivex.Observable
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_search_product.*
 import kotlinx.android.synthetic.main.card_search_product_introduce.*
 import kotlinx.android.synthetic.main.card_search_product_product_info.*
 import kotlinx.android.synthetic.main.layout_product_info.*
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -37,8 +39,13 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
     }
 
     override fun initViewAndData() {
+        initEmptyView()
         showEmptyView(getString(R.string.tip_scan_batch_code))
         initEditView()
+    }
+
+    private fun initEmptyView() {
+        layout_empty.setImageIcon(R.drawable.bmp_search_empty)
     }
 
     /**
@@ -64,7 +71,7 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
     private fun loadData() {
         QToast.show(this, keyword)
         reSetEditText()
-        //mPresenter?.loadProduct(keyword!!)
+        mPresenter?.loadData(keyword!!)
     }
 
     private fun reSetEditText() {
@@ -76,20 +83,25 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
                 }
     }
 
-    private fun refreshData() {
-        GlideUtil.loadImage(this, img_product, "", R.drawable.bmp_product)
-        tv_bar_code.text = ""
-        tv_product_name.text = ""
-        tv_product_spec.text = ""
-        tv_product_classify.text = ""
-        tv_product_toxicity.text = ""
-        tv_pesticides_registration.text = ""
-        tv_production_license_code.text = ""
-        tv_product_standard_code.text = ""
-        tv_product_unit.text = ""
-        tv_product_manufacturer.text = ""
+    override fun replaceData(bean: BarCodeDetailsBean) {
+        if (isRunning) {
+            hideEmptyView()
+            with(bean) {
+                GlideUtil.loadImage(this@SearchProductActivity, img_product, "", R.drawable.bmp_product)
+                tv_bar_code.text = ""
+                tv_product_name.text = ""
+                tv_product_spec.text = ""
+                tv_product_classify.text = ""
+                tv_product_toxicity.text = ""
+                tv_pesticides_registration.text = ""
+                tv_production_license_code.text = ""
+                tv_product_standard_code.text = ""
+                tv_product_unit.text = ""
+                tv_product_manufacturer.text = ""
 
-        tv_product_introduce.text = ""
+                tv_product_introduce.text = ""
+            }
+        }
     }
 
     override fun showEmptyView(tip: String) {
@@ -104,6 +116,16 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
         if (isRunning) {
             layout_empty.visibility = View.GONE
             layout_info.visibility = View.VISIBLE
+        }
+    }
+
+    override fun loadErr(errMsg: String, isShow: Boolean) {
+        if (isRunning) {
+            if (isShow) {
+                QToast.show(this, errMsg)
+            } else {
+                Timber.e(errMsg)
+            }
         }
     }
 

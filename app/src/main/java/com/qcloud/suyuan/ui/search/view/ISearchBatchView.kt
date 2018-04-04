@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.ui.search.view
 
 import com.qcloud.qclib.base.BaseView
+import com.qcloud.suyuan.beans.BatchDetailsBean
 import com.qcloud.suyuan.beans.ProductBean
 
 /**
@@ -10,7 +11,7 @@ import com.qcloud.suyuan.beans.ProductBean
  */
 interface ISearchBatchView: BaseView {
     /**添加产品到列表*/
-    fun replaceData(bean: ProductBean)
+    fun replaceData(bean: BatchDetailsBean)
 
     fun showEmptyView(tip: String)
 

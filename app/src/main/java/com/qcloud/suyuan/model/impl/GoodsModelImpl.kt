@@ -293,4 +293,28 @@ class GoodsModelImpl: IGoodsModel {
 
         BaseApi.dispose(mApi.suyuanSearch(params), callback)
     }
+
+    /**
+     * 批次码搜索
+     *
+     * @param code 批次码
+     * */
+    override fun batchSearch(code: String, callback: DataCallback<BatchDetailsBean>) {
+        val params = FrameRequest.getAppParams()
+        params["code"] = code
+
+        BaseApi.dispose(mApi.batchSearch(params), callback)
+    }
+
+    /**
+     * 条形码搜索
+     *
+     * @param code 条形码
+     * */
+    override fun barCodeSearch(code: String, callback: DataCallback<BarCodeDetailsBean>) {
+        val params = FrameRequest.getAppParams()
+        params["code"] = code
+
+        BaseApi.dispose(mApi.barCodeSearch(params), callback)
+    }
 }

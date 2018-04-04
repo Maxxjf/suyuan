@@ -6,4 +6,5 @@ package com.qcloud.suyuan.ui.search.presenter
  * 2018/4/1 下午11:14.
  */
 interface ISearchProductPresenter {
+    fun loadData(keyword: String)
 }

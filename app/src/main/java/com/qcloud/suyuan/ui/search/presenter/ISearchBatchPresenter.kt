@@ -6,5 +6,5 @@ package com.qcloud.suyuan.ui.search.presenter
  * 2018/4/1 下午11:02.
  */
 interface ISearchBatchPresenter {
-    fun loadProduct(keyword: String)
+    fun loadData(keyword: String)
 }

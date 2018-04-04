@@ -86,4 +86,12 @@ interface IGoodsApi {
     /**溯源记录搜索*/
     @POST(UrlConstants.SUYUAN_SEARCH)
     fun suyuanSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<SuyuanDetailsBean>>
+
+    /**批次码搜索*/
+    @POST(UrlConstants.BATCH_SEARCH)
+    fun batchSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<BatchDetailsBean>>
+
+    /**条形码搜索*/
+    @POST(UrlConstants.BAR_CODE_SEARCH)
+    fun barCodeSearch(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<BarCodeDetailsBean>>
 }

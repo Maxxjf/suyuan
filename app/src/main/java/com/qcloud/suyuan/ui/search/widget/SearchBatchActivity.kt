@@ -11,6 +11,7 @@ import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.beans.BatchDetailsBean
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchBatchPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchBatchView
@@ -39,8 +40,13 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
     }
 
     override fun initViewAndData() {
+        initEmptyView()
         showEmptyView(getString(R.string.tip_scan_batch_code))
         initEditView()
+    }
+
+    private fun initEmptyView() {
+        layout_empty.setImageIcon(R.drawable.bmp_search_empty)
     }
 
     /**
@@ -66,7 +72,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
     private fun loadData() {
         QToast.show(this, keyword)
         reSetEditText()
-        //mPresenter?.loadProduct(keyword!!)
+        mPresenter?.loadData(keyword!!)
     }
 
     private fun reSetEditText() {
@@ -78,36 +84,16 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
                 }
     }
 
-    private fun refreshData() {
-        GlideUtil.loadImage(this, img_batch_code, "", R.drawable.bmp_product)
-        tv_batch_code.text = ""
-        tv_bar_code.text = ""
-        tv_product_name.text = ""
-        tv_product_spec.text = ""
-        tv_product_classify.text = ""
-        tv_product_toxicity.text = ""
-        tv_pesticides_registration.text = ""
-        tv_production_license_code.text = ""
-        tv_product_standard_code.text = ""
-        tv_product_unit.text = ""
-        tv_product_manufacturer.text = ""
-
-        tv_in_storage_time.text = ""
-        tv_in_storage_number.text = ""
-        tv_product_valid.text = ""
-        tv_in_storage_price.text = ""
-        tv_batch_stock.text = ""
-    }
-
-    override fun replaceData(bean: ProductBean) {
+    override fun replaceData(bean: BatchDetailsBean) {
         if (isRunning) {
+            hideEmptyView()
             with(bean) {
-                GlideUtil.loadImage(this@SearchBatchActivity, img_batch_code, image, R.drawable.bmp_product)
-                tv_batch_code.text = barCode
+                //GlideUtil.loadImage(this@SearchBatchActivity, img_batch_code, image, R.drawable.bmp_product)
+                tv_batch_code.text = ""
                 tv_bar_code.text = ""
-                tv_product_name.text = name
-                tv_product_spec.text = specification
-                tv_product_classify.text = classifyName
+                tv_product_name.text = ""
+                tv_product_spec.text = ""
+                tv_product_classify.text = ""
                 tv_product_toxicity.text = ""
                 tv_pesticides_registration.text = ""
                 tv_production_license_code.text = ""

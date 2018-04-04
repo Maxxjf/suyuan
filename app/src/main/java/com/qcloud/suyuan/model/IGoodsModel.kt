@@ -63,4 +63,10 @@ interface IGoodsModel {
 
     /**溯源详情*/
     fun suyuanSearch(traceabilityCode: String, callback: DataCallback<SuyuanDetailsBean>)
+
+    /**批次码搜索*/
+    fun batchSearch(code: String, callback: DataCallback<BatchDetailsBean>)
+
+    /**条形码搜索*/
+    fun barCodeSearch(code: String, callback: DataCallback<BarCodeDetailsBean>)
 }
