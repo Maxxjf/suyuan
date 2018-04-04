@@ -5,9 +5,11 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
+import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SupplierAdapter
 import com.qcloud.suyuan.base.BaseActivity
@@ -72,7 +74,15 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
         }
         showAddFragment()
         btn_add.setOnClickListener(this)
-
+        et_search.setOnKeyListener({view, i, keyEvent ->
+            if (keyEvent.action==KeyEvent.ACTION_UP){
+                if (i==KeyEvent.KEYCODE_ENTER){
+                    KeyBoardUtil.hideKeybord(this,et_search)
+                    loadData()
+                }
+            }
+            false
+        })
 //        mEditFragment= SupplierEditFragment()
 //        mAddFragment= SupplierAddFragment()
 //        mDetailFragment=SupplierDetailFragment()
@@ -83,8 +93,11 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
         mPresenter?.getSupplierList(keyword)
     }
 
+    /**
+     * 已经被修改成功后
+     */
     override fun hasEdit(){
-       loadData()
+        loadData()
         showAddFragment()
     }
 

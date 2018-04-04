@@ -49,12 +49,13 @@
         android:layout_width="0dp"
         android:layout_height="match_parent">
         <Button
-            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/typeTextSize"
+            android:textColor="@color/white"
             android:text="@string/btn_pay_credit"
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/selector_btn_credit_money"
+            android:background="@drawable/btn_radius_selector"
         />
     </RelativeLayout>
 

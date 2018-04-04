@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
@@ -69,8 +70,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         rv_sale_info_list.setAdapter(receiptAdapter!!)
         SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
         SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
-        SwipeRefreshUtil.setLoadMore(rv_sale_info_list, true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_sale_info_list, AppConstants.loadColors)
+        PullRefreshUtil.setRefresh(rv_sale_info_list,false,false)
 
         mGoodsEmptyView = NoDataView(this)
         mGoodsEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
@@ -93,7 +93,6 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
             false
         }
         btn_returned_goods.setOnClickListener(this)
-
     }
 
     override fun onClick(view: View?) {
@@ -105,6 +104,16 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         }
     }
 
+    /**
+     * 展示销售的详情
+     */
+    override fun showSaleInfo(bean:ScanCodeBean.SaleSerialBean){
+        tv_amount.text="${bean.amount}"
+        tv_discount.text="${bean.discount}"
+        tv_real_pay.text="${bean.realPay}"
+        tv_serial_number.text="${bean.serialNumber}"
+        tv_time.text="${bean.time}"
+    }
 
 
     private fun getScanData() {

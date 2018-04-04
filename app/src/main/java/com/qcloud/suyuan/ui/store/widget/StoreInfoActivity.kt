@@ -133,8 +133,10 @@ class StoreInfoActivity : BaseActivity<IStoreInfoView, StoreInfoPresenterImpl>()
         tv_phone.text = "${bean.store!!.phone}"
         tv_area.text = "${bean.store!!.areaName}"
         tv_login_account.text = "${bean.store!!.userName}"
-        GlideUtil.loadImage(this, iv_bussiness_license, bean.storeBusiness!![0].image)
-        GlideUtil.loadImage(this, iv_bussiness_certificate, bean.storeBusiness!![1].image)
+        if (bean.storeBusiness!!.size>=2){
+            GlideUtil.loadImage(this, iv_bussiness_license, bean.storeBusiness!![0].image)
+            GlideUtil.loadImage(this, iv_bussiness_certificate, bean.storeBusiness!![1].image)
+        }
     }
 
     companion object {

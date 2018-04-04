@@ -28,4 +28,6 @@ interface ICreditRecordView :BaseView{
     fun getCreditList()
     /**还款*/
     fun repayment()
+
+    fun showCreditMoney(money: Double)
 }

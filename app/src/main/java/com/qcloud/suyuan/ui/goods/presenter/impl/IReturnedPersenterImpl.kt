@@ -9,7 +9,6 @@ import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IReturnedPresenter
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
-import timber.log.Timber
 
 /**
  * 类型：IReturnedPersenterImpl
@@ -20,6 +19,8 @@ import timber.log.Timber
 class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter {
     private var model:IGoodsModel=GoodsModelImpl()
     private var saleId=""//销售单id (首次为空,从第二次开始传)
+
+    //订单查询
     override fun loadData( code:String) {
       model.scanCode(code,saleId,object :DataCallback<ScanCodeBean>{
         override fun onSuccess(t: ScanCodeBean?, message: String?) {
@@ -27,6 +28,7 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
             mView?.replaceList(t.infoList,false)
             mView?.addListAtEnd(t.merchandise,false)
             saleId= t.saleSerial!!.id!!
+            mView?.showSaleInfo(t.saleSerial!!)
           }
         }
 
@@ -35,6 +37,8 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         }
       })
     }
+
+    //提交退货
     override fun salesReturn( money:String,list:List<ScanCodeBean.MerchandiseBean>) {
         //1.将溯源码ID提出来
         var strList=ArrayList<String>()
@@ -43,7 +47,6 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         }
         //2.溯源码ID将以，隔开，合并成一个字符串
         var  traceabilityIdStr=StringUtil.combineList(strList)
-        Timber.e("退货id字符串${traceabilityIdStr}")
         model.salesReturn(money,traceabilityIdStr,object :DataCallback<EmptyReturnBean>{
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {

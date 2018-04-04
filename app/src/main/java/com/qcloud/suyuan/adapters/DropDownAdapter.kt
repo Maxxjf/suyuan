@@ -1,6 +1,8 @@
 package com.qcloud.suyuan.adapters
 
 import android.content.Context
+import android.text.Html
+import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.suyuan.R
@@ -15,6 +17,7 @@ class DropDownAdapter(mContext: Context) : CommonRecyclerAdapter<String>(mContex
         get() = R.layout.item_of_drop_down
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.setText(R.id.tv_value, mList[position])
+       holder.get<TextView>(R.id.tv_value).setText(Html.fromHtml(mList[position]))
+//        holder.setText(R.id.tv_value, Html.fromHtml((mList[position]))
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Html
 import android.view.Gravity
 import android.view.KeyEvent
 import android.widget.AdapterView
@@ -155,7 +156,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                     val bean: ProductClassifyBean = value as ProductClassifyBean
                     classifyId = bean.id
                     keyword = null
-                    tv_purchase_use.text = bean.name
+                    tv_purchase_use.setText(Html.fromHtml(bean.name))
                     pageNo = 1
                     loadData()
                 }

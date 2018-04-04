@@ -47,46 +47,46 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/editHeight"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/margin_2"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/margin_2"
-                    android:background="@drawable/frame_gray">
+                    android:layout_marginRight="@dimen/margin_2"
+                    android:background="@drawable/frame_gray"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/btn_search"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
-                        android:layout_marginRight="@dimen/margin_1"
                         android:layout_marginEnd="@dimen/margin_1"
-                        android:src="@drawable/icon_search"
-                        android:background="?attr/selectableItemBackgroundBorderless"/>
+                        android:layout_marginLeft="@dimen/margin_1"
+                        android:layout_marginRight="@dimen/margin_1"
+                        android:layout_marginStart="@dimen/margin_1"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/icon_search" />
 
                     <View
                         style="@style/LineVertical"
-                        android:layout_margin="@dimen/margin_1"/>
+                        android:layout_margin="@dimen/margin_1" />
 
                     <EditText
-                        android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
                         android:id="@+id/et_search"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:minWidth="@dimen/margin_40"
-                        android:background="@null"
                         android:layout_marginLeft="@dimen/margin_1"
                         android:layout_marginStart="@dimen/margin_1"
+                        android:background="@null"
+                        android:digits="0123456789qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
                         android:gravity="center_vertical"
-                        android:inputType="text"
+                        android:hint="@string/hint_suyuan_code_search"
                         android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:minWidth="@dimen/margin_40"
                         android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
                         android:textColorHint="@color/colorGray"
-                        android:hint="@string/hint_suyuan_code_search"/>
+                        android:textSize="@dimen/textSize" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -148,7 +148,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -156,12 +156,15 @@
                 <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
                     android:id="@+id/rv_credit_info_list"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/return_goods_height"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/rl_tag"
                     android:paddingLeft="@dimen/margin_2" />
 
                 <RelativeLayout
+                    android:id="@+id/rl_tag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:padding="@dimen/margin_2">
 
                     <TextView
@@ -206,7 +209,8 @@
                         android:id="@+id/tag_money_getter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/tag_goods_number"
+                        android:layout_marginTop="@dimen/margin_2"
                         android:text="@string/tag_money_getter"
                         android:textColor="@color/colorText"
                         android:textSize="@dimen/textSize" />
@@ -232,7 +236,7 @@
                         android:text="@string/btn_returned_good"
                         android:textSize="@dimen/typeTextSize" />
                 </RelativeLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -313,6 +317,7 @@
                     android:textSize="@dimen/textSize" />
 
                 <TextView
+                    android:id="@+id/tv_serial_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -363,79 +368,91 @@
                     android:textSize="@dimen/typeTextSize" />
             </LinearLayout>
 
-            <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
-                android:id="@+id/rv_sale_info_list"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_40" />
+                android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/margin_4"
-                android:orientation="vertical"
-                android:padding="@dimen/margin_2">
-
-                <LinearLayout
+                <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
+                    android:id="@+id/rv_sale_info_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:textSize="@dimen/textSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tag_add_all"
-                        android:textColor="@color/colorText" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1000.00"
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
-                </LinearLayout>
+                    android:layout_above="@+id/ll_money"
+                    android:layout_alignParentTop="true" />
 
                 <LinearLayout
+                    android:id="@+id/ll_money"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/margin_4"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_2">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/tag_on_sale"
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tag_add_all"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/textSize" />
+
+                        <TextView
+                            android:id="@+id/tv_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1000.00"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/typeTextSize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="5.00"
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tag_on_sale"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/typeTextSize" />
+
+                        <TextView
+                            android:id="@+id/tv_discount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5.00"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/typeTextSize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tag_money"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/typeTextSize" />
+
+                        <TextView
+                            android:id="@+id/tv_real_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="995.00"
+                            android:textColor="@color/colorText"
+                            android:textSize="@dimen/typeTextSize" />
+                    </LinearLayout>
                 </LinearLayout>
+            </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tag_money"
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="995.00"
-                        android:textColor="@color/colorText"
-                        android:textSize="@dimen/typeTextSize" />
-                </LinearLayout>
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

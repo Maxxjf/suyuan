@@ -95,31 +95,32 @@
                 android:background="@color/colorLine" />
 
             <RelativeLayout
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
                 android:background="@drawable/bg_receipt"
+                android:gravity="center_vertical"
                 android:padding="@dimen/margin_2">
 
                 <TextView
-                    android:textColor="@color/default_text_color"
                     android:id="@+id/tv_tag_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tag_all_credit"
+                    android:textColor="@color/default_text_color"
                     android:textSize="@dimen/typeTextSize" />
 
                 <TextView
-                    android:textColor="@color/default_text_color"
                     android:id="@+id/tv_credit_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_tag_money"
                     android:text="500.00元"
+                    android:textColor="@color/default_text_color"
                     android:textSize="@dimen/textSize" />
             </RelativeLayout>
 
             <LinearLayout
+                android:background="@color/colorModelBgF9"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_6"
                 android:orientation="horizontal">
@@ -136,7 +137,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:text="@string/tag_list_idcard"
                     android:textColor="@color/colorText"
@@ -145,7 +146,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:gravity="center"
                     android:text="@string/tag_list_phone"
                     android:textColor="@color/colorText"
@@ -186,13 +187,13 @@
                 android:padding="@dimen/margin_2">
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="@string/tag_order_info"
-                    android:textSize="@dimen/titleTextSize"
-                    android:id="@+id/textView" />
+                    android:textSize="@dimen/titleTextSize" />
 
 
             </RelativeLayout>

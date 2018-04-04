@@ -20,10 +20,11 @@ class ScanCodeBean {
 
     class MerchandiseBean {
         /**
-         * batchNum : 测试内容5pv7
-         * goodsName : 测试内容1h38
-         * specification : 测试内容n7r3
-         * traceabilityCode : 测试内容buqk
+         * batchNum : 批次
+         * goodsName : 产品名称
+         * specification : 规格
+         * traceabilityCode :溯码源
+         * traceabilityId：溯源记录id
          */
 
         var batchNum: String? = null

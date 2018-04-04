@@ -34,19 +34,23 @@ import kotlinx.android.synthetic.main.activity_credit_record.*
  * 2018/3/15 上午12:56.
  */
 class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresenterImpl>(), ICreditRecordView {
+    //参数
+    private var keyword: String = ""
+    private var mCurrentCreditId: String = ""//这是当前欠债人的id
+    private var mCurrentId: String = ""//这是当前欠债单的id
+    private var creditMoney: Double = 0.0//赊账金额
+    private var repayMoney: Double = 0.0//已还金额
+    private var creditPageNo: Int = 1       //列表页数
+    private var orderPageNo: Int = 1        //列表页数
 
+    //其他需要的控件
     private var errtip: TipDialog? = null
     private var repaymentDialog: RepaymentDialog? = null
     private var creditAdapter: CreditListAdapter? = null
     private var orderAdapter: OrderInfoAdapter? = null
     private var mCreditEmptyView: NoDataView? = null
     private var mOrderEmptyView: NoDataView? = null
-    private var creditPageNo: Int = 1       //列表页数
-    private var orderPageNo: Int = 1        //列表页数
-    private var mCurrentCreditId: String = ""//这是当前欠债人的id
-    private var mCurrentId: String = ""//这是当前欠债单的id
-    private var creditMoney:Double =0.0//赊账金额
-    private var repayMoney:Double = 0.0//已还金额
+
     override val layoutId: Int
         get() = R.layout.activity_credit_record
 
@@ -68,7 +72,6 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         initView()
         initData()
     }
-
 
 
     private fun initView() {
@@ -105,11 +108,11 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
             mCurrentCreditId = creditAdapter!!.mList[i].purchaserId!!
             getCreditInfo()
         })
-        orderAdapter?.onHolderClick=object :CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean>{
+        orderAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean> {
             override fun onHolderClick(view: View, t: CreditInfoBean, position: Int) {
-                mCurrentId= t.id!!
-                creditMoney=t.shouldRepayment
-                repayMoney=t.alreadyRepayment
+                mCurrentId = t.id!!
+                creditMoney = t.shouldRepayment
+                repayMoney = t.alreadyRepayment
                 showRepaymentDialog()
             }
         }
@@ -133,15 +136,15 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     }
 
     private fun showRepaymentDialog() {
-        if (repaymentDialog==null){
-            repaymentDialog= RepaymentDialog(this)
-            repaymentDialog!!.onConfirmClickListener=object :RepaymentDialog.OnConfirmClickListener{
+        if (repaymentDialog == null) {
+            repaymentDialog = RepaymentDialog(this)
+            repaymentDialog!!.onConfirmClickListener = object : RepaymentDialog.OnConfirmClickListener {
                 override fun onConfirmClick() {
-                     repayment()
+                    repayment()
                 }
 
                 override fun onRepaymentClick() {
-                    repaymentDialog!!.setMoney("${creditMoney-repayMoney}")
+                    repaymentDialog!!.setMoney("${creditMoney - repayMoney}")
                 }
             }
         }
@@ -149,20 +152,29 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     }
 
     /**还款**/
-    override  fun repayment() {
-        var needPay=repaymentDialog?.getMoney()
-       mPresenter?.repayment(mCurrentId, needPay!!.toDouble())
+    override fun repayment() {
+        var needPay = repaymentDialog?.getMoney()
+        mPresenter?.repayment(mCurrentId, needPay!!.toDouble())
     }
 
-    private fun initData(){
+    private fun initData() {
         getCreditList()
     }
+
     override fun getCreditList() {
-        mPresenter?.getCreditList("",creditPageNo, AppConstants.PAGE_SIZE)
+        keyword = et_search.text.toString()
+        mPresenter?.getCreditList(keyword, creditPageNo, AppConstants.PAGE_SIZE)
     }
 
     override fun getCreditInfo() {
         mPresenter?.getCreditInfo(mCurrentCreditId, creditPageNo, AppConstants.PAGE_SIZE)
+    }
+
+    /**
+     * 展示总赊账金额
+     */
+    override fun showCreditMoney(money: Double) {
+        tv_credit_money.setText("${money}")
     }
 
     override fun replaceCreditList(beans: List<CreditListBean.ListBean>?, isNext: Boolean) {

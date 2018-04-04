@@ -124,7 +124,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
                 saleInfoAdapter?.replaceList(beans)
                 hideEmptyView()
             } else {
-                showEmptyView(getString(R.string.tip_no_data))
+                loadErr(getString(R.string.tip_no_data))
             }
         }
     }

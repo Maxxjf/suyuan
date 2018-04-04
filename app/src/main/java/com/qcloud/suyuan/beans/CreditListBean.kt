@@ -14,7 +14,7 @@ class CreditListBean {
      * totalRow : 52731
      */
 
-    var allSumRepayment: Int = 0
+    var allSumRepayment: Double = 0.00
     var totalRow: Int = 0
     var list: List<ListBean>? = null
 

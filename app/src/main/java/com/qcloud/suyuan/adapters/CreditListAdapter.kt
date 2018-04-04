@@ -21,7 +21,7 @@ class CreditListAdapter(mContext: Context) : CommonRecyclerAdapter<CreditListBea
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: CreditListBean.ListBean = mList[position]
 
-        if (position%2 == 0){
+        if (position%2 != 0){
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
         }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.white))

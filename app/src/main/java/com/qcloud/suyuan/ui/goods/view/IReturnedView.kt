@@ -23,4 +23,5 @@ interface IReturnedView :BaseView{
     fun hideEmptyView()
 
 
+    fun showSaleInfo(bean: ScanCodeBean.SaleSerialBean)
 }

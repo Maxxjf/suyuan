@@ -5,13 +5,11 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.view.KeyEvent
 import android.view.View
-import com.qcloud.qclib.materialdesign.dialogs.MaterialDialog
-import com.qcloud.qclib.materialdesign.enums.DialogAction
 import com.qcloud.qclib.toast.QToast
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseApplication
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.MainFormBean
 import com.qcloud.suyuan.realm.RealmHelper
 import com.qcloud.suyuan.ui.goods.widget.*
@@ -25,6 +23,7 @@ import com.qcloud.suyuan.utils.NFCHelper
 import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
 import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_main_credit_record.*
@@ -45,11 +44,11 @@ import timber.log.Timber
  * Author: Kuzan
  * Date: 2018/3/12 15:29.
  */
-class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, View.OnClickListener {
+class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, View.OnClickListener {
 
     private var searchDialog: SearchSelectDialog? = null
     private var moreDialog: MoreOperationDialog? = null
-
+    private var outDialog: TipDialog? = null //退出登录的对话框
     override val layoutId: Int
         get() = R.layout.activity_main
 
@@ -137,20 +136,39 @@ class MainActivity: BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vie
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            MaterialDialog.Builder(this)
-                    .content(R.string.toast_app_exit)
-                    .contentColor(ApiReplaceUtil.getColor(this, R.color.colorTitle))
-                    .positiveText(R.string.btn_confirm)
-                    .negativeText(R.string.btn_cancel)
-                    .onPositive(object : MaterialDialog.SingleButtonCallback {
-                        override fun onClick(dialog: MaterialDialog, which: DialogAction) {
-                            RealmHelper.instance.closeRealm()
-                            BaseApplication.mAppManager?.appExit(this@MainActivity)
-                            NFCHelper.instance.close()
-                            PrintHelper.instance.close()
+//            MaterialDialog.Builder(this)
+//                    .content(R.string.toast_app_exit)
+//                    .contentColor(ApiReplaceUtil.getColor(this, R.color.colorTitle))
+//                    .positiveText(R.string.btn_confirm)
+//                    .negativeText(R.string.btn_cancel)
+//                    .onPositive(object : MaterialDialog.SingleButtonCallback {
+//                        override fun onClick(dialog: MaterialDialog, which: DialogAction) {
+//                            RealmHelper.instance.closeRealm()
+//                            BaseApplication.mAppManager?.appExit(this@MainActivity)
+//                            NFCHelper.instance.close()
+//                            PrintHelper.instance.close()
+//                        }
+//                    })
+//                    .show()
+            if (outDialog == null) {
+                outDialog = TipDialog(this)
+                outDialog?.setCancelBtn(R.string.btn_cancel)
+                outDialog?.setTip(R.string.toast_app_exit)
+                outDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+                    override fun onBtnClick(view: View) {
+                        when (view.id) {
+                            R.id.btn_confirm -> {
+                                RealmHelper.instance.closeRealm()
+                                BaseApplication.mAppManager?.appExit(this@MainActivity)
+                                NFCHelper.instance.close()
+                                PrintHelper.instance.close()
+                            }
                         }
-                    })
-                    .show()
+                    }
+
+                }
+            }
+            outDialog?.show()
         }
         return super.onKeyDown(keyCode, event)
     }

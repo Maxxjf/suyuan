@@ -24,11 +24,13 @@ class TipDialog constructor(context: Context) : BaseDialog(context), View.OnClic
     private fun initView() {
         btn_close.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
+        btn_cancel.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_close -> dismiss()
+            R.id.btn_cancel ->dismiss()
             R.id.btn_confirm -> {
                 dismiss()
                 onBtnClickListener?.onBtnClick(v)
@@ -50,5 +52,15 @@ class TipDialog constructor(context: Context) : BaseDialog(context), View.OnClic
 
     fun setConfirmBtn(@IdRes tipRes: Int) {
         btn_confirm.setText(tipRes)
+    }
+
+    fun setCancelBtn(tip: String) {
+        btn_cancel.visibility = View.VISIBLE
+        btn_cancel.text = tip
+    }
+
+    fun setCancelBtn(@IdRes tipRes: Int) {
+        btn_cancel.visibility = View.VISIBLE
+        btn_cancel.setText(tipRes)
     }
 }
