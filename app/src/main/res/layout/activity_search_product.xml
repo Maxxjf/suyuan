@@ -33,6 +33,7 @@
                 android:layout_marginStart="@dimen/margin_1"
                 android:gravity="center_vertical"
                 android:focusableInTouchMode="false"
+                android:textCursorDrawable="@color/transparent"
                 android:imeOptions="actionSearch"
                 android:textColor="@color/transparent"
                 android:textSize="@dimen/textSize"
