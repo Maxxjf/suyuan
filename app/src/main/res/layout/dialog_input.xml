@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_outside"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -13,22 +14,17 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
-        <EditText
+        <com.qcloud.qclib.materialdesign.edittext.MaterialEditText
             android:id="@+id/et_text"
             android:layout_width="0dp"
             android:layout_height="@dimen/tabHeight"
             android:layout_weight="1"
             android:layout_marginLeft="@dimen/layoutMargin"
-            android:textCursorDrawable="@drawable/cursor_orange_drawable"
-            android:gravity="center_vertical"
-            android:imeOptions="flagNoExtractUi"
-            android:inputType="text"
-            android:imeActionId="@+id/login"
-            android:lines="1"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/textSize"
-            android:textColorHint="@color/colorHint"
-            android:hint="请输入内容"/>
+            android:layout_marginStart="@dimen/layout_margin"
+            app:hint="@string/hint_input_value"
+            app:cursorColor="@color/colorPrimary"
+            app:inputTextSize="@dimen/textSize"
+            app:inputTextColor="@color/colorTitle"/>
 
         <TextView
             android:id="@+id/btn_finish"

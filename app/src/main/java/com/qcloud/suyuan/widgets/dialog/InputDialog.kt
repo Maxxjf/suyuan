@@ -2,24 +2,21 @@ package com.qcloud.suyuan.widgets.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.PorterDuff
 import android.graphics.Rect
 import android.support.annotation.NonNull
 import android.support.annotation.StringRes
 import android.support.annotation.StyleRes
-import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.InputType
-import android.text.TextWatcher
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.WindowManager
 import android.widget.TextView
+import com.qcloud.qclib.materialdesign.listener.OnGetFocusListener
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import kotlinx.android.synthetic.main.dialog_input.*
-import timber.log.Timber
 
 /**
  * Description: 输入弹窗
@@ -58,25 +55,27 @@ class InputDialog @JvmOverloads constructor(
 
     private fun initView() {
         //et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
-        et_text.inputType = InputType.TYPE_CLASS_TEXT
-        //修改下划线颜色
-        et_text.background.setColorFilter(ContextCompat.getColor(mContext, R.color.transparent), PorterDuff.Mode.CLEAR)
-        et_text.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+        et_text?.inputType(InputType.TYPE_CLASS_TEXT)
+        et_text?.onGetFocusListener = object : OnGetFocusListener {
+            override fun onGetFocus() {
 
             }
 
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
             }
 
-            override fun afterTextChanged(editable: Editable) {
-                onTextChangeListener?.onTextChange(editable.toString())
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                onTextChangeListener?.onTextChange(s.toString())
             }
-        })
+
+            override fun afterTextChanged(s: Editable) {
+
+            }
+        }
 
         //监听键盘
-        et_text.setOnEditorActionListener { _, actionId, event ->
+        et_text?.onEditorActionListener = TextView.OnEditorActionListener { _, actionId, event ->
             when (actionId) {
                 KeyEvent.KEYCODE_ENDCALL, KeyEvent.KEYCODE_ENTER -> {
                     onFinishClick()
@@ -90,14 +89,9 @@ class InputDialog @JvmOverloads constructor(
             }
         }
 
-        et_text.setOnKeyListener { _, _, keyEvent ->
-            Timber.e("keyEvent " + keyEvent.characters)
-            false
-        }
-
         // dialog消失键盘会消失，但是键盘消失，dialog不一定消失，比如按软键盘上的消失键，键盘消失，dialog不会消失
         // 所以在这里监听键盘的高度，如果高度为0则表示键盘消失，那么就应该dimiss dialog
-        layout_input.addOnLayoutChangeListener { view, i, i1, i2, i3, i4, i5, i6, i7 ->
+        layout_input.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             val r = Rect()
             //获取当前界面可视部分
             window!!.decorView.getWindowVisibleDisplayFrame(r)
@@ -122,15 +116,17 @@ class InputDialog @JvmOverloads constructor(
     private fun onFinishClick() {
         if (check()) {
             onFinishInputListener?.onFinishInput(mInputValue)
-            KeyBoardUtil.showSoftInput(mContext, et_text)
-            KeyBoardUtil.hideKeybord(mContext, et_text)
+            if (et_text.mEditText != null) {
+            KeyBoardUtil.showSoftInput(mContext, et_text.mEditText!!)
+            KeyBoardUtil.hideKeybord(mContext, et_text.mEditText!!)
+            }
             mEtView?.text = mInputValue
             dismiss()
         }
     }
 
     private fun check(): Boolean {
-        mInputValue = et_text.text.toString().trim { it <= ' ' }
+        mInputValue = et_text.text.trim { it <= ' ' }
 
 //        if (StringUtil.isBlank(mInputValue)) {
 //            QToast.show(mContext, R.string.toast_input_not_null)
@@ -141,16 +137,16 @@ class InputDialog @JvmOverloads constructor(
     }
 
     fun setInputValue(value: String) {
-        et_text.setText(value)
-        et_text.setSelection(value.length)
+        et_text.inputText(value)
+//        et_text.setSelection(value.length)
     }
 
     fun initInputHint(@StringRes hintRes: Int) {
-        et_text?.setHint(hintRes)
+        et_text?.hint(hintRes)
     }
 
     fun initInputHint(hintValue: String) {
-        et_text?.hint = hintValue
+        et_text?.hint(hintValue)
     }
 
     /**
@@ -159,7 +155,7 @@ class InputDialog @JvmOverloads constructor(
      * @param inputType eg InputType.TYPE_CLASS_NUMBER
      * */
     fun setInputMethod(inputType: Int) {
-        et_text?.inputType = inputType
+        et_text?.inputType(inputType)
     }
 
     fun setBindView(@NonNull view: TextView) {
@@ -174,7 +170,9 @@ class InputDialog @JvmOverloads constructor(
 
     override fun show() {
         super.show()
-        KeyBoardUtil.showKeybord(mContext, et_text)
+        if (et_text.mEditText != null) {
+            KeyBoardUtil.showKeybord(mContext, et_text.mEditText!!)
+        }
     }
 
     /**

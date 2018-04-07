@@ -33,9 +33,9 @@ object UrlConstants {
     /**获取有效期告警列表*/
     const val GET_VALID_WARN_LIST = URL_PREFIX_APP + "index/indateList"
     /**搜索批次码*/
-    const val BATCH_SEARCH = URL_PREFIX_APP + "searchByBatchcode"
+    const val BATCH_SEARCH = URL_PREFIX_APP + "index/searchByBatchcode"
     /**搜索产品条形码*/
-    const val BAR_CODE_SEARCH = URL_PREFIX_APP + "searchByBarcode"
+    const val BAR_CODE_SEARCH = URL_PREFIX_APP + "index/searchByBarcode"
 
     /**销售报表*/
     const val  GET_SALE_STATEMENT = URL_PREFIX_APP+"statement/statement"
