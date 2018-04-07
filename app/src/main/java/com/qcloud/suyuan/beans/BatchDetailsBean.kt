@@ -6,4 +6,6 @@ package com.qcloud.suyuan.beans
  * 2018/4/4 上午11:44.
  */
 class BatchDetailsBean {
+    var merchandise: BatchMerchandiseBean? = null
+    var record: BatchRecordBean? = null
 }

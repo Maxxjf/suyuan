@@ -5,16 +5,15 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.view.KeyEvent
 import android.view.View
-import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.BatchDetailsBean
-import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchBatchPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchBatchView
+import com.qcloud.suyuan.utils.BarCodeUtil
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_search_batch.*
@@ -87,25 +86,43 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
     override fun replaceData(bean: BatchDetailsBean) {
         if (isRunning) {
             hideEmptyView()
-            with(bean) {
-                //GlideUtil.loadImage(this@SearchBatchActivity, img_batch_code, image, R.drawable.bmp_product)
-                tv_batch_code.text = ""
-                tv_bar_code.text = ""
-                tv_product_name.text = ""
-                tv_product_spec.text = ""
-                tv_product_classify.text = ""
-                tv_product_toxicity.text = ""
-                tv_pesticides_registration.text = ""
-                tv_production_license_code.text = ""
-                tv_product_standard_code.text = ""
-                tv_product_unit.text = ""
-                tv_product_manufacturer.text = ""
+            val merchandise = bean.merchandise
+            if (merchandise != null) {
+                img_batch_code.post {
+                    val width = img_batch_code.width
+                    val height = resources.getDimension(R.dimen.barHeight)
 
-                tv_in_storage_time.text = ""
-                tv_in_storage_number.text = ""
-                tv_product_valid.text = ""
-                tv_in_storage_price.text = ""
-                tv_batch_stock.text = ""
+                    val barCode = BarCodeUtil.createBarCode(merchandise.barCode ?: "", width, height.toInt())
+                    if (barCode != null) {
+                        img_batch_code.setImageBitmap(barCode)
+                    }
+                }
+
+                with(merchandise) {
+                    tv_batch_code.text = barCode
+                    tv_bar_code.text = ""
+                    tv_product_name.text = name
+                    tv_product_spec.text = specification
+                    tv_product_classify.text = classifyName
+                    tv_product_toxicity.text = toxicity
+                    tv_pesticides_registration.text = registerCard
+                    tv_production_license_code.text = licenseCard
+                    tv_product_standard_code.text = standardCard
+                    tv_product_unit.text = unit
+                    tv_product_manufacturer.text = millName
+                    tv_product_manufacturer_address.text = millAddress
+                }
+            }
+
+            val record = bean.record
+            if (record != null) {
+                with(record) {
+                    tv_in_storage_time.text = createDate
+                    tv_in_storage_number.text = goodsNumStr
+                    tv_product_valid.text = validDate
+                    tv_in_storage_price.text = priceStr
+                    tv_batch_stock.text = surplusNumStr
+                }
             }
         }
     }

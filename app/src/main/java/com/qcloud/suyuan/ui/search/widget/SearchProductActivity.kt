@@ -87,19 +87,19 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
         if (isRunning) {
             hideEmptyView()
             with(bean) {
-                GlideUtil.loadImage(this@SearchProductActivity, img_product, "", R.drawable.bmp_product)
-                tv_bar_code.text = ""
-                tv_product_name.text = ""
-                tv_product_spec.text = ""
-                tv_product_classify.text = ""
-                tv_product_toxicity.text = ""
-                tv_pesticides_registration.text = ""
-                tv_production_license_code.text = ""
-                tv_product_standard_code.text = ""
-                tv_product_unit.text = ""
-                tv_product_manufacturer.text = ""
-
-                tv_product_introduce.text = ""
+                GlideUtil.loadImage(this@SearchProductActivity, img_product, imageUrl, R.drawable.bmp_product)
+                tv_bar_code.text = barCode
+                tv_product_name.text = name
+                tv_product_spec.text = specification
+                tv_product_classify.text = classifyName
+                tv_product_toxicity.text = toxicity
+                tv_pesticides_registration.text = registerCard
+                tv_production_license_code.text = licenseCard
+                tv_product_standard_code.text = standardCard
+                tv_product_unit.text = unit
+                tv_product_manufacturer.text = millName
+                tv_product_manufacturer_address.text = millAddress
+                tv_product_introduce.text = content
             }
         }
     }
