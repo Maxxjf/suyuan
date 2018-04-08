@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.qcloud.qclib.materialdesign.listener.OnGetFocusListener
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import kotlinx.android.synthetic.main.dialog_input.*
 
@@ -159,7 +160,10 @@ class InputDialog @JvmOverloads constructor(
     }
 
     fun setBindView(@NonNull view: TextView) {
-        this.mEtView=view
+        this.mEtView = view
+        if (StringUtil.isNotEmpty(view.hint.toString())) {
+            et_text?.hint(view.hint.toString())
+        }
     }
 
     override fun dismiss() {

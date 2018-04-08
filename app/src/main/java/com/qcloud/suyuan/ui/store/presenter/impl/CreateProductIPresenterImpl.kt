@@ -30,8 +30,8 @@ class CreateProductIPresenterImpl: BasePresenter<ICreateProductIView>(), ICreate
             override fun onSuccess(t: CreateProductBean?, message: String?) {
                 if (t != null) {
                     mView?.refreshData(t)
-                    if (t.categoryAll != null) {
-                        mView?.replaceClassify(t.categoryAll!!)
+                    if (t.list != null) {
+                        mView?.replaceClassify(t.list!!)
                     }
                 } else {
                     if (StringUtil.isBlank(id) || StringUtil.isEquals(id, "0") || StringUtil.isEquals(id, "-1")) {

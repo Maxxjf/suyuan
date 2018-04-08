@@ -364,7 +364,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                     infoId = id ?: ""
                 }
             }
-            et_product_price.text = bean.priceStr
+            et_product_price.text = bean.price
         }
     }
 
