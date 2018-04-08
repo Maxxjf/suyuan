@@ -3,6 +3,7 @@ package com.qcloud.suyuan.net
 import com.qcloud.qclib.beans.BaseResponse
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.LoginReturnBean
+import com.qcloud.suyuan.beans.VersionBean
 import com.qcloud.suyuan.constant.UrlConstants
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -30,5 +31,9 @@ interface IUserApi {
     /**退出登录*/
     @GET(UrlConstants.LOGOUT)
     fun logout(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
+
+    /**检查新版本*/
+    @GET(UrlConstants.CHECK_VERSION)
+    fun checkVersion(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<VersionBean>>
 
 }

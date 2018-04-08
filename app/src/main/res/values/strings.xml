@@ -229,7 +229,11 @@
     <string name="tip_save_product">您的产品还没有提交创建，是否保存下次继续编辑？</string>
     <string name="tip_save_cancel">不保存</string>
     <string name="tip_save_ok">保存</string>
+    <string name="tip_no">否</string>
+    <string name="tip_yes">是</string>
     <string name="tip_no_list">列表为空</string>
+    <string name="tip_download">下载中…</string>
+    <string name="tip_find_new_version">发现新版本%s,是否下载更新?</string>
 
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>

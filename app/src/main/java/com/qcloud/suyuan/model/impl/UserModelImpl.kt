@@ -5,6 +5,7 @@ import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.LoginReturnBean
+import com.qcloud.suyuan.beans.VersionBean
 import com.qcloud.suyuan.model.IUserModel
 import com.qcloud.suyuan.net.IUserApi
 
@@ -57,5 +58,17 @@ class UserModelImpl : IUserModel {
         val params = FrameRequest.getAppParams()
 
         BaseApi.dispose(mApi.logout(params), callback)
+    }
+
+    /**
+     * 检查更新
+     *
+     * @param version 当前版本号
+     * */
+    override fun checkVersion(version: Int, callback: DataCallback<VersionBean>) {
+        val params = FrameRequest.getAppParams()
+        params["version"] = version
+
+        BaseApi.dispose(mApi.checkVersion(params), callback)
     }
 }

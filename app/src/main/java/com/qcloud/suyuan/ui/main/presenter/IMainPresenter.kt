@@ -7,4 +7,6 @@ package com.qcloud.suyuan.ui.main.presenter
  */
 interface IMainPresenter {
     fun getMainForm()
+
+    fun checkVersion(versionCode: Int)
 }

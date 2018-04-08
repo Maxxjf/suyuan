@@ -84,13 +84,13 @@ android {
     }
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "suyuan-${releaseTime()}-V${variant.versionName}.apk"
+            outputFileName = "suyuan-${releaseTime()}_V${variant.versionName}_${variant.versionCode}.apk"
         }
     }
 }
 
 static def releaseTime() {
-    return new Date().format("yyyyMMddhhmm", TimeZone.getTimeZone("UTC"))
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
 
 realm {

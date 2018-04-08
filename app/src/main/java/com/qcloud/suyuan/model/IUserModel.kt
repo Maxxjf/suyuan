@@ -3,6 +3,7 @@ package com.qcloud.suyuan.model
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.LoginReturnBean
+import com.qcloud.suyuan.beans.VersionBean
 
 
 /**
@@ -28,4 +29,9 @@ interface IUserModel {
      * 退出登录
      * */
     fun logout(callback: DataCallback<EmptyReturnBean>)
+
+    /**
+     * 检查新版本
+     * */
+    fun checkVersion(version: Int, callback: DataCallback<VersionBean>)
 }

@@ -36,6 +36,10 @@ object UrlConstants {
     const val BATCH_SEARCH = URL_PREFIX_APP + "index/searchByBatchcode"
     /**搜索产品条形码*/
     const val BAR_CODE_SEARCH = URL_PREFIX_APP + "index/searchByBarcode"
+    /**检查是否有新版本*/
+    const val CHECK_VERSION = URL_PREFIX_APP + "index/checkVersion"
+    /**下载新版本*/
+    const val DOWNLOAD_APP = URL_PREFIX_APP + "index/downloadApp"
 
     /**销售报表*/
     const val  GET_SALE_STATEMENT = URL_PREFIX_APP+"statement/statement"
@@ -131,4 +135,5 @@ object UrlConstants {
     const val SUYUAN_LIST = URL_PREFIX_APP + "traceability/list"
     /**溯源详情*/
     const val SUYUAN_SEARCH = URL_PREFIX_APP + "traceability/info"
+
 }
