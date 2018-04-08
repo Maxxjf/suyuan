@@ -2,10 +2,7 @@ package com.qcloud.suyuan.model
 
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
-import com.qcloud.suyuan.beans.EmptyReturnBean
-import com.qcloud.suyuan.beans.InStorageBean
-import com.qcloud.suyuan.beans.OutStorageBean
-import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.*
 
 /**
  * 类说明：库存有关
@@ -21,7 +18,7 @@ interface IStorageModel {
     /**
      * 搜索产品入库
      * */
-    fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<ProductBean>>)
+    fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<PurchaseProductBean>>)
 
     /**
      * 提交入库

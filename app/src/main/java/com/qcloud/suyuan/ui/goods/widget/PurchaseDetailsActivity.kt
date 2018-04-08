@@ -16,10 +16,7 @@ import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
-import com.qcloud.suyuan.beans.InStorageBean
-import com.qcloud.suyuan.beans.PrintBean
-import com.qcloud.suyuan.beans.ProductBean
-import com.qcloud.suyuan.beans.SupplierBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.utils.PrintHelper
@@ -37,9 +34,9 @@ import timber.log.Timber
  * 2018/3/23 下午9:27.
  */
 class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetailsPresenterImpl>(), IPurchaseDetailsView, View.OnClickListener {
-    private var productBean: ProductBean? = null
+    private var productBean: PurchaseProductBean? = null
 
-    private var suppliperPop: DropDownBtnPop? = null
+    private var supplierPop: DropDownBtnPop? = null
     private var inputDialog: InputDialog? = null
     private var inStorageDialog: InStorageDialog? = null
     private var number: Int = 0
@@ -60,7 +57,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     override fun initViewAndData() {
-        productBean = intent.getSerializableExtra("PRODUCT") as ProductBean
+        productBean = intent.getSerializableExtra("PRODUCT") as PurchaseProductBean
 
         btn_in_storage_supplier.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
@@ -128,7 +125,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     override fun onAddSupplierClick() {
-        suppliperPop?.showAsDropDown(btn_in_storage_supplier)
+        supplierPop?.showAsDropDown(btn_in_storage_supplier)
     }
 
     override fun onConfirmClick() {
@@ -187,9 +184,9 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         if (isRunning) {
             btn_in_storage_supplier.post {
                 val width = btn_in_storage_supplier.width
-                suppliperPop = DropDownBtnPop(this, beans, width)
+                supplierPop = DropDownBtnPop(this, beans, width)
 
-                suppliperPop?.onItemClickListener = object : DropDownBtnPop.OnItemClickListener {
+                supplierPop?.onItemClickListener = object : DropDownBtnPop.OnItemClickListener {
                     override fun onItemClick(position: Int, value: Any?) {
                         if (value != null) {
                             currSupplier = value as SupplierBean
@@ -197,7 +194,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                         }
                     }
                 }
-                suppliperPop?.onPopWindowViewClick = object : BasePopupWindow.OnPopWindowViewClick {
+                supplierPop?.onPopWindowViewClick = object : BasePopupWindow.OnPopWindowViewClick {
                     override fun onViewClick(view: View) {
                         QToast.show(this@PurchaseDetailsActivity, "跳转到新增，功能未开发，等等马上好")
                     }
@@ -275,9 +272,9 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun onDestroy() {
         super.onDestroy()
-        suppliperPop.let {
-            if (suppliperPop != null && suppliperPop!!.isShowing) {
-                suppliperPop?.dismiss()
+        supplierPop.let {
+            if (supplierPop != null && supplierPop!!.isShowing) {
+                supplierPop?.dismiss()
             }
         }
 
@@ -307,7 +304,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context, product: ProductBean) {
+        fun openActivity(@NonNull context: Context, product: PurchaseProductBean) {
             val intent = Intent(context, PurchaseDetailsActivity::class.java)
             intent.putExtra("PRODUCT", product)
             context.startActivity(intent)

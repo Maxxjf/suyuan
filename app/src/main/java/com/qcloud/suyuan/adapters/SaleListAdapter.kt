@@ -28,7 +28,7 @@ class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(co
         var tvPerson = holder.get<TextView>(R.id.tv_person)
         var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
         }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }

@@ -15,6 +15,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.PutProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.PurchaseProductBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchasePresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseView
 import com.qcloud.suyuan.widgets.customview.NoDataView
@@ -56,7 +57,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.replaceList(ArrayList())
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val bean: ProductBean = mAdapter!!.mList[position]
+            val bean: PurchaseProductBean = mAdapter!!.mList[position]
             PurchaseDetailsActivity.openActivity(this, bean)
         }
 
@@ -108,7 +109,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                 }
     }
 
-    override fun replaceList(beans: List<ProductBean>?) {
+    override fun replaceList(beans: List<PurchaseProductBean>?) {
         if (isRunning) {
             stopLoadingDialog()
             reSetEditText()

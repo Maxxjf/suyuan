@@ -4,10 +4,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.network.BaseApi
 import com.qcloud.qclib.network.FrameRequest
-import com.qcloud.suyuan.beans.EmptyReturnBean
-import com.qcloud.suyuan.beans.InStorageBean
-import com.qcloud.suyuan.beans.OutStorageBean
-import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.model.IStorageModel
 import com.qcloud.suyuan.net.IStorageApi
 
@@ -49,7 +46,7 @@ class StorageModelImpl: IStorageModel {
      *
      * @param keyword 产品批次码/条码、商品名、厂家名
      * */
-    override fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<ProductBean>>) {
+    override fun searchList(keyword: String, callback: DataCallback<ReturnDataBean<PurchaseProductBean>>) {
         val params = FrameRequest.getAppParams()
         params["keyword"] = keyword
 

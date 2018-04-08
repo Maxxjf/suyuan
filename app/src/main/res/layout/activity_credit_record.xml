@@ -120,7 +120,7 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:background="@color/colorModelBgF9"
+                android:background="@color/colorItemBg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_6"
                 android:orientation="horizontal">

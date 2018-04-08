@@ -30,7 +30,7 @@ class OrderInfoAdapter(context: Context) : CommonRecyclerAdapter<CreditInfoBean>
         var btnPay = holder.get<Button>(R.id.btn_pay)
         var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
-            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
         }
         if (bean != null) {
             tvTime?.setText("${bean.time}")

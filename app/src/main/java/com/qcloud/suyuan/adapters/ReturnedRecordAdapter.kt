@@ -27,7 +27,7 @@ class ReturnedRecordAdapter(mContext: Context) : CommonRecyclerAdapter<CodeBean>
         var tvHandleMember = holder.get<TextView>(R.id.tv_handle_member)
         var tvTime = holder.get<TextView>(R.id.tv_time)
         if (position%2==0){
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
         }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }

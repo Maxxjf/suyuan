@@ -7,6 +7,7 @@ import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.PurchaseProductBean
 import com.qcloud.suyuan.utils.BarCodeUtil
 import kotlinx.android.synthetic.main.dialog_in_storage_confirm.*
 
@@ -28,7 +29,7 @@ class InStorageDialog constructor(context: Context) : BaseDialog(context), View.
         btn_confirm.setOnClickListener(this)
     }
 
-    fun refreshData(bean: ProductBean?, inStorageDate: String?, batchNum: String?) {
+    fun refreshData(bean: PurchaseProductBean?, inStorageDate: String?, batchNum: String?) {
         if (bean != null) {
             with(bean!!) {
                 tv_product_name.text = name

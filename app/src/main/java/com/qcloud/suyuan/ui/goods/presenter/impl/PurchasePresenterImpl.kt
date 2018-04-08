@@ -4,6 +4,7 @@ import com.qcloud.qclib.base.BasePresenter
 import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.ProductBean
+import com.qcloud.suyuan.beans.PurchaseProductBean
 import com.qcloud.suyuan.model.IStorageModel
 import com.qcloud.suyuan.model.impl.StorageModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IPurchasePresenter
@@ -24,8 +25,8 @@ class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter 
      * @param keyword 产品批次码
      * */
     override fun loadProduct(keyword: String) {
-        mModel.searchList(keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
-            override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
+        mModel.searchList(keyword, object : DataCallback<ReturnDataBean<PurchaseProductBean>> {
+            override fun onSuccess(t: ReturnDataBean<PurchaseProductBean>?, message: String?) {
                 if (t != null) {
                     mView?.replaceList(t.list)
                 } else {
