@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorModelBgF2"
     tools:context=".ui.goods.widget.PurchaseActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -15,7 +16,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/barHeight">
+        android:layout_height="@dimen/barHeight"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"

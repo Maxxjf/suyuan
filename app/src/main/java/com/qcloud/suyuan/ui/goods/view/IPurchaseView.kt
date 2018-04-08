@@ -13,7 +13,7 @@ interface IPurchaseView: BaseView {
     fun replaceList(beans: List<ProductBean>?)
 
     /**显示空布局 */
-    fun showEmptyView()
+    fun showEmptyView(tip: String)
 
     /**隐藏空布局 */
     fun hideEmptyView()
