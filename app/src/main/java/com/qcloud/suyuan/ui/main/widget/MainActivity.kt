@@ -157,7 +157,9 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
         newVersionDialog?.setConfirmBtn(R.string.tip_yes)
         newVersionDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                showDownloadDialog()
+                if (view.id == R.id.btn_ok) {
+                    showDownloadDialog()
+                }
             }
         }
     }
