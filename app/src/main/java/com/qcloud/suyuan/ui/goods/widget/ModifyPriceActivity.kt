@@ -72,10 +72,6 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
 
         mAdapter = ModifyPriceStockAdapter(this)
         list_product?.setAdapter(mAdapter!!)
-        mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val id = mAdapter?.mList?.get(position)?.id ?: "-1"
-            StockDetailsActivity.openActivity(this@ModifyPriceActivity, id)
-        }
         mAdapter?.onModifyListener = object : ModifyPriceStockAdapter.OnModifyListener {
             override fun onModify(bean: ProductBean?, type: Int) {
                 if (bean != null) {
@@ -109,7 +105,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                         pageNo = 1
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.hint_input_product_name)
                     }
                 }
             }
@@ -124,7 +120,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                 pageNo = 1
                 loadData()
             } else {
-                QToast.show(this, R.string.toast_no_input_value)
+                QToast.show(this, R.string.hint_input_product_name)
             }
         }
     }

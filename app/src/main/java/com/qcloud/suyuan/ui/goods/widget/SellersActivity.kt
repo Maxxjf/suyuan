@@ -182,7 +182,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        showEmptyView(getString(R.string.tip_to_scan_or_search))
+        showEmptyView(getString(R.string.hint_batch_code_search))
     }
 
     /**

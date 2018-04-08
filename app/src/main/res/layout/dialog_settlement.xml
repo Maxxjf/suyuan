@@ -140,7 +140,7 @@
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:textStyle="bold"
-                android:text="0.00"/>
+                android:hint="0.00"/>
         </LinearLayout>
 
         <LinearLayout
@@ -235,6 +235,14 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/btnTextSize"
                 android:text="@string/btn_wechat"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/btnTextSize"
+                android:text="信"
+                android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
