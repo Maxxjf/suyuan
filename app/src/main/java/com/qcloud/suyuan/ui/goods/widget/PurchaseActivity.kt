@@ -61,9 +61,8 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
         }
 
         mEmptyView = NoDataView(this)
-        mEmptyView?.noData(R.string.tip_no_any_product)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        showEmptyView()
+        showEmptyView(getString(R.string.tip_to_scan_batch_code))
     }
 
     /**
@@ -78,7 +77,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                     if (StringUtil.isNotBlank(keyword)) {
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.hint_input_product_code_and_name)
                     }
                 }
             }
@@ -90,7 +89,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
             if (StringUtil.isNotBlank(keyword)) {
                 loadData()
             } else {
-                QToast.show(this, R.string.toast_no_input_value)
+                QToast.show(this, R.string.hint_input_product_code_and_name)
             }
         }
     }
@@ -117,12 +116,13 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                 mAdapter?.replaceList(beans)
                 hideEmptyView()
             } else {
-                showEmptyView()
+                showEmptyView(getString(R.string.tip_no_any_product))
             }
         }
     }
 
-    override fun showEmptyView() {
+    override fun showEmptyView(tip: String) {
+        mEmptyView?.noData(tip)
         list_product?.showEmptyView()
     }
 

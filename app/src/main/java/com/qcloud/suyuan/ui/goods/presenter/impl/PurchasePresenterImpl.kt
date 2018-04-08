@@ -29,13 +29,13 @@ class PurchasePresenterImpl: BasePresenter<IPurchaseView>(), IPurchasePresenter 
                 if (t != null) {
                     mView?.replaceList(t.list)
                 } else {
-                    mView?.loadErr("暂无数据")
+                    mView?.showEmptyView("抱歉！没有找到符合条件的相关产品名称或产品条形码")
                 }
             }
 
             override fun onError(status: Int, message: String) {
                 mView?.loadErr(message, true)
-                mView?.showEmptyView()
+                mView?.showEmptyView("抱歉！没有找到符合条件的相关产品名称或产品条形码")
             }
         })
     }

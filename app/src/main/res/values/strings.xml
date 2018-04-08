@@ -207,6 +207,7 @@
     <string name="tip_err_request">页面丢失啦，点击图标刷新一下吧~</string>
     <string name="tip_buy_highly_toxic">购买高毒农药需要刷二代身份证~</string>
     <string name="tip_printing_suyuan_code">订单完成，正在打印溯源码…</string>
+    <string name="tip_to_scan_batch_code">请扫产品条形码或输入产品条形码或名称</string>
     <string name="tip_no_any_product">抱歉！没有找到符合条件的相关产品名称或产品条形码</string>
     <string name="tip_to_scan_or_search">请扫溯源码或输入溯源码获取产品~</string>
     <string name="tip_no_any_product_get">抱歉！没有找到符合条件的相关产品，请重新扫码或输入</string>
