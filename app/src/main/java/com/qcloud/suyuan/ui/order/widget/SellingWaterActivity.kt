@@ -17,12 +17,14 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.CodeBean
 import com.qcloud.suyuan.beans.SaleInfoBean
 import com.qcloud.suyuan.beans.SaleListBean
+import com.qcloud.suyuan.enums.PayMethodEnums
 import com.qcloud.suyuan.ui.order.presenter.impl.SellingWaterPresenterImpl
 import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_selling_water.*
+import timber.log.Timber
 
 /**
  * Description: 销售流水
@@ -123,10 +125,11 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             tv_sale_phone.text="${it.mobile}"
             tv_all_money.text="${it.amount}"
             tv_real_pay.text="${it.realPay}"
-            tv_pay_type.text="${it.payMethod}"
+            tv_pay_type.text="${PayMethodEnums.getName(it.payMethod)}"
+            var user = UserInfoUtil.getStore()
+            Timber.e("${user?.shopkeeperName}")
+            tv_person.setText("${user?.shopkeeperName}")
         }
-        var userName = UserInfoUtil.getStore()?.shopkeeperName
-        tv_person.text="${userName}"
     }
     override fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean) {
         if (isRunning) {

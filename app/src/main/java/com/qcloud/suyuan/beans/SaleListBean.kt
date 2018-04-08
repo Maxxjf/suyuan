@@ -23,16 +23,16 @@ class SaleListBean {
     serialNumber   流水号
      */
 
-    var amount: Double = 0.0
+    var amount: Double = 0.00
     var createDate: String? = null
-    var discount: Double = 0.0
+    var discount: Double = 0.00
     var id: String? = null
     var idCard: String? = null
     var mobile: String? = null
     var payMethod: Int = 1
     var purchaserNmae: String? = null
     var purpose: String? = null
-    var realPay: Int = 0
+    var realPay: Double = 0.00
     var remark: String? = null
     var serialNumber: String? = null
     override fun toString(): String {
