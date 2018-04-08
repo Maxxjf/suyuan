@@ -23,7 +23,10 @@ import com.qcloud.suyuan.ui.storage.widget.OutStorageActivity
 import com.qcloud.suyuan.ui.store.widget.StoreProductActivity
 import com.qcloud.suyuan.utils.NFCHelper
 import com.qcloud.suyuan.utils.PrintHelper
-import com.qcloud.suyuan.widgets.dialog.*
+import com.qcloud.suyuan.widgets.dialog.DownloadApkDialog
+import com.qcloud.suyuan.widgets.dialog.MoreOperationDialog
+import com.qcloud.suyuan.widgets.dialog.OperationTipDialog
+import com.qcloud.suyuan.widgets.dialog.SearchSelectDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.card_main_credit_record.*
@@ -48,7 +51,7 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
 
     private var searchDialog: SearchSelectDialog? = null
     private var moreDialog: MoreOperationDialog? = null
-    private var outDialog: TipDialog? = null //退出登录的对话框
+    private var outDialog: OperationTipDialog? = null //退出登录的对话框
     private var newVersionDialog: OperationTipDialog? = null
 
     private var latestVersion: String? = null
@@ -173,8 +176,7 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
             if (outDialog == null) {
-                outDialog = TipDialog(this)
-                outDialog?.setCancelBtn(R.string.btn_cancel)
+                outDialog =OperationTipDialog(this)
                 outDialog?.setTip(R.string.toast_app_exit)
                 outDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
                     override fun onBtnClick(view: View) {

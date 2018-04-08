@@ -234,7 +234,7 @@
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
-                        android:id="@+id/tv_person"
+                        android:id="@+id/tv_shop_person"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"

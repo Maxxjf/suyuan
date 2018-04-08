@@ -128,7 +128,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             tv_pay_type.text="${PayMethodEnums.getName(it.payMethod)}"
             var user = UserInfoUtil.getStore()
             Timber.e("${user?.shopkeeperName}")
-            tv_person.setText("${user?.shopkeeperName}")
+            tv_shop_person.setText("${user?.shopkeeperName}")
         }
     }
     override fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean) {
