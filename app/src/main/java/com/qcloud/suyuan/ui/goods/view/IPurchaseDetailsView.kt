@@ -26,7 +26,7 @@ interface IPurchaseDetailsView: BaseView {
 
     fun onEndDateClick()
 
-    fun showInput(@NotNull view: TextView)
+    fun showInput(@NotNull view: TextView, type: Int)
 
     fun replaceSupplierList(beans: List<SupplierBean>)
 

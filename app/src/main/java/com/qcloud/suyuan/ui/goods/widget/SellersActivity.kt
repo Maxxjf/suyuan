@@ -230,6 +230,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         val purchase = resources.getStringArray(R.array.purchase)
         val list: MutableList<String> = ArrayList()
         list.addAll(purchase)
+        tv_purchase_use.text = list[0]
         btn_purchase_use.post {
             val width = btn_purchase_use.width
             mPurchaseUsePop = DropDownPop(this, list, width)

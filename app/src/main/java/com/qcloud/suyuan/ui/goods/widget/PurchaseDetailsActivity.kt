@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.text.InputType
 import android.view.View
 import android.widget.TextView
 import com.haibin.calendarview.Calendar
@@ -136,8 +137,8 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun onClearClick() {
         if (isRunning) {
-            tv_in_storage_number.text = "0"
-            tv_in_storage_price.text = "0.00"
+            tv_in_storage_number.text = ""
+            tv_in_storage_price.text = ""
             btn_in_storage_birthday.text = ""
             btn_in_storage_end_date.text = ""
             tv_in_storage_supplier.text = ""
@@ -146,13 +147,13 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun onStockNumberClick() {
         if (isRunning) {
-            showInput(tv_in_storage_number)
+            showInput(tv_in_storage_number, 0)
         }
     }
 
     override fun onPriceClick() {
         if (isRunning) {
-            showInput(tv_in_storage_price)
+            showInput(tv_in_storage_price, 1)
         }
     }
 
@@ -170,9 +171,16 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         endPicker?.show()
     }
 
-    override fun showInput(view: TextView) {
+    override fun showInput(view: TextView, type: Int) {
         if (inputDialog == null) {
             inputDialog = InputDialog(this)
+        }
+        if (type == 1) {
+            // 价格
+            inputDialog?.setInputPrice()
+        } else {
+            // 数量
+            inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
         }
         inputDialog?.setBindView(view)
         inputDialog?.setInputValue(view.text.toString().trim())

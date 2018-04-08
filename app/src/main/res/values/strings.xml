@@ -120,6 +120,10 @@
     <string name="hint_input_store_address">请输入门店地址</string>
     <string name="hint_input_store_person">请输入店主名字</string>
     <string name="hint_input_suyuan_name">请输入溯源码/产品名称/生产厂家</string>
+    <string name="hint_input_purchase_number">请输入入库数量</string>
+    <string name="hint_input_purchase_price">请输入进货价格</string>
+    <string name="hint_select_purchase_birthday">请选择生产日期</string>
+    <string name="hint_select_purchase_valid_day">请选择有效期截止时间</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>

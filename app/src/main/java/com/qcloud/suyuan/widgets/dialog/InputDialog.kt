@@ -7,6 +7,7 @@ import android.support.annotation.NonNull
 import android.support.annotation.StringRes
 import android.support.annotation.StyleRes
 import android.text.Editable
+import android.text.InputFilter
 import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
@@ -17,6 +18,7 @@ import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.dialog_input.*
 
 /**
@@ -157,6 +159,13 @@ class InputDialog @JvmOverloads constructor(
      * */
     fun setInputMethod(inputType: Int) {
         et_text?.inputType(inputType)
+    }
+
+    fun setInputPrice() {
+        val filters = arrayOf<InputFilter>(PriceInputFilter())
+        if (et_text.mEditText != null) {
+            et_text.mEditText?.filters = filters
+        }
     }
 
     fun setBindView(@NonNull view: TextView) {

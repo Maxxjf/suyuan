@@ -112,7 +112,7 @@
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/typeTextSize"
-                    android:hint="0"/>
+                    android:hint="@string/hint_input_purchase_number"/>
 
                 <TextView
                     android:id="@+id/tv_in_storage_price"
@@ -124,7 +124,7 @@
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/typeTextSize"
-                    android:hint="0.00"/>
+                    android:hint="@string/hint_input_purchase_price"/>
 
                 <TextView
                     android:id="@+id/btn_in_storage_birthday"
@@ -135,7 +135,8 @@
                     android:gravity="center_vertical"
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"/>
+                    android:textSize="@dimen/typeTextSize"
+                    android:hint="@string/hint_select_purchase_birthday"/>
 
                 <TextView
                     android:id="@+id/btn_in_storage_end_date"
@@ -146,7 +147,8 @@
                     android:gravity="center_vertical"
                     android:background="@drawable/frame_gray"
                     android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"/>
+                    android:textSize="@dimen/typeTextSize"
+                    android:hint="@string/hint_select_purchase_valid_day"/>
 
                 <LinearLayout
                     android:id="@+id/btn_in_storage_supplier"
