@@ -6,6 +6,8 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.view.View
 import com.haibin.calendarview.Calendar
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.SaleFormBean
@@ -53,7 +55,7 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
         tv_wechat_income.setText("${bean.wechat}")
         tv_credit_money.setText("${bean.oncredit}")
         tv_order_number.setText("${bean.orderTotal}")
-        tv_return_money.setText("${bean.returnMoney}")
+        tv_tag_return_money.setText("${bean.returnMoney}")
     }
 
     override fun initViewAndData() {
@@ -108,6 +110,10 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
     private fun loadData() {
         startTime=tv_date_from.text.toString().trim()
         endTime=tv_date_to.text.toString().trim()
+        if(DateUtil.compareTime(startTime,endTime, DateStyleEnum.YYYY_MM_DD.value)==1){
+            loadErr(resources.getString(R.string.toast_start_bigger_end))
+            return
+        }
         mPresenter?.getDate(startTime,endTime)
     }
 

@@ -162,6 +162,7 @@
     <string name="toast_select_registration_code_error">登记证有效期结束时间不能小于开始时间</string>
     <string name="toast_success">修改成功</string>
     <string name="toast_password_no_same">输入两次密码不一致</string>
+    <string name="toast_start_bigger_end">开始时间不得大于结束时间，请重新选择</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

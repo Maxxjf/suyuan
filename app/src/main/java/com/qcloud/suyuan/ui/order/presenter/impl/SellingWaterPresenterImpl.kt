@@ -37,7 +37,7 @@ class SellingWaterPresenterImpl: BasePresenter<ISellingWaterView>(), ISellingWat
       mModel.getSaleInfo(id,object :DataCallback<SaleInfoBean>{
           override fun onSuccess(bean: SaleInfoBean?, message: String?) {
               if (bean!=null){
-                  mView?.replaceSaleInfoList(bean.list,false)
+                  mView?.getSaleInfoSuccess(bean)
               }
           }
 

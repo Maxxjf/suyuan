@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/editHeight"
         android:gravity="center"
-        android:background="@drawable/btn_frame_selector"
-        android:textColor="@color/colorPrimary"
+        android:background="@drawable/btn_frame_green_selector"
+        android:textColor="@color/black"
         android:textSize="@dimen/btnTextSize"
         android:text="0"/>
 

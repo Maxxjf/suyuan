@@ -189,7 +189,7 @@
                         android:id="@+id/tag_return_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/tv_return_money"
+                        android:layout_alignBottom="@+id/tv_tag_return_money"
                         android:layout_marginLeft="@dimen/margin_12"
                         android:layout_toRightOf="@+id/tv_goods_number"
                         android:text="@string/tag_return_money"
@@ -197,7 +197,7 @@
                         android:textSize="@dimen/textSize" />
 
                     <TextView
-                        android:id="@+id/tv_return_money"
+                        android:id="@+id/tv_tag_return_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/tag_return_money"

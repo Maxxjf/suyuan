@@ -27,4 +27,6 @@ interface ISellingWaterView:BaseView {
     fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean)
     /**加载数据 */
     fun loadData()
+
+    fun getSaleInfoSuccess(bean: SaleInfoBean)
 }

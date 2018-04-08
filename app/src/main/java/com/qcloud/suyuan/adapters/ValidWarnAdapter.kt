@@ -2,7 +2,6 @@ package com.qcloud.suyuan.adapters
 
 import android.content.Context
 import android.widget.Button
-import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
@@ -26,9 +25,9 @@ class ValidWarnAdapter(context: Context): CommonRecyclerAdapter<ValidWarnBean>(c
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
         val btnOutStorage = holder.get<Button>(R.id.btn_out_storage)
 
-        if (position %2 == 0) {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF2))
-        } else {
+        if (position%2==0){
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
 

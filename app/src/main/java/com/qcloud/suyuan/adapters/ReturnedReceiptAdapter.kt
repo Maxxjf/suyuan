@@ -29,6 +29,8 @@ class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<ScanCode
         var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
             root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }else{
+            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.white))
         }
         if (bean != null) {
             tvNumber?.setText("${bean.goodsNum}")

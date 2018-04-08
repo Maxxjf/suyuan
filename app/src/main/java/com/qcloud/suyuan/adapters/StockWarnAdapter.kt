@@ -14,7 +14,7 @@ import com.qcloud.suyuan.beans.StockWarnBean
  * Author: gaobaiqiang
  * 2018/3/21 下午4:42.
  */
-class StockWarnAdapter(context: Context): CommonRecyclerAdapter<StockWarnBean>(context) {
+class StockWarnAdapter(context: Context) : CommonRecyclerAdapter<StockWarnBean>(context) {
     override val viewId: Int
         get() = R.layout.item_of_stock_warn
 
@@ -23,8 +23,8 @@ class StockWarnAdapter(context: Context): CommonRecyclerAdapter<StockWarnBean>(c
 
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
 
-        if (position %2 == 0) {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF2))
+        if (position % 2 == 0) {
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF9))
         } else {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }

@@ -44,6 +44,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
             mErrtip?.setTip(errMsg)
             mErrtip?.show()
         }
+        stopLoadingDialog()
     }
 
     override val layoutId: Int
@@ -91,6 +92,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
     override fun loadData() {
         keyword = et_search.text.toString().trim()
         mPresenter?.getSupplierList(keyword)
+        startLoadingDialog()
     }
 
     /**
@@ -136,6 +138,7 @@ class MySupplierActivity : BaseActivity<IMySupplierView, MySupplierPresenterImpl
 
 
     override fun replaceList(beans: List<SupplierBean>?, isNext: Boolean) {
+        stopLoadingDialog()
         if (isRunning) {
             rv_supplier?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {

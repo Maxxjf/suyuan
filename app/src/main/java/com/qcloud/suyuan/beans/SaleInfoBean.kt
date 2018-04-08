@@ -34,6 +34,7 @@ class SaleInfoBean {
 
     }
 
+
     override fun toString(): String {
         return "SaleInfoBean(refundPrice=$refundPrice, list=$list)"
     }

@@ -29,7 +29,7 @@ class SaleListBean {
     var id: String? = null
     var idCard: String? = null
     var mobile: String? = null
-    var payMethod: Int = 0
+    var payMethod: Int = 1
     var purchaserNmae: String? = null
     var purpose: String? = null
     var realPay: Int = 0

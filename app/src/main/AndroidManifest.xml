@@ -85,7 +85,7 @@
             android:name=".ui.goods.widget.ReturnedActivity"
             android:label="@string/title_return"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".ui.storage.widget.OutStorageActivity"
             android:label="@string/title_out_storage"

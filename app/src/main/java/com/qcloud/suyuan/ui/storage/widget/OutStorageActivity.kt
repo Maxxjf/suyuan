@@ -14,7 +14,6 @@ import com.qcloud.suyuan.ui.storage.presenter.impl.OutStoragePresenterImpl
 import com.qcloud.suyuan.ui.storage.view.IOutStorageView
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_out_storage.*
-import timber.log.Timber
 
 /**
  * Description: 撤消入库
@@ -36,6 +35,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             errTip?.setTip(errMsg)
             errTip?.show()
         }
+        stopLoadingDialog()
     }
 
     override val layoutId: Int
@@ -52,6 +52,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
                     KeyBoardUtil.hideKeybord(this, et_search)
                     searchProductInfo()
                     et_search.setText("")
+                    startLoadingDialog()
                 }
             }
             false
@@ -72,6 +73,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
 
     //    加载产品消息
     override fun loadProductInfo(bean: OutStorageBean.InfoBean) {
+        stopLoadingDialog()
         mCurrentBean=bean
         if (bean != null) {
             ll_info.visibility= View.VISIBLE

@@ -8,7 +8,6 @@ import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ProductBean
-import com.qcloud.suyuan.beans.StoreProductBean
 
 /**
  * Description: 门店产品(库存管理列表)
@@ -24,9 +23,9 @@ class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<ProductBean
 
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
 
-        if (position %2 == 0) {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF2))
-        } else {
+        if (position%2==0){
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
         with(bean) {

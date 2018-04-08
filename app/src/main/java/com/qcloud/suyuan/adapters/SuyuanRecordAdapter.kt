@@ -19,9 +19,9 @@ class SuyuanRecordAdapter(mContext: Context) : CommonRecyclerAdapter<SuyuanRecor
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean = mList[position]
 
-        if (position %2 == 0) {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorModelBgF2))
-        } else {
+        if (position%2==0){
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorModelBgF9))
+        }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
 

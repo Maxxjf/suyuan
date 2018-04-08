@@ -8,7 +8,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SupplierBean
 
 /**
- * 类型：
+ * 类型：我的供应商
  * Author: iceberg
  * Date: 2018/3/29  11:14
  */

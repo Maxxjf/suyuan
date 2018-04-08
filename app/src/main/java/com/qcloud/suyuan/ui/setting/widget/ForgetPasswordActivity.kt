@@ -52,7 +52,6 @@ class ForgetPasswordActivity : BaseActivity<IForgetpasswordView, IForgetPassword
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
-//       tv_error.setText("${errMsg}")
         if (tipDialog == null) {
             tipDialog = TipDialog(this)
         }

@@ -59,6 +59,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
+        stopLoadingDialog()
         if (errtip == null) {
             errtip = TipDialog(this)
         }
@@ -148,6 +149,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
                 }
             }
         }
+        repaymentDialog!!.setMoney("")
         repaymentDialog!!.show()
     }
 
@@ -164,6 +166,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     override fun getCreditList() {
         keyword = et_search.text.toString()
         mPresenter?.getCreditList(keyword, creditPageNo, AppConstants.PAGE_SIZE)
+        startLoadingDialog()
     }
 
     override fun getCreditInfo() {
@@ -178,6 +181,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     }
 
     override fun replaceCreditList(beans: List<CreditListBean.ListBean>?, isNext: Boolean) {
+        stopLoadingDialog()
         if (isRunning) {
             rv_sale_info_list?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {

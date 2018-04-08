@@ -188,11 +188,11 @@ class GoodsModelImpl: IGoodsModel {
         params["purchaser.purchaserNmae"] = idInfo.name ?: ""       // 购买者名称
         params["purchaser.validBegin"] = idInfo.startDate ?: ""     // 有效期始
         params["purchaser.validEnd"] = idInfo.endDate ?: ""         // 有效期止
-        params["saleDiscount"] = saleDiscount
-        params["saleRealPay"] = saleRealPay
-        params["salePayMethod"] = salePayMethod
-        params["salePurpose"] = salePurpose ?: ""
-        params["saleRemark"] = saleRemark ?: ""
+        params["sale.Discount"] = saleDiscount
+        params["sale.RealPay"] = saleRealPay
+        params["sale.PayMethod"] = salePayMethod
+        params["sale.Purpose"] = salePurpose ?: ""
+        params["sale.Remark"] = saleRemark ?: ""
 
         BaseApi.dispose(mApi.saleSettlement(params), callback)
     }
