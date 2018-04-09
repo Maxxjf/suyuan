@@ -161,7 +161,8 @@
             android:background="@color/colorLine" />
 
         <LinearLayout
-            android:id="@+id/layout_idcard"
+            android:visibility="invisible"
+            android:id="@+id/layout_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"

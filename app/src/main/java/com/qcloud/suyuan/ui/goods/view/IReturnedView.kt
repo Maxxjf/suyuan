@@ -24,4 +24,5 @@ interface IReturnedView :BaseView{
 
 
     fun showSaleInfo(bean: ScanCodeBean.SaleSerialBean)
+    fun loadDataSuccess(bean: ScanCodeBean)
 }

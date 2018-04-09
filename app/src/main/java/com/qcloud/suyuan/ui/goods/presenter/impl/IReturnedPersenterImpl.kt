@@ -25,10 +25,8 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
       model.scanCode(code,saleId,object :DataCallback<ScanCodeBean>{
         override fun onSuccess(t: ScanCodeBean?, message: String?) {
           if (t != null) {
-            mView?.replaceList(t.infoList,false)
-            mView?.addListAtEnd(t.merchandise,false)
+              mView?.loadDataSuccess(t)
             saleId= t.saleSerial!!.id!!
-            mView?.showSaleInfo(t.saleSerial!!)
           }
         }
 

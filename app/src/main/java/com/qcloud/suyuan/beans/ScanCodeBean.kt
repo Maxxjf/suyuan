@@ -45,7 +45,7 @@ class ScanCodeBean {
          * id : 销售单id
          * realPay : 实收
          * serialNumber : ；流水号
-         * time : 时间
+         * createDate : 时间
          */
 
         var amount: Double = 0.0
@@ -53,9 +53,9 @@ class ScanCodeBean {
         var id: String? = null
         var realPay: Double = 0.0
         var serialNumber: String? = null
-        var time: String? = null
+        var createDate: String? = null
         override fun toString(): String {
-            return "SaleSerialBean(amount=$amount, discount=$discount, id=$id, realPay=$realPay, serialNumber=$serialNumber, time=$time)"
+            return "SaleSerialBean(amount=$amount, discount=$discount, id=$id, realPay=$realPay, serialNumber=$serialNumber, createDate=$createDate)"
         }
 
     }

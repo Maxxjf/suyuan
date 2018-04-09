@@ -51,15 +51,25 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:orientation="vertical">
-
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/editHeight"
-                        android:layout_marginTop="@dimen/modelMargin"
+                        android:gravity="center_vertical"
+                        android:text="*"
+                        android:textColor="@color/design_textinput_error_color_dark"
+                        android:textSize="@dimen/typeTextSize" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/editHeight"
                         android:gravity="center_vertical"
                         android:text="@string/tag_supplier_name"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
+                </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -69,15 +79,26 @@
                         android:text="@string/tag_supplier_address"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/editHeight"
-                        android:layout_marginTop="@dimen/modelMargin"
-                        android:gravity="center_vertical"
-                        android:text="@string/tag_contact_person"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/typeTextSize" />
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="@color/design_textinput_error_color_dark"
+                            android:textSize="@dimen/typeTextSize" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:gravity="center_vertical"
+                            android:text="@string/tag_contact_person"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize" />
+                    </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -110,11 +131,11 @@
                         android:id="@+id/tv_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editHeight"
-                        android:layout_marginTop="@dimen/modelMargin"
                         android:background="@drawable/frame_gray"
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_supplier_name"
                         android:paddingLeft="@dimen/margin_2"
+                        android:singleLine="true"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -127,6 +148,7 @@
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_supplier_address"
                         android:paddingLeft="@dimen/margin_2"
+                        android:singleLine="true"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -139,6 +161,7 @@
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_contact_person"
                         android:paddingLeft="@dimen/margin_2"
+                        android:singleLine="true"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -151,6 +174,7 @@
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_contact_phone"
                         android:paddingLeft="@dimen/margin_2"
+                        android:singleLine="true"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -163,6 +187,8 @@
                         android:gravity="left|top"
                         android:hint="@string/hint_input_remark"
                         android:paddingLeft="@dimen/margin_2"
+                        android:paddingTop="@dimen/margin_2"
+                        android:singleLine="true"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -172,14 +198,12 @@
             </LinearLayout>
 
             <Button
+                android:layout_marginBottom="@dimen/layoutMargin"
                 android:id="@+id/btn_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/largeBtnHeight"
-                android:layout_marginEnd="@dimen/layoutMargin"
-                android:layout_marginLeft="@dimen/layoutMargin"
-                android:layout_marginRight="@dimen/layoutMargin"
-                android:layout_marginStart="@dimen/layoutMargin"
-                android:layout_marginTop="@dimen/modelMargin"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
                 android:background="@drawable/btn_radius_selector"
                 android:gravity="center"
                 android:text="@string/btn_confirm_add"

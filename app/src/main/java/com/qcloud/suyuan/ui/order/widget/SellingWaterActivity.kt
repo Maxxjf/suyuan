@@ -39,7 +39,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     private var mReceiptEmptyView: NoDataView? = null
     private var saleListAdapter: SaleListAdapter? = null
     private var saleInfoAdapter: SaleInfoAdapter? = null
-    private var mCurrentBean:SaleListBean?=null
+    private var mCurrentBean: SaleListBean? = null
 
     override val layoutId: Int
         get() = R.layout.activity_selling_water
@@ -68,7 +68,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         saleListAdapter = SaleListAdapter(this)
         saleInfoAdapter = SaleInfoAdapter(this)
         saleListAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ _, _, i, _ ->
-            mCurrentBean=saleListAdapter!!.mList[i]
+            mCurrentBean = saleListAdapter!!.mList[i]
             mCurrentBean?.let {
                 mPresenter?.getSaleInfo(mCurrentBean?.id!!)
             }
@@ -114,23 +114,25 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     /**
      * 得到消息列表成功
      */
-    override fun getSaleInfoSuccess(bean:SaleInfoBean){
-        replaceSaleInfoList(bean.list,false)
+    override fun getSaleInfoSuccess(bean: SaleInfoBean) {
+        layout_info.visibility = View.VISIBLE
+        replaceSaleInfoList(bean.list, false)
         mCurrentBean?.let {
-            tv_return_money.text="${bean.refundPrice}"
-            tv_number.text="${it.serialNumber}"
-            tv_time.text="${it.createDate}"
-            tv_sale_person.text="${it.purchaserNmae}"
-            tv_sale_idcard.text="${it.idCard}"
-            tv_sale_phone.text="${it.mobile}"
-            tv_all_money.text="${it.amount}"
-            tv_real_pay.text="${it.realPay}"
-            tv_pay_type.text="${PayMethodEnums.getName(it.payMethod)}"
+            tv_return_money.text = "${bean.refundPrice}"
+            tv_number.text = "${it.serialNumber}"
+            tv_time.text = "${it.createDate}"
+            tv_sale_person.text = "${it.purchaserNmae}"
+            tv_sale_idcard.text = "${it.idCard}"
+            tv_sale_phone.text = "${it.mobile}"
+            tv_all_money.text = "${it.amount}"
+            tv_real_pay.text = "${it.realPay}"
+            tv_pay_type.text = "${PayMethodEnums.getName(it.payMethod)}"
             var user = UserInfoUtil.getStore()
             Timber.e("${user?.shopkeeperName}")
             tv_shop_person.setText("${user?.shopkeeperName}")
         }
     }
+
     override fun replaceSaleList(beans: List<SaleListBean>?, isNext: Boolean) {
         if (isRunning) {
             rv_sale_list.loadedFinish()

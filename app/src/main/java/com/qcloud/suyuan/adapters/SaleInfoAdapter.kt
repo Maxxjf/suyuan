@@ -1,7 +1,6 @@
 package com.qcloud.suyuan.adapters
 
 import android.content.Context
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
@@ -27,7 +26,7 @@ class SaleInfoAdapter(context: Context) : CommonRecyclerAdapter<SaleInfoBean.Lis
         var tvRule = holder.get<TextView>(R.id.tv_rule)
         var tvPrice = holder.get<TextView>(R.id.tv_price)
 
-        if (position%2==0){
+        if (position%2!=0){
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
         }else{
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
