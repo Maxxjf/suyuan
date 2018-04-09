@@ -79,6 +79,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         }
 
         mEmptyView = NoDataView(this)
+        mEmptyView?.noData(R.string.tip_no_data)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         mPresenter?.loadData(currId)

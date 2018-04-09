@@ -43,7 +43,7 @@ object ProductUtil {
      * */
     fun productAttrStr2Submit(list: List<ProductComponentBean>): String {
         if (list.isEmpty()) {
-            return ""
+            return " "
         }
 
         val submitStr = StringBuffer()

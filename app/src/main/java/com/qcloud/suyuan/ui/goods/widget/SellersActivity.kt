@@ -7,9 +7,11 @@ import android.media.AudioManager
 import android.media.SoundPool
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
+import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethod
 import android.widget.TextView
 import android_serialport_api.sample.Util
 import com.google.gson.Gson
@@ -264,12 +266,17 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         tv_total_account.text = String.format(moneyStr, totalAccount)
     }
 
-    private fun showInput(view: TextView) {
+    private fun showInput(view: TextView, type: Int) {
         if (inputDialog == null) {
             inputDialog = InputDialog(this)
         }
         inputDialog?.setBindView(view)
         inputDialog?.setInputValue(view.text.toString().trim())
+        if (type == 0) {
+            inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
+        } else {
+            inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
+        }
 
         inputDialog?.show()
     }
@@ -332,6 +339,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
+    /**
+     * 显示结算弹窗
+     * */
     private fun showSettlementDialog() {
         if (settlementDialog == null) {
             settlementDialog = SettlementDialog(this)
@@ -354,6 +364,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
+    /**
+     * 显示现金支付弹窗
+     * */
     private fun showCashDialog() {
         if (cashDialog == null) {
             cashDialog = CashDialog(this)
@@ -385,13 +398,13 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun onMobileClick() {
         if (isRunning) {
-            showInput(tv_mobile)
+            showInput(tv_mobile, 0)
         }
     }
 
     override fun onRemarkClick() {
         if (isRunning) {
-            showInput(tv_other_instructions)
+            showInput(tv_other_instructions, 1)
         }
     }
 
@@ -470,7 +483,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     purchaseInfo?.id = bean.purchaserId
                     IDCardUtil.addOrUpdate(purchaseInfo)
                 }
-
             }
         }
     }
@@ -496,6 +508,31 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         ticketInfo.giveMoney = giveMoney            // 找零
 
         TicketUtil.printTicket(ticketInfo)
+
+        clearData()
+    }
+
+    /**
+     * 清除数据
+     * */
+    private fun clearData() {
+        keyword = null
+
+        totalNumber = 0
+        totalAccount  = 0.00
+        list = ""           // 商品列表
+        remark = null       // 备注
+        discount = 0.00     // 优惠价格
+        realPay = 0.00      // 实付
+        giveMoney = 0.00    // 找零
+        payMethod = 0       // 支付方式
+
+        refreshPrice()
+        mAdapter?.replaceList(ArrayList())
+        showEmptyView(getString(R.string.hint_batch_code_search))
+        tv_other_instructions.text = ""
+
+        submitProducts = ArrayList()
     }
 
     /**
@@ -571,6 +608,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
+    /**
+     * 刷新购买者信息
+     * */
     private fun refreshPurchaser(bean: IDBean?, isFromRead: Boolean = true) {
         if (bean != null) {
             with(bean) {

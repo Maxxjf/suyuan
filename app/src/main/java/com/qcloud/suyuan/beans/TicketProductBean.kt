@@ -9,18 +9,24 @@ class TicketProductBean {
     var name: String = ""       // 名称
         get() {
             val strLen = field.length
-            if (strLen == 16) {
-                return field
-            } else if (strLen < 16) {
-                val temp = 16 - strLen
-                var tem = ""
-                for (i in 0 until temp) {
-                    tem += "$tem\t"
-                }
-                return field + tem
+            return if (strLen <= 16) {
+                field
             } else {
-                return field.substring(0, 16)
+                field.substring(0, 16)
             }
+//            val strLen = field.length
+//            if (strLen == 16) {
+//                return field
+//            } else if (strLen < 16) {
+//                val temp = 16 - strLen
+//                var tem = ""
+//                for (i in 0 until temp) {
+//                    tem += "$tem-"
+//                }
+//                return field + tem
+//            } else {
+//                return field.substring(0, 16)
+//            }
         }
     var price: Double = 0.00    // 单价
     var priceStr: String = "0.00"   // 单价

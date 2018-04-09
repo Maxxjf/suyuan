@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
@@ -17,7 +18,9 @@ import kotlinx.android.synthetic.main.dialog_settlement.*
  */
 class SettlementDialog constructor(context: Context) : BaseDialog(context), View.OnClickListener  {
 
+    // 总额
     private var totalAccount: Double = 0.00
+    // 实收金额
     var realPay: Double = 0.00
     var payMethod: Int = 1
 
@@ -50,8 +53,15 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
                 val priceStr = p0.toString().trim()
                 if (StringUtil.isMoneyStr(priceStr)) {
                     val price = priceStr.toDouble()
-                    realPay = totalAccount - price
-                    tv_real_price.text = String.format(moneyStr, realPay)
+                    if (price > totalAccount) {
+                        QToast.show(mContext, R.string.toast_discount_less_then_account)
+                        et_discount.setText("")
+                        realPay = totalAccount
+                        tv_real_price.text = String.format(moneyStr, realPay)
+                    } else {
+                        realPay = totalAccount - price
+                        tv_real_price.text = String.format(moneyStr, realPay)
+                    }
                 }
             }
 

@@ -2,6 +2,7 @@ package com.qcloud.suyuan.utils
 
 import com.qcloud.suyuan.beans.IDBean
 import com.qcloud.suyuan.realm.RealmHelper
+import timber.log.Timber
 
 /**
  * Description: 身份证处理工具
@@ -14,6 +15,7 @@ object IDCardUtil {
      * */
     fun addOrUpdate(bean: IDBean?) {
         if (bean != null) {
+            Timber.e("Util: $bean")
             val createUser = UserInfoUtil.getUser()
             if (createUser != null) {
                 bean.loginUserId = createUser.id

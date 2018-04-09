@@ -30,5 +30,5 @@ class NoDataView @JvmOverloads constructor(
         get() = mContext.resources.getString(R.string.tip_no_any_data)
 
     override val padTop: Int
-        get() = 80
+        get() = 20
 }

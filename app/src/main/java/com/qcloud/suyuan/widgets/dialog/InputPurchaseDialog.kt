@@ -12,6 +12,7 @@ import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.IDBean
 import com.qcloud.suyuan.utils.IDCardUtil
 import kotlinx.android.synthetic.main.dialog_input_purchase_info.*
+import timber.log.Timber
 
 /**
  * Description: 录入购买者信息
@@ -41,9 +42,21 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
         val adapter = ArrayAdapter(mContext, R.layout.item_of_id_search, R.id.tv_context, disposeId())
         et_id.setAdapter<ArrayAdapter<String>?>(adapter)
         et_id.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            currPurchaser = idList[position]
-            refreshPurchase()
+            getPurchase(adapter.getItem(position))
         }
+    }
+
+    /**
+     * 获取对应的身份证信息
+     * */
+    private fun getPurchase(idCode: String) {
+        for (bean in idList) {
+            if (StringUtil.isEquals(bean.idCode, idCode)) {
+                currPurchaser = bean
+                break
+            }
+        }
+        refreshPurchase()
     }
 
     /**
@@ -60,6 +73,7 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
     }
 
     private fun refreshPurchase() {
+        Timber.e("dialog: $currPurchaser")
         if (currPurchaser != null) {
             et_name.setText(currPurchaser!!.name)
             et_mobile.setText(currPurchaser!!.mobile)
@@ -102,8 +116,8 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
 
         if (currPurchaser == null) {
             currPurchaser = IDBean()
-            currPurchaser?.idCode = idCode
         }
+        currPurchaser?.idCode = idCode
         currPurchaser?.name = name
         currPurchaser?.mobile = mobile
 

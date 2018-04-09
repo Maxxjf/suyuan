@@ -29,6 +29,7 @@ class ModifyPriceView  @JvmOverloads constructor(
         get() = R.layout.layout_modify_price
 
     override fun initViewAndData() {
+        et_value.setHint(R.string.hint_input_sell_price)
         et_value.setOnClickListener {
             if (inputDialog == null) {
                 initInputDialog()

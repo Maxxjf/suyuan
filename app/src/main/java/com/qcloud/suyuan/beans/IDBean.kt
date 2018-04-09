@@ -11,7 +11,6 @@ import io.realm.annotations.PrimaryKey
  * Date: 2018/3/26 15:27.
  */
 open class IDBean: RealmObject() {
-    var loginUserId: String = "0"
     // 身份证号
     @PrimaryKey
     var idCode: String? = null
@@ -21,7 +20,7 @@ open class IDBean: RealmObject() {
     // 姓别
     var sex: String? = null
     var gender: Int = 1
-        get() = if (sex.equals("男")) 1 else 0
+        get() = if (sex.equals("男")) 1 else 2
     // 民族
     var nation: String? = null
     // 出生日期
@@ -69,6 +68,8 @@ open class IDBean: RealmObject() {
     var userImgBase64: String? = null
     // 用户电话
     var mobile: String? = null
+    // 登录者账号id
+    var loginUserId: String = "0"
 
     override fun toString(): String {
         return "IDBean(idCode=$idCode, name=$name, sex=$sex, nation=$nation, birthday=$birthday, year=$year, month=$month, day=$day, address=$address, department=$department, startDate=$startDate, endDate=$endDate, userImg='$userImg', mobile=$mobile)"

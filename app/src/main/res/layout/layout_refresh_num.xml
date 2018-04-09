@@ -20,7 +20,8 @@
         android:background="@drawable/frame_gray"
         android:textColor="@color/colorTitle"
         android:textSize="@dimen/textSize"
-        android:text="1"/>
+        android:text="1"
+        android:hint="@string/hint_input_buy_number"/>
 
     <ImageView
         android:id="@+id/btn_plus"

@@ -45,14 +45,15 @@ object TicketUtil {
                 contentBean.alignIndex = 0
                 it.onNext(contentBean)
 
-                contentBean = PrintContentBean()
-                contentBean.content = "名称               单价    数量 "
-                contentBean.alignIndex = 0
-                it.onNext(contentBean)
+//                contentBean = PrintContentBean()
+//                contentBean.content = "名称               单价    数量 "
+//                contentBean.alignIndex = 0
+//                it.onNext(contentBean)
 
                 for (product in ticket.list) {
                     contentBean = PrintContentBean()
-                    contentBean.content = "${product.name}${product.priceStr}  ${product.numberStr}"
+                    contentBean.content = "${product.name}*${product.priceStr}*${product.numberStr}"
+                    Timber.e("content = ${contentBean.content}")
                     contentBean.alignIndex = 0
                     it.onNext(contentBean)
                 }

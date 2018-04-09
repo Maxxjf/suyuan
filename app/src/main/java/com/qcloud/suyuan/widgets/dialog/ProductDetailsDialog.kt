@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.Html
 import android.view.Gravity
 import android.view.View
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
@@ -51,8 +52,7 @@ class ProductDetailsDialog constructor(context: Context) : BaseDialog(context), 
                 tv_pesticides_registration.text = registerCard
                 tv_production_license.text = licenseCard
                 tv_product_standard.text = standardCard
-                tv_product_introduce.setText(Html.fromHtml(details))
-//                tv_product_introduce.text = details
+                tv_product_introduce.text = ApiReplaceUtil.fromHtml(details)
             }
         }
 

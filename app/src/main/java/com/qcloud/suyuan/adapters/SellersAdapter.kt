@@ -3,6 +3,7 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.suyuan.R
@@ -33,7 +34,7 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
                     .setText(R.id.tv_product_name, name)
                     .setText(R.id.tv_product_spec, specification)
                     .setText(R.id.tv_product_batch, batchNum)
-                    .setVisible(R.id.tv_product_valid, if (active) View.VISIBLE else View.GONE)
+                    .setVisible(R.id.tv_product_valid, if (active) View.GONE else View.VISIBLE)
                     .setText(R.id.tv_product_stock, stockStr)
                     .setText(R.id.tv_selling_price, priceStr)
         }

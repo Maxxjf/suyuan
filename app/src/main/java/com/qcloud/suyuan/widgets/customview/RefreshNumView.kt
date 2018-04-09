@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.widgets.customview
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import com.qcloud.qclib.base.BaseLinearLayout
@@ -22,6 +23,7 @@ class RefreshNumView @JvmOverloads constructor(
         defStyleAttr: Int = 0) : BaseLinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
 
     private var currNum = 1
+    private var lastNum = 1
     private var maxNum = 100
     private var currBean: SaleProductBean? = null
     private var inputDialog: InputDialog? = null
@@ -40,6 +42,7 @@ class RefreshNumView @JvmOverloads constructor(
     private fun initInputDialog() {
         inputDialog = InputDialog(mContext)
         inputDialog?.setBindView(tv_number)
+        inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
         inputDialog?.setInputValue(tv_number.text.toString().trim())
 
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
@@ -50,6 +53,8 @@ class RefreshNumView @JvmOverloads constructor(
                     tv_number.text = "1"
                     currNum = 1
                 }
+                refreshNum(currNum)
+                onRefreshNumClickListener?.onRefreshNum(currNum-lastNum, currBean!!)
             }
         }
     }
@@ -74,6 +79,7 @@ class RefreshNumView @JvmOverloads constructor(
                 if (inputDialog == null) {
                     initInputDialog()
                 }
+                lastNum = currNum
                 inputDialog?.show()
             }
         }

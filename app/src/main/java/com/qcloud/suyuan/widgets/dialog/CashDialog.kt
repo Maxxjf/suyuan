@@ -69,5 +69,6 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
         this.totalAccount = realPay
         this.realPay = realPay
         tv_real_price.text = String.format(moneyStr, realPay)
+        tv_give_change.text = ""
     }
 }

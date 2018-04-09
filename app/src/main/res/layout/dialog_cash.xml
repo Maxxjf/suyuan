@@ -107,7 +107,8 @@
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:textStyle="bold"
-                android:text="0.00"/>
+                android:hint="0.00"
+                android:textColorHint="@color/colorHint"/>
         </LinearLayout>
 
         <LinearLayout

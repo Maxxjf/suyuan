@@ -30,7 +30,7 @@
         android:id="@+id/tv_product_spec"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1.0"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
@@ -54,7 +54,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1.4"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/margin_1">

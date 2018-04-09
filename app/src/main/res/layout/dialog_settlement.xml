@@ -140,6 +140,7 @@
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:textStyle="bold"
+                android:textColorHint="@color/colorHint"
                 android:hint="0.00"/>
         </LinearLayout>
 
