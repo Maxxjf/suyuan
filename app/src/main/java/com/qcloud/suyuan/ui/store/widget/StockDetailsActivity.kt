@@ -113,6 +113,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         if (changePriceDialog == null) {
             changePriceDialog = ChangePriceDialog(this)
         }
+        changePriceDialog?.clearInput()
         changePriceDialog?.show()
         changePriceDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
@@ -130,6 +131,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         if (adjustWarnDialog == null) {
             adjustWarnDialog = AdjustWarnDialog(this)
         }
+        adjustWarnDialog?.clearInput()
         adjustWarnDialog?.show()
         adjustWarnDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {

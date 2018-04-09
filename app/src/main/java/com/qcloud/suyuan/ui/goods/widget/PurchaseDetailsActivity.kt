@@ -20,6 +20,7 @@ import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
+import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
 import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InStorageDialog
@@ -142,6 +143,12 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
             btn_in_storage_birthday.text = ""
             btn_in_storage_end_date.text = ""
             tv_in_storage_supplier.text = ""
+
+            number = 0
+            price = 0.00
+            birthday = null
+            endDay = null
+            currSupplier = null
         }
     }
 
@@ -208,7 +215,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                 }
                 supplierPop?.onPopWindowViewClick = object : BasePopupWindow.OnPopWindowViewClick {
                     override fun onViewClick(view: View) {
-                        QToast.show(this@PurchaseDetailsActivity, "跳转到新增，功能未开发，等等马上好")
+                        MySupplierActivity.openActivity(this@PurchaseDetailsActivity)
                     }
                 }
             }
@@ -230,6 +237,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                     PrintHelper.instance.printData(printBean)
                 }
             }
+            onClearClick()
         }
     }
 
@@ -268,7 +276,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
             QToast.show(this, R.string.toast_select_product_end_day)
             return false
         }
-        if (DateUtil.compareTime(birthday, endDay, DateStyleEnum.YYYY_MM_DD.value) > 1) {
+        if (DateUtil.compareTime(birthday, endDay, DateStyleEnum.YYYY_MM_DD.value) >= 0) {
             QToast.show(this, R.string.toast_end_day_min_birthday)
             return false
         }

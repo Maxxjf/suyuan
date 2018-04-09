@@ -66,4 +66,8 @@ class AdjustWarnDialog constructor(context: Context) : BaseDialog(context), View
         warnLine = warnLineStr.toInt()
         return true
     }
+
+    fun clearInput() {
+        et_warn.setText("")
+    }
 }

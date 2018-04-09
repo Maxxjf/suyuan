@@ -43,6 +43,7 @@ class ModifyStockView  @JvmOverloads constructor(
     private fun initInputDialog() {
         inputDialog = InputDialog(mContext)
         inputDialog?.setBindView(et_value)
+        inputDialog?.setMaxLength(6)
         inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
             override fun onFinishInput(message: String?) {

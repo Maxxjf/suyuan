@@ -60,7 +60,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
                     if (StringUtil.isNotBlank(keyword)) {
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.tip_scan_batch_code)
                     }
                 }
             }

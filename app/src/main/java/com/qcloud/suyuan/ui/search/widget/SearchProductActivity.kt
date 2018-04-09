@@ -40,7 +40,7 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
 
     override fun initViewAndData() {
         initEmptyView()
-        showEmptyView(getString(R.string.tip_scan_batch_code))
+        showEmptyView(getString(R.string.tip_scan_product_code))
         initEditView()
     }
 
@@ -60,7 +60,7 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
                     if (StringUtil.isNotBlank(keyword)) {
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.tip_scan_product_code)
                     }
                 }
             }

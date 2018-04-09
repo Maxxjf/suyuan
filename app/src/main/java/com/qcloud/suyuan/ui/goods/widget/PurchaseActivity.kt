@@ -6,6 +6,7 @@ import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.View
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.toast.QToast
@@ -14,11 +15,14 @@ import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.PutProductAdapter
 import com.qcloud.suyuan.base.BaseActivity
+import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.PurchaseProductBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchasePresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseView
+import com.qcloud.suyuan.ui.store.widget.CreateProductIActivity
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.TipDialog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_purchase.*
@@ -35,6 +39,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
     private var mEmptyView: NoDataView? = null
 
     private var keyword: String? = null
+    private var tipDialog: TipDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase
@@ -109,6 +114,17 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                 }
     }
 
+    private fun initTipDialog() {
+        tipDialog = TipDialog(this)
+        tipDialog?.setTip(R.string.tip_no_product)
+        tipDialog?.setConfirmBtn(R.string.btn_to_create)
+        tipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                CreateProductIActivity.openActivity(this@PurchaseActivity, null)
+            }
+        }
+    }
+
     override fun replaceList(beans: List<PurchaseProductBean>?) {
         if (isRunning) {
             stopLoadingDialog()
@@ -117,7 +133,11 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                 mAdapter?.replaceList(beans)
                 hideEmptyView()
             } else {
-                showEmptyView(getString(R.string.tip_no_any_product))
+                showEmptyView(getString(R.string.tip_to_scan_batch_code))
+                if (tipDialog == null) {
+                    initTipDialog()
+                }
+                tipDialog?.show()
             }
         }
     }
@@ -138,6 +158,15 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
                 QToast.show(this, errMsg)
             } else {
                 Timber.e(errMsg)
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        tipDialog?.let {
+            if (tipDialog != null && tipDialog!!.isShowing) {
+                tipDialog?.dismiss()
             }
         }
     }

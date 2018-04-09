@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductDetailsBean
@@ -72,7 +73,7 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
                 tv_pesticides_registration.text = registerCard
                 tv_production_license.text = licenseCard
                 tv_product_standard.text = standardCard
-                tv_product_introduce.text = details
+                tv_product_introduce.text = ApiReplaceUtil.fromHtml(details)
             }
         }
         val millBean = bean.mill

@@ -34,184 +34,194 @@
         <View
             style="@style/LineHorizontal"/>
 
-        <LinearLayout
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="@dimen/layoutMargin">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="right">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_product_detail_number"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_product_detail_price"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_product_detail_birthday"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_product_detail_end_date"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:text="@string/tag_product_detail_supplier"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.2"
-                android:paddingLeft="@dimen/margin_2"
-                android:orientation="vertical"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/tv_in_storage_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:paddingLeft="@dimen/margin_2"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/frame_gray"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="@string/hint_input_purchase_number"/>
-
-                <TextView
-                    android:id="@+id/tv_in_storage_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:paddingLeft="@dimen/margin_2"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/frame_gray"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="@string/hint_input_purchase_price"/>
-
-                <TextView
-                    android:id="@+id/btn_in_storage_birthday"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:paddingLeft="@dimen/margin_2"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/frame_gray"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="@string/hint_select_purchase_birthday"/>
-
-                <TextView
-                    android:id="@+id/btn_in_storage_end_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:paddingLeft="@dimen/margin_2"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/frame_gray"
-                    android:textColor="@color/colorTitle"
-                    android:textSize="@dimen/typeTextSize"
-                    android:hint="@string/hint_select_purchase_valid_day"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/btn_in_storage_supplier"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_marginTop="@dimen/modelMargin"
-                    android:background="@drawable/frame_gray"
-                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="horizontal"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:padding="@dimen/layoutMargin">
 
-                    <TextView
-                        android:id="@+id/tv_in_storage_supplier"
+                    <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/editHeight"
-                        android:layout_weight="1"
-                        android:paddingLeft="@dimen/layout_margin"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
-                        tools:text="病虫防治"/>
-
-                    <ImageView
-                        android:id="@+id/btn_drop_down"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_drop_down"/>
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="right">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:text="@string/tag_product_detail_number"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:text="@string/tag_product_detail_price"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:text="@string/tag_product_detail_birthday"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:text="@string/tag_product_detail_end_date"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:text="@string/tag_product_detail_supplier"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.0"
+                        android:paddingLeft="@dimen/margin_2"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_in_storage_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/editHeight"
+                            android:paddingLeft="@dimen/margin_2"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/frame_gray"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:hint="@string/hint_input_purchase_number"/>
+
+                        <TextView
+                            android:id="@+id/tv_in_storage_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:paddingLeft="@dimen/margin_2"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/frame_gray"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:hint="@string/hint_input_purchase_price"/>
+
+                        <TextView
+                            android:id="@+id/btn_in_storage_birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:paddingLeft="@dimen/margin_2"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/frame_gray"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:hint="@string/hint_select_purchase_birthday"/>
+
+                        <TextView
+                            android:id="@+id/btn_in_storage_end_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:paddingLeft="@dimen/margin_2"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/frame_gray"
+                            android:textColor="@color/colorTitle"
+                            android:textSize="@dimen/typeTextSize"
+                            android:hint="@string/hint_select_purchase_valid_day"/>
+
+                        <LinearLayout
+                            android:id="@+id/btn_in_storage_supplier"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/editHeight"
+                            android:layout_marginTop="@dimen/modelMargin"
+                            android:background="@drawable/frame_gray"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/tv_in_storage_supplier"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/editHeight"
+                                android:layout_weight="1"
+                                android:paddingLeft="@dimen/layout_margin"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/colorTitle"
+                                android:textSize="@dimen/textSize"
+                                tools:text="病虫防治"/>
+
+                            <ImageView
+                                android:id="@+id/btn_drop_down"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_drop_down"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/largeBtnHeight"
+                    android:background="@drawable/btn_radius_selector"
+                    android:layout_marginLeft="@dimen/layoutMargin"
+                    android:layout_marginEnd="@dimen/layoutMargin"
+                    android:layout_marginRight="@dimen/layoutMargin"
+                    android:layout_marginStart="@dimen/layoutMargin"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/btnTextSize"
+                    android:text="@string/btn_confirm_in_storage"/>
+
+                <Button
+                    android:id="@+id/btn_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/largeBtnHeight"
+                    android:background="@drawable/btn_frame_radius_selector"
+                    android:layout_marginLeft="@dimen/layoutMargin"
+                    android:layout_marginEnd="@dimen/layoutMargin"
+                    android:layout_marginRight="@dimen/layoutMargin"
+                    android:layout_marginStart="@dimen/layoutMargin"
+                    android:layout_marginTop="@dimen/modelMargin"
+                    android:layout_marginBottom="@dimen/layoutMargin"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/btnTextSize"
+                    android:text="@string/btn_clear"/>
             </LinearLayout>
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/largeBtnHeight"
-            android:background="@drawable/btn_radius_selector"
-            android:layout_marginLeft="@dimen/layoutMargin"
-            android:layout_marginEnd="@dimen/layoutMargin"
-            android:layout_marginRight="@dimen/layoutMargin"
-            android:layout_marginStart="@dimen/layoutMargin"
-            android:layout_marginTop="@dimen/modelMargin"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/btnTextSize"
-            android:text="@string/btn_confirm_in_storage"/>
-
-        <Button
-            android:id="@+id/btn_clear"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/largeBtnHeight"
-            android:background="@drawable/btn_frame_radius_selector"
-            android:layout_marginLeft="@dimen/layoutMargin"
-            android:layout_marginEnd="@dimen/layoutMargin"
-            android:layout_marginRight="@dimen/layoutMargin"
-            android:layout_marginStart="@dimen/layoutMargin"
-            android:layout_marginTop="@dimen/modelMargin"
-            android:layout_marginBottom="@dimen/layoutMargin"
-            android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/btnTextSize"
-            android:text="@string/btn_clear"/>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

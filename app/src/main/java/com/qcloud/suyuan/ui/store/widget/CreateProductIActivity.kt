@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.haibin.calendarview.Calendar
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
@@ -235,7 +236,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                         val classifyBean: ProductClassifyBean? = value as ProductClassifyBean
                         if (classifyBean != null) {
                             startLoadingDialog()
-                            tv_product_classify.text = classifyBean.name
+                            tv_product_classify.text = ApiReplaceUtil.fromHtml(classifyBean.name)
 
                             classifyId = classifyBean.id
                             mPresenter?.loadFactory(classifyId)
@@ -450,7 +451,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             QToast.show(this, R.string.toast_select_registration_code_end)
             return false
         }
-        if (DateUtil.compareTime(startDate, endDate, DateStyleEnum.YYYY_MM_DD.value) > 1) {
+
+        if (DateUtil.compareTime(startDate, endDate, DateStyleEnum.YYYY_MM_DD.value) >= 0) {
             QToast.show(this, R.string.toast_select_registration_code_error)
             return false
         }

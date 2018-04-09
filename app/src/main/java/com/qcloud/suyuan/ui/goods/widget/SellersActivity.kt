@@ -423,9 +423,11 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             }
             reSetEditText()
             mAdapter?.refreshBean(bean)
-            totalNumber += bean.number
-            totalAccount += bean.number * bean.price
-            refreshPrice()
+            if (totalNumber < bean.stock) {
+                totalNumber += bean.number
+                totalAccount += bean.number * bean.price
+                refreshPrice()
+            }
         }
     }
 

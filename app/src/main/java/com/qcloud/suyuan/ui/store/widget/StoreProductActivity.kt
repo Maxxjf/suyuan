@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
@@ -156,7 +157,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                     val bean: ProductClassifyBean = value as ProductClassifyBean
                     classifyId = bean.id
                     keyword = null
-                    tv_purchase_use.setText(Html.fromHtml(bean.name))
+                    tv_purchase_use.text = ApiReplaceUtil.fromHtml(bean.name)
                     pageNo = 1
                     loadData()
                 }

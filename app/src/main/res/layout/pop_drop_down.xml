@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/margin_40"
     android:minHeight="@dimen/margin_40"
-    android:background="@drawable/bg_gray_bottom_radius">
+    android:background="@drawable/bg_white_frame_gray_bottom_radius">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_value"

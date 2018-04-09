@@ -21,7 +21,7 @@ class NoDataView @JvmOverloads constructor(
         get() = R.drawable.bmp_list_empty
 
     override val tipColor: Int
-        get() = ApiReplaceUtil.getColor(mContext, R.color.colorPrimary)
+        get() = ApiReplaceUtil.getColor(mContext, R.color.colorSubTitle)
 
     override val tipSize: Float
         get() = mContext.resources.getDimension(R.dimen.textSize)

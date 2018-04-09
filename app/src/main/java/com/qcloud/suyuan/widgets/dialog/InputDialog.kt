@@ -32,6 +32,8 @@ class InputDialog @JvmOverloads constructor(
 
     private var mLastDiff = 0
 
+    private var maxLength = 0
+
     private var mInputValue: String? = null
 
     var mEtView: TextView? = null
@@ -120,8 +122,8 @@ class InputDialog @JvmOverloads constructor(
         if (check()) {
             onFinishInputListener?.onFinishInput(mInputValue)
             if (et_text.mEditText != null) {
-            KeyBoardUtil.showSoftInput(mContext, et_text.mEditText!!)
-            KeyBoardUtil.hideKeybord(mContext, et_text.mEditText!!)
+                KeyBoardUtil.showSoftInput(mContext, et_text.mEditText!!)
+                KeyBoardUtil.hideKeybord(mContext, et_text.mEditText!!)
             }
             mEtView?.text = mInputValue
             dismiss()
@@ -140,8 +142,11 @@ class InputDialog @JvmOverloads constructor(
     }
 
     fun setInputValue(value: String) {
-        et_text.inputText(value)
-//        et_text.setSelection(value.length)
+        if (maxLength > 0 && value.length > maxLength) {
+            et_text.inputText(value.substring(0, maxLength))
+        } else {
+            et_text.inputText(value)
+        }
     }
 
     fun initInputHint(@StringRes hintRes: Int) {
@@ -161,10 +166,23 @@ class InputDialog @JvmOverloads constructor(
         et_text?.inputType(inputType)
     }
 
+    /**
+     * 设置输入金额
+     * */
     fun setInputPrice() {
         val filters = arrayOf<InputFilter>(PriceInputFilter())
         if (et_text.mEditText != null) {
             et_text.mEditText?.filters = filters
+        }
+    }
+
+    /**
+     * 设置输入长度
+     * */
+    fun setMaxLength(length: Int) {
+        if (et_text.mEditText != null) {
+            maxLength = length
+            et_text.mEditText?.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(length))
         }
     }
 

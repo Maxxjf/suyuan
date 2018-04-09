@@ -23,7 +23,7 @@
             layout="@layout/card_purchase_product_details"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.6"
+            android:layout_weight="1.5"
             android:layout_marginRight="@dimen/margin_2"
             android:layout_marginEnd="@dimen/margin_2" />
 

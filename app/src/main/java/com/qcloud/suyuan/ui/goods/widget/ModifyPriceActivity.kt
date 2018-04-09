@@ -85,6 +85,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         }
 
         mEmptyView = NoDataView(this)
+        mEmptyView?.noData(R.string.tip_no_any_product)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         loadData()
@@ -105,7 +106,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                         pageNo = 1
                         loadData()
                     } else {
-                        QToast.show(this, R.string.hint_input_product_name)
+                        QToast.show(this, R.string.hint_input_product_code_and_name)
                     }
                 }
             }
@@ -120,7 +121,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                 pageNo = 1
                 loadData()
             } else {
-                QToast.show(this, R.string.hint_input_product_name)
+                QToast.show(this, R.string.hint_input_product_code_and_name)
             }
         }
     }

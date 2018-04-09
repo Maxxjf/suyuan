@@ -57,7 +57,9 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
         val index: Int = ergodicList(bean.recordId ?: "-1")
         if (index != -1) {
             val newBean = mList[index]
-            newBean.number += bean.number
+            if (newBean.number < newBean.stock) {
+                newBean.number += bean.number
+            }
             replaceBean(index, newBean)
         } else {
             addBeanAtEnd(bean)

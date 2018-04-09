@@ -11,6 +11,7 @@ import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import kotlinx.android.synthetic.main.layout_refresh_num.view.*
+import timber.log.Timber
 
 /**
  * Description: 修改数量布局
@@ -41,7 +42,6 @@ class RefreshNumView @JvmOverloads constructor(
 
     private fun initInputDialog() {
         inputDialog = InputDialog(mContext)
-        inputDialog?.setBindView(tv_number)
         inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
         inputDialog?.setInputValue(tv_number.text.toString().trim())
 
@@ -49,10 +49,13 @@ class RefreshNumView @JvmOverloads constructor(
             override fun onFinishInput(message: String?) {
                 if (StringUtil.isNotBlank(message)) {
                     currNum = message!!.toInt()
+                    if (currNum > maxNum) {
+                        currNum = maxNum
+                    }
                 } else {
-                    tv_number.text = "1"
                     currNum = 1
                 }
+
                 refreshNum(currNum)
                 onRefreshNumClickListener?.onRefreshNum(currNum-lastNum, currBean!!)
             }
@@ -93,6 +96,7 @@ class RefreshNumView @JvmOverloads constructor(
     fun refreshBean(bean: SaleProductBean) {
         currBean = bean
         currNum = bean.number
+        maxNum = bean.stock
         tv_number?.text = bean.numberStr
     }
 }

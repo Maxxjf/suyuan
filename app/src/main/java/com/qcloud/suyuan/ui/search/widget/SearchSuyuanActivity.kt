@@ -70,7 +70,7 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
                         loadData()
                         reSetEditText()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.tip_scan_suyuan_code)
                     }
                 }
             }
@@ -138,7 +138,7 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
                     tv_other_instructions.text = remark
                 }
             } else {
-                showEmptyView(getString(R.string.tip_scan_code_error))
+                showEmptyView(getString(R.string.tip_scan_suyuan_code))
             }
         }
     }

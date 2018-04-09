@@ -1,7 +1,9 @@
 package com.qcloud.suyuan.widgets.dialog
 
 import android.content.Context
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.toast.QToast
@@ -71,5 +73,9 @@ class ChangePriceDialog constructor(context: Context) : BaseDialog(context), Vie
 
         price = priceStr.toDouble()
         return true
+    }
+
+    fun clearInput() {
+        et_price.setText("")
     }
 }
