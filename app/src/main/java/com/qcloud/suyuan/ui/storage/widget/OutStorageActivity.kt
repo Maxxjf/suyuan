@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.OutStorageBean
@@ -50,6 +51,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if (i == KeyEvent.KEYCODE_ENTER) {
                     KeyBoardUtil.hideKeybord(this, et_search)
+                    keyword = et_search.text.toString().trim()
                     searchProductInfo()
                     et_search.setText("")
                     startLoadingDialog()
@@ -58,7 +60,11 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             false
         })
         btn_confirm.setOnClickListener({_ ->
-            var number=et_number.text.toString().trim().toInt()
+            var numberStr=et_number.text.toString().trim()
+            if (StringUtil.isBlank(numberStr)){
+                return@setOnClickListener
+            }
+            var number=numberStr.toInt()
             if (mCurrentBean!=null){
                 mPresenter?.outStorage(mCurrentBean!!.recordId,number)
             }
@@ -67,7 +73,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
 
     //    搜索产品消息
     override fun searchProductInfo() {
-        keyword = et_search.text.toString().trim()
+
         mPresenter?.search(keyword)
     }
 

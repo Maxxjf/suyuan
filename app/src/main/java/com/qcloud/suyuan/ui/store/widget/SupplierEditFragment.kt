@@ -113,12 +113,16 @@ class SupplierEditFragment :BaseFragment<ISupplierEditView,SupplierEditPresenter
          person=tv_person.text.toString().trim()
          phone=tv_phone.text.toString().trim()
          remark=tv_remark.text.toString().trim()
-        if (StringUtil.isBlank(name)){
-            loadErr(mContext!!.resources.getString(R.string.hint_input_name_supplier),true)
-            return  false
+        if (StringUtil.isBlank(name)) {
+            loadErr(mContext!!.resources.getString(R.string.hint_input_name_supplier))
+            return false
+        }
+        if (StringUtil.isBlank(person)) {
+            loadErr(mContext!!.getString(R.string.hint_input_contact_person))
+            return false
         }
         if(mCurrentBean==null){
-            loadErr(mContext!!.resources.getString(R.string.tip_err_return_tip),true)
+            loadErr(mContext!!.resources.getString(R.string.toast_error),true)
             return false
         }
         return  true

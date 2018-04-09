@@ -58,16 +58,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/editHeight"
-                            android:layout_marginTop="@dimen/modelMargin"
                             android:gravity="center_vertical"
                             android:text="*"
-                            android:textColor="@color/colorRed"
+                            android:textColor="@color/design_textinput_error_color_dark"
                             android:textSize="@dimen/typeTextSize" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/editHeight"
-                            android:layout_marginTop="@dimen/modelMargin"
                             android:gravity="center_vertical"
                             android:text="@string/tag_supplier_name"
                             android:textColor="@color/colorTitle"
@@ -93,7 +91,7 @@
                             android:layout_marginTop="@dimen/modelMargin"
                             android:gravity="center_vertical"
                             android:text="*"
-                            android:textColor="@color/colorRed"
+                            android:textColor="@color/design_textinput_error_color_dark"
                             android:textSize="@dimen/typeTextSize" />
 
                         <TextView
@@ -137,7 +135,6 @@
                         android:id="@+id/tv_name"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/editHeight"
-                        android:layout_marginTop="@dimen/modelMargin"
                         android:background="@drawable/frame_gray"
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_supplier_name"
@@ -182,15 +179,15 @@
                         android:textSize="@dimen/typeTextSize" />
 
                     <TextView
-                        android:maxLength="200"
                         android:id="@+id/tv_remark"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/largeEditHeight"
                         android:layout_marginTop="@dimen/modelMargin"
                         android:background="@drawable/frame_gray"
-                        android:paddingTop="@dimen/margin_2"
                         android:hint="@string/hint_input_remark"
+                        android:maxLength="200"
                         android:paddingLeft="@dimen/margin_2"
+                        android:paddingTop="@dimen/margin_2"
                         android:textColor="@color/colorTitle"
                         android:textSize="@dimen/typeTextSize" />
 
@@ -203,11 +200,9 @@
                 android:id="@+id/btn_edit"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/largeBtnHeight"
-                android:layout_marginEnd="@dimen/layoutMargin"
-                android:layout_marginLeft="@dimen/layoutMargin"
-                android:layout_marginRight="@dimen/layoutMargin"
-                android:layout_marginStart="@dimen/layoutMargin"
-                android:layout_marginTop="@dimen/modelMargin"
+                android:layout_marginBottom="@dimen/layoutMargin"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
                 android:background="@drawable/btn_radius_selector"
                 android:gravity="center"
                 android:text="@string/btn_edit_info"

@@ -17,22 +17,22 @@ import kotlinx.android.synthetic.main.fragment_supplier_add.*
  * Date: 2018/3/26.
  * 新增供应商
  */
-class SupplierAddFragment:BaseFragment<ISupplierAddView,SupplierAddPresenterImpl>(),ISupplierAddView, View.OnClickListener {
+class SupplierAddFragment : BaseFragment<ISupplierAddView, SupplierAddPresenterImpl>(), ISupplierAddView, View.OnClickListener {
 
-    private var name: String=""         //名称
-    private var address: String=""      //地址
-    private var person: String=""        //联系人
-    private var phone: String=""         //联系电话
-    private var remark: String=""          //备注
+    private var name: String = ""         //名称
+    private var address: String = ""      //地址
+    private var person: String = ""        //联系人
+    private var phone: String = ""         //联系电话
+    private var remark: String = ""          //备注
 
-    var errTip:TipDialog?=null
-    var input:InputDialog?=null
+    var errTip: TipDialog? = null
+    var input: InputDialog? = null
     override fun loadErr(errMsg: String, isShow: Boolean) {
-        if (errTip==null){
-            errTip=TipDialog(mContext!!)
+        if (errTip == null) {
+            errTip = TipDialog(mContext!!)
         }
         errTip?.setTip(errMsg)
-        if (isShow){
+        if (isShow) {
             errTip?.show()
         }
     }
@@ -50,20 +50,21 @@ class SupplierAddFragment:BaseFragment<ISupplierAddView,SupplierAddPresenterImpl
         tv_remark.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
     }
+
     override fun onClick(v: View?) {
-        when(v){
-            tv_name ->showInputDialog(tv_name)
-            tv_address ->showInputDialog(tv_address)
-            tv_person ->showInputDialog(tv_person)
-            tv_phone ->showInputDialog(tv_phone)
-            tv_remark ->showInputDialog(tv_remark)
+        when (v) {
+            tv_name -> showInputDialog(tv_name)
+            tv_address -> showInputDialog(tv_address)
+            tv_person -> showInputDialog(tv_person)
+            tv_phone -> showInputDialog(tv_phone)
+            tv_remark -> showInputDialog(tv_remark)
             btn_confirm -> addClick()
         }
     }
 
     private fun showInputDialog(view: TextView) {
-        if(input==null){
-            input= InputDialog(mContext!!)
+        if (input == null) {
+            input = InputDialog(mContext!!)
         }
         input?.setBindView(view)
         input?.setInputValue(view.text.toString().trim())
@@ -71,17 +72,17 @@ class SupplierAddFragment:BaseFragment<ISupplierAddView,SupplierAddPresenterImpl
     }
 
     /**新增按钮点击**/
-    override fun addClick(){
-        if (check()){
-            mPresenter?.addSupplier(address,name,phone,person,remark)
-            if (mContext is MySupplierActivity){
+    override fun addClick() {
+        if (check()) {
+            mPresenter?.addSupplier(address, name, phone, person, remark)
+            if (mContext is MySupplierActivity) {
                 (mContext as MySupplierActivity).loadData()
             }
         }
     }
 
     //清空输入框
-    override fun clearEdit(){
+    override fun clearEdit() {
         tv_name.setText("")
         tv_address.setText("")
         tv_person.setText("")
@@ -90,17 +91,21 @@ class SupplierAddFragment:BaseFragment<ISupplierAddView,SupplierAddPresenterImpl
     }
 
     //检查输入框
-    fun check():Boolean{
-         name=tv_name.text.toString().trim()
-         address=tv_address.text.toString().trim()
-         person=tv_person.text.toString().trim()
-         phone=tv_phone.text.toString().trim()
-         remark=tv_remark.text.toString().trim()
-        if (StringUtil.isBlank(name)){
+    fun check(): Boolean {
+        name = tv_name.text.toString().trim()
+        address = tv_address.text.toString().trim()
+        person = tv_person.text.toString().trim()
+        phone = tv_phone.text.toString().trim()
+        remark = tv_remark.text.toString().trim()
+        if (StringUtil.isBlank(name)) {
             loadErr(mContext!!.resources.getString(R.string.hint_input_name_supplier))
-            return  false
+            return false
         }
-        return  true
+        if (StringUtil.isBlank(person)) {
+            loadErr(mContext!!.getString(R.string.hint_input_contact_person))
+            return false
+        }
+        return true
     }
 
     override fun beginLoad() {

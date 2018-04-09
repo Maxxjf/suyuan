@@ -18,6 +18,7 @@ import com.qcloud.suyuan.beans.ScanCodeBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.IReturnedPersenterImpl
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
+import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.ReturnDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
@@ -33,6 +34,8 @@ import java.util.concurrent.TimeUnit
  * 退货
  */
 class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), IReturnedView, View.OnClickListener {
+
+    private var returnMoney:Double=0.00
 
 
     private var errtip: TipDialog? = null
@@ -70,7 +73,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         rv_sale_info_list.setAdapter(receiptAdapter!!)
         SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
         SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
-        PullRefreshUtil.setRefresh(rv_sale_info_list,false,false)
+        PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
 
         mGoodsEmptyView = NoDataView(this)
         mGoodsEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
@@ -82,7 +85,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         et_search.setOnKeyListener { view, i, keyEvent ->
-            if (keyEvent.action==KeyEvent.ACTION_UP){
+            if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if ((i == KeyEvent.KEYCODE_ENTER)) {
                     //et_search.requestFocus()
                     //et_search.isFocusable = false
@@ -105,14 +108,32 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
     }
 
     /**
+     * 扫码成功
+     */
+    override  fun loadDataSuccess(bean:ScanCodeBean){
+        for (item in goodsAdapter?.mList!!) {
+            if (StringUtil.isEquals(item.traceabilityId, bean.merchandise!!.traceabilityId))
+                return
+        }
+        replaceList(bean.infoList,false)
+        addListAtEnd(bean.merchandise,false)
+        showSaleInfo(bean.saleSerial!!)
+    }
+    /**
      * 展示销售的详情
      */
-    override fun showSaleInfo(bean:ScanCodeBean.SaleSerialBean){
-        tv_amount.text="${bean.amount}"
-        tv_discount.text="${bean.discount}"
-        tv_real_pay.text="${bean.realPay}"
-        tv_serial_number.text="${bean.serialNumber}"
-        tv_time.text="${bean.time}"
+    override fun showSaleInfo(bean: ScanCodeBean.SaleSerialBean) {
+        layout_info.visibility = View.VISIBLE
+        tv_amount.text = "${bean.amount}"
+        tv_discount.text = "${bean.discount}"
+        tv_real_pay.text = "${bean.realPay}"
+        tv_serial_number.text = "${bean.serialNumber}"
+        tv_time.text = "${bean.createDate}"
+        var store = UserInfoUtil.getStore()
+        tv_shop_name.text = "${store?.name}"
+        tv_money_getter.text = "${store?.shopkeeperName}"
+        returnMoney+=bean.amount
+        tv_tag_return_money.text="$returnMoney"
     }
 
 
@@ -149,10 +170,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     private fun ReturnGoodsConfirm() {
         var money: String = returnDialog!!.getMoney()
-//        if (!StringUtil.isMoneyStr(money)) {
-//            loadErr(getString(R.string.hint_input_money))
-//            return
-//        }
+        if (!StringUtil.isMoneyStr(money)) {
+            loadErr(getString(R.string.hint_input_money))
+            return
+        }
         var list = goodsAdapter!!.mList
         if (list == null || list.isEmpty()) {
             loadErr(getString(R.string.toast_list_empty))
@@ -168,6 +189,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
                 if (receiptAdapter != null) {
                     receiptAdapter!!.replaceList(beans)
                 }
+                tv_goods_number.text = "${goodsAdapter!!.mList.size}"
                 rv_sale_info_list?.isMore(isNext)
                 hideEmptyView()
             } else {
@@ -181,6 +203,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
             rv_credit_info_list?.loadedFinish()
             if (bean != null) {
                 goodsAdapter?.addBeanAtEnd(bean)
+
             } else {
                 loadErr(resources.getString(R.string.tip_no_data))
                 rv_credit_info_list?.isMore(false)

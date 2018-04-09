@@ -21,4 +21,6 @@ interface IStoreInfoView :BaseView {
      * 展示修改密码对话框
      */
     fun showPasswordDialog()
+
+    fun editPwSuccess(string: String)
 }
