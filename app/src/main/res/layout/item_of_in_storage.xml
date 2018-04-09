@@ -12,7 +12,7 @@
         android:layout_weight="1.0"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_in_storage_batch"/>
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_weight="1.2"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_in_storage_time"/>
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_weight="1.0"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_in_storage_number"/>
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_weight="1.0"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_stock"/>
 
     <TextView
@@ -52,7 +52,7 @@
         android:layout_weight="1.2"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_in_storage_valid"/>
 
     <TextView
@@ -62,7 +62,7 @@
         android:layout_weight="1.0"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_in_storage_price"/>
 
     <TextView
@@ -72,7 +72,7 @@
         android:layout_weight="1.0"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_operator"/>
 
     <LinearLayout
@@ -89,7 +89,7 @@
             android:layout_height="@dimen/btnHeight"
             android:background="@drawable/btn_frame_radius_selector"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/btnTextSize"
+            android:textSize="@dimen/smallBtnTextSize"
             android:text="@string/btn_print"/>
     </LinearLayout>
 </LinearLayout>

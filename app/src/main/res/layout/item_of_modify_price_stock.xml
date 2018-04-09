@@ -29,7 +29,7 @@
         android:layout_weight="1.5"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_name"/>
 
     <TextView
@@ -40,7 +40,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_spec"/>
 
     <TextView
@@ -51,7 +51,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_manufacturer"/>
 
     <com.qcloud.suyuan.widgets.customview.ModifyPriceView

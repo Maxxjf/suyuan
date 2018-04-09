@@ -38,8 +38,8 @@ class ValidWarnAdapter(context: Context): CommonRecyclerAdapter<ValidWarnBean>(c
                     .setText(R.id.tv_product_spec, specification)
                     .setText(R.id.tv_product_manufacture, millName)
                     .setText(R.id.tv_product_stock, surplusNumStr)
-                    .setText(R.id.tv_product_valid, stopDate)
-                    .setText(R.id.tv_product_batch, batchNum)
+                    .setText(R.id.tv_product_valid, validDate)
+                    .setText(R.id.tv_product_batch, "批次条形码: $batchNum")
         }
 
         btnOutStorage.setOnClickListener {

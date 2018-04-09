@@ -102,6 +102,9 @@ class ValidWarnFragment: BaseFragment<IValidWarnView, ValidWarnPresenterImpl>(),
             override fun onBtnClick(view: View) {
                 if (bean != null) {
                     mPresenter?.outStorage(bean.recordId, bean.surplusNum)
+                } else {
+                    pageNo = 1
+                    loadData()
                 }
             }
         }

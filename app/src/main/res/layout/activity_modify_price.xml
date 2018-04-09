@@ -78,7 +78,7 @@
             android:layout_weight="0.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_image"/>
 
         <TextView
@@ -87,7 +87,7 @@
             android:layout_weight="1.5"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_name"/>
 
         <TextView
@@ -96,7 +96,7 @@
             android:layout_weight="1.2"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_spec"/>
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_weight="1.3"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_manufacturer"/>
 
         <TextView
@@ -114,7 +114,7 @@
             android:layout_weight="1.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_selling_price"/>
 
 
@@ -124,7 +124,7 @@
             android:layout_weight="1.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_stock_warn_line"/>
     </LinearLayout>
 

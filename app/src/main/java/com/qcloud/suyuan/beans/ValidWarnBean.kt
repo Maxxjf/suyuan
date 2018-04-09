@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -28,8 +30,24 @@ class ValidWarnBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var unit: String? = null    // 单位
         get() = if (StringUtil.isBlank(field)) "" else field
-    var stopDate: String? = null    // 入库批次
-        get() = if (StringUtil.isBlank(field)) "" else field
+    var productionDate: String? = null  // 生产日期
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
+    var stopDate: String? = null    // 有效期截止时间
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
+    var validDate: String? = null
+        get() = productionDate + "至" + stopDate
     var recordId: String = "0"      // 入库批次id
 
     override fun toString(): String {

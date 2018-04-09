@@ -12,7 +12,7 @@
         android:layout_weight="1.8"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="9785644239047588"/>
 
     <TextView
@@ -23,7 +23,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
 
     <TextView
@@ -34,7 +34,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_spec"/>
 
     <TextView
@@ -45,7 +45,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_manufacturer"/>
 
     <TextView
@@ -56,7 +56,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_operator"/>
 
     <TextView
@@ -67,6 +67,6 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_last_in_time"/>
 </LinearLayout>

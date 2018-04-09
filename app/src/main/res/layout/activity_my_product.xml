@@ -148,7 +148,7 @@
             android:layout_weight="1.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_bar_code"/>
 
         <TextView
@@ -157,7 +157,7 @@
             android:layout_weight="1.5"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_name"/>
 
         <TextView
@@ -166,7 +166,7 @@
             android:layout_weight="1.2"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_spec"/>
 
         <TextView
@@ -175,7 +175,7 @@
             android:layout_weight="1.2"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_manufacturer"/>
 
         <TextView
@@ -184,7 +184,7 @@
             android:layout_weight="1.0"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_operator"/>
 
         <TextView
@@ -193,7 +193,7 @@
             android:layout_weight="1.5"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_last_in_time"/>
     </LinearLayout>
 

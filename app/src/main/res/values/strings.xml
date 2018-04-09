@@ -222,7 +222,7 @@
     <string name="tip_re_init_printer">打印机异常，尝试重连</string>
     <string name="tip_no_paper_notice">打印缺纸，请放入纸后重试</string>
     <string name="tip_low_battery">电池电量低，请连接充电器！</string>
-    <string name="tip_out_storage_confirm">此操作会将当前该批次的库存撤消，不会影响已经售卖的商品，请问是否确认撤消</string>
+    <string name="tip_out_storage_confirm">此操作会将当前该批次的库存撤销，不会影响已经售卖的商品，请问是否确认撤销</string>
     <string name="tip_out_storage_success">产品出库完成，库存已更新~</string>
     <string name="tip_scan_suyuan_code">请扫溯源码~</string>
     <string name="tip_scan_batch_code">请扫批次条形码~</string>

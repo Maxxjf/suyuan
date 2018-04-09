@@ -12,7 +12,7 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="1"/>
 
     <TextView
@@ -23,7 +23,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
 
     <TextView
@@ -34,7 +34,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_spec"/>
 
     <LinearLayout
@@ -66,7 +66,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textColor="@color/colorRed"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/miniTextSize"
             tools:text="@string/tag_product_valid"/>
 
         <TextView
@@ -76,7 +76,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textColor="@color/colorRed"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/miniTextSize"
             android:text="@string/tag_has_pass_valid_date"/>
     </LinearLayout>
 
@@ -87,7 +87,7 @@
         android:layout_weight="0.8"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_stock"/>
 
     <TextView
@@ -98,7 +98,7 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_selling_price"/>
 
     <LinearLayout

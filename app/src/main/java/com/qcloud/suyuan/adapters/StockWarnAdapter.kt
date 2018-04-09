@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.adapters
 
 import android.content.Context
+import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
@@ -22,11 +23,17 @@ class StockWarnAdapter(context: Context) : CommonRecyclerAdapter<StockWarnBean>(
         val bean = mList[position]
 
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
+        val tvStock = holder.get<TextView>(R.id.tv_product_stock)
 
         if (position % 2 == 0) {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
         } else {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+        }
+        if (bean.amount <= bean.cordon) {
+            tvStock.setTextColor(ApiReplaceUtil.getColor(mContext, R.color.colorRed))
+        } else {
+            tvStock.setTextColor(ApiReplaceUtil.getColor(mContext, R.color.colorTitle))
         }
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)

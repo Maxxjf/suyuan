@@ -26,43 +26,43 @@
         android:id="@+id/tv_product_bar_code"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="9785644239047588"/>
 
     <TextView
         android:id="@+id/tv_product_name"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.3"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="安环曹素环250克/升+金何玲10%(水剂+5%安环曹素昂250克)"/>
 
     <TextView
         android:id="@+id/tv_product_spec"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.0"
+        android:layout_weight="0.9"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_spec"/>
 
     <TextView
         android:id="@+id/tv_product_manufacture"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.0"
+        android:layout_weight="0.9"
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_manufacturer"/>
 
     <TextView
@@ -73,13 +73,13 @@
         android:maxLines="3"
         android:gravity="center"
         android:textColor="@color/colorTitle"
-        android:textSize="@dimen/textSize"
+        android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_stock"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1.7"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/margin_1">
@@ -91,7 +91,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textColor="@color/colorRed"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/miniTextSize"
             tools:text="@string/tag_product_valid"/>
 
         <TextView
@@ -101,7 +101,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textColor="@color/colorRed"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/miniTextSize"
             tools:text="@string/tag_product_valid"/>
     </LinearLayout>
 
@@ -119,7 +119,7 @@
             android:layout_height="@dimen/btnHeight"
             android:background="@drawable/btn_frame_radius_selector"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/btnTextSize"
+            android:textSize="@dimen/smallBtnTextSize"
             android:text="@string/btn_out_storage"/>
     </LinearLayout>
 </LinearLayout>

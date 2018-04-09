@@ -90,7 +90,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_goods_order"/>
 
             <TextView
@@ -99,7 +99,7 @@
                 android:layout_weight="1.5"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_product_name"/>
 
             <TextView
@@ -108,7 +108,7 @@
                 android:layout_weight="1.2"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_goods_rule"/>
 
             <TextView
@@ -117,7 +117,7 @@
                 android:layout_weight="1.6"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_number"/>
 
             <TextView
@@ -126,7 +126,7 @@
                 android:layout_weight="1.2"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_goods_data"/>
 
             <TextView
@@ -135,7 +135,7 @@
                 android:layout_weight="0.8"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_stock"/>
 
             <TextView
@@ -144,7 +144,7 @@
                 android:layout_weight="0.8"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_selling_price"/>
 
             <TextView
@@ -153,7 +153,7 @@
                 android:layout_weight="0.8"
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/typeTextSize"
+                android:textSize="@dimen/textSize"
                 android:text="@string/tag_goods_control"/>
         </LinearLayout>
 

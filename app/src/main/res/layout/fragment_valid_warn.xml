@@ -16,43 +16,43 @@
             android:layout_weight="0.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_image"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.3"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_bar_code"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.3"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_name"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.0"
+            android:layout_weight="0.9"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_spec"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.0"
+            android:layout_weight="0.9"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_manufacturer"/>
 
         <TextView
@@ -61,16 +61,16 @@
             android:layout_weight="0.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_stock"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.2"
+            android:layout_weight="1.7"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"
+            android:textSize="@dimen/textSize"
             android:text="@string/tag_product_valid"/>
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/typeTextSize"/>
+            android:textSize="@dimen/textSize"/>
     </LinearLayout>
 
     <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
