@@ -70,7 +70,7 @@
                     android:textColor="@color/colorTitle"
                     android:textSize="@dimen/textSize"
                     android:textColorHint="@color/colorGray"
-                    android:hint="@string/hint_suyuan_code_search"/>
+                    android:hint="@string/hint_batch_code_search"/>
 
             </LinearLayout>
         </RelativeLayout>

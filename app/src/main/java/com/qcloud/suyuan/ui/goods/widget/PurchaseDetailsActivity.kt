@@ -190,6 +190,10 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun replaceSupplierList(beans: List<SupplierBean>) {
         if (isRunning) {
+            if (beans.size > 1) {
+                currSupplier = beans[0]
+                tv_in_storage_supplier.text = currSupplier!!.name
+            }
             btn_in_storage_supplier.post {
                 val width = btn_in_storage_supplier.width
                 supplierPop = DropDownBtnPop(this, beans, width)

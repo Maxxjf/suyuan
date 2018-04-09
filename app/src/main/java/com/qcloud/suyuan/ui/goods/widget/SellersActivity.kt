@@ -182,7 +182,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        showEmptyView(getString(R.string.tip_to_scan_or_search))
+        showEmptyView(getString(R.string.hint_batch_code_search))
     }
 
     /**
@@ -197,7 +197,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     if (StringUtil.isNotBlank(keyword)) {
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.hint_batch_code_search)
                     }
                 }
             }
@@ -209,7 +209,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             if (StringUtil.isNotBlank(keyword)) {
                 loadData()
             } else {
-                QToast.show(this, R.string.toast_no_input_value)
+                QToast.show(this, R.string.hint_batch_code_search)
             }
         }
     }
@@ -508,11 +508,11 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     when (bean.funret) {
                         STEP5001ERR, STEP5012ERR, STEP5022ERR, STEP6002ERR, STEP6013ERR -> {
                             Timber.e("读证错误:" + Util.bytesToHexString(Util.intTo2byte(bean.funret))!!)
-                            QToast.show(this@SellersActivity, R.string.toast_read_card_error)
+                            //QToast.show(this@SellersActivity, R.string.toast_read_card_error)
                         }
                         PLEASECHECKNETWORKERR -> {
                             Timber.e( "请检查网络连接")
-                            QToast.show(this@SellersActivity, R.string.toast_read_card_timeout)
+                            //QToast.show(this@SellersActivity, R.string.toast_read_card_timeout)
                         }
                         STEP5001OK -> {
                             NFCHelper.instance.uartSend2Head(12, bean.uartRecv)

@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.qclib.utils.ValidateUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.IDBean
@@ -84,6 +85,10 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
 
         if (StringUtil.isBlank(idCode)) {
             QToast.show(mContext, R.string.hint_input_user_id)
+            return false
+        }
+        if (!ValidateUtil.isIdCard(idCode)) {
+            QToast.show(mContext, R.string.tip_input_right_id_card)
             return false
         }
         if (StringUtil.isBlank(name)) {
