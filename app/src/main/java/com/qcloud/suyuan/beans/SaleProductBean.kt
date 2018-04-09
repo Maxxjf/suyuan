@@ -24,4 +24,8 @@ class SaleProductBean {
     var stockStr: String = "0"
         get() = stock.toString()
     var active: Boolean = true          // 是否过期：未过期(true)，已过期(false)
+    override fun toString(): String {
+        return "SaleProductBean(recordId=$recordId, number=$number, price=$price, specification=$specification, stock=$stock, active=$active)"
+    }
+
 }

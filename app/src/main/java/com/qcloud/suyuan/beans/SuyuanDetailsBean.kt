@@ -7,4 +7,8 @@ package com.qcloud.suyuan.beans
  */
 class SuyuanDetailsBean {
     var traceabilityInfo: SuyuanInfoBean? = null
+    override fun toString(): String {
+        return "SuyuanDetailsBean(traceabilityInfo=$traceabilityInfo)"
+    }
+
 }

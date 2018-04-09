@@ -33,5 +33,9 @@ class ProductMillBean {
     var isRemove: Int = 0
     var productionClassify: String? = null
     var remark: String? = null
+    override fun toString(): String {
+        return "ProductMillBean(id=$id, email=$email, fax=$fax, postcode=$postcode, country=$country, provinceCode=$provinceCode, provinceName=$provinceName, type=$type, linkman=$linkman, number=$number, updateTime=$updateTime, createTime=$createTime, isRemove=$isRemove, productionClassify=$productionClassify, remark=$remark)"
+    }
+
 
 }

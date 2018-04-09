@@ -21,4 +21,8 @@ class ProductAttrNameBean {
     var state: Int = 0
     var type: Int = 0       // 属性类型1下拉 2文本 3表格
     var isCrux: Int = 0     // 是否必填(0否1是)
+    override fun toString(): String {
+        return "ProductAttrNameBean(id=$id, isRemove=$isRemove, state=$state, type=$type, isCrux=$isCrux)"
+    }
+
 }

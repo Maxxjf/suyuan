@@ -108,7 +108,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_suyuan_code"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -117,7 +117,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_name"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -126,7 +126,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_rule"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -135,7 +135,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_data"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -144,7 +144,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_control"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
             </LinearLayout>
 
@@ -340,7 +340,7 @@
                     android:gravity="center"
                     android:text="@string/tag_name"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -349,7 +349,7 @@
                     android:gravity="center"
                     android:text="@string/tag_number"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -358,7 +358,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_rule"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -367,7 +367,7 @@
                     android:gravity="center"
                     android:text="@string/tag_price"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
             </LinearLayout>
 
             <RelativeLayout

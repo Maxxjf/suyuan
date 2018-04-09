@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_14"
+    android:paddingTop="@dimen/margin_2"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_2"
     android:orientation="horizontal">
 
     <TextView
@@ -13,7 +15,7 @@
         android:gravity="center"
         android:text="@string/tab_invalid_suyuan"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_name"
@@ -23,7 +25,7 @@
         android:gravity="center"
         android:text="@string/tab_return_name"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_rule"
@@ -33,7 +35,7 @@
         android:gravity="center"
         android:text="@string/tab_goods_rule"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_handle_member"
@@ -43,7 +45,7 @@
         android:gravity="center"
         android:text="@string/tab_handle_member"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="0dp"
@@ -52,7 +54,7 @@
         android:gravity="center"
         android:text="@string/tab_time"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
 
 </LinearLayout>

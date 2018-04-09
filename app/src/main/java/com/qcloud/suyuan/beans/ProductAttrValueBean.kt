@@ -19,4 +19,8 @@ class ProductAttrValueBean {
     var isRemove: Int = 0
     var state: Int = 0
     var sort: Int = 1
+    override fun toString(): String {
+        return "ProductAttrValueBean(id=$id, nameId=$nameId, isRemove=$isRemove, state=$state, sort=$sort)"
+    }
+
 }

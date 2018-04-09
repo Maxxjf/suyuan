@@ -18,4 +18,8 @@ class TraceabilityBean {
     var storeName: String? = null   // 门店名
         get() = if (StringUtil.isBlank(field)) "" else field
     var time: String? = null        // 标贴时间
+    override fun toString(): String {
+        return "TraceabilityBean(codeUrl=$codeUrl, time=$time)"
+    }
+
 }

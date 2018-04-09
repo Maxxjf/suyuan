@@ -15,4 +15,8 @@ class ProductDetailsBean {
         get() = price.toString()
     var warehouseList: List<InStorageRecordBean>? = null    // 商品入库记录
     var goodsMedio: List<ProductMedioBean>? = null
+    override fun toString(): String {
+        return "ProductDetailsBean(goods=$goods, info=$info, mill=$mill, totalAmount=$totalAmount, price=$price, warehouseList=$warehouseList, goodsMedio=$goodsMedio)"
+    }
+
 }

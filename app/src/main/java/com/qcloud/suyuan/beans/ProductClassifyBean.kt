@@ -17,4 +17,8 @@ class ProductClassifyBean {
     var state: Int = 0
     var parentId: String? = null
     var ordinal: Int = 0
+    override fun toString(): String {
+        return "ProductClassifyBean(id='$id', isleaf=$isleaf, level=$level, remark=$remark, state=$state, parentId=$parentId, ordinal=$ordinal)"
+    }
+
 }

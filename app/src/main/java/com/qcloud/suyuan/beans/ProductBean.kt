@@ -40,5 +40,9 @@ class ProductBean : Serializable {
         get() = if (StringUtil.isBlank(field)) "" else field
     var isPlatform: Int = 0 // 是否平台商品 1是 0不是
     var operaName: String? = null   // 操作人
+    override fun toString(): String {
+        return "ProductBean(id=$id, imageUrl=$imageUrl, image=$image, retailPrice=$retailPrice, stock=$stock, amount=$amount, cordon=$cordon, isPlatform=$isPlatform, operaName=$operaName)"
+    }
+
 
 }

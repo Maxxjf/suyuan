@@ -20,4 +20,9 @@ class SuyuanRecordBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var traceabilityCode: String? = null// 溯源码
         get() = if (StringUtil.isBlank(field)) "" else field
+
+    override fun toString(): String {
+        return "SuyuanRecordBean()"
+    }
+
 }

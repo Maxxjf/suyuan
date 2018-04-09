@@ -1,7 +1,5 @@
 package com.qcloud.suyuan.beans
 
-import com.qcloud.qclib.utils.StringUtil
-
 /**
  * Description: 商品属性集
  * Author: gaobaiqiang
@@ -14,4 +12,8 @@ class ProductMedioBean {
 //    var attrType: String? = null
     var attributeName: ProductAttrNameBean? = null
     var attributeValues: List<ProductAttrValueBean>? = null
+    override fun toString(): String {
+        return "ProductMedioBean(id=$id, attributeName=$attributeName, attributeValues=$attributeValues)"
+    }
+
 }

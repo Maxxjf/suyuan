@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.utils.StringUtil
+
 /**
  * 类型：CreditInfoBean
  * Author: iceberg
@@ -18,9 +20,12 @@ class CreditInfoBean {
 
     var alreadyRepayment: Double = 0.0
     var serialNumber: String? = null
+        get() = if (StringUtil.isBlank(field)) "" else field
     var shouldRepayment:  Double = 0.0
     var time: String? = null
+        get() = if (StringUtil.isBlank(field)) "" else field
     var id: String? = null
+        get() = if (StringUtil.isBlank(field)) "" else field
     override fun toString(): String =
             "CreditInfoBean(alreadyRepayment=$alreadyRepayment, serialNumber=$serialNumber, shouldRepayment=$shouldRepayment, time=$time, id=$id)"
 

@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.utils.StringUtil
+
 /**
  * 类型：销售详情
  * Author: iceberg
@@ -26,8 +28,11 @@ class SaleInfoBean {
         var goodsName: String? = null
         var goodsNum: Int = 0
         var id: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var price: Double = 0.00
         var specification: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
+
         override fun toString(): String {
             return "ListBean(goodsName=$goodsName, goodsNum=$goodsNum, id=$id, price=$price, specification=$specification)"
         }
@@ -38,6 +43,7 @@ class SaleInfoBean {
     override fun toString(): String {
         return "SaleInfoBean(refundPrice=$refundPrice, list=$list)"
     }
+
     fun isNext(pageSize: Int): Boolean {
         if (list == null) {
             return false

@@ -132,7 +132,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_name"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -141,7 +141,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_idcard"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -150,7 +150,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_phone"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -159,7 +159,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_credit"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
             </LinearLayout>
 
             <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
@@ -215,7 +215,7 @@
                     android:gravity="center"
                     android:text="@string/tab_time"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -224,7 +224,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_water"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -233,7 +233,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_credit"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -242,7 +242,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_payed_money"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -251,7 +251,7 @@
                     android:gravity="center"
                     android:text="@string/tag_goods_control"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
             </LinearLayout>
 

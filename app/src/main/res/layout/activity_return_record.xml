@@ -86,7 +86,7 @@
             android:gravity="center"
             android:text="@string/tab_invalid_suyuan"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/typeTextSize" />
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:layout_width="0dp"
@@ -95,7 +95,7 @@
             android:gravity="center"
             android:text="@string/tab_return_name"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/typeTextSize" />
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:layout_width="0dp"
@@ -104,7 +104,7 @@
             android:gravity="center"
             android:text="@string/tab_goods_rule"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/typeTextSize" />
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:layout_width="0dp"
@@ -113,7 +113,7 @@
             android:gravity="center"
             android:text="@string/tab_handle_member"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/typeTextSize" />
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:layout_width="0dp"
@@ -122,7 +122,7 @@
             android:gravity="center"
             android:text="@string/tab_time"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/typeTextSize" />
+            android:textSize="@dimen/textSize" />
 
     </LinearLayout>
     <View

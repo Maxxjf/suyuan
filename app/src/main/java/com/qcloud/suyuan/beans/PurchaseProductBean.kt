@@ -39,4 +39,8 @@ class PurchaseProductBean: Serializable {
     var stockPriceStr: String = "0.00"
         get() = stockPrice.toString()
     var recordId: String? = null
+    override fun toString(): String {
+        return "PurchaseProductBean(id=$id, image=$image, storageNum=$storageNum, storageTime=$storageTime, stock=$stock, expDate=$expDate, endDate=$endDate, surplusNum=$surplusNum, stockPrice=$stockPrice, recordId=$recordId)"
+    }
+
 }
