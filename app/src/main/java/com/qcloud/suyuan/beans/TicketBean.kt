@@ -28,4 +28,9 @@ class TicketBean {
     var giveMoney: Double = 0.00    // 找零
     var giveMoneyStr: String = "0.00元"
         get() = String.format("%1$.2f元", giveMoney)
+
+    override fun toString(): String {
+        return "TicketBean(storeName='$storeName', orderNo='$orderNo', orderTime='$orderTime', list=$list, totalNumber=$totalNumber, totalAccount=$totalAccount, payMethod=$payMethod, discount=$discount, realPay=$realPay, giveMoney=$giveMoney)"
+    }
+
 }

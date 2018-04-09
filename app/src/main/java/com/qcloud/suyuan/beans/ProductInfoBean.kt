@@ -52,4 +52,8 @@ class ProductInfoBean {
     var attributeValueId: String? = null    // 产品属性对应值
     var basicParam: String? = null
     var ratio: String? = null
+    override fun toString(): String {
+        return "ProductInfoBean(id=$id, image=$image, merchandiseId=$merchandiseId, dosageForm=$dosageForm, remark=$remark, activeprinciple=$activeprinciple, attributeNameId=$attributeNameId, attributeValueId=$attributeValueId, basicParam=$basicParam, ratio=$ratio)"
+    }
+
 }

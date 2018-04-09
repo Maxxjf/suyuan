@@ -9,4 +9,8 @@ class SubmitProductBean {
     var recordId: String = "0"
     var goodsNum: Int = 1
     var price: Double = 0.00
+    override fun toString(): String {
+        return "SubmitProductBean(recordId='$recordId', goodsNum=$goodsNum, price=$price)"
+    }
+
 }

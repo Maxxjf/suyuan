@@ -107,7 +107,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_water"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -116,7 +116,7 @@
                     android:gravity="center"
                     android:text="@string/tab_time"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -125,7 +125,7 @@
                     android:gravity="center"
                     android:text="@string/tag_real_cash"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -134,7 +134,7 @@
                     android:gravity="center"
                     android:text="@string/tag_list_buyer"
                     android:textColor="@color/colorText"
-                    android:textSize="@dimen/typeTextSize" />
+                    android:textSize="@dimen/textSize" />
 
 
             </LinearLayout>

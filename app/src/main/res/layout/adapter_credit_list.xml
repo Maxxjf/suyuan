@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_8"
+    android:paddingTop="@dimen/margin_2"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_2"
     android:orientation="horizontal">
 
     <TextView
@@ -13,7 +15,7 @@
         android:gravity="center"
         android:text="@string/tag_list_name"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_idcard"
@@ -23,7 +25,7 @@
         android:gravity="center"
         android:text="@string/tag_list_idcard"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_phone"
@@ -33,7 +35,7 @@
         android:gravity="center"
         android:text="@string/tag_list_phone"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_money"
@@ -43,7 +45,7 @@
         android:gravity="center"
         android:text="@string/tag_list_credit"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
 
 </LinearLayout>

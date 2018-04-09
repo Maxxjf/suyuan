@@ -7,4 +7,8 @@ package com.qcloud.suyuan.beans
  */
 class SellersBean {
     var cart: SaleProductBean? = null
+    override fun toString(): String {
+        return "SellersBean(cart=$cart)"
+    }
+
 }

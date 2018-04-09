@@ -27,4 +27,9 @@ class ProductGoodsBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var millAddress: String? = null     // 厂家地址
         get() = if (StringUtil.isBlank(field)) "" else field
+
+    override fun toString(): String {
+        return "ProductGoodsBean(id=$id, classifyId=$classifyId, isPlatform=$isPlatform, isRemove=$isRemove, shopId=$shopId, state=$state, millId=$millId)"
+    }
+
 }

@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_6"
+    android:paddingTop="@dimen/margin_2"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_2"
     android:orientation="horizontal">
 
     <TextView
@@ -13,7 +15,7 @@
         android:gravity="center"
         android:text="@string/tag_name"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_number"
@@ -23,7 +25,7 @@
         android:gravity="center"
         android:text="@string/tag_number"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_rule"
@@ -33,7 +35,7 @@
         android:gravity="center"
         android:text="@string/tag_goods_rule"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_price"
@@ -43,7 +45,7 @@
         android:gravity="center"
         android:text="@string/tag_price"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
 
 </LinearLayout>

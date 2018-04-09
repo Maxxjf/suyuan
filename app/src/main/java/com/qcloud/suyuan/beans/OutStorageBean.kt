@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.utils.StringUtil
+
 /**
  * 类型：出库的产品信息
  * Author: iceberg
@@ -30,19 +32,30 @@ class OutStorageBean {
          * unit : 单位
          */
         var classifyName: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var endDate: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var expDate: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var id: String =""
+            get() = if (StringUtil.isBlank(field)) "" else field
         var image: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var millName: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var name: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var recordId: String = ""
+            get() = if (StringUtil.isBlank(field)) "" else field
         var specification: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var stockPrice: Double = 0.00
         var storageNum: Int = 0
         var storageTime: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         var surplusNum: Int = 0
         var unit: String? = null
+            get() = if (StringUtil.isBlank(field)) "" else field
         override fun toString(): String {
             return "InfoBean(classifyName=$classifyName, endDate=$endDate, expDate=$expDate, id=$id, image=$image, millName=$millName, name=$name, recordId=$recordId, specification=$specification, stockPrice=$stockPrice, storageNum=$storageNum, storageTime=$storageTime, surplusNum=$surplusNum, unit=$unit)"
         }

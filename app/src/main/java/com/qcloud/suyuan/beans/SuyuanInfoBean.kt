@@ -86,7 +86,15 @@ class SuyuanInfoBean {
     var storePhone: String? = null      // 门店电话
         get() = if (StringUtil.isBlank(field)) "" else field
     var provinceCode: String? = null    // 门店省编码
+        get() = if (StringUtil.isBlank(field)) "" else field
     var cityCode: String? = null        // 门店市编码
+        get() = if (StringUtil.isBlank(field)) "" else field
     var districtCode: String? = null    // 门店地区编码
+        get() = if (StringUtil.isBlank(field)) "" else field
     var supplier: String? = null        // 供应商名称
+        get() = if (StringUtil.isBlank(field)) "" else field
+    override fun toString(): String {
+        return "SuyuanInfoBean(id=$id, count=$count, saleInfoId=$saleInfoId, isDelete=$isDelete, traceabilityCode=$traceabilityCode, goodId=$goodId, goodsImage=$goodsImage, goodsRemark=$goodsRemark, activeIngredient=$activeIngredient, activeIngredientContent=$activeIngredientContent, agentiaType=$agentiaType, attrName=$attrName, attrValues=$attrValues, content=$content, purchaserImage=$purchaserImage, gender=$gender, shopId=$shopId, provinceCode=$provinceCode, cityCode=$cityCode, districtCode=$districtCode, supplier=$supplier)"
+    }
+
 }

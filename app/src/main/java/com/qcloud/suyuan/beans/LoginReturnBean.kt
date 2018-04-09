@@ -10,4 +10,8 @@ class LoginReturnBean {
     var loginState: Int = 0     // 0失败 1成功
     var token: String = ""
     var user: UserBean? = null
+    override fun toString(): String {
+        return "LoginReturnBean(loginState=$loginState, token='$token', user=$user)"
+    }
+
 }

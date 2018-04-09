@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_12"
+    android:paddingTop="@dimen/margin_2"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_2"
     android:orientation="horizontal">
 
     <TextView
@@ -13,7 +15,7 @@
         android:gravity="center"
         android:text="@string/tab_time"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_water_number"
@@ -23,7 +25,7 @@
         android:gravity="center"
         android:text="@string/tag_list_water"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
 
     <TextView
         android:id="@+id/tv_credit"
@@ -33,7 +35,7 @@
         android:gravity="center"
         android:text="@string/tag_list_credit"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
     <TextView
         android:id="@+id/tv_payed_money"
         android:layout_width="0dp"
@@ -42,20 +44,20 @@
         android:gravity="center"
         android:text="@string/tag_list_payed_money"
         android:textColor="@color/colorText"
-        android:textSize="@dimen/textSize" />
+        android:textSize="@dimen/miniTextSize" />
     <RelativeLayout
         android:layout_weight="1"
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent">
         <Button
-            android:textSize="@dimen/typeTextSize"
-            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            android:textColor="@color/colorText"
             android:text="@string/btn_pay_credit"
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_radius_selector"
+            android:background="@drawable/btn_frame_radius_selector"
         />
     </RelativeLayout>
 

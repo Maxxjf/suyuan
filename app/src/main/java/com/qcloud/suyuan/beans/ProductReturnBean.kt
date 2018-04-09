@@ -18,4 +18,5 @@ class ProductReturnBean {
         }
         return list!!.size >= pageSize
     }
+
 }

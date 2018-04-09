@@ -8,4 +8,8 @@ package com.qcloud.suyuan.beans
 class ProductComponentBean {
     var id: String = "0"    // id
     var valueList: List<String> = ArrayList()
+    override fun toString(): String {
+        return "ProductComponentBean(id='$id', valueList=$valueList)"
+    }
+
 }

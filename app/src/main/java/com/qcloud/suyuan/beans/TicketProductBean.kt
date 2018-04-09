@@ -34,4 +34,9 @@ class TicketProductBean {
     var number: Int = 1
     var numberStr: String = "1" // 数量
         get() = number.toString()
+
+    override fun toString(): String {
+        return "TicketProductBean(price=$price, number=$number)"
+    }
+
 }

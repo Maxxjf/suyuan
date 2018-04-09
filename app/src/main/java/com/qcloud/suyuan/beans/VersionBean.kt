@@ -8,4 +8,8 @@ package com.qcloud.suyuan.beans
 class VersionBean {
     var hasLatest: Boolean = false      // 是否有新版本
     var latestVersion: String? = null   // 新版本名
+    override fun toString(): String {
+        return "VersionBean(hasLatest=$hasLatest, latestVersion=$latestVersion)"
+    }
+
 }

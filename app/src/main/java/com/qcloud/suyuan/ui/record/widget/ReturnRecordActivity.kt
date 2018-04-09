@@ -57,7 +57,7 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
         if (view != null) {
             when (view.id) {
                 R.id.tv_date_from -> showStartPicker()
-                R.id.tv_date_to ->showEndPicker()
+                R.id.tv_date_to -> showEndPicker()
             }
         }
     }
@@ -91,7 +91,7 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
     private fun loadData() {
         startTime = tv_date_from.text.toString().trim()
         endTime = tv_date_to.text.toString().trim()
-        if(DateUtil.compareTime(startTime,endTime, DateStyleEnum.YYYY_MM_DD.value)==1){
+        if (DateUtil.compareTime(startTime, endTime, DateStyleEnum.YYYY_MM_DD.value) == 1) {
             loadErr(resources.getString(R.string.toast_start_bigger_end))
             return
         }
@@ -140,14 +140,15 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
             }
         }
     }
+
     private fun showStartPicker() {
-        if (startDatePicker == null){
-            startDatePicker= DatePickerDialog(this)
-            startDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+        if (startDatePicker == null) {
+            startDatePicker = DatePickerDialog(this)
+            startDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectedListener {
                 @SuppressLint("SetTextI18n")
                 override fun dateSelected(calendar: Calendar?) {
                     if (calendar != null) {
-                        tv_date_from.text="${calendar.year}-${calendar.month}-${calendar.day}"
+                        tv_date_from.text = "${calendar.year}-${calendar.month}-${calendar.day}"
                         loadData()
                     }
                 }
@@ -156,14 +157,14 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
         startDatePicker?.show()
     }
 
-    private fun showEndPicker(){
-        if (endDatePicker == null){
-            endDatePicker= DatePickerDialog(this)
-            endDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
+    private fun showEndPicker() {
+        if (endDatePicker == null) {
+            endDatePicker = DatePickerDialog(this)
+            endDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectedListener {
                 @SuppressLint("SetTextI18n")
                 override fun dateSelected(calendar: Calendar?) {
                     if (calendar != null) {
-                        tv_date_to.text="${calendar.year}-${calendar.month}-${calendar.day}"
+                        tv_date_to.text = "${calendar.year}-${calendar.month}-${calendar.day}"
                         loadData()
                     }
                 }
@@ -171,6 +172,7 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
         }
         endDatePicker?.show()
     }
+
     override fun showEmptyView(tip: String) {
         rv_return_goods_record?.showEmptyView()
     }
