@@ -37,6 +37,8 @@ class NFCHelper private constructor() {
     private var mFindThread: DisposableSubscriber<Long>? = null
 
     private var isRunning = true
+    // 防止卡住读卡
+    private var sleepTimes = 0
 
     private var mBuffer: ByteArray = ByteArray(1)
 
@@ -102,12 +104,14 @@ class NFCHelper private constructor() {
                     } else if (file.listFiles() != null && file.listFiles()!!.size < 4) {
                         copyAssets(context, "wltlib", AppConstants.SDPATH + "/wltlib")
                     } else {
-                        if (!mIDNRsock.UartInUsing) {
+                        if (!mIDNRsock.UartInUsing || sleepTimes == 5) {
                             uartSend2Head(2, Util.hexStringToBytes("5000"))
                             mIDNRsock.ReadIDInStep = 0
                             Timber.i("发送寻卡指令")
+                            sleepTimes = 0
                         }
                     }
+                    sleepTimes++
                 }
             }
 

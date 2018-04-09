@@ -48,6 +48,7 @@
         <activity
             android:name=".ui.main.widget.LoginActivity"
             android:label="@string/title_login"
+            android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
