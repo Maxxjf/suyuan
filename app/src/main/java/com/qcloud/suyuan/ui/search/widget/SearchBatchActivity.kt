@@ -88,19 +88,8 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
             hideEmptyView()
             val merchandise = bean.merchandise
             if (merchandise != null) {
-                img_batch_code.post {
-                    val width = img_batch_code.width
-                    val height = resources.getDimension(R.dimen.barHeight)
-
-                    val barCode = BarCodeUtil.createBarCode(merchandise.barCode ?: "", width, height.toInt())
-                    if (barCode != null) {
-                        img_batch_code.setImageBitmap(barCode)
-                    }
-                }
-
                 with(merchandise) {
-                    tv_batch_code.text = barCode
-                    tv_bar_code.text = ""
+                    tv_bar_code.text = barCode
                     tv_product_name.text = name
                     tv_product_spec.text = specification
                     tv_product_classify.text = classifyName
@@ -116,7 +105,18 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
 
             val record = bean.record
             if (record != null) {
+                img_batch_code.post {
+                    val width = img_batch_code.width
+                    val height = resources.getDimension(R.dimen.barHeight)
+
+                    val batchNum = BarCodeUtil.createBarCode(record.batchNum ?: "", width, height.toInt())
+                    if (batchNum != null) {
+                        img_batch_code.setImageBitmap(batchNum)
+                    }
+                }
+
                 with(record) {
+                    tv_batch_code.text = batchNum
                     tv_in_storage_time.text = createDate
                     tv_in_storage_number.text = goodsNumStr
                     tv_product_valid.text = validDate
