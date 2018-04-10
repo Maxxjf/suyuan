@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_pressed="false">
+    <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/transparent" />
+            <corners android:radius="@dimen/radius_size" />
             <stroke
                 android:width="@dimen/underLine"
-                android:color="@color/colorPrimary" />
+                android:color="@color/btnNormal" />
         </shape>
     </item>
 
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/white" />
+            <corners android:radius="@dimen/radius_size" />
             <stroke
                 android:width="@dimen/underLine"
-                android:color="@color/colorLine" />
+                android:color="@color/btnNormal" />
         </shape>
     </item>
 </layer-list>

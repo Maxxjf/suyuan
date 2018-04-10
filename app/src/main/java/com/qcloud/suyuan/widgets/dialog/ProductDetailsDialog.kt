@@ -1,7 +1,6 @@
 package com.qcloud.suyuan.widgets.dialog
 
 import android.content.Context
-import android.text.Html
 import android.view.Gravity
 import android.view.View
 import com.qcloud.qclib.utils.ApiReplaceUtil
@@ -25,7 +24,7 @@ class ProductDetailsDialog constructor(context: Context) : BaseDialog(context), 
 
     init {
         val lp = window!!.attributes
-        lp.width = ScreenUtil.getScreenWidth(mContext) * 7 / 16 //设置宽度
+        lp.width = ScreenUtil.getScreenWidth(mContext) * 10 / 16 //设置宽度
         lp.height = ScreenUtil.getScreenHeight(mContext) * 3 / 4 //设置宽度
         lp.gravity = Gravity.CENTER
         window!!.attributes = lp

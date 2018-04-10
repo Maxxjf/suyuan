@@ -31,7 +31,7 @@
         android:layout_height="@dimen/editHeight"
         android:layout_marginLeft="@dimen/margin_2"
         android:layout_marginStart="@dimen/margin_2"
-        android:background="@drawable/frame_gray"
+        android:background="@drawable/frame_gray_ripple"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/margin_2"
         android:paddingStart="@dimen/margin_2"

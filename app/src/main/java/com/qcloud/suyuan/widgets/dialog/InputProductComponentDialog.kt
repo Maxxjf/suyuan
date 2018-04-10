@@ -37,8 +37,8 @@ class InputProductComponentDialog constructor(context: Context) : BaseDialog(con
         }
     }
 
-    fun initData(attrValue: String?) {
-
+    fun initData() {
+        et_attr.setText("")
     }
 
     fun setTitle(title: String?) {

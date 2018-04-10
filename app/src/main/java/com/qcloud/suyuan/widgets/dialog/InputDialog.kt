@@ -20,7 +20,7 @@ import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.utils.ChatNumberKeyListener
-import com.qcloud.suyuan.utils.PriceInputFilter
+import com.qcloud.suyuan.utils.PriceKeyListener
 import kotlinx.android.synthetic.main.dialog_input.*
 
 /**
@@ -173,9 +173,8 @@ class InputDialog @JvmOverloads constructor(
      * 设置输入金额
      * */
     fun setInputPrice() {
-        val filters = arrayOf<InputFilter>(PriceInputFilter())
         if (et_text.mEditText != null) {
-            et_text.mEditText?.filters = filters
+            et_text.mEditText?.keyListener = PriceKeyListener()
         }
     }
 

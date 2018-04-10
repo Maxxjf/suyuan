@@ -3,9 +3,9 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.widgets.customview.RefreshNumView
@@ -28,6 +28,11 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
 
         val refreshNumView = holder.get<RefreshNumView>(R.id.refresh_num_view)
         val btnDel = holder.get<ImageView>(R.id.btn_delete)
+        if (position %2 == 0) {
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
+        } else {
+            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+        }
 
         with(bean) {
             holder.setText(R.id.tv_product_number, index.toString())

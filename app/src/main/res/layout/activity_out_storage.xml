@@ -52,7 +52,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/margin_2"
                     android:layout_marginRight="@dimen/margin_2"
-                    android:background="@drawable/frame_gray"
+                    android:background="@drawable/frame_input"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -442,7 +442,7 @@
                 android:layout_height="@dimen/editHeight"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_20"
-                android:background="@drawable/frame_gray"
+                android:background="@drawable/frame_input"
                 android:orientation="horizontal">
 
                 <TextView

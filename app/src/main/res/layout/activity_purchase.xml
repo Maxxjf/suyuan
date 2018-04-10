@@ -30,7 +30,7 @@
             android:layout_marginStart="@dimen/margin_40"
             android:layout_marginRight="@dimen/margin_40"
             android:layout_marginEnd="@dimen/margin_40"
-            android:background="@drawable/frame_gray">
+            android:background="@drawable/frame_input">
 
             <ImageView
                 android:id="@+id/btn_search"

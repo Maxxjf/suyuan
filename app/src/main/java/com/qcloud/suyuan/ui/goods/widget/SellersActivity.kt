@@ -11,7 +11,6 @@ import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
-import android.view.inputmethod.InputMethod
 import android.widget.TextView
 import android_serialport_api.sample.Util
 import com.google.gson.Gson
@@ -55,7 +54,6 @@ import kotlinx.android.synthetic.main.card_sellers_product_list.*
 import kotlinx.android.synthetic.main.card_sellers_purchaser_info.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-
 
 /**
  * Description: 卖货
@@ -273,7 +271,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputDialog?.setBindView(view)
         inputDialog?.setInputValue(view.text.toString().trim())
         if (type == 0) {
-            inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
+            inputDialog?.setInputMethod(InputType.TYPE_CLASS_PHONE)
         } else {
             inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
         }
@@ -433,12 +431,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
     override fun searchFailure() {
         if (isRunning) {
+            reSetEditText()
             QToast.show(this, R.string.tip_no_any_product_get)
         }
     }
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
         if (isRunning) {
+            reSetEditText()
             if (isShow) {
                 QToast.show(this, errMsg)
             } else {
@@ -535,6 +535,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         tv_other_instructions.text = ""
 
         submitProducts = ArrayList()
+
+        purchaseInfo = null
+        img_user_head.setImageResource(R.drawable.bmp_user_head)
+        tv_user_name.text = ""
+        tv_user_id.text = ""
+        tv_mobile.text = ""
+
+        initDropDown()
     }
 
     /**

@@ -4,18 +4,20 @@
     <item android:state_pressed="false">
         <shape>
             <solid android:color="@color/transparent" />
+            <corners android:radius="@dimen/radius_size" />
             <stroke
                 android:width="@dimen/underLine"
-                android:color="@color/colorPrimary" />
+                android:color="@color/btnNormal" />
         </shape>
     </item>
 
-    <item android:state_pressed="true">
+    <item>
         <shape>
             <solid android:color="@color/white" />
+            <corners android:radius="@dimen/radius_size" />
             <stroke
                 android:width="@dimen/underLine"
-                android:color="@color/colorLine" />
+                android:color="@color/btnNormal" />
         </shape>
     </item>
 </layer-list>

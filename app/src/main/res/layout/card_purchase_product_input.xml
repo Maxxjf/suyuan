@@ -117,7 +117,7 @@
                             android:layout_height="@dimen/editHeight"
                             android:paddingLeft="@dimen/margin_2"
                             android:gravity="center_vertical"
-                            android:background="@drawable/frame_gray"
+                            android:background="@drawable/frame_gray_ripple"
                             android:textColor="@color/colorTitle"
                             android:textSize="@dimen/typeTextSize"
                             android:hint="@string/hint_input_purchase_number"/>
@@ -129,7 +129,7 @@
                             android:layout_marginTop="@dimen/modelMargin"
                             android:paddingLeft="@dimen/margin_2"
                             android:gravity="center_vertical"
-                            android:background="@drawable/frame_gray"
+                            android:background="@drawable/frame_gray_ripple"
                             android:textColor="@color/colorTitle"
                             android:textSize="@dimen/typeTextSize"
                             android:hint="@string/hint_input_purchase_price"/>
@@ -141,7 +141,7 @@
                             android:layout_marginTop="@dimen/modelMargin"
                             android:paddingLeft="@dimen/margin_2"
                             android:gravity="center_vertical"
-                            android:background="@drawable/frame_gray"
+                            android:background="@drawable/frame_gray_ripple"
                             android:textColor="@color/colorTitle"
                             android:textSize="@dimen/typeTextSize"
                             android:hint="@string/hint_select_purchase_birthday"/>
@@ -153,7 +153,7 @@
                             android:layout_marginTop="@dimen/modelMargin"
                             android:paddingLeft="@dimen/margin_2"
                             android:gravity="center_vertical"
-                            android:background="@drawable/frame_gray"
+                            android:background="@drawable/frame_gray_ripple"
                             android:textColor="@color/colorTitle"
                             android:textSize="@dimen/typeTextSize"
                             android:hint="@string/hint_select_purchase_valid_day"/>
@@ -163,7 +163,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/editHeight"
                             android:layout_marginTop="@dimen/modelMargin"
-                            android:background="@drawable/frame_gray"
+                            android:background="@drawable/frame_gray_ripple"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
                             android:clickable="true"
@@ -209,7 +209,7 @@
                     android:id="@+id/btn_clear"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/largeBtnHeight"
-                    android:background="@drawable/btn_frame_radius_selector"
+                    android:background="@drawable/frame_primary_radius_ripple"
                     android:layout_marginLeft="@dimen/layoutMargin"
                     android:layout_marginEnd="@dimen/layoutMargin"
                     android:layout_marginRight="@dimen/layoutMargin"

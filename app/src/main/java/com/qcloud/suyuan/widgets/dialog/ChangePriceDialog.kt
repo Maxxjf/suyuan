@@ -1,9 +1,6 @@
 package com.qcloud.suyuan.widgets.dialog
 
 import android.content.Context
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.toast.QToast
@@ -11,7 +8,6 @@ import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
-import com.qcloud.suyuan.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.dialog_change_price.*
 
 
@@ -32,9 +28,6 @@ class ChangePriceDialog constructor(context: Context) : BaseDialog(context), Vie
     }
 
     private fun initView() {
-        val filters = arrayOf<InputFilter>(PriceInputFilter())
-        et_price.filters = filters
-
         et_price.setOnKeyListener { v, action, keyEvent ->
             if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
                 if (action == KeyEvent.KEYCODE_ENTER) {

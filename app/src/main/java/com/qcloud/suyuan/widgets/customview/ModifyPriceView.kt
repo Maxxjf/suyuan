@@ -42,6 +42,7 @@ class ModifyPriceView  @JvmOverloads constructor(
     private fun initInputDialog() {
         inputDialog = InputDialog(mContext)
         inputDialog?.setBindView(et_value)
+        inputDialog?.setInputPrice()
         inputDialog?.setMaxLength(7)
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
             override fun onFinishInput(message: String?) {

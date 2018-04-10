@@ -180,6 +180,9 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
         quickDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_cancel) {
+                    val activity = AppManager.instance.getActivity(CreateProductIActivity::class.java)
+                    activity?.finish()
+                    saveDialog?.dismiss()
                     finish()
                 }
             }

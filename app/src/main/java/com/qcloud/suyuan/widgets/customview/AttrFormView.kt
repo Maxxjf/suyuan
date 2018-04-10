@@ -45,6 +45,7 @@ class AttrFormView  @JvmOverloads constructor(
             if (inputComponentDialog == null) {
                 initInputDialog()
             }
+            inputComponentDialog?.initData()
             inputComponentDialog?.show()
         }
     }

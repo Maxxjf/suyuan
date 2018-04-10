@@ -11,7 +11,6 @@ import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import kotlinx.android.synthetic.main.layout_refresh_num.view.*
-import timber.log.Timber
 
 /**
  * Description: 修改数量布局
@@ -82,6 +81,7 @@ class RefreshNumView @JvmOverloads constructor(
                 if (inputDialog == null) {
                     initInputDialog()
                 }
+                inputDialog?.setInputValue(currNum.toString())
                 lastNum = currNum
                 inputDialog?.show()
             }

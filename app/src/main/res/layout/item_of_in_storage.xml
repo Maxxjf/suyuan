@@ -87,7 +87,7 @@
             android:id="@+id/btn_print"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btnHeight"
-            android:background="@drawable/btn_frame_radius_selector"
+            android:background="@drawable/frame_primary_radius_ripple"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/smallBtnTextSize"
             android:text="@string/btn_print"/>

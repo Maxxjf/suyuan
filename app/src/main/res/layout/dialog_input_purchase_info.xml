@@ -95,7 +95,7 @@
                 android:completionThreshold="2"
                 android:inputType="text"
                 android:imeOptions="actionNext"
-                android:background="@drawable/frame_gray"
+                android:background="@drawable/frame_input"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:hint="@string/hint_input_user_id" />
@@ -108,7 +108,7 @@
                 android:layout_marginTop="@dimen/modelMargin"
                 android:inputType="text"
                 android:imeOptions="actionNext"
-                android:background="@drawable/frame_gray"
+                android:background="@drawable/frame_input"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:hint="@string/hint_input_purchase_name"/>
@@ -119,9 +119,9 @@
                 android:layout_height="@dimen/editHeight"
                 android:paddingLeft="@dimen/margin_2"
                 android:layout_marginTop="@dimen/modelMargin"
-                android:inputType="number"
+                android:inputType="phone"
                 android:imeOptions="actionDone"
-                android:background="@drawable/frame_gray"
+                android:background="@drawable/frame_input"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
                 android:hint="@string/hint_input_mobile"/>

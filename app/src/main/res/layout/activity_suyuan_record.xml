@@ -28,7 +28,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/layoutMargin"
             android:layout_marginEnd="@dimen/layoutMargin"
-            android:background="@drawable/frame_gray">
+            android:background="@drawable/frame_input">
 
             <ImageView
                 android:id="@+id/btn_search"

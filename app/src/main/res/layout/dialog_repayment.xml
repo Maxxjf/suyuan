@@ -68,7 +68,7 @@
             android:layout_marginLeft="@dimen/layoutMargin"
             android:layout_marginRight="@dimen/layoutMargin"
             android:layout_marginStart="@dimen/layoutMargin"
-            android:background="@drawable/frame_gray"
+            android:background="@drawable/frame_input"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/margin_2"

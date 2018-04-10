@@ -228,21 +228,19 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      *
      * @param inputType 0文本 1数字 2金额 3字母和数字
      * */
-    private fun showInput(@NotNull view: TextView?, inputType: Int) {
-        if (inputDialog == null) {
-            inputDialog = InputDialog(this)
-        }
-        if (view != null) {
-            inputDialog?.setBindView(view)
-            when (inputType) {
-                1 -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
-                2 -> inputDialog?.setInputPrice()
-                3 -> inputDialog?.setInputChatOrNumber()
-                else -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
+    private fun showInput(@NotNull view: TextView, inputType: Int) {
+        inputDialog = InputDialog(this)
+        inputDialog?.setBindView(view)
+        when (inputType) {
+            1 -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
+            2 -> {
+                inputDialog?.setInputPrice()
             }
-            inputDialog?.initInputHint(view.hint.toString().trim())
-            inputDialog?.setInputValue(view.text.toString().trim())
+            3 -> inputDialog?.setInputChatOrNumber()
+            else -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
         }
+        inputDialog?.initInputHint(view.hint.toString().trim())
+        inputDialog?.setInputValue(view.text.toString().trim())
 
         inputDialog?.show()
     }

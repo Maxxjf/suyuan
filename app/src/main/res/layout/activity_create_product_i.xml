@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.store.widget.CreateProductIActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -25,6 +26,9 @@
             android:textSize="@dimen/typeTextSize"
             android:text="@string/tag_input_product_info"/>
     </RelativeLayout>
+
+    <View
+        style="@style/LineHorizontal"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

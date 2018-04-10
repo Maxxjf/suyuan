@@ -18,7 +18,7 @@
             android:paddingTop="@dimen/margin_2"
             android:paddingLeft="@dimen/margin_6"
             android:paddingRight="@dimen/margin_6"
-            android:textSize="@dimen/textSize"
+            android:textSize="@dimen/miniTextSize"
             android:textColor="@color/colorTitle"
             tools:text="产品介绍"/>
     </android.support.v4.widget.NestedScrollView>
