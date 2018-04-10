@@ -116,13 +116,14 @@
                     android:layout_toRightOf="@+id/tv_tag_money"
                     android:text="500.00元"
                     android:textColor="@color/default_text_color"
-                    android:textSize="@dimen/textSize" />
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <LinearLayout
-                android:background="@color/colorItemBg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_6"
+                android:background="@color/colorItemBg"
                 android:orientation="horizontal">
 
                 <TextView

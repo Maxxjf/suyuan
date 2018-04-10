@@ -44,6 +44,7 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<ScanCodeB
         ivDelete?.setOnClickListener(View.OnClickListener {
             remove(position)
             notifyDataSetChanged()
+            onHolderClick?.onHolderClick(ivDelete,bean,position)
         })
     }
 

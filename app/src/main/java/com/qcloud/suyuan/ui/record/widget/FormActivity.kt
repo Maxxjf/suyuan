@@ -49,13 +49,13 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
     }
 
     override fun showForm(bean:SaleFormBean){
-        tv_all_income.setText("${bean.orderTotal}")
-        tv_cash_income.setText("${bean.cash}")
-        tv_alipay_income.setText("${bean.alipay}")
-        tv_wechat_income.setText("${bean.wechat}")
-        tv_credit_money.setText("${bean.oncredit}")
-        tv_order_number.setText("${bean.orderTotal}")
-        tv_tag_return_money.setText("${bean.returnMoney}")
+        tv_all_income.setText("${bean.orderTotalStr}")
+        tv_cash_income.setText("${bean.cashStr}")
+        tv_alipay_income.setText("${bean.alipayStr}")
+        tv_wechat_income.setText("${bean.wechatStr}")
+        tv_credit_money.setText("${bean.oncreditStr}")
+        tv_order_number.setText("${bean.orderTotalStr}")
+        tv_tag_return_money.setText("${bean.returnMoneyStr}")
     }
 
     override fun initViewAndData() {

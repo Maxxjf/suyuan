@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.record.widget.ReturnRecordActivity">
 
     <com.qcloud.suyuan.widgets.toolbar.CustomToolbar
@@ -25,14 +25,17 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_date_from"
             android:text="@string/tag_date"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/typeTextSize" />
+
         <TextView
             android:id="@+id/tv_date_from"
             android:layout_width="@dimen/margin_40"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/iv_date_picker_from"
-            android:background="@color/colorLine"
+            android:background="@color/colorModelBg"
+            android:textColor="@color/colorSubTitle"
             android:padding="@dimen/margin_1"
             android:text="2018-03-11"
             android:textSize="@dimen/typeTextSize" />
@@ -61,9 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/iv_date_picker_to"
-            android:background="@color/colorLine"
+            android:background="@color/colorModelBg"
             android:padding="@dimen/margin_1"
             android:text="2018-03-14"
+            android:textColor="@color/colorSubTitle"
             android:textSize="@dimen/textSize" />
 
         <ImageView
@@ -74,6 +78,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/icon_date_picker" />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_6"
@@ -125,6 +130,7 @@
             android:textSize="@dimen/textSize" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

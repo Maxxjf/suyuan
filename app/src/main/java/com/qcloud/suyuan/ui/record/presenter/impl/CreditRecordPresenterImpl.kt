@@ -23,7 +23,7 @@ class CreditRecordPresenterImpl : BasePresenter<ICreditRecordView>(), ICreditRec
             override fun onSuccess(t: CreditListBean?, message: String?) {
                 if (t != null) {
                     mView?.replaceCreditList(t.list,t.isNext(AppConstants.PAGE_SIZE))
-                    mView?.showCreditMoney(t.allSumRepayment)
+                    mView?.showCreditMoney(t.allSumRepaymentStr)
                 }
             }
 
@@ -53,6 +53,7 @@ class CreditRecordPresenterImpl : BasePresenter<ICreditRecordView>(), ICreditRec
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
                     mView?.loadErr(message,true)
+                    mView?.getCreditInfo()
                 }
             }
 

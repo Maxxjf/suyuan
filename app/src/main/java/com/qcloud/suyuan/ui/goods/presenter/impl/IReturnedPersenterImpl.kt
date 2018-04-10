@@ -18,15 +18,14 @@ import com.qcloud.suyuan.ui.goods.view.IReturnedView
  */
 class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter {
     private var model:IGoodsModel=GoodsModelImpl()
-    private var saleId=""//销售单id (首次为空,从第二次开始传)
+
 
     //订单查询
-    override fun loadData( code:String) {
+    override fun loadData( code:String,saleId:String) {
       model.scanCode(code,saleId,object :DataCallback<ScanCodeBean>{
         override fun onSuccess(t: ScanCodeBean?, message: String?) {
           if (t != null) {
               mView?.loadDataSuccess(t)
-            saleId= t.saleSerial!!.id!!
           }
         }
 
