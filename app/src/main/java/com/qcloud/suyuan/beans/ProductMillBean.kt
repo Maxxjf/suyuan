@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -29,7 +31,21 @@ class ProductMillBean {
     var linkman: String? = null
     var number: String? = null
     var updateTime: String? = null
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var createTime: String? = null
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var isRemove: Int = 0
     var productionClassify: String? = null
     var remark: String? = null

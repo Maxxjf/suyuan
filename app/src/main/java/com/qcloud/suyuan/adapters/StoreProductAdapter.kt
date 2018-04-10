@@ -4,7 +4,6 @@ import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ProductBean
@@ -23,10 +22,10 @@ class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<ProductBean
 
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
 
-        if (position%2==0){
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
-        }else{
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+        if (position %2 == 0){
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+        } else {
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)
@@ -35,6 +34,7 @@ class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<ProductBean
                     .setText(R.id.tv_product_spec, specification)
                     .setText(R.id.tv_product_manufacture, millName)
                     .setText(R.id.tv_product_total_stock, amountStr)
+                    .setText(R.id.tv_product_type, platformName)
                     .setText(R.id.tv_product_operator, operaName)
                     .setText(R.id.tv_product_last_in_time, createDate)
         }

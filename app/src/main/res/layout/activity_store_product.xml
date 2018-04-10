@@ -200,6 +200,15 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_type"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.8"
             android:gravity="center"
             android:textColor="@color/colorTitle"
@@ -209,7 +218,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1.2"
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/textSize"

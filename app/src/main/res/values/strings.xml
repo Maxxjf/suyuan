@@ -309,6 +309,7 @@
     <string name="tag_product_total_stock">总库存</string>
     <string name="tag_product_valid">有效期</string>
     <string name="tag_product_operator">操作人</string>
+    <string name="tag_product_type">产品来源</string>
     <string name="tag_product_last_in_time">最新入库时间</string>
     <string name="tag_purchaser_info">购买者信息</string>
     <string name="tag_user_name">姓名: </string>

@@ -3,7 +3,6 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SuyuanRecordBean
 
@@ -19,10 +18,10 @@ class SuyuanRecordAdapter(mContext: Context) : CommonRecyclerAdapter<SuyuanRecor
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean = mList[position]
 
-        if (position%2==0){
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
-        }else{
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+        if (position %2 == 0){
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+        } else {
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
 
         with(bean) {

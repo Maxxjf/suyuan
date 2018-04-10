@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -12,14 +14,26 @@ class ProductGoodsBean {
     var barCode: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var createTime: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var classifyId: String? = null  // 产品分类id
     var classifyName: String? = null    // 产品分类
         get() = if (StringUtil.isBlank(field)) "" else field
     var isPlatform: Int = 0     // 是否平台 0不是 1是
     var isRemove: Int = 0
     var updateTime: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var shopId: String? = null
     var state: Int = 0
     var millId: String? = null

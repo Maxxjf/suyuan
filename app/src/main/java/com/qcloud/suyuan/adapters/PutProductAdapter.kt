@@ -4,7 +4,6 @@ import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.PurchaseProductBean
@@ -22,10 +21,10 @@ class PutProductAdapter(mContext: Context) : CommonRecyclerAdapter<PurchaseProdu
         val bean = mList[position]
 
         val imgProduct = holder.get<RatioImageView>(R.id.img_product)
-        if (position %2 == 0) {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
+        if (position %2 == 0){
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
         } else {
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, image, R.drawable.bmp_product)

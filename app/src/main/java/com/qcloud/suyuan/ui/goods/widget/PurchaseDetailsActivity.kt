@@ -17,7 +17,10 @@ import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
-import com.qcloud.suyuan.beans.*
+import com.qcloud.suyuan.beans.InStorageBean
+import com.qcloud.suyuan.beans.PrintBean
+import com.qcloud.suyuan.beans.PurchaseProductBean
+import com.qcloud.suyuan.beans.SupplierBean
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
@@ -45,6 +48,7 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     private var price: Double = 0.00
     private var birthday: String? = null
     private var endDay: String? = null
+    private var listSupplier: MutableList<SupplierBean> = ArrayList()
     private var currSupplier: SupplierBean? = null
     // 生产时间
     private var birthdayPicker: DatePickerDialog? = null
@@ -72,6 +76,10 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         initInputView()
 
         refreshData()
+    }
+
+    override fun onResume() {
+        super.onResume()
         mPresenter?.loadSupplier()
     }
 
@@ -148,7 +156,11 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
             price = 0.00
             birthday = null
             endDay = null
-            currSupplier = null
+
+            if (listSupplier.size > 1) {
+                currSupplier = listSupplier[0]
+                tv_in_storage_supplier.text = currSupplier!!.name
+            }
         }
     }
 
@@ -197,6 +209,8 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
 
     override fun replaceSupplierList(beans: List<SupplierBean>) {
         if (isRunning) {
+            listSupplier.clear()
+            listSupplier.addAll(beans)
             if (beans.size > 1) {
                 currSupplier = beans[0]
                 tv_in_storage_supplier.text = currSupplier!!.name

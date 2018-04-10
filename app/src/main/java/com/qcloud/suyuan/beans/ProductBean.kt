@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 import java.io.Serializable
 
@@ -13,7 +15,6 @@ class ProductBean : Serializable {
     var name: String? = null    // 商品名称
         get() = if (StringUtil.isBlank(field)) "" else field
     var imageUrl: String? = null    // 商品图片
-    var image: String? = null       // 商品图片(入库使用)
     var retailPrice: Double = 0.00  // 零售价
     var retailPriceStr: String = "0.00"
         get() = retailPrice.toString()
@@ -37,12 +38,18 @@ class ProductBean : Serializable {
     var unit: String? = null    // 单位
         get() = if (StringUtil.isBlank(field)) "" else field
     var createDate: String? = null  // 最新入库时间
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var isPlatform: Int = 0 // 是否平台商品 1是 0不是
+    var platformName: String = "平台产品"
+        get() = if (isPlatform == 0) "私有产品" else "平台产品"
     var operaName: String? = null   // 操作人
     override fun toString(): String {
-        return "ProductBean(id=$id, imageUrl=$imageUrl, image=$image, retailPrice=$retailPrice, stock=$stock, amount=$amount, cordon=$cordon, isPlatform=$isPlatform, operaName=$operaName)"
+        return "ProductBean(id=$id, imageUrl=$imageUrl, retailPrice=$retailPrice, stock=$stock, amount=$amount, cordon=$cordon, isPlatform=$isPlatform, operaName=$operaName)"
     }
-
-
 }

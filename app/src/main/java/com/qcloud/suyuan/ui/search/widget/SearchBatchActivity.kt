@@ -69,7 +69,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
     }
 
     private fun loadData() {
-        QToast.show(this, keyword)
+        //QToast.show(this, keyword)
         reSetEditText()
         mPresenter?.loadData(keyword!!)
     }
@@ -89,7 +89,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
             val merchandise = bean.merchandise
             if (merchandise != null) {
                 with(merchandise) {
-                    tv_bar_code.text = barCode
+                    tv_bar_code.text = barcode
                     tv_product_name.text = name
                     tv_product_spec.text = specification
                     tv_product_classify.text = classifyName
@@ -107,7 +107,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
             if (record != null) {
                 img_batch_code.post {
                     val width = img_batch_code.width
-                    val height = resources.getDimension(R.dimen.barHeight)
+                    val height = resources.getDimension(R.dimen.btnHeight)
 
                     val batchNum = BarCodeUtil.createBarCode(record.batchNum ?: "", width, height.toInt())
                     if (batchNum != null) {
@@ -117,6 +117,7 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
 
                 with(record) {
                     tv_batch_code.text = batchNum
+                    tv_batch_number.text = batchNum
                     tv_in_storage_time.text = createDate
                     tv_in_storage_number.text = goodsNumStr
                     tv_product_valid.text = validDate

@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -15,7 +17,13 @@ class InStorageRecordBean {
     var batchNum: String? = null    // 入库批次
         get() = if (StringUtil.isBlank(field)) "" else field
     var createDate: String? = null  // 入库时间
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var goodsNum: Int = 0           // 入库数量
     var goodsNumStr: String = "0"
         get() = goodsNum.toString()
@@ -23,14 +31,32 @@ class InStorageRecordBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var price: Double = 0.00	    // 进货价
     var stopDate: String? = null    // 有效截止时间
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var surplusNum: Int = 0         // 当前剩余库存
     var surplusNumStr: String = "0"
         get() = surplusNum.toString()
     var updateDate: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var productionDate: String? = null  // 生产日期
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var state: Int = 0
     override fun toString(): String {
         return "InStorageRecordBean(id=$id, shopId=$shopId, goodId=$goodId, supplierId=$supplierId, goodsNum=$goodsNum, price=$price, surplusNum=$surplusNum, state=$state)"

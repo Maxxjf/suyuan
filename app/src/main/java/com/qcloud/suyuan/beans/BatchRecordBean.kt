@@ -1,5 +1,9 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
+import com.qcloud.qclib.utils.StringUtil
+
 /**
  * 类说明：产品入库信息
  * Author: Kuzan
@@ -7,7 +11,21 @@ package com.qcloud.suyuan.beans
  */
 class BatchRecordBean {
     var createDate: String? = null      // 入库时间
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var updateDate: String? = null      // 更新时间
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var supplierId: String? = null      // 商家id
     var batchNum: String? = null        // 批次码
     var goodsId: String? = null         // 商品id
@@ -20,7 +38,21 @@ class BatchRecordBean {
     var priceStr: String = "0.00"
         get() = price.toString()
     var productionDate: String? = null  // 生产日期
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var stopDate: String? = null        // 截止日期
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var validDate: String? = null
         get() = productionDate + "至" + stopDate
     var surplusNum: Int = 0	            // 当前批次库存

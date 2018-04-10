@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 import java.io.Serializable
 
@@ -31,7 +33,21 @@ class PurchaseProductBean: Serializable {
     var millName: String? = null    // 厂家名称
         get() = if (StringUtil.isBlank(field)) "" else field
     var expDate: String? = null
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var endDate: String? = null
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
     var surplusNum: Int = 0
     var surplusNumStr: String = "0"
         get() = surplusNum.toString()

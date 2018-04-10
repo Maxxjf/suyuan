@@ -69,7 +69,7 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
     }
 
     private fun loadData() {
-        QToast.show(this, keyword)
+        //QToast.show(this, keyword)
         reSetEditText()
         mPresenter?.loadData(keyword!!)
     }

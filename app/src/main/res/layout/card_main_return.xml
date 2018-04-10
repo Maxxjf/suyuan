@@ -29,7 +29,7 @@
             android:layout_marginLeft="@dimen/drawPadding"
             android:layout_marginStart="@dimen/drawPadding"
             android:textSize="@dimen/titleTextSize"
-            android:textColor="@color/colorCyan"
+            android:textColor="@color/colorBlue2"
             android:text="@string/tab_main_return" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

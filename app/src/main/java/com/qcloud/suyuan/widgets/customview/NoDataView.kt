@@ -14,8 +14,7 @@ import com.qcloud.suyuan.R
 class NoDataView @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
-) : BaseEmptyView(context, attrs, defStyleAttr) {
+        defStyleAttr: Int = 0) : BaseEmptyView(context, attrs, defStyleAttr) {
 
     override val imageIcon: Int
         get() = R.drawable.bmp_list_empty
@@ -30,5 +29,5 @@ class NoDataView @JvmOverloads constructor(
         get() = mContext.resources.getString(R.string.tip_no_any_data)
 
     override val padTop: Int
-        get() = 20
+        get() = 50
 }

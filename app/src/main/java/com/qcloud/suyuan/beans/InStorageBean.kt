@@ -1,5 +1,7 @@
 package com.qcloud.suyuan.beans
 
+import com.qcloud.qclib.enums.DateStyleEnum
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.StringUtil
 
 /**
@@ -11,5 +13,11 @@ class InStorageBean {
     var batchNum: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var date: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) {
+                ""
+            } else {
+                DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
+            }
+        }
 }
