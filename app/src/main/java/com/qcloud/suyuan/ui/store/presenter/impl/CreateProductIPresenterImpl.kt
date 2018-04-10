@@ -5,6 +5,7 @@ import com.qcloud.qclib.beans.ReturnDataBean
 import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.beans.CreateProductBean
+import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.ProductMillBean
 import com.qcloud.suyuan.model.IGoodsModel
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
@@ -62,6 +63,28 @@ class CreateProductIPresenterImpl: BasePresenter<ICreateProductIView>(), ICreate
             override fun onSuccess(t: ReturnDataBean<ProductMillBean>?, message: String?) {
                 if (t?.list != null) {
                     mView?.replaceMill(t.list!!)
+                }
+            }
+
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message, true)
+            }
+        })
+    }
+
+    /**
+     * 判断条形码是否重复
+     *
+     * @param id 产品id
+     * @param barCode 产品条形码
+     * */
+    override fun isBarCodeRepeat(id: String?, barCode: String) {
+        mModel.isBarCodeRepeat(id, barCode, object : DataCallback<EmptyReturnBean> {
+            override fun onSuccess(t: EmptyReturnBean?, message: String?) {
+                if (t!= null) {
+                    mView?.isBarCodeRepeat(t.isRepeat)
+                } else {
+                    mView?.loadErr(message ?: "请求出错了", true)
                 }
             }
 

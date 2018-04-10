@@ -178,7 +178,9 @@ class GoodsModelImpl: IGoodsModel {
         val params = FrameRequest.getAppParams()
         params["list"] = list
         params["purchaser.address"] = idInfo.address ?: ""          // 地址
-        params["purchaser.gender"] = idInfo.gender                  // 购买者性别 1男0女
+        if (idInfo.gender != 0) {
+            params["purchaser.gender"] = idInfo.gender                  // 购买者性别 1男2女
+        }
         params["purchaser.headImage"] = idInfo.userImgBase64 ?: ""  // 照片(base64格式)
         params["purchaser.id"] = idInfo.id                          // 购买者ID
         params["purchaser.idCard"] = idInfo.idCode ?: ""            // 身份证号
@@ -219,6 +221,20 @@ class GoodsModelImpl: IGoodsModel {
         params["classifyId"] = classifyId
 
         BaseApi.dispose(mApi.getFactoryByClassify(params), callback)
+    }
+
+    /**
+     * 检验条码是否重复
+     *
+     * @param id 产品id
+     * @param barCode 产品条形码
+     * */
+    override fun isBarCodeRepeat(id: String?, barCode: String, callback: DataCallback<EmptyReturnBean>) {
+        val params = FrameRequest.getAppParams()
+        params["id"] = id ?: ""
+        params["barCode"] = barCode
+
+        BaseApi.dispose(mApi.isBarCodeRepeat(params), callback)
     }
 
     /**

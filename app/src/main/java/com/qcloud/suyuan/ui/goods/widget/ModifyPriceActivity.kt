@@ -6,7 +6,6 @@ import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
-import android.widget.AdapterView
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
@@ -19,7 +18,6 @@ import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.ModifyPricePresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IModifyPriceView
-import com.qcloud.suyuan.ui.store.widget.StockDetailsActivity
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -85,7 +83,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
         }
 
         mEmptyView = NoDataView(this)
-        mEmptyView?.noData(R.string.tip_no_any_product)
+        mEmptyView?.noData(R.string.tip_no_this_product)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         loadData()
@@ -106,7 +104,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                         pageNo = 1
                         loadData()
                     } else {
-                        QToast.show(this, R.string.hint_input_product_code_and_name)
+                        QToast.show(this, R.string.hint_input_product_name)
                     }
                 }
             }
@@ -121,7 +119,7 @@ class ModifyPriceActivity: BaseActivity<IModifyPriceView, ModifyPricePresenterIm
                 pageNo = 1
                 loadData()
             } else {
-                QToast.show(this, R.string.hint_input_product_code_and_name)
+                QToast.show(this, R.string.hint_input_product_name)
             }
         }
     }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.text.InputType
 import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
@@ -23,6 +24,7 @@ import com.qcloud.suyuan.beans.ProductMillBean
 import com.qcloud.suyuan.realm.RealmHelper
 import com.qcloud.suyuan.ui.store.presenter.impl.CreateProductIPresenterImpl
 import com.qcloud.suyuan.ui.store.view.ICreateProductIView
+import com.qcloud.suyuan.utils.BarCodeUtil
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
@@ -45,6 +47,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     private var currId: String? = null
 
     private var saveDialog: OperationTipDialog? = null
+    private var quickDialog: OperationTipDialog? = null
     private var editOldDialog: OperationTipDialog? = null
     private var inputDialog: InputDialog? = null
     // 产品分类
@@ -57,6 +60,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     private var endPicker: DatePickerDialog? = null
 
     // 是否编辑本地
+    private var isLocal = false
+    // 是否修改
     private var isEdit = false
 
     private var barCode: String = ""            // 条形码
@@ -87,23 +92,38 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
 
     override fun initViewAndData() {
         currId = intent.getStringExtra("ID")
+        isEdit = StringUtil.isNotBlank(currId)
 
         initView()
         startLoadingDialog()
         mPresenter?.loadProduct(currId)
 
-        showOldProductTip()
+        if (!isEdit) {
+            showOldProductTip()
+        } else {
+            // 不允许修改产品条形码
+            et_product_bar_code.isEnabled = false
+            et_product_bar_code.isClickable = false
+            btn_create_code.isEnabled = false
+            btn_create_code.isClickable = false
+            layout_bar_code.setBackgroundResource(0)
+        }
     }
 
     private fun initView() {
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_back) {
-                    showSaveTip()
+                    if (isEdit) {
+                        showQuickTip()
+                    } else {
+                        showSaveTip()
+                    }
                 }
             }
         }
         et_product_bar_code.setOnClickListener(this)
+        btn_create_code.setOnClickListener(this)
         et_product_name.setOnClickListener(this)
         et_product_spec.setOnClickListener(this)
         et_product_price.setOnClickListener(this)
@@ -121,30 +141,27 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      * 显示上次未提交的产品信息
      * */
     private fun showOldProductTip() {
-        isEdit = false
-        Timber.e("currId = $currId")
-        if (StringUtil.isBlank(currId) || StringUtil.isEquals(currId, "0") || StringUtil.isEquals(currId, "-1")) {
-            val createUser = UserInfoUtil.getUser()
-            Timber.e("createUser = $createUser")
-            if (createUser != null) {
-                val submitBean: CreateProductSubmitBean? =
-                        RealmHelper.instance.queryBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
-                Timber.e("submitBean = $submitBean")
-                if (submitBean != null) {
-                    if (editOldDialog == null) {
-                        editOldDialog = OperationTipDialog(this)
-                    }
-                    editOldDialog?.setTip(R.string.tip_edit_old)
-                    editOldDialog?.setCancelBtn(R.string.tip_edit_cancel)
-                    editOldDialog?.setConfirmBtn(R.string.tip_edit_ok)
-                    editOldDialog?.show()
-                    editOldDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
-                        override fun onBtnClick(view: View) {
-                            if (view.id == R.id.btn_ok) {
-                                RealmHelper.instance.deleteBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
-                            } else {
-                                refreshOldData(submitBean)
-                            }
+        isLocal = false
+        val createUser = UserInfoUtil.getUser()
+        Timber.e("createUser = $createUser")
+        if (createUser != null) {
+            val submitBean: CreateProductSubmitBean? =
+                    RealmHelper.instance.queryBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
+            Timber.e("submitBean = $submitBean")
+            if (submitBean != null) {
+                if (editOldDialog == null) {
+                    editOldDialog = OperationTipDialog(this)
+                }
+                editOldDialog?.setTip(R.string.tip_edit_old)
+                editOldDialog?.setCancelBtn(R.string.tip_edit_cancel)
+                editOldDialog?.setConfirmBtn(R.string.tip_edit_ok)
+                editOldDialog?.show()
+                editOldDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+                    override fun onBtnClick(view: View) {
+                        if (view.id == R.id.btn_ok) {
+                            RealmHelper.instance.deleteBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
+                        } else {
+                            refreshOldData(submitBean)
                         }
                     }
                 }
@@ -156,7 +173,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
      * 刷新上次保存的数据
      * */
     private fun refreshOldData(submitBean: CreateProductSubmitBean) {
-        isEdit = true
+        isLocal = true
         createProduct = CreateProductSubmitBean()
         with(submitBean) {
             et_product_bar_code.text = barCode
@@ -208,13 +225,21 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
 
     /**
      * 显示输入
+     *
+     * @param inputType 0文本 1数字 2金额 3字母和数字
      * */
-    private fun showInput(@NotNull view: TextView?) {
+    private fun showInput(@NotNull view: TextView?, inputType: Int) {
         if (inputDialog == null) {
             inputDialog = InputDialog(this)
         }
         if (view != null) {
             inputDialog?.setBindView(view)
+            when (inputType) {
+                1 -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_NUMBER)
+                2 -> inputDialog?.setInputPrice()
+                3 -> inputDialog?.setInputChatOrNumber()
+                else -> inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
+            }
             inputDialog?.initInputHint(view.hint.toString().trim())
             inputDialog?.setInputValue(view.text.toString().trim())
         }
@@ -305,10 +330,25 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     override fun onClick(v: View?) {
         if (v != null) {
             when (v.id) {
-                R.id.et_product_bar_code, R.id.et_product_name, R.id.et_product_spec,
-                R.id.et_registration_code, R.id.et_production_license, R.id.et_product_standard,
-                R.id.et_product_introduce, R.id.et_product_unit, R.id.et_product_price -> {
-                    showInput(v as TextView)
+                R.id.et_product_bar_code -> {
+                    // 条形码
+                    showInput(et_product_bar_code, 1)
+                }
+                R.id.btn_create_code -> {
+                    // 生成条形码
+                    et_product_bar_code.text = BarCodeUtil.createBarCodeNumber()
+                }
+                R.id.et_product_name, R.id.et_product_spec, R.id.et_product_unit, R.id.et_product_introduce -> {
+                    // 名称，规格，单位，介绍
+                    showInput(v as TextView, 0)
+                }
+                R.id.et_product_price -> {
+                    // 价格
+                    showInput(et_product_price, 2)
+                }
+                R.id.et_registration_code, R.id.et_production_license, R.id.et_product_standard -> {
+                    // 登记号，许可证号，标准证号
+                    showInput(v as TextView, 3)
                 }
                 R.id.tv_registration_start -> {
                     if (startPicker == null) {
@@ -324,7 +364,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                 }
                 R.id.btn_next -> {
                     if (check()) {
-                        CreateProductIIActivity.openActivity(this, createProduct, isEdit)
+                        //mPresenter?.isBarCodeRepeat(currId, barCode)
+                        CreateProductIIActivity.openActivity(this, createProduct, isEdit, isLocal)
                     }
                 }
             }
@@ -359,7 +400,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                     et_registration_code.text = registerCard
                     et_production_license.text = licenseCard
                     et_product_standard.text = standardCard
-                    et_product_introduce.text = details
+                    et_product_introduce.text = ApiReplaceUtil.fromHtml(details)
                     tv_registration_start.text = startTime
                     tv_registration_end.text = endTime
                     infoId = id ?: ""
@@ -379,6 +420,16 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         if (isRunning) {
             stopLoadingDialog()
             initMillDropDown(list)
+        }
+    }
+
+    override fun isBarCodeRepeat(isRepeat: Boolean) {
+        if (isRunning) {
+            if (isRepeat) {
+                CreateProductIIActivity.openActivity(this, createProduct, isEdit, isLocal)
+            } else {
+                QToast.show(this, R.string.tip_bar_code_is_repeat)
+            }
         }
     }
 
@@ -443,30 +494,15 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             QToast.show(this, R.string.hint_input_registration_code)
             return false
         }
-        if (StringUtil.isBlank(startDate)) {
-            QToast.show(this, R.string.toast_select_registration_code_start)
-            return false
-        }
-        if (StringUtil.isBlank(endDate)) {
-            QToast.show(this, R.string.toast_select_registration_code_end)
-            return false
-        }
-
-        if (DateUtil.compareTime(startDate, endDate, DateStyleEnum.YYYY_MM_DD.value) >= 0) {
-            QToast.show(this, R.string.toast_select_registration_code_error)
-            return false
-        }
-        if (StringUtil.isBlank(license)) {
-            QToast.show(this, R.string.hint_input_production_license)
-            return false
-        }
-        if (StringUtil.isBlank(standardCode)) {
-            QToast.show(this, R.string.hint_input_product_standard)
-            return false
+        if (StringUtil.isNotBlank(startDate) && StringUtil.isNotBlank(endDate)) {
+            if (DateUtil.compareTime(startDate, endDate, DateStyleEnum.YYYY_MM_DD.value) >= 0) {
+                QToast.show(this, R.string.toast_select_registration_code_error)
+                return false
+            }
         }
 
         price = priceStr.toDouble()
-        createProduct.goodsId = if (isEdit) "" else currId ?: ""
+        createProduct.goodsId = if (isLocal) "" else currId ?: ""
         createProduct.infoId = infoId
         createProduct.barCode = barCode
         createProduct.name = name
@@ -499,17 +535,35 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         saveDialog?.show()
         saveDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
+                val createUser = UserInfoUtil.getUser()
                 if (view.id == R.id.btn_ok) {
                     saveValue()
-                    val createUser = UserInfoUtil.getUser()
                     if (createUser != null) {
                         createProduct.createUserId = createUser.id
                     }
                     RealmHelper.instance.addOrUpdateBean(createProduct)
-                    saveDialog?.dismiss()
-                    finish()
                 } else {
-                    saveDialog?.dismiss()
+                    // 删除本地数据
+                    if (createUser != null) {
+                        RealmHelper.instance.deleteBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
+                    }
+                }
+                finish()
+            }
+        }
+    }
+
+    private fun showQuickTip() {
+        if (quickDialog == null) {
+            quickDialog = OperationTipDialog(this)
+        }
+        quickDialog?.setTip(R.string.tip_quick_product)
+        quickDialog?.setCancelBtn(R.string.tip_quick_cancel)
+        quickDialog?.setConfirmBtn(R.string.tip_quick_ok)
+        quickDialog?.show()
+        quickDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                if (view.id == R.id.btn_cancel) {
                     finish()
                 }
             }
@@ -616,11 +670,20 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                 saveDialog?.dismiss()
             }
         }
+        quickDialog.let {
+            if (quickDialog != null && quickDialog!!.isShowing) {
+                quickDialog?.dismiss()
+            }
+        }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            showSaveTip()
+            if (isEdit) {
+                showQuickTip()
+            } else {
+                showSaveTip()
+            }
         }
         return super.onKeyDown(keyCode, event)
     }

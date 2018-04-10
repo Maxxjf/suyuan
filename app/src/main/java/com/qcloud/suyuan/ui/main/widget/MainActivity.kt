@@ -176,12 +176,12 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
             if (outDialog == null) {
-                outDialog =OperationTipDialog(this)
+                outDialog = OperationTipDialog(this)
                 outDialog?.setTip(R.string.toast_app_exit)
                 outDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
                     override fun onBtnClick(view: View) {
                         when (view.id) {
-                            R.id.btn_confirm -> {
+                            R.id.btn_ok -> {
                                 RealmHelper.instance.closeRealm()
                                 BaseApplication.mAppManager?.appExit(this@MainActivity)
                                 NFCHelper.instance.close()
@@ -189,7 +189,6 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
                             }
                         }
                     }
-
                 }
             }
             outDialog?.show()

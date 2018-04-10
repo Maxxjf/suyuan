@@ -52,6 +52,9 @@ interface IGoodsModel {
     /**获取门店信息*/
     fun getFactoryByClassify(classifyId: String, callback: DataCallback<ReturnDataBean<ProductMillBean>>)
 
+    /**检验条码是否重复*/
+    fun isBarCodeRepeat(id: String?, barCode: String, callback: DataCallback<EmptyReturnBean>)
+
     /**创建修改私有产品 -下一步*/
     fun createProductNext(id: String?, classifyId: String, callback: DataCallback<ReturnDataBean<ProductAttrBean>>)
 

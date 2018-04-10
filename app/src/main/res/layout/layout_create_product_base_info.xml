@@ -237,19 +237,38 @@
         android:layout_marginLeft="@dimen/margin_2"
         android:layout_marginStart="@dimen/margin_2">
 
-        <TextView
-            android:id="@+id/et_product_bar_code"
+        <LinearLayout
+            android:id="@+id/layout_bar_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
             android:background="@drawable/frame_gray"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_2"
-            android:paddingStart="@dimen/margin_2"
-            android:paddingRight="@dimen/margin_2"
-            android:paddingEnd="@dimen/margin_2"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/textSize"
-            android:hint="@string/hint_input_product_bar_code"/>
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/et_product_bar_code"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/editHeight"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin_2"
+                android:paddingStart="@dimen/margin_2"
+                android:paddingRight="@dimen/margin_2"
+                android:paddingEnd="@dimen/margin_2"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:hint="@string/hint_input_product_bar_code"/>
+
+            <ImageView
+                android:id="@+id/btn_create_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:layout_marginStart="@dimen/margin_2"
+                android:layout_marginRight="@dimen/margin_2"
+                android:layout_marginEnd="@dimen/margin_2"
+                android:src="@drawable/icon_create_code"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/et_product_name"

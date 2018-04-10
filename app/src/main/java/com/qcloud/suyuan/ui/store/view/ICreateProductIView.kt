@@ -18,4 +18,7 @@ interface ICreateProductIView: BaseView {
 
     /**刷新生产厂家*/
     fun replaceMill(list: List<ProductMillBean>)
+
+    /**条形码是否重复*/
+    fun isBarCodeRepeat(isRepeat: Boolean)
 }

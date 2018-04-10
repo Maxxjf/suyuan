@@ -105,7 +105,7 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
                         pageNo = 1
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.hint_input_product_code_and_name)
                     }
                 }
             }
@@ -121,7 +121,7 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
                 pageNo = 1
                 loadData()
             } else {
-                QToast.show(this, R.string.toast_no_input_value)
+                QToast.show(this, R.string.hint_input_product_code_and_name)
             }
         }
     }

@@ -6,4 +6,5 @@ package com.qcloud.suyuan.beans
  * Date: 2018/3/19 13:53.
  */
 class EmptyReturnBean {
+    var isRepeat: Boolean = false   // 条码是否重复
 }

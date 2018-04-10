@@ -34,8 +34,11 @@ import timber.log.Timber
 class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductIIPresenterImpl>(), ICreateProductIIView {
     private var tipDialog: TipDialog? = null
     private var saveDialog: OperationTipDialog? = null
+    private var quickDialog: OperationTipDialog? = null
 
     // 是否编辑本地
+    private var isLocal = false
+    // 是否编辑
     private var isEdit = false
 
     private var mAdapter: CreateProductAttrAdapter? = null
@@ -53,6 +56,7 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     override fun initViewAndData() {
         createProduct = intent.getSerializableExtra("SUBMIT") as CreateProductSubmitBean
         isEdit = intent.getBooleanExtra("IS_EDIT", false)
+        isLocal = intent.getBooleanExtra("IS_LOCAL", false)
 
         initView()
         initAttrList()
@@ -65,10 +69,16 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 if (view.id == R.id.btn_back) {
-                    showSaveTip()
+                    if (isEdit) {
+                        showQuickTip()
+                    } else {
+                        showSaveTip()
+                    }
                 }
             }
         }
+        btn_confirm_create.setText(if (isEdit) R.string.btn_confirm_edit else R.string.btn_confirm_create)
+
         // 提交数据
         btn_confirm_create.setOnClickListener {
             if (check()) {
@@ -86,7 +96,7 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
 
     private fun initSuccessTip() {
         tipDialog = TipDialog(this)
-        tipDialog?.setTip(R.string.tip_product_create_success)
+        tipDialog?.setTip(if (isEdit) R.string.tip_product_edit_success else R.string.tip_product_create_success)
         tipDialog?.setConfirmBtn(R.string.btn_i_know)
         tipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
@@ -100,7 +110,7 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
     override fun replaceList(beans: List<ProductAttrBean>?) {
         if (isRunning) {
             if (beans != null) {
-                if (isEdit) {
+                if (isLocal) {
                     mAdapter?.replaceList(ProductUtil.disposeRealmData(beans))
                 } else {
                     mAdapter?.replaceList(beans)
@@ -159,6 +169,23 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
         return true
     }
 
+    private fun showQuickTip() {
+        if (quickDialog == null) {
+            quickDialog = OperationTipDialog(this)
+        }
+        quickDialog?.setTip(R.string.tip_quick_product)
+        quickDialog?.setCancelBtn(R.string.tip_quick_cancel)
+        quickDialog?.setConfirmBtn(R.string.tip_quick_ok)
+        quickDialog?.show()
+        quickDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                if (view.id == R.id.btn_cancel) {
+                    finish()
+                }
+            }
+        }
+    }
+
     private fun showSaveTip() {
         if (saveDialog == null) {
             saveDialog = OperationTipDialog(this)
@@ -169,13 +196,18 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
         saveDialog?.show()
         saveDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
+                val createUser = UserInfoUtil.getUser()
                 if (view.id == R.id.btn_ok) {
                     saveAttrValue()
-                    val createUser = UserInfoUtil.getUser()
                     if (createUser != null) {
                         createProduct.createUserId = createUser.id
                     }
                     RealmHelper.instance.addOrUpdateBean(createProduct)
+                } else {
+                    // 删除本地数据
+                    if (createUser != null) {
+                        RealmHelper.instance.deleteBeanById(CreateProductSubmitBean::class.java, "createUserId", createUser.id)
+                    }
                 }
                 val activity = AppManager.instance.getActivity(CreateProductIActivity::class.java)
                 activity?.finish()
@@ -223,16 +255,26 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            showSaveTip()
+            if (isEdit) {
+                showQuickTip()
+            } else {
+                showSaveTip()
+            }
         }
         return super.onKeyDown(keyCode, event)
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context, bean: CreateProductSubmitBean, isEdit: Boolean = false) {
+        /**
+         * @param bean 提交的内容
+         * @param isEdit 是否编辑
+         * @param isLocal 是否缓存的数据
+         * */
+        fun openActivity(@NonNull context: Context, bean: CreateProductSubmitBean, isEdit: Boolean, isLocal: Boolean) {
             val intent = Intent(context, CreateProductIIActivity::class.java)
             intent.putExtra("SUBMIT", bean)
             intent.putExtra("IS_EDIT", isEdit)
+            intent.putExtra("IS_LOCAL", isLocal)
             context.startActivity(intent)
         }
     }

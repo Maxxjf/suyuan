@@ -71,6 +71,10 @@ interface IGoodsApi {
     @GET(UrlConstants.GET_FACTORY)
     fun getFactoryByClassify(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductMillBean>>>
 
+    /**检验条码是否重复*/
+    @GET(UrlConstants.IS_BAR_CODE_REPEAT)
+    fun isBarCodeRepeat(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
+
     /**创建修改私有产品 -下一步*/
     @GET(UrlConstants.CREATE_PRODUCT_NEXT)
     fun createProductNext(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<ProductAttrBean>>>

@@ -36,6 +36,10 @@ class MyProductDetailsActivity: BaseActivity<IMyProductDetailsView, MyProductDet
         btn_create_product.setOnClickListener {
             CreateProductIActivity.openActivity(this, currId)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
         mPresenter?.loadData(currId ?: "")
     }
 

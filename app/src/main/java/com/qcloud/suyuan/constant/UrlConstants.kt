@@ -123,6 +123,8 @@ object UrlConstants {
     const val EDIT_MY_PRODUCT = URL_PREFIX_APP + "goods/toAdd"
     /**获取生产厂家*/
     const val GET_FACTORY = URL_PREFIX_APP + "goods/getFactory"
+    /**检验条码是否重复*/
+    const val IS_BAR_CODE_REPEAT = URL_PREFIX_APP + "goods/isRepeat"
     /**创建修改私有产品-下一步*/
     const val CREATE_PRODUCT_NEXT = URL_PREFIX_APP + "goods/toNextStep"
     /**保存私有产品*/

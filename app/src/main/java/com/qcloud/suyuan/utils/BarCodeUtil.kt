@@ -5,8 +5,9 @@ import android.support.annotation.NonNull
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
-import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.qcloud.qclib.utils.GUIDUtil
+import com.qcloud.qclib.utils.StringUtil
 
 /**
  * Description: 条形码管理工具
@@ -58,6 +59,23 @@ object BarCodeUtil {
         } catch (e: WriterException) {
             e.printStackTrace()
             null
+        }
+    }
+
+    /**
+     * 生成产品条形码字符串
+     * */
+    fun createBarCodeNumber(): String {
+        val uuidStr = GUIDUtil.getUUIDStr()
+        val uuidNum = GUIDUtil.UUID2Number(uuidStr)
+        return if (StringUtil.isNotBlank(uuidNum)) {
+            if (uuidNum.length > 16) {
+                uuidNum.substring(0, 16)
+            } else {
+                uuidNum
+            }
+        } else {
+            ""
         }
     }
 }

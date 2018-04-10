@@ -11,7 +11,7 @@ class BarCodeDetailsBean {
     var id: String = "0"                // 商品ID
     var name: String? = null            // 商品名
         get() = if (StringUtil.isBlank(field)) "" else field
-    var barCode: String? = null         // 条形码
+    var barcode: String? = null         // 条形码
         get() = if (StringUtil.isBlank(field)) "" else field
     var classifyName: String? = null    // 分类名
         get() = if (StringUtil.isBlank(field)) "" else field

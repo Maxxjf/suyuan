@@ -70,6 +70,7 @@
     <string name="btn_edit_info">修改信息</string>
     <string name="btn_next">下一步</string>
     <string name="btn_confirm_create">确定创建</string>
+    <string name="btn_confirm_edit">确定修改</string>
     <string name="btn_add">添加</string>
     <string name="btn_confirm_add">确认添加</string>
     <string name="btn_edit_product_info">修改产品信息</string>
@@ -129,6 +130,7 @@
     <string name="hint_input_sell_price">请输入售价</string>
     <string name="hint_input_stock_warn_line">请输入库存警告线</string>
     <string name="hint_input_buy_number">请输入购买数量</string>
+    <string name="hint_select_product_classify_search">选择产品分类搜索</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -220,6 +222,7 @@
     <string name="tip_printing_suyuan_code">订单完成，正在打印溯源码…</string>
     <string name="tip_to_scan_batch_code">请扫产品条形码或输入产品条形码或名称进行查找产品</string>
     <string name="tip_no_any_product">抱歉！没有找到符合条件的相关产品名称或产品条形码</string>
+    <string name="tip_no_this_product">抱歉！没有找到符合条件的相关产品</string>
     <string name="tip_to_scan_or_search">请扫溯源码或输入溯源码获取产品~</string>
     <string name="tip_no_any_product_get">抱歉！没有找到符合条件的相关产品，请重新扫码或输入</string>
     <string name="tip_printing_bar_code">入库完成，正在批次打印溯源码…</string>
@@ -236,12 +239,16 @@
     <string name="tip_scan_product_code">请扫产品条形码~</string>
     <string name="tip_scan_code_error">抱歉！没有找到符合条件的相关产品，请重新扫码~</string>
     <string name="tip_product_create_success">门店产品创建成功.</string>
+    <string name="tip_product_edit_success">门店产品修改成功.</string>
     <string name="tip_edit_old">检测到您上次未提交创建的产品，是否继续编辑？</string>
     <string name="tip_edit_cancel">继续编辑</string>
     <string name="tip_edit_ok">不了，我要创建新的</string>
     <string name="tip_save_product">您的产品还没有提交创建，是否保存下次继续编辑？</string>
     <string name="tip_save_cancel">不保存</string>
     <string name="tip_save_ok">保存</string>
+    <string name="tip_quick_product">您的产品还没有提交修改，是否退出？</string>
+    <string name="tip_quick_cancel">退出</string>
+    <string name="tip_quick_ok">继续修改</string>
     <string name="tip_no">否</string>
     <string name="tip_yes">是</string>
     <string name="tip_no_list">列表为空</string>
@@ -250,6 +257,7 @@
     <string name="tip_input_right_id_card">请输入正确的身份证号</string>
     <string name="tip_no_data">抱歉！暂无信息</string>
     <string name="tip_no_product">无该产品信息，是否创建我的私有产品?</string>
+    <string name="tip_bar_code_is_repeat">产品条码已存在，请重新输入</string>
 
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>

@@ -19,8 +19,8 @@ open class IDBean: RealmObject() {
     var name: String? = null
     // 姓别
     var sex: String? = null
-    var gender: Int = 1
-        get() = if (sex.equals("男")) 1 else 2
+    var gender: Int = 0
+        get() = if (sex.equals("男")) 1 else if (sex.equals("女")) 2 else 0
     // 民族
     var nation: String? = null
     // 出生日期

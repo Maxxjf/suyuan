@@ -14,10 +14,12 @@ import android.view.KeyEvent
 import android.view.WindowManager
 import android.widget.TextView
 import com.qcloud.qclib.materialdesign.listener.OnGetFocusListener
+import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.ScreenUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
+import com.qcloud.suyuan.utils.ChatNumberKeyListener
 import com.qcloud.suyuan.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.dialog_input.*
 
@@ -61,6 +63,7 @@ class InputDialog @JvmOverloads constructor(
     private fun initView() {
         //et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
         et_text?.inputType(InputType.TYPE_CLASS_TEXT)
+        et_text?.hintColor(ApiReplaceUtil.getColor(mContext, R.color.colorHint))
         et_text?.onGetFocusListener = object : OnGetFocusListener {
             override fun onGetFocus() {
 
@@ -173,6 +176,15 @@ class InputDialog @JvmOverloads constructor(
         val filters = arrayOf<InputFilter>(PriceInputFilter())
         if (et_text.mEditText != null) {
             et_text.mEditText?.filters = filters
+        }
+    }
+
+    /**
+     * 设置输入字母和数字
+     * */
+    fun setInputChatOrNumber() {
+        if (et_text.mEditText != null) {
+            et_text.mEditText?.keyListener = ChatNumberKeyListener()
         }
     }
 

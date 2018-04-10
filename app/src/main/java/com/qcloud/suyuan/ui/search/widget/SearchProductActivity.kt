@@ -88,7 +88,7 @@ class SearchProductActivity: BaseActivity<ISearchProductView, SearchProductPrese
             hideEmptyView()
             with(bean) {
                 GlideUtil.loadImage(this@SearchProductActivity, img_product, imageUrl, R.drawable.bmp_product)
-                tv_bar_code.text = barCode
+                tv_bar_code.text = barcode
                 tv_product_name.text = name
                 tv_product_spec.text = specification
                 tv_product_classify.text = classifyName

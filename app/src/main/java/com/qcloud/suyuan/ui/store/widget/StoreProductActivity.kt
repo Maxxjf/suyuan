@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
-import android.text.Html
 import android.view.Gravity
 import android.view.KeyEvent
 import android.widget.AdapterView
@@ -106,7 +105,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                         pageNo = 1
                         loadData()
                     } else {
-                        QToast.show(this, R.string.toast_no_input_value)
+                        QToast.show(this, R.string.hint_input_product_code_and_name)
                     }
                 }
             }
@@ -122,7 +121,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                 pageNo = 1
                 loadData()
             } else {
-                QToast.show(this, R.string.toast_no_input_value)
+                QToast.show(this, R.string.hint_input_product_code_and_name)
             }
         }
     }

@@ -23,14 +23,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/smallTextSize"
-                android:text="@string/tag_required"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/smallTextSize"
@@ -48,14 +40,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/smallTextSize"
-                android:text="@string/tag_required"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/smallTextSize"
@@ -69,14 +53,6 @@
             android:gravity="center_vertical|right"
             android:layout_marginTop="@dimen/modelMargin"
             tools:ignore="RtlHardcoded">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/smallTextSize"
-                android:text="@string/tag_required"/>
 
             <TextView
                 android:layout_width="wrap_content"
