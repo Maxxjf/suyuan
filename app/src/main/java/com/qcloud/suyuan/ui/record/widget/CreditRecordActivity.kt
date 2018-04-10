@@ -176,7 +176,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     /**
      * 展示总赊账金额
      */
-    override fun showCreditMoney(money: Double) {
+    override fun showCreditMoney(money: String) {
         tv_credit_money.setText("${money}")
     }
 

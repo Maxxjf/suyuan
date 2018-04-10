@@ -29,5 +29,5 @@ interface ICreditRecordView :BaseView{
     /**还款*/
     fun repayment()
 
-    fun showCreditMoney(money: Double)
+    fun showCreditMoney(money: String)
 }

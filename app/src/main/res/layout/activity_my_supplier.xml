@@ -107,9 +107,9 @@
         </LinearLayout>
 
         <View
-            android:layout_width="@dimen/margin_2"
+            android:layout_width="@dimen/layoutMargin"
             android:layout_height="match_parent"
-            android:background="@color/colorLine" />
+            android:background="@color/colorModelBg" />
 
         <LinearLayout
             android:id="@+id/layout_cart"

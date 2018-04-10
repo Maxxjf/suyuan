@@ -189,7 +189,6 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
                             }
                         }
                     }
-
                 }
             }
             outDialog?.show()

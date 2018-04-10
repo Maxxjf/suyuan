@@ -18,12 +18,27 @@ class SaleFormBean {
      */
 
     var alipay: Double = 0.00
+    var alipayStr = "0.00元"
+        get() = String.format("%1$.2f元", alipay)
     var cash: Double = 0.00
+    var cashStr = "0.00元"
+        get() = String.format("%1$.2f元", cash)
     var oncredit: Double = 0.00
+    var oncreditStr = "0.00元"
+        get() = String.format("%1$.2f元", oncredit)
     var orderTotal: Int = 0
+    var orderTotalStr = "0笔"
+        get() = String.format("%d笔", orderTotal)
     var returnMoney: Double = 0.00
+    var returnMoneyStr = "0.00元"
+        get() = String.format("%1$.2f元", returnMoney)
     var totalEarning: Double = 0.00
+    var totalEarningStr = "0.00元"
+        get() = String.format("%1$.2f元", totalEarning)
     var wechat: Double = 0.00
+    var wechatStr = "0.00元"
+        get() = String.format("%1$.2f元", wechat)
+
     override fun toString(): String {
         return "SaleFormBean(alipay=$alipay, cash=$cash, oncredit=$oncredit, orderTotal=$orderTotal, returnMoney=$returnMoney, totalEarning=$totalEarning, wechat=$wechat)"
     }

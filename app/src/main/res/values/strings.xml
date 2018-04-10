@@ -3,6 +3,7 @@
 
     <string name="qcloud">旗云科技</string>
 
+
     <string name="title_suyuan">农资溯源管理系统</string>
     <string name="title_launch">启动页</string>
     <string name="title_main">首页</string>
@@ -102,7 +103,7 @@
     <string name="hint_input_supplier_name">请输入供应商名称</string>
     <string name="hint_input_supplier_address">请输入供应商地址</string>
     <string name="hint_input_remark">请输入你要备注的话</string>
-    <string name="hint_input_contact_person">请输入称联系人</string>
+    <string name="hint_input_contact_person">请输入联系人</string>
     <string name="hint_input_contact_phone">请输入联系电话</string>
     <string name="hint_input_product_bar_code">请输入产品条形码</string>
     <string name="hint_input_product_name">请输入产品名称</string>
@@ -174,6 +175,8 @@
     <string name="toast_start_bigger_end">开始时间不得大于结束时间，请重新选择</string>
     <string name="toast_error">操作有误</string>
     <string name="toast_discount_less_then_account">优惠金额不能大于总额</string>
+    <string name="toast_goods_in_list">商品已在列表里</string>
+    <string name="toast_number_too_larger">出库数量不得大于当前库存</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

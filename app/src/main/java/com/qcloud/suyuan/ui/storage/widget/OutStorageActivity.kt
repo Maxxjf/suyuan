@@ -25,7 +25,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
 
 
     var keyword: String = ""   //搜索关键字
-    var mCurrentBean:OutStorageBean.InfoBean?=null
+    var mCurrentBean: OutStorageBean.InfoBean? = null
     var errTip: TipDialog? = null
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -54,36 +54,42 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
                     keyword = et_search.text.toString().trim()
                     searchProductInfo()
                     et_search.setText("")
+                    et_search.requestFocus()
                     startLoadingDialog()
                 }
             }
-            false
+            true
         })
-        btn_confirm.setOnClickListener({_ ->
-            var numberStr=et_number.text.toString().trim()
-            if (StringUtil.isBlank(numberStr)){
+        btn_confirm.setOnClickListener({ _ ->
+            et_search.requestFocus()
+            var numberStr = et_number.text.toString().trim()
+            if (StringUtil.isBlank(numberStr)) {
+                loadErr(getString(R.string.hint_input_storge_number))
                 return@setOnClickListener
             }
-            var number=numberStr.toInt()
-            if (mCurrentBean!=null){
-                mPresenter?.outStorage(mCurrentBean!!.recordId,number)
+            var number = numberStr.toInt()
+            if (mCurrentBean != null) {
+                if (number> mCurrentBean!!.surplusNum){
+                    loadErr(getString(R.string.toast_number_too_larger))
+                    return@setOnClickListener
+                }
+                mPresenter?.outStorage(mCurrentBean!!.recordId, number)
             }
         })
     }
 
     //    搜索产品消息
     override fun searchProductInfo() {
-
         mPresenter?.search(keyword)
     }
 
     //    加载产品消息
     override fun loadProductInfo(bean: OutStorageBean.InfoBean) {
         stopLoadingDialog()
-        mCurrentBean=bean
+        mCurrentBean = bean
         if (bean != null) {
-            ll_info.visibility= View.VISIBLE
-            ll_number.visibility= View.VISIBLE
+            ll_info.visibility = View.VISIBLE
+            ll_number.visibility = View.VISIBLE
             tv_name.setText("${bean.name}")
             tv_rule.setText("${bean.specification}")
             tv_classify.setText("${bean.classifyName}")
@@ -94,7 +100,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             tv_valid_time.setText("${bean.endDate}")
             tv_price.setText("${bean.stockPrice}")
             tv_storage_number.setText("${bean.surplusNum}")
-            GlideUtil.loadImage(this,img_product,bean.image,R.drawable.bmp_product)
+            GlideUtil.loadImage(this, img_product, bean.image, R.drawable.bmp_product)
         }
     }
 

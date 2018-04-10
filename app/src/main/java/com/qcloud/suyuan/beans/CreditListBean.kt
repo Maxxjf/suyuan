@@ -17,6 +17,8 @@ class CreditListBean {
      */
 
     var allSumRepayment: Double = 0.00
+    var allSumRepaymentStr = "0.00元"
+        get() = String.format("%1$.2f元", allSumRepayment)
     var totalRow: Int = 0
     var list: List<ListBean>? = null
 
@@ -37,7 +39,7 @@ class CreditListBean {
             get() = if (StringUtil.isBlank(field)) "" else field
         var purchaserId: String? = null
             get() = if (StringUtil.isBlank(field)) "" else field
-        var sumRepayment: Double = 0.0
+        var sumRepayment: Double = 0.00
         override fun toString(): String {
             return "ListBean(idCard=$idCard, mobile=$mobile, name=$name, purchaserId=$purchaserId, sumRepayment=$sumRepayment)"
         }

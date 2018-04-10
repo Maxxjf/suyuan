@@ -114,7 +114,7 @@ class SupplierEditFragment :BaseFragment<ISupplierEditView,SupplierEditPresenter
          phone=tv_phone.text.toString().trim()
          remark=tv_remark.text.toString().trim()
         if (StringUtil.isBlank(name)) {
-            loadErr(mContext!!.resources.getString(R.string.hint_input_name_supplier))
+            loadErr(mContext!!.resources.getString(R.string.hint_input_supplier_name))
             return false
         }
         if (StringUtil.isBlank(person)) {

@@ -6,7 +6,7 @@ import com.qcloud.qclib.utils.StringUtil
  * 类型：CreditInfoBean
  * Author: iceberg
  * Date: 2018/3/25.
- * TODO:
+ * 赊账信息
  */
 class CreditInfoBean {
 
@@ -18,10 +18,10 @@ class CreditInfoBean {
      * time : 时间
      */
 
-    var alreadyRepayment: Double = 0.0
+    var alreadyRepayment: Double = 0.00
     var serialNumber: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
-    var shouldRepayment:  Double = 0.0
+    var shouldRepayment:  Double = 0.00
     var time: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var id: String? = null

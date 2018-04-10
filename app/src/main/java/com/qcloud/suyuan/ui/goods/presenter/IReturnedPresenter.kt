@@ -12,7 +12,7 @@ interface IReturnedPresenter {
     /**
      * 得到退货列表信息
      */
-    fun loadData(code: String)
+    fun loadData(code:String,saleId:String)
 
     fun salesReturn(money: String, merchandiseBean: List<ScanCodeBean.MerchandiseBean>)
 }
