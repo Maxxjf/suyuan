@@ -53,6 +53,7 @@ class CreditRecordPresenterImpl : BasePresenter<ICreditRecordView>(), ICreditRec
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
                     mView?.loadErr(message,true)
+                    mView?.getCreditList()
                     mView?.getCreditInfo()
                 }
             }

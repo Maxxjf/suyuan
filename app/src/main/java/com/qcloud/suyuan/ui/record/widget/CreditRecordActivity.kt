@@ -166,6 +166,7 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     override fun getCreditList() {
         keyword = et_search.text.toString()
         mPresenter?.getCreditList(keyword, creditPageNo, AppConstants.PAGE_SIZE)
+//        orderAdapter?.removeAll()
         startLoadingDialog()
     }
 
