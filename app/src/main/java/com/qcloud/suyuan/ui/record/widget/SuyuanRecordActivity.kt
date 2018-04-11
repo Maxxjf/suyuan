@@ -79,6 +79,7 @@ class SuyuanRecordActivity: BaseActivity<ISuyuanRecordView, SuyuanRecordPresente
         }
 
         mEmptyView = NoDataView(this)
+        mEmptyView?.noData(R.string.tip_no_any_product_get)
         list_record?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         loadData()
@@ -138,7 +139,7 @@ class SuyuanRecordActivity: BaseActivity<ISuyuanRecordView, SuyuanRecordPresente
                 list_record?.isMore(isNext)
                 hideEmptyView()
             } else {
-                showEmptyView(resources.getString(R.string.tip_no_data))
+                showEmptyView(resources.getString(R.string.tip_no_any_product_get))
             }
         }
     }

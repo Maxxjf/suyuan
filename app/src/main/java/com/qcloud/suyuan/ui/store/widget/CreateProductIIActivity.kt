@@ -159,7 +159,7 @@ class CreateProductIIActivity: BaseActivity<ICreateProductIIView, CreateProductI
                     return false
                 }
                 idList.add(attrName.id ?: "")
-                valueList.add(bean.attrValueSubmitStr ?: "")
+                valueList.add(bean.attrValueSubmitStr)
             }
         }
         createProduct.attrId = StringUtil.combineList(idList, ",")

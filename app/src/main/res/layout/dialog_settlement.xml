@@ -222,7 +222,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="@dimen/layoutMargin"
-            android:background="@drawable/btn_orange_radius_selector">
+            android:background="@drawable/btn_wechat_radius_selector">
 
             <ImageView
                 android:layout_width="wrap_content"
