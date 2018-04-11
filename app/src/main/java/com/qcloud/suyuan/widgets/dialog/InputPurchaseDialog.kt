@@ -124,4 +124,10 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
         return true
     }
 
+    fun clearData() {
+        currPurchaser = null
+        et_id.setText("")
+        et_name.setText("")
+        et_mobile.setText("")
+    }
 }

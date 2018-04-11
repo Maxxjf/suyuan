@@ -385,6 +385,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         if (inputPurchaseDialog == null) {
             inputPurchaseDialog = InputPurchaseDialog(this)
         }
+        inputPurchaseDialog?.clearData()
         inputPurchaseDialog?.show()
         inputPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
@@ -485,6 +486,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                     purchaseInfo?.id = bean.purchaserId
                     IDCardUtil.addOrUpdate(purchaseInfo)
                 }
+
+                clearData()
             }
         }
     }
@@ -510,8 +513,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         ticketInfo.giveMoney = giveMoney            // 找零
 
         TicketUtil.printTicket(ticketInfo)
-
-        clearData()
     }
 
     /**
@@ -535,12 +536,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         tv_other_instructions.text = ""
 
         submitProducts = ArrayList()
-
-        purchaseInfo = null
-        img_user_head.setImageResource(R.drawable.bmp_user_head)
-        tv_user_name.text = ""
-        tv_user_id.text = ""
-        tv_mobile.text = ""
 
         initDropDown()
     }
