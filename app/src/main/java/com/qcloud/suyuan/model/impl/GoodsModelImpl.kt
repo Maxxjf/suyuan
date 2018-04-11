@@ -35,7 +35,7 @@ class GoodsModelImpl: IGoodsModel {
      * @param pageNo
      * @param pageSize
      * @param classifyId 二级分类id
-     * @param isPlatform 是否私有产品 1不是0是
+     * @param isPlatform 是否私有产品 1不是0是-1全部
      * @param keyword 搜索关键字 条形码/名称/厂家
      * */
     override fun list(pageNo: Int, pageSize: Int, classifyId: String?, isPlatform: Int, keyword: String?, callback: DataCallback<ReturnDataBean<ProductBean>>) {
@@ -228,11 +228,17 @@ class GoodsModelImpl: IGoodsModel {
      *
      * @param id 产品id
      * @param barCode 产品条形码
+     * @param name 产品名称
+     * @param specification 规格
+     * @param millId 产品ID
      * */
-    override fun isBarCodeRepeat(id: String?, barCode: String, callback: DataCallback<EmptyReturnBean>) {
+    override fun isBarCodeRepeat(id: String?, barCode: String, name: String, specification: String, millId: String, callback: DataCallback<EmptyReturnBean>) {
         val params = FrameRequest.getAppParams()
         params["id"] = id ?: ""
         params["barCode"] = barCode
+        params["name"] = name
+        params["specification"] = specification
+        params["millId"] = millId
 
         BaseApi.dispose(mApi.isBarCodeRepeat(params), callback)
     }

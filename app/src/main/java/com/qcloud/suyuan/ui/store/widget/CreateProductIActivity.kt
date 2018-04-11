@@ -362,8 +362,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
                 }
                 R.id.btn_next -> {
                     if (check()) {
-                        //mPresenter?.isBarCodeRepeat(currId, barCode)
-                        CreateProductIIActivity.openActivity(this, createProduct, isEdit, isLocal)
+                        mPresenter?.isBarCodeRepeat(currId, barCode, name, spec, millId)
+                        //CreateProductIIActivity.openActivity(this, createProduct, isEdit, isLocal)
                     }
                 }
             }
@@ -421,12 +421,12 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
         }
     }
 
-    override fun isBarCodeRepeat(isRepeat: Boolean) {
+    override fun isBarCodeRepeat(isRepeat: Boolean, message: String) {
         if (isRunning) {
-            if (isRepeat) {
+            if (!isRepeat) {
                 CreateProductIIActivity.openActivity(this, createProduct, isEdit, isLocal)
             } else {
-                QToast.show(this, R.string.tip_bar_code_is_repeat)
+                QToast.show(this, message)
             }
         }
     }

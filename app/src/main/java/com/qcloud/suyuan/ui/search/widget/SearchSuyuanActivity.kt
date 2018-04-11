@@ -5,7 +5,6 @@ import android.content.Intent
 import android.support.annotation.NonNull
 import android.view.KeyEvent
 import android.view.View
-import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.BaseUrlUtil
 import com.qcloud.qclib.utils.BitmapUtil
@@ -100,6 +99,7 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
                 img_suyuan_code.post {
                     val width = img_suyuan_code.width
                     val url = BaseUrlUtil.getBaseUrl() + infoBean.codeUrl
+                    Timber.e("url = $url")
                     val bitmap = BarCodeUtil.createQrCode(url, width, width)
                     if (bitmap != null) {
                         img_suyuan_code.setImageBitmap(bitmap)

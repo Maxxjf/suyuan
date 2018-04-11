@@ -60,6 +60,11 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
         mPresenter?.loadClassify()
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadData()
+    }
+
     private fun initRecyclerView() {
         list_product?.setLayoutManager(LinearLayoutManager(this))
 
@@ -88,8 +93,6 @@ class MyProductActivity: BaseActivity<IMyProductView, MyProductPresenterImpl>(),
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-
-        loadData()
     }
 
     private fun initEditView() {

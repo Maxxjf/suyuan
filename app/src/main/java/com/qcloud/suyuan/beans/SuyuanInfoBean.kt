@@ -10,7 +10,9 @@ import com.qcloud.qclib.utils.StringUtil
 class SuyuanInfoBean {
     var id: String? = null              // 溯源记录id
     var codeUrl: String? = null         // 二维码路径
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() {
+            return if (StringUtil.isBlank(field)) "" else if (field!!.length > 1) field!!.substring(1, field!!.length) else field
+        }
     var count: Int = 0                  // 查询次数
     var saleInfoId: String? = null      // 销售流水明细ID
     var isDelete: Int = 0               // 是否删除（0：否；1：是)

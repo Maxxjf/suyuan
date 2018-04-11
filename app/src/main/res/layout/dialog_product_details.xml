@@ -20,7 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/btnTextSize"
+            android:textSize="@dimen/titleTextSize"
             android:text="@string/tag_details_info"/>
 
         <ImageView

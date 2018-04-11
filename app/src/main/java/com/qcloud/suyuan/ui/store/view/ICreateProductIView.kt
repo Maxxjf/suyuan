@@ -20,5 +20,5 @@ interface ICreateProductIView: BaseView {
     fun replaceMill(list: List<ProductMillBean>)
 
     /**条形码是否重复*/
-    fun isBarCodeRepeat(isRepeat: Boolean)
+    fun isBarCodeRepeat(isRepeat: Boolean, message: String)
 }

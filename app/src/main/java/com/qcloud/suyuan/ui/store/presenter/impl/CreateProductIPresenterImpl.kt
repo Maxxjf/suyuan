@@ -77,12 +77,15 @@ class CreateProductIPresenterImpl: BasePresenter<ICreateProductIView>(), ICreate
      *
      * @param id 产品id
      * @param barCode 产品条形码
+     * @param name 产品名称
+     * @param specification 规格
+     * @param millId 厂家id
      * */
-    override fun isBarCodeRepeat(id: String?, barCode: String) {
-        mModel.isBarCodeRepeat(id, barCode, object : DataCallback<EmptyReturnBean> {
+    override fun isBarCodeRepeat(id: String?, barCode: String, name: String, specification: String, millId: String) {
+        mModel.isBarCodeRepeat(id, barCode, name, specification, millId, object : DataCallback<EmptyReturnBean> {
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (t!= null) {
-                    mView?.isBarCodeRepeat(t.isRepeat)
+                    mView?.isBarCodeRepeat(t.isRepeat, message ?: "产品条码或名称已存在，请检验一下")
                 } else {
                     mView?.loadErr(message ?: "请求出错了", true)
                 }

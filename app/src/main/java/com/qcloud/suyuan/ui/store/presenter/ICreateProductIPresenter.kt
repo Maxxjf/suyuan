@@ -10,5 +10,5 @@ interface ICreateProductIPresenter {
 
     fun loadFactory(classifyId: String)
 
-    fun isBarCodeRepeat(id: String?, barCode: String)
+    fun isBarCodeRepeat(id: String?, barCode: String, name: String, specification: String, millId: String)
 }

@@ -6,6 +6,7 @@ import com.qcloud.qclib.callback.DataCallback
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.constant.AppConstants
+import com.qcloud.suyuan.enums.PlatformEnum
 import com.qcloud.suyuan.model.impl.GoodsModelImpl
 import com.qcloud.suyuan.ui.goods.presenter.IModifyPricePresenter
 import com.qcloud.suyuan.ui.goods.view.IModifyPriceView
@@ -25,7 +26,7 @@ class ModifyPricePresenterImpl: BasePresenter<IModifyPriceView>(), IModifyPriceP
      * @param classifyId 分类id
      * */
     override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, -1, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, PlatformEnum.isAll.key, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t != null) {
                     if (t.list != null) {
