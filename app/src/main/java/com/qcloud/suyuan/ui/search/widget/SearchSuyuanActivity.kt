@@ -45,8 +45,10 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
         initEmptyView()
         keyword = intent.getStringExtra("SUYUAN_NUMBER")
         if (StringUtil.isNotBlank(keyword)) {
+            toolbar.setTitle(R.string.title_suyuan_record)
             mPresenter?.loadData(keyword!!)
         } else {
+            toolbar.setTitle(R.string.title_search_suyuan)
             showEmptyView(getString(R.string.tip_scan_suyuan_code))
         }
         initEditView()

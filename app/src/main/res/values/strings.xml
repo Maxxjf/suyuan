@@ -77,6 +77,7 @@
     <string name="btn_edit_product_info">修改产品信息</string>
     <string name="btn_ok_out_storge">确认出库</string>
     <string name="btn_to_create">去创建</string>
+    <string name="btn_create_code">系统生成</string>
 
     <string name="cb_remember_password">记住密码</string>
 

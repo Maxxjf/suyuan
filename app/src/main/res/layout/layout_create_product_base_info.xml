@@ -242,7 +242,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/editHeight"
             android:orientation="horizontal"
-            android:background="@drawable/frame_gray_ripple"
             android:gravity="center_vertical">
 
             <TextView
@@ -250,6 +249,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/editHeight"
                 android:layout_weight="1"
+                android:background="@drawable/frame_gray_ripple"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/margin_2"
                 android:paddingStart="@dimen/margin_2"
@@ -259,15 +259,22 @@
                 android:textSize="@dimen/textSize"
                 android:hint="@string/hint_input_product_bar_code"/>
 
-            <ImageView
+            <Button
                 android:id="@+id/btn_create_code"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/editHeight"
+                android:background="@drawable/btn_radius_selector"
                 android:layout_marginLeft="@dimen/margin_2"
                 android:layout_marginStart="@dimen/margin_2"
                 android:layout_marginRight="@dimen/margin_2"
                 android:layout_marginEnd="@dimen/margin_2"
-                android:src="@drawable/icon_create_code"/>
+                android:paddingLeft="@dimen/layoutMargin"
+                android:paddingStart="@dimen/layoutMargin"
+                android:paddingRight="@dimen/layoutMargin"
+                android:paddingEnd="@dimen/layoutMargin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/smallBtnTextSize"
+                android:text="@string/btn_create_code"/>
         </LinearLayout>
 
         <TextView
