@@ -104,9 +104,9 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             // 不允许修改产品条形码
             et_product_bar_code.isEnabled = false
             et_product_bar_code.isClickable = false
+            et_product_bar_code.setBackgroundResource(0)
             btn_create_code.isEnabled = false
             btn_create_code.isClickable = false
-            layout_bar_code.setBackgroundResource(0)
         }
     }
 
