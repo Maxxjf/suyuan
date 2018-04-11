@@ -127,9 +127,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
      */
     override fun loadDataSuccess(bean: ScanCodeBean) {
         for (item in goodsAdapter?.mList!!) {
-            if (StringUtil.isEquals(item.traceabilityId, bean.merchandise!!.traceabilityId))
+            if (StringUtil.isEquals(item.traceabilityId, bean.merchandise!!.traceabilityId)){
                 loadErr(getString(R.string.toast_goods_in_list))
-            return
+                return
+            }
         }
         saleId= bean.saleSerial!!.id!!
         replaceList(bean.infoList, false)
@@ -182,6 +183,17 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
         }
         returnDialog?.show()
+    }
+
+    /**
+     * 退货成功之后
+     */
+    override fun returnSuccess(){
+        layout_info.visibility = View.INVISIBLE
+        saleId=""
+        goodsAdapter!!.removeAll()
+        receiptAdapter!!.removeAll()
+        tv_goods_number.text=""
     }
 
     private fun ReturnGoodsConfirm() {

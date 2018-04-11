@@ -69,9 +69,10 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         saleInfoAdapter = SaleInfoAdapter(this)
         saleListAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ _, _, i, _ ->
             mCurrentBean = saleListAdapter!!.mList[i]
-            mCurrentBean?.let {
+            if (mCurrentBean != null) {
                 mPresenter?.getSaleInfo(mCurrentBean?.id!!)
             }
+            Timber.e("${saleListAdapter!!.mList}")
         })
         rv_sale_list.setLayoutManager(LinearLayoutManager(this))
         rv_sale_list.setAdapter(saleListAdapter!!)
@@ -119,8 +120,8 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         replaceSaleInfoList(bean.list, false)
         mCurrentBean?.let {
             tv_return_money.text = "${bean.refundPrice}"
-            tv_number.text = "${it.serialNumber}"
-            tv_time.text = "${it.createDate}"
+            tv_serial_number.text = "${it.serialNumber}"
+            tv_create_time.text = "${it.createDate}"
             tv_sale_person.text = "${it.purchaserNmae}"
             tv_sale_idcard.text = "${it.idCard}"
             tv_sale_phone.text = "${it.mobile}"
@@ -128,7 +129,6 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             tv_real_pay.text = "${it.realPay}"
             tv_pay_type.text = "${PayMethodEnums.getName(it.payMethod)}"
             var user = UserInfoUtil.getStore()
-            Timber.e("${user?.shopkeeperName}")
             tv_shop_person.setText("${user?.shopkeeperName}")
         }
     }

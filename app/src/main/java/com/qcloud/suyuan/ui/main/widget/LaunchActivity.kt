@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.ui.main.widget
 
 import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.qclib.utils.SystemBarUtil
 import com.qcloud.qclib.utils.TokenUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
@@ -24,11 +25,15 @@ class LaunchActivity: BaseActivity<ILaunchView, LaunchPresenterImpl>(), ILaunchV
     }
 
     override fun initViewAndData() {
+        SystemBarUtil.hideNavBar(this)
         startTimer()
     }
 
+    override val translucentStatusBar: Boolean
+        get() = true
+
     private fun startTimer() {
-        Observable.timer(2, TimeUnit.SECONDS)
+        Observable.timer(3, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     if (StringUtil.isBlank(TokenUtil.getToken())) {

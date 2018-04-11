@@ -98,10 +98,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
                 android:background="@drawable/bg_receipt"
-                android:gravity="center_vertical"
                 android:padding="@dimen/margin_2">
 
                 <TextView
+                    android:layout_centerVertical="true"
                     android:id="@+id/tv_tag_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,10 +113,11 @@
                     android:id="@+id/tv_credit_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_tag_money"
                     android:layout_toRightOf="@+id/tv_tag_money"
                     android:text="500.00元"
                     android:textColor="@color/default_text_color"
-                    android:textSize="@dimen/textSize"
+                    android:textSize="@dimen/titleTextSize"
                     android:textStyle="bold" />
             </RelativeLayout>
 

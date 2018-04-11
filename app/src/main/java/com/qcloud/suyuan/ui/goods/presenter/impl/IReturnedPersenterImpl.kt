@@ -47,7 +47,9 @@ class IReturnedPersenterImpl : BasePresenter<IReturnedView>(),IReturnedPresenter
         model.salesReturn(money,traceabilityIdStr,object :DataCallback<EmptyReturnBean>{
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
+                    mView?.returnSuccess()
                     mView?.loadErr(message)
+
                 }
             }
 
