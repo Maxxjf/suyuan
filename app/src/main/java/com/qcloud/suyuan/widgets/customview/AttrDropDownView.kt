@@ -45,7 +45,7 @@ class AttrDropDownView @JvmOverloads constructor(
                         val bean: ProductAttrValueBean? = value as ProductAttrValueBean
                         if (bean != null) {
                             tv_value.text = bean.name
-                            currBean?.attrValueSubmitStr = bean.name
+                            currBean?.attrValueSubmitStr = bean.name ?: " "
                         }
                     }
                 }
@@ -75,7 +75,7 @@ class AttrDropDownView @JvmOverloads constructor(
             }
             if (StringUtil.isNotBlank(currBean!!.value)) {
                 tv_value.text = currBean!!.value
-                currBean?.attrValueSubmitStr = currBean!!.value
+                currBean?.attrValueSubmitStr = currBean!!.value ?: " "
             }
         }
     }

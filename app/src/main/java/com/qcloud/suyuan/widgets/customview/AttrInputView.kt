@@ -41,7 +41,7 @@ class AttrInputView  @JvmOverloads constructor(
 
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
             override fun onFinishInput(message: String?) {
-                currBean?.attrValueSubmitStr = message
+                currBean?.attrValueSubmitStr = message ?: " "
             }
         }
     }
@@ -61,7 +61,7 @@ class AttrInputView  @JvmOverloads constructor(
             // 给予默认值
             if (StringUtil.isNotBlank(currBean!!.value)) {
                 et_value.text = currBean!!.value
-                currBean?.attrValueSubmitStr = currBean!!.value
+                currBean?.attrValueSubmitStr = currBean!!.value ?: " "
             }
         }
     }

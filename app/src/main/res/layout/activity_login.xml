@@ -78,10 +78,18 @@
                     android:id="@+id/cb_rember_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/cb_remember_password"
-                    android:textSize="@dimen/textSize"
+                    android:checked="false"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
                     android:theme="@style/cb_password" />
+
+                <TextView
+                    android:paddingLeft="@dimen/margin_1"
+                    android:layout_toRightOf="@+id/cb_rember_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cb_remember_password"
+                    android:textSize="@dimen/textSize" />
 
                 <TextView
                     android:id="@+id/btn_forget_password"

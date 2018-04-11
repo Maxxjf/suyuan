@@ -5,46 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.widget.LaunchActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_copyright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_above="@+id/tv_app_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/margin_1"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/micro_text_size"
-            android:text="@string/title_suyuan"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_copyright"
-            android:layout_marginLeft="@dimen/draw_padding"
-            android:layout_marginRight="@dimen/draw_padding"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/micro_text_size"
-            android:text="2018"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/margin_2"
-        android:textColor="@color/colorTitle"
-        android:textSize="@dimen/title_text_size"
-        android:text="@string/qcloud"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_launch"/>
 </RelativeLayout>

@@ -12,7 +12,7 @@ class ProductAttrBean {
     var attrType: MutableList<String>? = null                   // 当属性为表格时的表头
     var value: String? = null                                   // 当属性为输入框或下拉框时的默认值(修改的时候有用到)
     var attrList: MutableList<MutableList<String>>? = null      // 当属性为表格时的表格数据(修改的时候有用到)
-    var attrValueSubmitStr: String? = null                      // 提交的属性格式
+    var attrValueSubmitStr: String = " "                        // 提交的属性格式
     override fun toString(): String {
         return "ProductAttrBean(id='$id', attributeName=$attributeName, attributeValues=$attributeValues, attrType=$attrType, value=$value, attrList=$attrList, attrValueSubmitStr=$attrValueSubmitStr)"
     }

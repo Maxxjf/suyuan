@@ -69,10 +69,11 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             }
             var number = numberStr.toInt()
             if (mCurrentBean != null) {
-                if (number> mCurrentBean!!.surplusNum){
+                if (number > mCurrentBean!!.surplusNum) {
                     loadErr(getString(R.string.toast_number_too_larger))
                     return@setOnClickListener
                 }
+                et_number.setText("")
                 mPresenter?.outStorage(mCurrentBean!!.recordId, number)
             }
         })

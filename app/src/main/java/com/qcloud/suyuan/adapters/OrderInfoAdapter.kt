@@ -2,11 +2,9 @@ package com.qcloud.suyuan.adapters
 
 import android.content.Context
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.CreditInfoBean
 
@@ -28,9 +26,10 @@ class OrderInfoAdapter(context: Context) : CommonRecyclerAdapter<CreditInfoBean>
         var tvCredit = holder.get<TextView>(R.id.tv_credit)
         var tvPayMoney = holder.get<TextView>(R.id.tv_payed_money)
         var btnPay = holder.get<Button>(R.id.btn_pay)
-        var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
-            root.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+        } else {
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         if (bean != null) {
             tvTime?.setText("${bean.time}")

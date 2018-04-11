@@ -3,11 +3,9 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
-import com.qcloud.qclib.utils.ApiReplaceUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ScanCodeBean
 
@@ -29,11 +27,10 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<ScanCodeB
         var tvRule = holder.get<TextView>(R.id.tv_rule)
         var tvDate = holder.get<TextView>(R.id.tv_date)
         var ivDelete = holder.get<ImageView>(R.id.iv_detele)
-        var root    =holder.get<LinearLayout>(R.id.root)
         if (position%2==0){
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext,R.color.colorItemBg))
-        }else{
-            holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+        } else {
+            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         if (bean != null) {
             tvGoodsId?.setText(bean.traceabilityCode)

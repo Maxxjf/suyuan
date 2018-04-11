@@ -6,6 +6,7 @@ import android.support.annotation.NonNull
 import android.support.annotation.StyleRes
 import android.view.Gravity
 import android.view.View
+import android.widget.EditText
 import com.qcloud.suyuan.R
 import kotlinx.android.synthetic.main.dialog_repayment.*
 
@@ -54,6 +55,7 @@ class RepaymentDialog @JvmOverloads constructor(@NonNull private val mContext: C
 
     fun setMoney(moneyStr: String) {
         et_repayment_money.setText(moneyStr)
+        et_repayment_money.setSelection(moneyStr.length)
     }
 
     fun getMoney(): String {
@@ -64,4 +66,8 @@ class RepaymentDialog @JvmOverloads constructor(@NonNull private val mContext: C
         fun onConfirmClick()//点击确认
         fun onRepaymentClick()//点击全部还款
     }
+}
+
+private fun EditText.setFocusable() {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 }

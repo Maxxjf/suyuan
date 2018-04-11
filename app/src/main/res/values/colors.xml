@@ -39,7 +39,7 @@
     <color name="colorRed">#FF1215</color>
     
     <color name="halfTransparent">#80ffffff</color>
-
+    <color name="colorWechat">#09BB07</color>
 
     <!--按钮显示颜色-->
     <color name="btnNormal">#27C54E</color>

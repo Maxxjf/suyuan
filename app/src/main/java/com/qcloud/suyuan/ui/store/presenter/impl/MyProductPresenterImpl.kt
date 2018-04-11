@@ -42,7 +42,7 @@ class MyProductPresenterImpl: BasePresenter<IMyProductView>(), IMyProductPresent
      * 获取产品数据
      * */
     override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, PlatformEnum.isPlatform.key, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, PlatformEnum.isPrivate.key, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t?.list != null) {
                     if (t.list != null) {
