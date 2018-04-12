@@ -19,7 +19,7 @@ import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.ReturnRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.IReturnRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
-import com.qcloud.suyuan.widgets.dialog.DatePicker
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import kotlinx.android.synthetic.main.activity_return_record.*
 import timber.log.Timber
 import java.util.*
@@ -34,11 +34,11 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private var madapter: ReturnedRecordAdapter? = null
     private var mEmptyView: NoDataView? = null
-    private var startDatePicker: DatePicker? = null
-    private var endDatePicker: DatePicker? = null
+    private var startDatePicker: DatePickerDialog? = null
+    private var endDatePicker: DatePickerDialog? = null
     var pageNo: Int = 1
-    var startTime: String = "2018-01-01"
-    var endTime: String = "2018-03-22"
+    var startTime: String = ""
+    var endTime: String = ""
 
     override val layoutId: Int
         get() = R.layout.activity_return_record
@@ -142,8 +142,8 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private fun showStartPicker() {
         if (startDatePicker == null) {
-            startDatePicker = DatePicker(this)
-            startDatePicker?.onDateSelectListener = object : DatePicker.OnDateSelectListener {
+            startDatePicker = DatePickerDialog(this)
+            startDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
 
                 override fun onSelect(time: Calendar) {
                     tv_date_from.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -156,8 +156,8 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private fun showEndPicker() {
         if (endDatePicker == null) {
-            endDatePicker = DatePicker(this)
-            endDatePicker?.onDateSelectListener = object : DatePicker.OnDateSelectListener {
+            endDatePicker = DatePickerDialog(this)
+            endDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
 
                 override fun onSelect(time: Calendar) {
                     tv_date_to.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")

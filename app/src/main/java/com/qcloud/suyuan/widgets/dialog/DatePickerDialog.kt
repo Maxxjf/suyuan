@@ -21,7 +21,7 @@ import java.util.*
  * Author: Kuzan
  * Date: 2018/4/12 18:35.
  */
-class DatePicker(@NonNull private val mContext: Context) {
+class DatePickerDialog(@NonNull private val mContext: Context) {
 
     private var datePickerDialog: Dialog? = null
     private var pvYear: DatePickerView? = null

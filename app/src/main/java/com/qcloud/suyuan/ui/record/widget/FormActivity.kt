@@ -11,7 +11,7 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.SaleFormBean
 import com.qcloud.suyuan.ui.record.presenter.impl.FormPresenterImpl
 import com.qcloud.suyuan.ui.record.view.IFormView
-import com.qcloud.suyuan.widgets.dialog.DatePicker
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_form.*
 import java.util.*
@@ -26,8 +26,8 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
 
     private var startTime:String=""
     private var endTime:String=""
-    private var startDatePicker: DatePicker? = null
-    private var endDatePicker:DatePicker? = null
+    private var startDatePicker: DatePickerDialog? = null
+    private var endDatePicker:DatePickerDialog? = null
     private var errtip: TipDialog? = null
 
     override fun loadErr(errMsg: String, isShow: Boolean) {
@@ -76,8 +76,8 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
 
     private fun showStartPicker() {
         if (startDatePicker == null){
-            startDatePicker= DatePicker(this)
-            startDatePicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+            startDatePicker= DatePickerDialog(this)
+            startDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectListener {
 
                 override fun onSelect(time: Calendar) {
                     tv_date_from.text=DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -90,8 +90,8 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
 
     private fun showEndPicker(){
         if (endDatePicker == null){
-            endDatePicker= DatePicker(this)
-            endDatePicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+            endDatePicker= DatePickerDialog(this)
+            endDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectListener {
 
                 override fun onSelect(time: Calendar) {
                     tv_date_to.text=DateUtil.formatDate(time.time, "yyyy-MM-dd")

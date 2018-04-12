@@ -108,7 +108,7 @@
             <LinearLayout
                 android:paddingLeft="@dimen/layout_margin"
                 android:orientation="vertical"
-                android:layout_weight="5"
+                android:layout_weight="3.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
                 <TextView

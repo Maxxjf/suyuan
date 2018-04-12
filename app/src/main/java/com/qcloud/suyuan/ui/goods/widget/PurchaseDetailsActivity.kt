@@ -23,7 +23,7 @@ import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
 import com.qcloud.suyuan.utils.PrintHelper
-import com.qcloud.suyuan.widgets.dialog.DatePicker
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InStorageDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.pop.DropDownBtnPop
@@ -50,9 +50,9 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     private var listSupplier: MutableList<SupplierBean> = ArrayList()
     private var currSupplier: SupplierBean? = null
     // 生产时间
-    private var birthdayPicker: DatePicker? = null
+    private var birthdayPicker: DatePickerDialog? = null
     // 结束时间
-    private var endPicker: DatePicker? = null
+    private var endPicker: DatePickerDialog? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase_details
@@ -104,8 +104,8 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     private fun initBirthdayPicker() {
-        birthdayPicker = DatePicker(this)
-        birthdayPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+        birthdayPicker = DatePickerDialog(this)
+        birthdayPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 btn_in_storage_birthday.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -114,8 +114,8 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     private fun initEndPicker() {
-        endPicker = DatePicker(this)
-        endPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+        endPicker = DatePickerDialog(this)
+        endPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 btn_in_storage_end_date.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")

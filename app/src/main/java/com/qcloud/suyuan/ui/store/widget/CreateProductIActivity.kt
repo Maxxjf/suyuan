@@ -1,7 +1,5 @@
 package com.qcloud.suyuan.ui.store.widget
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -26,7 +24,6 @@ import com.qcloud.suyuan.ui.store.presenter.impl.CreateProductIPresenterImpl
 import com.qcloud.suyuan.ui.store.view.ICreateProductIView
 import com.qcloud.suyuan.utils.BarCodeUtil
 import com.qcloud.suyuan.utils.UserInfoUtil
-import com.qcloud.suyuan.widgets.dialog.DatePicker
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.dialog.OperationTipDialog
 import com.qcloud.suyuan.widgets.pop.DropDownPop
@@ -56,9 +53,9 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     // 生产厂家
     private var millPop: DropDownPop? = null
     // 开始时间
-    private var startPicker: DatePicker? = null
+    private var startPicker: com.qcloud.suyuan.widgets.dialog.DatePickerDialog? = null
     // 结束时间
-    private var endPicker: DatePicker? = null
+    private var endPicker: com.qcloud.suyuan.widgets.dialog.DatePickerDialog? = null
 
     // 是否编辑本地
     private var isLocal = false
@@ -303,8 +300,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     }
 
     private fun initStartPicker() {
-        startPicker = DatePicker(this)
-        startPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+        startPicker = com.qcloud.suyuan.widgets.dialog.DatePickerDialog(this)
+        startPicker?.onDateSelectListener = object : com.qcloud.suyuan.widgets.dialog.DatePicker.DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 tv_registration_start.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -313,8 +310,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     }
 
     private fun initEndPicker() {
-        endPicker = DatePicker(this)
-        endPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+        endPicker = com.qcloud.suyuan.widgets.dialog.DatePickerDialog(this)
+        endPicker?.onDateSelectListener = object : com.qcloud.suyuan.widgets.dialog.DatePicker.DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 tv_registration_end.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")

@@ -134,6 +134,7 @@
     <string name="hint_input_stock_warn_line">请输入库存警告线</string>
     <string name="hint_input_buy_number">请输入购买数量</string>
     <string name="hint_select_product_classify_search">选择产品分类搜索</string>
+    <string name="hint_select_date">请选择日期</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
     <string name="toast_logout">您确认要退出账号吗？</string>
@@ -181,6 +182,7 @@
     <string name="toast_discount_less_then_account">优惠金额不能大于总额</string>
     <string name="toast_goods_in_list">商品已在列表里</string>
     <string name="toast_number_too_larger">出库数量不得大于当前库存</string>
+    <string name="toast_please_add_goods">请添加商品</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

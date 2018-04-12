@@ -36,8 +36,9 @@
             android:layout_toLeftOf="@+id/iv_date_picker_from"
             android:background="@color/colorModelBg"
             android:textColor="@color/colorSubTitle"
+            android:hint="@string/hint_select_date"
             android:padding="@dimen/margin_1"
-            android:text="2018-03-11"
+            android:text=""
             android:textSize="@dimen/typeTextSize" />
 
         <ImageView
@@ -66,7 +67,8 @@
             android:layout_toLeftOf="@+id/iv_date_picker_to"
             android:background="@color/colorModelBg"
             android:padding="@dimen/margin_1"
-            android:text="2018-03-14"
+            android:hint="@string/hint_select_date"
+            android:text=""
             android:textColor="@color/colorSubTitle"
             android:textSize="@dimen/textSize" />
 
