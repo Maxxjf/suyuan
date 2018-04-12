@@ -1,176 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_outside"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bg_white_radius">
 
     <RelativeLayout
-        android:id="@+id/rl_tool"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tabHeight"
-        android:background="@color/colorAccent">
+        android:background="@color/colorBg">
 
         <TextView
-            android:id="@+id/tv_month_day"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:background="?attr/selectableItemBackground"
-            android:paddingLeft="@dimen/layoutMargin"
-            android:paddingStart="@dimen/layoutMargin"
-            android:paddingRight="@dimen/margin_2"
-            android:paddingEnd="@dimen/margin_2"
-            android:textColor="@color/white"
-            android:textSize="@dimen/typeTextSize"
-            tools:text="4月1日"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/title_select_date"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/typeTextSize" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/tv_month_day"
-            android:layout_toEndOf="@id/tv_month_day"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            tools:ignore="RelativeOverlap">
-
-            <TextView
-                android:id="@+id/tv_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/typeTextSize"
-                tools:text="2018"/>
-
-            <TextView
-                android:id="@+id/tv_lunar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/miniTextSize"
-                tools:text="今日"
-                tools:ignore="SmallSp" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/fl_current"
-            android:layout_width="@dimen/editHeight"
-            android:layout_height="@dimen/editHeight"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_marginRight="@dimen/layoutMargin"
-            android:layout_marginEnd="@dimen/layoutMargin">
-
-            <ImageView
-                android:id="@+id/ib_calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:src="@mipmap/menu_action_calendar_mvp" />
-
-            <TextView
-                android:id="@+id/tv_current_day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/miniTextSize"
-                tools:text="13"/>
-        </FrameLayout>
     </RelativeLayout>
+
+    <View
+        style="@style/LineHorizontal"/>
 
     <RelativeLayout
-        android:id="@+id/rl_calendar_view"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.haibin.calendarview.CalendarView
-            android:id="@+id/calendar_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:current_day_lunar_text_color="@color/colorSubTitle"
-            app:current_day_text_color="@color/colorSubTitle"
-            app:current_month_lunar_text_color="@color/colorSubTitle"
-            app:current_month_text_color="@color/colorSubTitle"
-            app:lunar_text_size="10sp"
-            app:day_text_size="@dimen/typeTextSize"
-            app:max_year="2050"
-            app:max_year_month="12"
-            app:min_year="2016"
-            app:min_year_month="1"
-            app:month_view_show_mode="mode_fix"
-            app:other_month_lunar_text_color="@color/colorSubTitle"
-            app:other_month_text_color="@color/colorLine"
-            app:scheme_lunar_text_color="@color/colorSubTitle"
-            app:scheme_text="假"
-            app:scheme_text_color="@color/colorSubTitle"
-            app:scheme_theme_color="@color/btnNormal"
-            app:selected_lunar_text_color="@color/colorPrimary"
-            app:selected_text_color="@color/colorPrimary"
-            app:selected_theme_color="@color/colorItemBg"
-            app:week_background="@color/white"
-            app:week_bar_height="@dimen/tabHeight"
-            app:week_line_background="@color/transparent"
-            app:week_text_color="@color/colorSubTitle"
-            app:year_view_background="@color/colorModelBg"
-            app:year_view_day_text_color="@color/colorSubTitle"
-            app:year_view_day_text_size="@dimen/miniTextSize"
-            app:year_view_month_text_color="@color/colorPrimary"
-            app:year_view_month_text_size="@dimen/textSize"
-            app:year_view_scheme_color="@color/colorPrimary"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/barHeight"
-            android:layout_below="@+id/calendar_view"
-            android:layout_marginTop="@dimen/layoutMargin"
+            android:layout_height="@dimen/margin_40"
             android:orientation="horizontal"
-            android:gravity="right"
-            tools:ignore="RtlHardcoded">
+            android:padding="@dimen/layoutMargin">
 
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btnHeight"
-                android:layout_marginRight="@dimen/layoutMargin"
-                android:layout_marginEnd="@dimen/layoutMargin"
-                android:paddingLeft="@dimen/margin_4"
-                android:paddingStart="@dimen/margin_4"
-                android:paddingRight="@dimen/margin_4"
-                android:paddingEnd="@dimen/margin_4"
-                android:background="?attr/selectableItemBackground"
+            <com.qcloud.suyuan.widgets.customview.DatePickerView
+                android:id="@+id/pv_year"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tag_year"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/smallTextSize"
-                android:text="@string/btn_cancel" />
+                android:textSize="@dimen/textSize" />
 
-            <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btnHeight"
-                android:layout_marginRight="@dimen/layoutMargin"
-                android:layout_marginEnd="@dimen/layoutMargin"
-                android:paddingLeft="@dimen/margin_4"
-                android:paddingStart="@dimen/margin_4"
-                android:paddingRight="@dimen/margin_4"
-                android:paddingEnd="@dimen/margin_4"
-                android:background="?attr/selectableItemBackground"
+            <com.qcloud.suyuan.widgets.customview.DatePickerView
+                android:id="@+id/pv_month"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tag_month"
                 android:textColor="@color/colorTitle"
-                android:textSize="@dimen/smallTextSize"
-                android:text="@string/btn_ok" />
+                android:textSize="@dimen/textSize" />
 
+            <com.qcloud.suyuan.widgets.customview.DatePickerView
+                android:id="@+id/pv_day"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/tag_day"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize" />
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/barHeight"
+        android:layout_marginTop="@dimen/layoutMargin"
+        android:orientation="horizontal"
+        android:gravity="right"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btnHeight"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/margin_4"
+            android:paddingStart="@dimen/margin_4"
+            android:paddingRight="@dimen/margin_4"
+            android:paddingEnd="@dimen/margin_4"
+            android:background="?attr/selectableItemBackground"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/btn_cancel" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btnHeight"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:paddingLeft="@dimen/margin_4"
+            android:paddingStart="@dimen/margin_4"
+            android:paddingRight="@dimen/margin_4"
+            android:paddingEnd="@dimen/margin_4"
+            android:background="?attr/selectableItemBackground"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/btn_ok" />
+    </LinearLayout>
 </LinearLayout>

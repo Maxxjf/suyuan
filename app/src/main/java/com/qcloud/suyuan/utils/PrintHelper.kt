@@ -2,9 +2,7 @@ package com.qcloud.suyuan.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.hardware.usb.UsbDevice
-import android.support.annotation.DrawableRes
 import android.support.annotation.NonNull
 import com.qcloud.qclib.beans.RxBusEvent
 import com.qcloud.qclib.rxbus.Bus
@@ -155,8 +153,8 @@ class PrintHelper private constructor() {
                                     printBarCode(bean.barCode)
                                 }
                                 2 -> {
-                                    // 打印图片
-                                    printImage(bean.imageRes)
+                                    // 打印二维码
+                                    printQrCode(bean.qrCode)
                                 }
                                 else -> {
                                     // 打印文本小票
@@ -278,21 +276,29 @@ class PrintHelper private constructor() {
     }
 
     /**
-     * 打印图片
+     * 打印二维码
      * */
-    private fun printImage(@DrawableRes resId: Int): Int {
-        var s = 0
+    private fun printQrCode(qrCode: String?): Int {
+        if (StringUtil.isBlank(qrCode)) {
+            return -1
+        }
+
         val pictureTool = PrintPictureUtil.instance
-        val srcImage = BitmapFactory.decodeResource(BaseApplication.mApplication!!.resources, resId)
+        val srcImage = BarCodeUtil.createQrCode(qrCode!!, 100, 100)
+        if (srcImage == null) {
+            Timber.d("图片数据为空")
+            return -1
+        }
 
         pictureTool.initCanvas(srcImage.width, srcImage.height)
         pictureTool.drawImage(0.toFloat(), 0.toFloat(), srcImage)
-        var sendData: ByteArray? = pictureTool.printDraw()
+        val sendData: ByteArray? = pictureTool.printDraw()
 
         if (sendData == null) {
             Timber.d("图片数据为空")
             return -1
         }
+        var s = 0
         return try {
             // usb bulk < 16k bytes
             val temp = ByteArray(8)

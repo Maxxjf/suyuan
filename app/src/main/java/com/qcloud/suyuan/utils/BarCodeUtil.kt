@@ -69,8 +69,8 @@ object BarCodeUtil {
         val uuidStr = GUIDUtil.getUUIDStr()
         val uuidNum = GUIDUtil.UUID2Number(uuidStr)
         return if (StringUtil.isNotBlank(uuidNum)) {
-            if (uuidNum.length > 16) {
-                uuidNum.substring(0, 16)
+            if (uuidNum.length > 13) {
+                uuidNum.substring(0, 13)
             } else {
                 uuidNum
             }

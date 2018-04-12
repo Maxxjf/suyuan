@@ -42,6 +42,9 @@ import kotlinx.android.synthetic.main.card_main_store_product.*
 import kotlinx.android.synthetic.main.card_main_warn.*
 import timber.log.Timber
 
+
+
+
 /**
  * 类说明：主页
  * Author: Kuzan

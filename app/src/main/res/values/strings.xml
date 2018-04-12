@@ -33,6 +33,7 @@
     <string name="title_dialog_return">退货确认</string>
     <string name="title_create_product">我的私有产品</string>
     <string name="title_my_product_details">我的产品详情</string>
+    <string name="title_select_date">选择日期</string>
 
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
@@ -428,5 +429,10 @@
     <string name="tag_sale_time">销售时间</string>
     <string name="tag_selling_detail">销售单详情: </string>
     <string name="tag_instorage_confirm">入库确认</string>
+    <string name="tag_year">年</string>
+    <string name="tag_month">月</string>
+    <string name="tag_day">日</string>
+    <string name="tag_hour">时</string>
+    <string name="tag_minute">分</string>
 
 </resources>

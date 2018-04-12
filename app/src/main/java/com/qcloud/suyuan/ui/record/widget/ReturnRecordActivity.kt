@@ -1,13 +1,11 @@
 package com.qcloud.suyuan.ui.record.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.View
-import com.haibin.calendarview.Calendar
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
@@ -21,9 +19,10 @@ import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.ReturnRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.IReturnRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
-import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
+import com.qcloud.suyuan.widgets.dialog.DatePicker
 import kotlinx.android.synthetic.main.activity_return_record.*
 import timber.log.Timber
+import java.util.*
 
 /**
  * Description: 退货记录
@@ -35,8 +34,8 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private var madapter: ReturnedRecordAdapter? = null
     private var mEmptyView: NoDataView? = null
-    private var startDatePicker: DatePickerDialog? = null
-    private var endDatePicker: DatePickerDialog? = null
+    private var startDatePicker: DatePicker? = null
+    private var endDatePicker: DatePicker? = null
     var pageNo: Int = 1
     var startTime: String = "2018-01-01"
     var endTime: String = "2018-03-22"
@@ -143,14 +142,12 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private fun showStartPicker() {
         if (startDatePicker == null) {
-            startDatePicker = DatePickerDialog(this)
-            startDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectedListener {
-                @SuppressLint("SetTextI18n")
-                override fun dateSelected(calendar: Calendar?) {
-                    if (calendar != null) {
-                        tv_date_from.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                        loadData()
-                    }
+            startDatePicker = DatePicker(this)
+            startDatePicker?.onDateSelectListener = object : DatePicker.OnDateSelectListener {
+
+                override fun onSelect(time: Calendar) {
+                    tv_date_from.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
+                    loadData()
                 }
             }
         }
@@ -159,14 +156,12 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
 
     private fun showEndPicker() {
         if (endDatePicker == null) {
-            endDatePicker = DatePickerDialog(this)
-            endDatePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectedListener {
-                @SuppressLint("SetTextI18n")
-                override fun dateSelected(calendar: Calendar?) {
-                    if (calendar != null) {
-                        tv_date_to.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                        loadData()
-                    }
+            endDatePicker = DatePicker(this)
+            endDatePicker?.onDateSelectListener = object : DatePicker.OnDateSelectListener {
+
+                override fun onSelect(time: Calendar) {
+                    tv_date_to.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
+                    loadData()
                 }
             }
         }

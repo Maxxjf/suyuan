@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.ui.store.widget
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
@@ -8,7 +9,6 @@ import android.text.InputType
 import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
-import com.haibin.calendarview.Calendar
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.ApiReplaceUtil
@@ -26,7 +26,7 @@ import com.qcloud.suyuan.ui.store.presenter.impl.CreateProductIPresenterImpl
 import com.qcloud.suyuan.ui.store.view.ICreateProductIView
 import com.qcloud.suyuan.utils.BarCodeUtil
 import com.qcloud.suyuan.utils.UserInfoUtil
-import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
+import com.qcloud.suyuan.widgets.dialog.DatePicker
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.dialog.OperationTipDialog
 import com.qcloud.suyuan.widgets.pop.DropDownPop
@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.layout_create_product_base_info.*
 import kotlinx.android.synthetic.main.layout_create_product_details_info.*
 import org.jetbrains.annotations.NotNull
 import timber.log.Timber
+import java.util.*
 
 /**
  * Description: 创建产品第一步
@@ -55,9 +56,9 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     // 生产厂家
     private var millPop: DropDownPop? = null
     // 开始时间
-    private var startPicker: DatePickerDialog? = null
+    private var startPicker: DatePicker? = null
     // 结束时间
-    private var endPicker: DatePickerDialog? = null
+    private var endPicker: DatePicker? = null
 
     // 是否编辑本地
     private var isLocal = false
@@ -302,25 +303,21 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     }
 
     private fun initStartPicker() {
-        startPicker = DatePickerDialog(this)
-        startPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
-            @SuppressLint("SetTextI18n")
-            override fun dateSelected(calendar: Calendar?) {
-                if (calendar != null) {
-                    tv_registration_start.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                }
+        startPicker = DatePicker(this)
+        startPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+
+            override fun onSelect(time: Calendar) {
+                tv_registration_start.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
             }
         }
     }
 
     private fun initEndPicker() {
-        endPicker = DatePickerDialog(this)
-        endPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
-            @SuppressLint("SetTextI18n")
-            override fun dateSelected(calendar: Calendar?) {
-                if (calendar != null) {
-                    tv_registration_end.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                }
+        endPicker = DatePicker(this)
+        endPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+
+            override fun onSelect(time: Calendar) {
+                tv_registration_end.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
             }
         }
     }
@@ -649,14 +646,10 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
             }
         }
         startPicker.let {
-            if (startPicker != null && startPicker!!.isShowing) {
-                startPicker?.dismiss()
-            }
+            startPicker?.dismiss()
         }
         endPicker.let {
-            if (endPicker != null && endPicker!!.isShowing) {
-                endPicker?.dismiss()
-            }
+            endPicker?.dismiss()
         }
         editOldDialog.let {
             if (editOldDialog != null && editOldDialog!!.isShowing) {

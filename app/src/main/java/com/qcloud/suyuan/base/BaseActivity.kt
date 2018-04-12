@@ -1,6 +1,8 @@
 package com.qcloud.suyuan.base
 
 import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.TypedValue
@@ -88,6 +90,14 @@ abstract class BaseActivity<V, T: BasePresenter<V>>: AppCompatActivity() {
                 fragments.add(fragment)
             }
         }
+    }
+
+    override fun getResources(): Resources {
+        val res = super.getResources()
+        val config = Configuration()
+        config.setToDefaults()
+        res.updateConfiguration(config, res.displayMetrics)
+        return res
     }
 
     override fun onDestroy() {

@@ -1,13 +1,11 @@
 package com.qcloud.suyuan.ui.goods.widget
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
 import android.text.InputType
 import android.view.View
 import android.widget.TextView
-import com.haibin.calendarview.Calendar
 import com.qcloud.qclib.base.BasePopupWindow
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.image.GlideUtil
@@ -25,13 +23,14 @@ import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
 import com.qcloud.suyuan.utils.PrintHelper
-import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
+import com.qcloud.suyuan.widgets.dialog.DatePicker
 import com.qcloud.suyuan.widgets.dialog.InStorageDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.pop.DropDownBtnPop
 import kotlinx.android.synthetic.main.card_purchase_product_details.*
 import kotlinx.android.synthetic.main.card_purchase_product_input.*
 import timber.log.Timber
+import java.util.*
 
 /**
  * Description: 确认入库
@@ -51,9 +50,9 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     private var listSupplier: MutableList<SupplierBean> = ArrayList()
     private var currSupplier: SupplierBean? = null
     // 生产时间
-    private var birthdayPicker: DatePickerDialog? = null
+    private var birthdayPicker: DatePicker? = null
     // 结束时间
-    private var endPicker: DatePickerDialog? = null
+    private var endPicker: DatePicker? = null
 
     override val layoutId: Int
         get() = R.layout.activity_purchase_details
@@ -105,25 +104,21 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
     }
 
     private fun initBirthdayPicker() {
-        birthdayPicker = DatePickerDialog(this)
-        birthdayPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
-            @SuppressLint("SetTextI18n")
-            override fun dateSelected(calendar: Calendar?) {
-                if (calendar != null) {
-                    btn_in_storage_birthday.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                }
+        birthdayPicker = DatePicker(this)
+        birthdayPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+
+            override fun onSelect(time: Calendar) {
+                btn_in_storage_birthday.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
             }
         }
     }
 
     private fun initEndPicker() {
-        endPicker = DatePickerDialog(this)
-        endPicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectedListener {
-            @SuppressLint("SetTextI18n")
-            override fun dateSelected(calendar: Calendar?) {
-                if (calendar != null) {
-                    btn_in_storage_end_date.text = "${calendar.year}-${calendar.month}-${calendar.day}"
-                }
+        endPicker = DatePicker(this)
+        endPicker?.onDateSelectListener = object :DatePicker.OnDateSelectListener {
+
+            override fun onSelect(time: Calendar) {
+                btn_in_storage_end_date.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
             }
         }
     }
@@ -325,15 +320,11 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
         }
 
          birthdayPicker.let {
-            if (birthdayPicker != null && birthdayPicker!!.isShowing) {
-                birthdayPicker?.dismiss()
-            }
+             birthdayPicker?.dismiss()
         }
 
         endPicker.let {
-            if (endPicker != null && endPicker!!.isShowing) {
-                endPicker?.dismiss()
-            }
+            endPicker?.dismiss()
         }
     }
 
