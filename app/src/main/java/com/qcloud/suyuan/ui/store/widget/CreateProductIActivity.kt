@@ -24,6 +24,7 @@ import com.qcloud.suyuan.ui.store.presenter.impl.CreateProductIPresenterImpl
 import com.qcloud.suyuan.ui.store.view.ICreateProductIView
 import com.qcloud.suyuan.utils.BarCodeUtil
 import com.qcloud.suyuan.utils.UserInfoUtil
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.InputDialog
 import com.qcloud.suyuan.widgets.dialog.OperationTipDialog
 import com.qcloud.suyuan.widgets.pop.DropDownPop
@@ -300,8 +301,8 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
     }
 
     private fun initStartPicker() {
-        startPicker = com.qcloud.suyuan.widgets.dialog.DatePickerDialog(this)
-        startPicker?.onDateSelectListener = object : com.qcloud.suyuan.widgets.dialog.DatePicker.DatePickerDialog.OnDateSelectListener {
+        startPicker = DatePickerDialog(this)
+        startPicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 tv_registration_start.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -311,7 +312,7 @@ class CreateProductIActivity: BaseActivity<ICreateProductIView, CreateProductIPr
 
     private fun initEndPicker() {
         endPicker = com.qcloud.suyuan.widgets.dialog.DatePickerDialog(this)
-        endPicker?.onDateSelectListener = object : com.qcloud.suyuan.widgets.dialog.DatePicker.DatePickerDialog.OnDateSelectListener {
+        endPicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
 
             override fun onSelect(time: Calendar) {
                 tv_registration_end.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
