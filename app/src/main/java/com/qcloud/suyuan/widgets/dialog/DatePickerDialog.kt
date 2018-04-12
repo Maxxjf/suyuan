@@ -107,6 +107,10 @@ class DatePickerDialog constructor(context: Context) : BaseDialog(context), View
         this.calendar = calendar
     }
 
+    /**
+     * 得到当前的时间
+     * 包括心理，农历，公历节日，农历节日，农历节日，节气，是否闰月
+     */
     private fun getCalendarText(calendar: Calendar): String {
         return String.format("新历%s \n 农历%s \n 公历节日：%s \n 农历节日：%s \n 节气：%s \n 是否闰月：%s",
                 calendar.month.toString() + "月" + calendar.day + "日",

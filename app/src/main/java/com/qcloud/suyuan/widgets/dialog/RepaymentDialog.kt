@@ -6,7 +6,6 @@ import android.support.annotation.NonNull
 import android.support.annotation.StyleRes
 import android.view.Gravity
 import android.view.View
-import android.widget.EditText
 import com.qcloud.suyuan.R
 import kotlinx.android.synthetic.main.dialog_repayment.*
 
@@ -68,6 +67,5 @@ class RepaymentDialog @JvmOverloads constructor(@NonNull private val mContext: C
     }
 }
 
-private fun EditText.setFocusable() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-}
+
+

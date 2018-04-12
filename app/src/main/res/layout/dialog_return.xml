@@ -97,17 +97,17 @@
                 style="@style/LineVertical"
                 android:layout_margin="@dimen/margin_2"/>
 
-            <EditText
+            <com.qcloud.suyuan.widgets.customview.MoneyEditText
                 android:id="@+id/et_return_money"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:imeOptions="actionDone"
+                android:gravity="center_vertical"
                 android:background="@null"
                 android:hint="@string/hint_input_money"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/typeTextSize"
-                android:textStyle="bold"
                 />
         </LinearLayout>
 

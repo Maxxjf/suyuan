@@ -175,6 +175,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         if (returnDialog == null) {
             returnDialog = ReturnDialog(this)
         }
+//        if (goodsAdapter==null||goodsAdapter?.itemCount==0){
+//            loadErr(getString(R.string.toast_please_add_goods))
+//            return
+//        }
         returnDialog?.setNumber(goodsAdapter?.itemCount!!)
         returnDialog?.onConfirmClickListener = object : ReturnDialog.OnConfirmClickListener {
             override fun onConfirmClick() {

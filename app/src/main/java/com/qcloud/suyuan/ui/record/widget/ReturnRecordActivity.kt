@@ -38,8 +38,8 @@ class ReturnRecordActivity : BaseActivity<IReturnRecordView, ReturnRecordPresent
     private var startDatePicker: DatePickerDialog? = null
     private var endDatePicker: DatePickerDialog? = null
     var pageNo: Int = 1
-    var startTime: String = "2018-01-01"
-    var endTime: String = "2018-03-22"
+    var startTime: String = ""
+    var endTime: String = ""
 
     override val layoutId: Int
         get() = R.layout.activity_return_record

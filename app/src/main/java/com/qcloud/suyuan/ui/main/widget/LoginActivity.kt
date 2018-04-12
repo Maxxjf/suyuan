@@ -42,9 +42,11 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
     }
 
     private fun initData() {
-        et_account.text = SharedUtil.getString(AppConstants.account)
-        et_password.text = SharedUtil.getString(AppConstants.password)
         cb_rember_password.isChecked = SharedUtil.getBoolean(AppConstants.isCheck)
+        if (cb_rember_password.isChecked){
+            et_account.text = SharedUtil.getString(AppConstants.account)
+            et_password.text = SharedUtil.getString(AppConstants.password)
+        }
     }
 
     private fun initListener() {
