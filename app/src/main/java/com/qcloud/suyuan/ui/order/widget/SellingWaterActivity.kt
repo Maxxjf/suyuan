@@ -8,7 +8,9 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
+import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
+import com.qcloud.qclib.utils.DateUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SaleInfoAdapter
@@ -22,9 +24,11 @@ import com.qcloud.suyuan.ui.order.presenter.impl.SellingWaterPresenterImpl
 import com.qcloud.suyuan.ui.order.view.ISellingWaterView
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_selling_water.*
 import timber.log.Timber
+import java.util.*
 
 /**
  * Description: 销售流水
@@ -35,6 +39,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
 
 
     var errtip: TipDialog? = null
+    var datePicker: DatePickerDialog? = null
     private var mWaterEmptyView: NoDataView? = null
     private var mReceiptEmptyView: NoDataView? = null
     private var saleListAdapter: SaleListAdapter? = null
@@ -80,7 +85,6 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         rv_sale_info_list.setAdapter(saleInfoAdapter!!)
         PullRefreshUtil.setRefresh(rv_sale_list, false, false)
         PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
-
         mWaterEmptyView = NoDataView(this)
         mWaterEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
         mWaterEmptyView?.noData(R.string.tip_no_list)
@@ -89,7 +93,6 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         mReceiptEmptyView?.noData(R.string.tip_no_list)
         rv_sale_list.setEmptyView(mWaterEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
-
         et_search.setOnKeyListener { view: View?, i: Int, keyEvent: KeyEvent? ->
             if (keyEvent != null) {
                 if (keyEvent.action == KeyEvent.ACTION_UP) {
@@ -101,10 +104,31 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             }
             false
         }
+//        iv_detele_text.setOnClickListener(this)
+        tv_date_picker.setOnClickListener(this)
+        tv_date_picker.text = "${DateUtil.getCurrTime(DateStyleEnum.YYYY_MM_DD.value)}"
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when (v.id) {
+//                R.id.iv_detele_text -> et_search.setText("")
+                R.id.tv_date_picker -> showDatePickerDialog()
+            }
+        }
+    }
 
+    private fun showDatePickerDialog() {
+        if (datePicker==null){
+            datePicker=DatePickerDialog(this)
+            datePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
+                override fun onSelect(time: Calendar) {
+                    tv_date_picker.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
+                    loadData()
+                }
+            }
+        }
+        datePicker?.show()
     }
 
     override fun loadData() {
@@ -126,10 +150,16 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             tv_sale_idcard.text = "${it.idCard}"
             tv_sale_phone.text = "${it.mobile}"
             tv_all_money.text = "${it.amount}"
-            tv_real_pay.text = "${it.realPay}"
             tv_pay_type.text = "${PayMethodEnums.getName(it.payMethod)}"
             var user = UserInfoUtil.getStore()
             tv_shop_person.setText("${user?.shopkeeperName}")
+            if (it.payMethod == PayMethodEnums.payCredit.key) {
+                tv_tag_real_pay.setText(getString(R.string.tag_list_credit) + ": ")
+                tv_real_pay.text = "${it.realPay}"
+            } else {
+                tv_tag_real_pay.setText(getString(R.string.tag_money))
+                tv_real_pay.text = "${it.realPay}"
+            }
         }
     }
 

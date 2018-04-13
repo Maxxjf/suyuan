@@ -31,7 +31,7 @@
             android:layout_weight="7"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_11"
                 android:padding="@dimen/margin_2">
@@ -42,18 +42,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="@dimen/margin_2"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_2"
                     android:text="@string/tag_selling_water_list"
                     android:textSize="@dimen/titleTextSize" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/editHeight"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/margin_2"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_8"
                     android:layout_marginRight="@dimen/margin_2"
                     android:background="@drawable/frame_input"
                     android:gravity="center_vertical"
@@ -74,12 +71,11 @@
                         style="@style/LineVertical"
                         android:layout_margin="@dimen/margin_1" />
 
-                    <EditText
+                    <com.qcloud.suyuan.widgets.customview.ClearEditText
                         android:id="@+id/et_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/btnHeight"
                         android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
                         android:background="@null"
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_water_number"
@@ -90,8 +86,43 @@
                         android:textColorHint="@color/colorGray"
                         android:textSize="@dimen/textSize" />
 
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_detele_text"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawaet_deteletext" />-->
+
                 </LinearLayout>
-            </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/frame_input">
+
+                    <TextView
+                        android:id="@+id/tv_date_picker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/iv_date_picker_from"
+                        android:gravity="center_vertical"
+                        android:hint="@string/hint_select_date"
+                        android:minWidth="@dimen/margin_20"
+                        android:padding="@dimen/margin_1"
+                        android:text=""
+                        android:textColor="@color/colorSubTitle"
+                        android:textSize="@dimen/typeTextSize" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/margin_2"
+                        android:layout_toRightOf="@+id/tv_date_picker"
+                        android:src="@drawable/icon_date_picker" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -171,32 +202,13 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/margin_4"
             android:paddingRight="@dimen/margin_4"
-            android:visibility="invisible">
+            android:visibility="visible">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_11"
-                android:padding="@dimen/margin_2">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:text="@string/tag_selling_detail"
-                    android:textSize="@dimen/titleTextSize" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/underLine"
-                android:background="@color/colorLine" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/repict_info_height"
+                android:layout_marginTop="@dimen/layoutMargin"
                 android:background="@drawable/bg_receipt"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
@@ -212,6 +224,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tag_serial_number"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -219,6 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="LSH00000001"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -227,6 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"
                         android:text="@string/tag_time"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -234,6 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2018-03-10 00:00"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -242,6 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"
                         android:text="冰山"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
                 </LinearLayout>
 
@@ -255,6 +272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tag_buyer"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -262,6 +280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="樱木"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -270,6 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_3"
                         android:text="440402199999999999"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
                     <TextView
@@ -278,6 +298,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"
                         android:text="15015912345"
+                        android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
                 </LinearLayout>
             </LinearLayout>
@@ -352,14 +373,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/tag_cash_pay"
-                            android:textColor="@color/colorText"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/textSize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_2">
 
                         <TextView
                             android:id="@+id/tv_tag_add_all"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_50"
                             android:text="@string/tag_add_all"
                             android:textColor="@color/colorText"
                             android:textSize="@dimen/textSize" />
@@ -373,15 +400,8 @@
                             android:textColor="@color/colorText"
                             android:textSize="@dimen/textSize" />
 
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_2">
-
                         <TextView
+                            android:layout_toLeftOf="@+id/tv_return_money"
                             android:id="@+id/tv_tag_return_money"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -393,17 +413,22 @@
                             android:id="@+id/tv_return_money"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_1"
-                            android:layout_toRightOf="@+id/tv_tag_return_money"
+                            android:layout_alignParentRight="true"
                             android:text="0.00"
                             android:textColor="@color/colorText"
                             android:textSize="@dimen/textSize" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_2">
 
                         <TextView
                             android:id="@+id/tv_tag_real_pay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_50"
                             android:text="@string/tag_money"
                             android:textColor="@color/colorText"
                             android:textSize="@dimen/textSize" />

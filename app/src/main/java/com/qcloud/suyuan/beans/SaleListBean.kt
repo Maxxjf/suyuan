@@ -45,6 +45,7 @@ class SaleListBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var serialNumber: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
+    var isReturn:Boolean=false
     override fun toString(): String {
         return "SaleListBean(amount=$amount, createDate=$createDate, discount=$discount, id=$id, idCard=$idCard, mobile=$mobile, payMethod=$payMethod, purchaserNmae=$purchaserNmae, purpose=$purpose, realPay=$realPay, remark=$remark, serialNumber=$serialNumber)"
     }

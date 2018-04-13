@@ -2,20 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:paddingTop="@dimen/margin_2"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/itemHeight"
+    android:orientation="horizontal"
     android:paddingBottom="@dimen/margin_2"
-    android:orientation="horizontal">
+    android:paddingTop="@dimen/margin_2">
 
-    <TextView
-        android:id="@+id/tv_number"
+
+    <RelativeLayout
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="LHS0005894566"
-        android:textColor="@color/colorText"
-        android:textSize="@dimen/miniTextSize" />
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/iv_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:layout_toLeftOf="@+id/tv_number"
+            android:src="@drawable/icon_flag_credit" />
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="LHS0005894566"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/miniTextSize" />
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tv_time"
@@ -36,6 +54,7 @@
         android:text="10000.00"
         android:textColor="@color/colorText"
         android:textSize="@dimen/miniTextSize" />
+
     <TextView
         android:id="@+id/tv_person"
         android:layout_width="0dp"
@@ -45,7 +64,6 @@
         android:text="小李"
         android:textColor="@color/colorText"
         android:textSize="@dimen/miniTextSize" />
-
 
 
 </LinearLayout>
