@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseDialog
@@ -19,7 +20,7 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
     private var totalAccount: Double = 0.00
     var realPay: Double = 0.0
     var giveMoney: Double = 0.0
-    private var moneyStr = "%1$.2f元"
+    private var moneyStr = "%1$.2f"
 
     override val viewId: Int
         get() = R.layout.dialog_cash
@@ -32,7 +33,7 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
         btn_close.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
 
-        et_discount.addTextChangedListener(object : TextWatcher {
+        et_real_price.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {
 
             }
@@ -45,8 +46,11 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
                 val priceStr = p0.toString().trim()
                 if (StringUtil.isMoneyStr(priceStr)) {
                     realPay = priceStr.toDouble()
-                    giveMoney = realPay - totalAccount
-                    if (giveMoney >= 0) {
+                    if (realPay < totalAccount) {
+                        QToast.show(mContext, "实收金额不能小于应收金额")
+                        et_real_price.setText(String.format(moneyStr, totalAccount))
+                    } else {
+                        giveMoney = realPay - totalAccount
                         tv_give_change.text = String.format(moneyStr, giveMoney)
                     }
                 }
@@ -68,7 +72,8 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
     fun refreshData(realPay: Double) {
         this.totalAccount = realPay
         this.realPay = realPay
-        tv_real_price.text = String.format(moneyStr, realPay)
+        tv_total_price.text = String.format(moneyStr, realPay)
+        et_real_price.setText(String.format(moneyStr, realPay))
         tv_give_change.text = ""
     }
 }

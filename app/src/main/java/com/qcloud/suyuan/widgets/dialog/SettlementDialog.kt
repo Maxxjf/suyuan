@@ -20,11 +20,11 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
 
     // 总额
     private var totalAccount: Double = 0.00
-    // 实收金额
-    var realPay: Double = 0.00
+    // 应收金额
+    var realPrice: Double = 0.00
     var payMethod: Int = 1
 
-    private var moneyStr = "%1$.2f元"
+    private var moneyStr = "%1$.2f"
 
     override val viewId: Int
         get() = R.layout.dialog_settlement
@@ -40,7 +40,7 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
         btn_alipay.setOnClickListener(this)
         btn_wechat.setOnClickListener(this)
 
-        et_discount.addTextChangedListener(object : TextWatcher {
+        et_real_price.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {
 
             }
@@ -54,13 +54,11 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
                 if (StringUtil.isMoneyStr(priceStr)) {
                     val price = priceStr.toDouble()
                     if (price > totalAccount) {
-                        QToast.show(mContext, R.string.toast_discount_less_then_account)
-                        et_discount.setText("")
-                        realPay = totalAccount
-                        tv_real_price.text = String.format(moneyStr, realPay)
+                        QToast.show(mContext, R.string.toast_real_price_less_then_account)
+                        et_real_price.setText(totalAccount.toString())
+                        realPrice = totalAccount
                     } else {
-                        realPay = totalAccount - price
-                        tv_real_price.text = String.format(moneyStr, realPay)
+                        realPrice = price
                     }
                 }
             }
@@ -94,11 +92,11 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
         }
     }
 
-    fun refreshSettlementData(totalNum: Int, totalAccount: Double) {
+    fun refreshSettlementData(totalNum: Int, totalAccount: Double, receivablePrice: Double) {
         this.totalAccount = totalAccount
-        this.realPay = totalAccount
+        this.realPrice = receivablePrice
         tv_goods_number.text = totalNum.toString()
         tv_total_account.text = String.format(moneyStr, totalAccount)
-        tv_real_price.text = String.format(moneyStr, totalAccount)
+        et_real_price.setText(String.format(moneyStr, receivablePrice))
     }
 }

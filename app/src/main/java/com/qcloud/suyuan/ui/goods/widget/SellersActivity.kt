@@ -7,11 +7,9 @@ import android.media.AudioManager
 import android.media.SoundPool
 import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
-import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
-import android.widget.TextView
 import android_serialport_api.sample.Util
 import com.google.gson.Gson
 import com.ivsign.android.IDCReader.IDCReaderSDK
@@ -21,6 +19,7 @@ import com.qcloud.qclib.rxtask.RxScheduler
 import com.qcloud.qclib.rxtask.task.NewTask
 import com.qcloud.qclib.rxtask.task.UITask
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.BitmapUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
@@ -45,7 +44,6 @@ import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013ERR
 import com.qcloud.suyuan.utils.NFCHelper.Companion.STEP6013OK
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.*
-import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.card_sellers_product_list.*
@@ -62,9 +60,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var mAdapter: SellersAdapter? = null
     private var mEmptyView: NoDataView? = null
 
-    private var mPurchaseUsePop: DropDownPop? = null
-
-    private var inputDialog: InputDialog? = null
     private var tipDialog: TipDialog? = null
     private var settlementDialog: SettlementDialog? = null
     private var cashDialog: CashDialog? = null
@@ -87,7 +82,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var purpose: String? = null // 购买用途
     private var remark: String? = null  // 备注
     private var discount: Double = 0.00 // 优惠价格
-    private var realPay: Double = 0.00  // 实付
+    private var receivablePrice: Double = 0.00   // 应收金额
+    private var realPay: Double = 0.00  // 实付现金
     private var giveMoney: Double = 0.00// 找零
     private var payMethod: Int = 0      // 支付方式
 
@@ -107,10 +103,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         initRecyclerView()
         initEditView()
         refreshPrice()
-    }
-
-    override fun onResume() {
-        super.onResume()
         initRfid()
     }
 
@@ -134,8 +126,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 }
             }
         })
-
-        NFCHelper.instance.isReadCard = true
     }
 
     private fun initView() {
@@ -162,6 +152,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             override fun onRefreshNum(number: Int, bean: SaleProductBean) {
                 totalNumber += number
                 totalAccount += number * bean.price
+                receivablePrice = totalAccount
                 refreshPrice()
             }
         }
@@ -169,6 +160,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             override fun onHolderClick(view: View, t: SaleProductBean, position: Int) {
                 totalNumber -= t.number
                 totalAccount -= t.number * t.price
+                receivablePrice = totalAccount
                 refreshPrice()
                 mAdapter?.remove(position)
             }
@@ -217,50 +209,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 }
     }
 
-    /**
-     * 初始化下拉弹窗
-     * */
-//    private fun initDropDown() {
-//        val purchase = resources.getStringArray(R.array.purchase)
-//        val list: MutableList<String> = ArrayList()
-//        list.addAll(purchase)
-//        tv_purchase_use.text = list[0]
-//        btn_purchase_use.post {
-//            val width = btn_purchase_use.width
-//            mPurchaseUsePop = DropDownPop(this, list, width)
-//
-//            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
-//                override fun onItemClick(position: Int, value: Any?) {
-//                    if (value != null) {
-//                        tv_purchase_use.text = value.toString()
-//                    }
-//                }
-//            }
-//        }
-//
-//        btn_purchase_use.setOnClickListener {
-//            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
-//        }
-//    }
-
     private fun refreshPrice() {
         tv_goods_number.text = totalNumber.toString()
         tv_total_account.text = String.format(moneyStr, totalAccount)
-    }
-
-    private fun showInput(view: TextView, type: Int) {
-        if (inputDialog == null) {
-            inputDialog = InputDialog(this)
-        }
-        inputDialog?.setBindView(view)
-        inputDialog?.setInputValue(view.text.toString().trim())
-        if (type == 0) {
-            inputDialog?.setInputMethod(InputType.TYPE_CLASS_PHONE)
-        } else {
-            inputDialog?.setInputMethod(InputType.TYPE_CLASS_TEXT)
-        }
-
-        inputDialog?.show()
     }
 
     private fun initSaleProduct() {
@@ -295,30 +246,27 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             return
         }
         initSaleProduct()
-        if (purchaseInfo == null) {
-            QToast.show(this, R.string.toast_input_purchaser_info)
-            return
+        if (isHighToxic()) {
+            showPurchaseDialog()
+        } else {
+            showSettlementDialog()
         }
-//        val mobile = tv_mobile.text.toString().trim()
-//        if (StringUtil.isBlank(mobile)) {
-//            QToast.show(this, R.string.toast_input_purchase_mobile)
-//            return
-//        }
-//        purchaseInfo?.mobile = mobile
-//        purpose = tv_purchase_use.text.toString().trim()
-//        remark = tv_other_instructions.text.toString().trim()
+    }
 
-        if (tipDialog == null) {
-            tipDialog = TipDialog(this)
-        }
-        tipDialog?.setTip(R.string.tip_buy_highly_toxic)
-        tipDialog?.setConfirmBtn(R.string.btn_i_know)
-        tipDialog?.show()
-        tipDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
-            override fun onBtnClick(view: View) {
-                showSettlementDialog()
+    /**
+     * 是否有高毒农药
+     * */
+    private fun isHighToxic(): Boolean {
+        var isHighToxic = false
+        if (mAdapter != null) {
+            for (bean in mAdapter!!.mList) {
+                if (bean.highToxic) {
+                    isHighToxic = true
+                    break
+                }
             }
         }
+        return isHighToxic
     }
 
     /**
@@ -328,12 +276,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         if (settlementDialog == null) {
             settlementDialog = SettlementDialog(this)
         }
-        settlementDialog?.refreshSettlementData(totalNumber, totalAccount)
+        settlementDialog?.refreshSettlementData(totalNumber, totalAccount, receivablePrice)
         settlementDialog?.show()
         settlementDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                realPay = settlementDialog!!.realPay
-                discount = totalAccount - realPay
+                receivablePrice = settlementDialog!!.realPrice
+                discount = totalAccount - receivablePrice
                 payMethod = settlementDialog!!.payMethod
                 when (view.id) {
                     R.id.btn_cash -> showCashDialog()
@@ -354,7 +302,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             cashDialog = CashDialog(this)
         }
         cashDialog?.show()
-        cashDialog?.refreshData(realPay)
+        cashDialog?.refreshData(receivablePrice)
         cashDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
                 realPay = cashDialog!!.realPay
@@ -368,7 +316,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     /**
      * 显示身份识别弹窗
      * */
-    private fun initPurchaseDialog() {
+    private fun showPurchaseDialog() {
+        NFCHelper.instance.isReadCard = true
         if (inputPurchaseDialog == null) {
             inputPurchaseDialog = InputPurchaseDialog(this)
         }
@@ -376,9 +325,15 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog?.show()
         inputPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                purchaseInfo = inputPurchaseDialog!!.currPurchaser
-                refreshPurchaser(purchaseInfo, false)
+                purpose = inputPurchaseDialog!!.purpose
+                remark = inputPurchaseDialog!!.remark
+                purchaseInfo?.mobile = inputPurchaseDialog!!.mobile
+
+                showSettlementDialog()
             }
+        }
+        inputPurchaseDialog?.setOnDismissListener {
+            NFCHelper.instance.isReadCard = false
         }
     }
 
@@ -405,6 +360,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             if (totalNumber < bean.stock) {
                 totalNumber += bean.number
                 totalAccount += bean.number * bean.price
+                receivablePrice = totalAccount
                 refreshPrice()
             }
         }
@@ -489,7 +445,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         ticketInfo.totalAccount = totalAccount      // 合计
         ticketInfo.payMethod = payMethod            // 支付方式
         ticketInfo.discount = discount              // 优惠
-        ticketInfo.realPay = realPay                // 实收
+        ticketInfo.realPay = realPay                // 实收现金
         ticketInfo.giveMoney = giveMoney            // 找零
 
         TicketUtil.printTicket(ticketInfo)
@@ -503,6 +459,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
         totalNumber = 0
         totalAccount  = 0.00
+        receivablePrice = 0.00
         list = ""           // 商品列表
         remark = null       // 备注
         discount = 0.00     // 优惠价格
@@ -513,11 +470,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         refreshPrice()
         mAdapter?.replaceList(ArrayList())
         showEmptyView(getString(R.string.tip_no_product_data))
-        //tv_other_instructions.text = ""
 
         submitProducts = ArrayList()
-
-        //initDropDown()
     }
 
     /**
@@ -578,7 +532,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                             purchaseInfo?.endDate = mIDCReaderSDK.GetEndDate().trim()
                             purchaseInfo?.userImg = AppConstants.SDPATH + "/wltlib/zp.bmp"
 
-                            refreshPurchaser(purchaseInfo!!, true)
+                            refreshPurchaser(purchaseInfo!!)
                             Timber.e("people = $purchaseInfo")
                         }
                         REPEAT5001 -> {
@@ -596,24 +550,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     /**
      * 刷新购买者信息
      * */
-    private fun refreshPurchaser(bean: IDBean?, isFromRead: Boolean = true) {
+    private fun refreshPurchaser(bean: IDBean?) {
         if (bean != null) {
-            with(bean) {
-//                if (userImgBase64 != null) {
-//                    val bitmap = BitmapUtil.base64ToBitmap(userImgBase64!!)
-//                    img_user_head.setImageBitmap(bitmap)
-//                } else if (isFromRead) {
-//                    val bitmap = BitmapFactory.decodeFile(userImg)
-//                    purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
-//                    img_user_head.setImageBitmap(bitmap)
-//                } else {
-//                    img_user_head.setImageResource(R.drawable.bmp_user_head)
-//                }
-//
-//                tv_user_name.text = bean.name
-//                tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
-//                tv_mobile.text = bean.mobile
-            }
+            val bitmap = BitmapFactory.decodeFile(bean.userImg)
+            purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
+
+            inputPurchaseDialog?.refreshPurchase(bean)
         }
     }
 
@@ -629,11 +571,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             soundPool = null
         }
 
-        mPurchaseUsePop.let {
-            if (mPurchaseUsePop != null && mPurchaseUsePop!!.isShowing) {
-                mPurchaseUsePop?.dismiss()
-            }
-        }
         tipDialog.let {
             if (tipDialog != null && tipDialog!!.isShowing) {
                 tipDialog?.dismiss()
@@ -652,12 +589,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog.let {
             if (inputPurchaseDialog != null && inputPurchaseDialog!!.isShowing) {
                 inputPurchaseDialog?.dismiss()
-            }
-        }
-
-        inputDialog.let {
-            if (inputDialog != null && inputDialog!!.isShowing) {
-                inputDialog?.dismiss()
             }
         }
     }

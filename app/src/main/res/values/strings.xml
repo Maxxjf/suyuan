@@ -57,6 +57,7 @@
     <string name="btn_wechat">微信</string>
     <string name="btn_i_know">我知道了</string>
     <string name="btn_confirm_pay_and_print_suyuan_code">确认并打印溯源码</string>
+    <string name="btn_re_select_pay_method">重选支付方式</string>
     <string name="btn_confirm_in_storage">确定入库</string>
     <string name="btn_clear">清空</string>
     <string name="btn_add_supplier">新增</string>
@@ -181,10 +182,11 @@
     <string name="toast_password_no_same">输入两次密码不一致</string>
     <string name="toast_start_bigger_end">开始时间不得大于结束时间，请重新选择</string>
     <string name="toast_error">操作有误</string>
-    <string name="toast_discount_less_then_account">优惠金额不能大于总额</string>
+    <string name="toast_real_price_less_then_account">应收金额不能大于总额</string>
     <string name="toast_goods_in_list">商品已在列表里</string>
     <string name="toast_number_too_larger">出库数量不得大于当前库存</string>
     <string name="toast_please_add_goods">请添加商品</string>
+    <string name="toast_scan_idcard">请刷身份证</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>
@@ -341,12 +343,13 @@
     <string name="tag_settlement_confirm">结算确认</string>
     <string name="tag_update_password">修改登录密码</string>
     <string name="tag_discount_price">优惠价格</string>
-    <string name="tag_real_price">应收金额: </string>
+    <string name="tag_real_price">应收金额(元): </string>
     <string name="tag_real_cash">实收金额</string>
     <string name="tag_cash_settlement">现金结算</string>
-    <string name="tag_give_change">找零: </string>
-    <string name="tag_input_purchase_info">录入购买者信息</string>
-    <string name="tag_purchase_name">购买者姓名: </string>
+    <string name="tag_give_change">找零(元): </string>
+    <string name="tag_input_purchase_info">请刷身份证</string>
+    <string name="tag_high_product">*购买产品中有高毒产品！</string>
+    <string name="tag_purchase_name">姓名: </string>
     <string name="tag_buyer">采购人：</string>
     <string name="tag_list_buyer">采购人</string>
     <string name="tag_product_info">产品信息</string>
@@ -444,5 +447,10 @@
     <string name="tag_minute">分</string>
     <string name="tag_sellers_goods_num">商品数量(件)</string>
     <string name="tag_sellers_goods_account">总计金额(元)</string>
+    <string name="tag_dialog_goods_num">商品数量(件): </string>
+    <string name="tag_dialog_goods_account">总计金额(元): </string>
+    <string name="tag_pay_method">支付方式: </string>
+    <string name="tag_cash">现金</string>
+    <string name="tag_dialog_real_cash">实收金额(元): </string>
 
 </resources>
