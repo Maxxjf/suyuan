@@ -79,6 +79,8 @@
     <string name="btn_ok_out_storge">确认出库</string>
     <string name="btn_to_create">去创建</string>
     <string name="btn_create_code">系统生成</string>
+    <string name="btn_clear_all">全部清空</string>
+    <string name="btn_delete">删除</string>
 
     <string name="cb_remember_password">记住密码</string>
 
@@ -265,6 +267,7 @@
     <string name="tip_no_data">抱歉！暂无信息</string>
     <string name="tip_no_product">无该产品信息，是否创建我的私有产品?</string>
     <string name="tip_bar_code_is_repeat">产品条码已存在，请重新输入</string>
+    <string name="tip_no_product_data">暂无销售产品数据</string>
 
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>
@@ -309,9 +312,12 @@
     <string name="tag_serial_number">流水号：</string>
     <string name="tag_name">名称</string>
     <string name="tag_number">数量</string>
+    <string name="tag_sellers_number">数量(件)</string>
     <string name="tag_price">价格</string>
     <string name="tag_selling_price">售价</string>
+    <string name="tag_sellers_selling_price">售价(元)</string>
     <string name="tag_stock">库存</string>
+    <string name="tag_sellers_stock">库存(件)</string>
     <string name="tag_add_all">合计：</string>
     <string name="tag_on_sale">优惠：</string>
     <string name="tag_money">实收：</string>
@@ -436,5 +442,7 @@
     <string name="tag_day">日</string>
     <string name="tag_hour">时</string>
     <string name="tag_minute">分</string>
+    <string name="tag_sellers_goods_num">商品数量(件)</string>
+    <string name="tag_sellers_goods_account">总计金额(元)</string>
 
 </resources>

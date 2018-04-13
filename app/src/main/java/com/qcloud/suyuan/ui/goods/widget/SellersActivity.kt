@@ -21,10 +21,8 @@ import com.qcloud.qclib.rxtask.RxScheduler
 import com.qcloud.qclib.rxtask.task.NewTask
 import com.qcloud.qclib.rxtask.task.UITask
 import com.qcloud.qclib.toast.QToast
-import com.qcloud.qclib.utils.BitmapUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
-import com.qcloud.qclib.utils.ValidateUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.SellersAdapter
 import com.qcloud.suyuan.base.BaseActivity
@@ -51,7 +49,7 @@ import com.qcloud.suyuan.widgets.pop.DropDownPop
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.card_sellers_product_list.*
-import kotlinx.android.synthetic.main.card_sellers_purchaser_info.*
+import kotlinx.android.synthetic.main.layout_sellers_operation.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -77,7 +75,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     /**读卡完成提醒声音*/
     private var soundPool: SoundPool? = null
     private var soundId: Int = 0
-    private var isload = false
+    private var isLoad = false
     private val mIDCBuffer = ByteArray(1600)
 
     private var keyword: String? = null
@@ -108,8 +106,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         initView()
         initRecyclerView()
         initEditView()
-        initDropDown()
-        refreshCashier()
         refreshPrice()
     }
 
@@ -127,7 +123,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         // 为声音池设定加载完成监听事件
         soundPool?.setOnLoadCompleteListener({ _, _, _ ->
             // 表示加载完成
-            isload = true
+            isLoad = true
         })
 
         RxScheduler.doOnNewThread(object : NewTask<Void> {
@@ -143,10 +139,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     }
 
     private fun initView() {
-        tv_mobile.setOnClickListener(this)
-        tv_other_instructions.setOnClickListener(this)
         btn_settlement.setOnClickListener(this)
-        btn_input_purchase_info.setOnClickListener(this)
+        btn_clear_all.setOnClickListener(this)
     }
 
     private fun loadData() {
@@ -182,7 +176,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
         mEmptyView = NoDataView(this)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        showEmptyView(getString(R.string.hint_batch_code_search))
+        showEmptyView(getString(R.string.tip_no_product_data))
     }
 
     /**
@@ -226,38 +220,28 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     /**
      * 初始化下拉弹窗
      * */
-    private fun initDropDown() {
-        val purchase = resources.getStringArray(R.array.purchase)
-        val list: MutableList<String> = ArrayList()
-        list.addAll(purchase)
-        tv_purchase_use.text = list[0]
-        btn_purchase_use.post {
-            val width = btn_purchase_use.width
-            mPurchaseUsePop = DropDownPop(this, list, width)
-
-            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
-                override fun onItemClick(position: Int, value: Any?) {
-                    if (value != null) {
-                        tv_purchase_use.text = value.toString()
-                    }
-                }
-            }
-        }
-
-        btn_purchase_use.setOnClickListener {
-            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
-        }
-    }
-
-    /**
-     * 刷新收银员
-     * */
-    private fun refreshCashier() {
-        val loginUser = UserInfoUtil.getUser()
-        if (loginUser != null) {
-            tv_money_getter.text = loginUser.nickname
-        }
-    }
+//    private fun initDropDown() {
+//        val purchase = resources.getStringArray(R.array.purchase)
+//        val list: MutableList<String> = ArrayList()
+//        list.addAll(purchase)
+//        tv_purchase_use.text = list[0]
+//        btn_purchase_use.post {
+//            val width = btn_purchase_use.width
+//            mPurchaseUsePop = DropDownPop(this, list, width)
+//
+//            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
+//                override fun onItemClick(position: Int, value: Any?) {
+//                    if (value != null) {
+//                        tv_purchase_use.text = value.toString()
+//                    }
+//                }
+//            }
+//        }
+//
+//        btn_purchase_use.setOnClickListener {
+//            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
+//        }
+//    }
 
     private fun refreshPrice() {
         tv_goods_number.text = totalNumber.toString()
@@ -315,14 +299,14 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             QToast.show(this, R.string.toast_input_purchaser_info)
             return
         }
-        val mobile = tv_mobile.text.toString().trim()
-        if (StringUtil.isBlank(mobile)) {
-            QToast.show(this, R.string.toast_input_purchase_mobile)
-            return
-        }
-        purchaseInfo?.mobile = mobile
-        purpose = tv_purchase_use.text.toString().trim()
-        remark = tv_other_instructions.text.toString().trim()
+//        val mobile = tv_mobile.text.toString().trim()
+//        if (StringUtil.isBlank(mobile)) {
+//            QToast.show(this, R.string.toast_input_purchase_mobile)
+//            return
+//        }
+//        purchaseInfo?.mobile = mobile
+//        purpose = tv_purchase_use.text.toString().trim()
+//        remark = tv_other_instructions.text.toString().trim()
 
         if (tipDialog == null) {
             tipDialog = TipDialog(this)
@@ -381,7 +365,10 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
-    override fun onInputPurchaserClick() {
+    /**
+     * 显示身份识别弹窗
+     * */
+    private fun initPurchaseDialog() {
         if (inputPurchaseDialog == null) {
             inputPurchaseDialog = InputPurchaseDialog(this)
         }
@@ -395,16 +382,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         }
     }
 
-    override fun onMobileClick() {
-        if (isRunning) {
-            showInput(tv_mobile, 0)
-        }
-    }
-
-    override fun onRemarkClick() {
-        if (isRunning) {
-            showInput(tv_other_instructions, 1)
-        }
+    override fun onClearAllClick() {
+        mAdapter?.replaceList(ArrayList())
+        clearData()
     }
 
     override fun replaceList(beans: List<SaleProductBean>?) {
@@ -532,12 +512,12 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
 
         refreshPrice()
         mAdapter?.replaceList(ArrayList())
-        showEmptyView(getString(R.string.hint_batch_code_search))
-        tv_other_instructions.text = ""
+        showEmptyView(getString(R.string.tip_no_product_data))
+        //tv_other_instructions.text = ""
 
         submitProducts = ArrayList()
 
-        initDropDown()
+        //initDropDown()
     }
 
     /**
@@ -574,7 +554,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                             val recIndexPos = 1295
                             System.arraycopy(NFCHelper.mIDNRsock.recData, 0, mIDCBuffer, 0, recIndexPos)
 
-                            if (isload) {
+                            if (isLoad) {
                                 soundPool?.play(soundId, 1.0f, 0.5f, 1, 0, 1.5f)
                             }
                             // 解码图片：
@@ -619,20 +599,20 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private fun refreshPurchaser(bean: IDBean?, isFromRead: Boolean = true) {
         if (bean != null) {
             with(bean) {
-                if (userImgBase64 != null) {
-                    val bitmap = BitmapUtil.base64ToBitmap(userImgBase64!!)
-                    img_user_head.setImageBitmap(bitmap)
-                } else if (isFromRead) {
-                    val bitmap = BitmapFactory.decodeFile(userImg)
-                    purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
-                    img_user_head.setImageBitmap(bitmap)
-                } else {
-                    img_user_head.setImageResource(R.drawable.bmp_user_head)
-                }
-
-                tv_user_name.text = bean.name
-                tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
-                tv_mobile.text = bean.mobile
+//                if (userImgBase64 != null) {
+//                    val bitmap = BitmapUtil.base64ToBitmap(userImgBase64!!)
+//                    img_user_head.setImageBitmap(bitmap)
+//                } else if (isFromRead) {
+//                    val bitmap = BitmapFactory.decodeFile(userImg)
+//                    purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
+//                    img_user_head.setImageBitmap(bitmap)
+//                } else {
+//                    img_user_head.setImageResource(R.drawable.bmp_user_head)
+//                }
+//
+//                tv_user_name.text = bean.name
+//                tv_user_id.text = ValidateUtil.setIdCodeToPassword(bean.idCode)
+//                tv_mobile.text = bean.mobile
             }
         }
     }

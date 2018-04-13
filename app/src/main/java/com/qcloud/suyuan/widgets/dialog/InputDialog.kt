@@ -12,6 +12,7 @@ import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.qcloud.qclib.materialdesign.listener.OnGetFocusListener
 import com.qcloud.qclib.utils.ApiReplaceUtil
@@ -64,6 +65,7 @@ class InputDialog @JvmOverloads constructor(
         //et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
         et_text?.inputType(InputType.TYPE_CLASS_TEXT)
         et_text?.hintColor(ApiReplaceUtil.getColor(mContext, R.color.colorHint))
+        et_text?.mEditText?.imeOptions = EditorInfo.IME_ACTION_DONE
         et_text?.onGetFocusListener = object : OnGetFocusListener {
             override fun onGetFocus() {
 
@@ -83,9 +85,10 @@ class InputDialog @JvmOverloads constructor(
         }
 
         //监听键盘
-        et_text?.onEditorActionListener = TextView.OnEditorActionListener { _, actionId, event ->
+        et_text?.mEditText?.setOnEditorActionListener { v, actionId, event ->
             when (actionId) {
                 KeyEvent.KEYCODE_ENDCALL, KeyEvent.KEYCODE_ENTER -> {
+
                     onFinishClick()
                     true
                 }
@@ -135,11 +138,6 @@ class InputDialog @JvmOverloads constructor(
 
     private fun check(): Boolean {
         mInputValue = et_text.text.trim { it <= ' ' }
-
-//        if (StringUtil.isBlank(mInputValue)) {
-//            QToast.show(mContext, R.string.toast_input_not_null)
-//            return false
-//        }
 
         return true
     }

@@ -118,7 +118,7 @@
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
-                android:text="@string/tag_number"/>
+                android:text="@string/tag_sellers_number"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -136,7 +136,7 @@
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
-                android:text="@string/tag_stock"/>
+                android:text="@string/tag_sellers_stock"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -145,7 +145,7 @@
                 android:gravity="center"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
-                android:text="@string/tag_selling_price"/>
+                android:text="@string/tag_sellers_selling_price"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -162,168 +162,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/layoutMargin">
-
-            <LinearLayout
-                android:id="@+id/layout_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
-                        android:text="@string/tag_goods_number"/>
-
-                    <TextView
-                        android:id="@+id/tv_goods_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/typeTextSize"
-                        android:textStyle="bold"
-                        tools:text="10"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:textColor="@color/colorTitle"-->
-                        <!--android:textSize="@dimen/textSize"-->
-                        <!--android:text="@string/tag_serial_number"/>-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/tv_serial_number"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginLeft="@dimen/margin_1"-->
-                        <!--android:layout_marginStart="@dimen/margin_1"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:textColor="@color/colorTitle"-->
-                        <!--android:textSize="@dimen/typeTextSize"-->
-                        <!--tools:text="KSLS128973"/>-->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
-                        android:text="@string/tag_money_getter"/>
-
-                    <TextView
-                        android:id="@+id/tv_money_getter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/typeTextSize"
-                        tools:text="库赞"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/layout_number"
-                android:layout_toEndOf="@+id/layout_number"
-                android:layout_marginLeft="@dimen/margin_12"
-                android:layout_marginStart="@dimen/margin_12"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
-                        android:text="@string/tag_total_account"/>
-
-                    <TextView
-                        android:id="@+id/tv_total_account"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/typeTextSize"
-                        android:textStyle="bold"
-                        tools:text="¥546.00"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="invisible">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/textSize"
-                        android:text="@string/tag_money_getter"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_1"
-                        android:layout_marginStart="@dimen/margin_1"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTitle"
-                        android:textSize="@dimen/typeTextSize"
-                        tools:text="库赞"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_settlement"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/btnHeight"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:paddingLeft="@dimen/margin_8"
-                android:paddingRight="@dimen/margin_8"
-                android:background="@drawable/btn_radius_selector"
-                android:textColor="@color/white"
-                android:textSize="@dimen/btnTextSize"
-                android:text="@string/btn_settlement"/>
-        </RelativeLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

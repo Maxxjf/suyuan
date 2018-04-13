@@ -13,11 +13,7 @@ import com.qcloud.suyuan.beans.SettlementResBean
 interface ISellersView: BaseView {
     fun onSettlementClick()
 
-    fun onInputPurchaserClick()
-
-    fun onMobileClick()
-
-    fun onRemarkClick()
+    fun onClearAllClick()
 
     /**替换数据 */
     fun replaceList(beans: List<SaleProductBean>?)

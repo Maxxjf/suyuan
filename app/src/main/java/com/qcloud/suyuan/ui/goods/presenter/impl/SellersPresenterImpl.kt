@@ -45,9 +45,7 @@ class SellersPresenterImpl: BasePresenter<ISellersView>(), ISellersPresenter {
     override fun onBtnClick(viewId: Int) {
         when (viewId) {
             R.id.btn_settlement -> mView?.onSettlementClick()
-            R.id.btn_input_purchase_info -> mView?.onInputPurchaserClick()
-            R.id.tv_mobile -> mView?.onMobileClick()
-            R.id.tv_other_instructions -> mView?.onRemarkClick()
+            R.id.btn_clear_all -> mView?.onClearAllClick()
         }
     }
 
