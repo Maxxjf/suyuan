@@ -113,7 +113,6 @@ class LoginActivity : BaseActivity<ILoginView, LoginPresenterImpl>(), ILoginView
             et_password.requestFocus()
             return false
         }
-
         return true
     }
 

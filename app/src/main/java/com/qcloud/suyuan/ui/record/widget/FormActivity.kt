@@ -92,7 +92,6 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
         if (endDatePicker == null){
             endDatePicker= DatePickerDialog(this)
             endDatePicker?.onDateSelectListener = object :DatePickerDialog.OnDateSelectListener {
-
                 override fun onSelect(time: Calendar) {
                     tv_date_to.text=DateUtil.formatDate(time.time, "yyyy-MM-dd")
                     loadData()
