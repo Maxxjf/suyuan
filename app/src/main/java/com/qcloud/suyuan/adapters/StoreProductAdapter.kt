@@ -20,22 +20,19 @@ class StoreProductAdapter(mContext: Context) : CommonRecyclerAdapter<ProductBean
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean = mList[position]
 
-        val imgProduct = holder.get<RatioImageView>(R.id.img_product)
-
         if (position %2 == 0){
             holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
         } else {
             holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         with(bean) {
-            GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)
             holder.setText(R.id.tv_product_bar_code, barCode)
                     .setText(R.id.tv_product_name, name)
                     .setText(R.id.tv_product_spec, specification)
                     .setText(R.id.tv_product_manufacture, millName)
                     .setText(R.id.tv_product_total_stock, amountStr)
                     .setText(R.id.tv_product_type, platformName)
-                    .setText(R.id.tv_product_operator, operaName)
+                    .setText(R.id.tv_product_price, retailPriceStr)
                     .setText(R.id.tv_product_last_in_time, createDate)
         }
     }

@@ -20,6 +20,7 @@ import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.model.impl.UserModelImpl
 import com.qcloud.suyuan.ui.main.widget.LoginActivity
+import com.qcloud.suyuan.ui.main.widget.MainActivity
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
@@ -35,12 +36,15 @@ class CustomToolbar @JvmOverloads constructor(
         defStyleAttr: Int = 0) : Toolbar(mContext, attrs, defStyleAttr), View.OnClickListener {
 
     private var isBack: Boolean = true
-    private var isLogout: Boolean = true
+    private var isLogout: Boolean = false
+    private var isGoMain: Boolean = true
     private var isTitle: Boolean = true
     private var isMain: Boolean = false
     private var isRight: Boolean = false
     @DrawableRes
     private var backIcon: Int = 0
+    @DrawableRes
+    var goMainIcon: Int = 0
     @StringRes
     private var titleText: Int = 0
     @DrawableRes
@@ -71,7 +75,9 @@ class CustomToolbar @JvmOverloads constructor(
                 titleText = typedArray.getResourceId(R.styleable.CustomBar_title_text, R.string.title_suyuan)
 
                 // 退出登录
-                isLogout = typedArray.getBoolean(R.styleable.CustomBar_is_logout, true)
+                isLogout = typedArray.getBoolean(R.styleable.CustomBar_is_logout, false)
+                // 返回首页
+                isGoMain = typedArray.getBoolean(R.styleable.CustomBar_is_go_main, true)
 
                 // 是否首页
                 isMain = typedArray.getBoolean(R.styleable.CustomBar_is_main, false)
@@ -115,6 +121,14 @@ class CustomToolbar @JvmOverloads constructor(
         }
         btn_logout.setOnClickListener(this)
 
+        // 返回首页
+        if (isGoMain) {
+            btn_go_main.visibility = View.VISIBLE
+        } else {
+            btn_go_main.visibility = View.GONE
+        }
+        btn_go_main.setOnClickListener(this)
+
         // 首页
         if (isMain) {
             layout_main.visibility = View.VISIBLE
@@ -137,6 +151,14 @@ class CustomToolbar @JvmOverloads constructor(
         tv_title.text = titleText
     }
 
+    fun showRight(isShow: Boolean = false) {
+        if (isShow) {
+            btn_right.visibility = View.VISIBLE
+        } else {
+            btn_right.visibility = View.GONE
+        }
+    }
+
     override fun onClick(p0: View) {
         when (p0.id) {
             R.id.btn_back -> {
@@ -147,6 +169,7 @@ class CustomToolbar @JvmOverloads constructor(
                 }
             }
             R.id.btn_logout -> toLogout()
+            R.id.btn_go_main -> toGoMain()
             R.id.btn_right -> onBtnClickListener?.onBtnClick(p0)
         }
     }
@@ -156,6 +179,11 @@ class CustomToolbar @JvmOverloads constructor(
             initLogoutDialog()
         }
         logoutDialog?.show()
+    }
+
+    private fun toGoMain() {
+        BaseApplication.mAppManager?.killAllActivity()
+        MainActivity.openActivity(mContext)
     }
 
     private fun initLogoutDialog() {

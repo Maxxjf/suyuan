@@ -32,7 +32,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_logout"/>
+            android:src="@drawable/icon_go_main"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,21 +68,40 @@
         android:textColor="@color/white"
         android:textSize="@dimen/titleTextSize"/>
 
-    <TextView
-        android:id="@+id/btn_logout"
+    <LinearLayout
+        android:id="@+id/layout_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:orientation="vertical"
         android:paddingRight="@dimen/layoutMargin"
         android:paddingEnd="@dimen/layoutMargin"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:drawableTop="@drawable/icon_logout"
-        android:drawablePadding="@dimen/padding_1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/smallTextSize"
-        android:text="@string/btn_logout"/>
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/icon_logout"
+            android:drawablePadding="@dimen/padding_1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/btn_logout"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/btn_go_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/icon_go_main"
+            android:drawablePadding="@dimen/padding_1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/smallTextSize"
+            android:text="@string/btn_go_main"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/btn_right"
@@ -96,8 +115,8 @@
         android:paddingLeft="@dimen/layoutMargin"
         android:paddingRight="@dimen/layoutMargin"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/btn_logout"
-        android:layout_toStartOf="@+id/btn_logout"
+        android:layout_toLeftOf="@+id/layout_logout"
+        android:layout_toStartOf="@+id/layout_logout"
         android:visibility="visible">
 
         <ImageView

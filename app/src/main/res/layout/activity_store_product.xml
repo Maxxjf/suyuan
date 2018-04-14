@@ -11,7 +11,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
-        app:title_text="@string/title_store_product"/>
+        app:title_text="@string/title_store_product"
+        app:is_right="true"
+        app:right_icon="@drawable/icon_go_main"
+        app:right_text="@string/btn_create_product"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,16 +22,46 @@
         android:background="@color/white">
 
         <LinearLayout
-            android:id="@+id/layout_search"
+            android:id="@+id/layout_total_row"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/editHeight"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="@dimen/layoutMargin"
-            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginStart="@dimen/layoutMargin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/typeTextSize"
+                android:text="@string/tag_sale_product_total"/>
+
+            <TextView
+                android:id="@+id/tv_total_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_margin"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/typeTextSize"
+                tools:text="1000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/editHeight"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@+id/layout_product_type"
+            android:layout_toStartOf="@+id/layout_product_type"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
             android:background="@drawable/frame_input">
 
             <ImageView
@@ -50,7 +83,7 @@
                 android:id="@+id/et_search"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:minWidth="@dimen/margin_50"
+                android:minWidth="@dimen/margin_40"
                 android:background="@null"
                 android:layout_marginLeft="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_1"
@@ -60,18 +93,19 @@
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
                 android:textColorHint="@color/colorGray"
-                android:hint="@string/hint_input_product_code_and_name"/>
+                android:hint="@string/hint_product_code_and_name"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/layout_search"
-            android:layout_toEndOf="@+id/layout_search"
+            android:id="@+id/layout_product_type"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/editHeight"
+            android:layout_toLeftOf="@+id/layout_classify"
+            android:layout_toStartOf="@+id/layout_classify"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/layoutMargin"
-            android:layout_marginStart="@dimen/layoutMargin"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -81,11 +115,11 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/colorTitle"
                 android:textSize="@dimen/textSize"
-                android:text="@string/tag_product_detail_classify"/>
+                android:text="@string/tag_product_type2"/>
 
             <LinearLayout
-                android:id="@+id/btn_purchase_use"
-                android:layout_width="@dimen/margin_50"
+                android:id="@+id/btn_product_type"
+                android:layout_width="@dimen/margin_40"
                 android:layout_height="@dimen/editHeight"
                 android:layout_marginLeft="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_1"
@@ -96,7 +130,58 @@
                 android:focusable="true">
 
                 <TextView
-                    android:id="@+id/tv_purchase_use"
+                    android:id="@+id/tv_product_type"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/editHeight"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/layout_margin"
+                    android:paddingStart="@dimen/layout_margin"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorTitle"
+                    android:textSize="@dimen/textSize"
+                    android:hint="@string/hint_select_product_type_search"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_drop_down"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_classify"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/editHeight"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/layoutMargin"
+            android:layout_marginEnd="@dimen/layoutMargin"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorTitle"
+                android:textSize="@dimen/textSize"
+                android:text="@string/tag_product_classify"/>
+
+            <LinearLayout
+                android:id="@+id/btn_product_classify"
+                android:layout_width="@dimen/margin_40"
+                android:layout_height="@dimen/editHeight"
+                android:layout_marginLeft="@dimen/margin_1"
+                android:layout_marginStart="@dimen/margin_1"
+                android:background="@drawable/frame_gray_ripple"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_product_classify"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/editHeight"
                     android:layout_weight="1"
@@ -108,31 +193,11 @@
                     android:hint="@string/hint_select_product_classify_search"/>
 
                 <ImageView
-                    android:id="@+id/btn_drop_down"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_drop_down"/>
             </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/btn_my_product"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackground"
-            android:drawableLeft="@drawable/icon_my_product"
-            android:drawableStart="@drawable/icon_my_product"
-            android:drawablePadding="@dimen/drawPadding"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="@dimen/layoutMargin"
-            android:layout_marginEnd="@dimen/layoutMargin"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/btnTextSize"
-            android:text="@string/btn_my_product"/>
     </RelativeLayout>
 
     <View
@@ -143,15 +208,6 @@
         android:layout_height="@dimen/tabHeight"
         android:orientation="horizontal"
         android:background="@color/white">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:gravity="center"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/textSize"
-            android:text="@string/tag_product_image"/>
 
         <TextView
             android:layout_width="0dp"
@@ -201,20 +257,20 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/textSize"
+            android:text="@string/tag_product_sale_price"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/textSize"
             android:text="@string/tag_product_type"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:gravity="center"
-            android:textColor="@color/colorTitle"
-            android:textSize="@dimen/textSize"
-            android:text="@string/tag_product_operator"/>
 
         <TextView
             android:layout_width="0dp"

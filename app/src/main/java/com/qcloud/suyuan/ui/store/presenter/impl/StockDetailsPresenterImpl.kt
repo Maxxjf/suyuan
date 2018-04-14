@@ -22,10 +22,6 @@ class StockDetailsPresenterImpl: BasePresenter<IStockDetailsView>(), IStockDetai
     override fun onBtnClick(viewId: Int) {
         when (viewId) {
             R.id.btn_product_details -> mView?.onProductDetailsClick()
-
-            R.id.btn_product_price -> mView?.onProductPriceClick()
-
-            R.id.btn_adjust_warn -> mView?.onAdjustWarnClick()
         }
     }
 

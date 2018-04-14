@@ -14,6 +14,8 @@
         app:is_back="false"
         app:is_main="true"
         app:is_title="false"
+        app:is_logout="true"
+        app:is_go_main="false"
         app:is_right="true"
         app:right_icon="@drawable/icon_search_code"
         app:right_text="@string/btn_search"/>

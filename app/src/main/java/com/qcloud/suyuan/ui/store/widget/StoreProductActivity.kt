@@ -6,6 +6,7 @@ import android.support.annotation.NonNull
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.View
 import android.widget.AdapterView
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
@@ -19,10 +20,12 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ProductBean
 import com.qcloud.suyuan.beans.ProductClassifyBean
 import com.qcloud.suyuan.constant.AppConstants
+import com.qcloud.suyuan.enums.PlatformEnum
 import com.qcloud.suyuan.ui.store.presenter.impl.StoreProductPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStoreProductView
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.pop.DropDownPop
+import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_store_product.*
@@ -38,10 +41,12 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     private var mAdapter: StoreProductAdapter? = null
     private var mEmptyView: NoDataView? = null
 
-    private var mPurchaseUsePop: DropDownPop? = null
+    private var mClassifyPop: DropDownPop? = null
+    private var mTypePop: DropDownPop? = null
 
     private var pageNo = 1
     private var classifyId: String? = null
+    private var platformKey: Int = -1
     private var keyword: String? = null
 
     override val layoutId: Int
@@ -54,10 +59,18 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     override fun initViewAndData() {
         initRecyclerView()
         initEditView()
-        btn_my_product.setOnClickListener {
-            MyProductActivity.openActivity(this)
-        }
+        initToolbar()
+        initType()
+
         mPresenter?.loadClassify()
+    }
+
+    private fun initToolbar() {
+        toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                CreateProductIActivity.openActivity(this@StoreProductActivity, null)
+            }
+        }
     }
 
     private fun initRecyclerView() {
@@ -83,7 +96,8 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         list_product?.setAdapter(mAdapter!!)
         mAdapter?.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val id = mAdapter?.mList?.get(position)?.id ?: "-1"
-            StockDetailsActivity.openActivity(this@StoreProductActivity, id)
+            val isPlatform = mAdapter?.mList?.get(position)?.isPlatform == 1
+            StockDetailsActivity.openActivity(this@StoreProductActivity, id, isPlatform)
         }
 
         mEmptyView = NoDataView(this)
@@ -101,7 +115,6 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                     if (StringUtil.isNotBlank(inputValue)) {
                         reSetEditText()
                         keyword = inputValue
-                        classifyId = null
                         pageNo = 1
                         loadData()
                     } else {
@@ -117,7 +130,6 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
             if (StringUtil.isNotBlank(inputValue)) {
                 reSetEditText()
                 keyword = inputValue
-                classifyId = null
                 pageNo = 1
                 loadData()
             } else {
@@ -127,7 +139,7 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     }
 
     private fun loadData() {
-        mPresenter?.loadData(pageNo, classifyId, keyword)
+        mPresenter?.loadData(pageNo, classifyId, platformKey, keyword)
     }
 
     /**
@@ -139,7 +151,6 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
                 .subscribe {
                     et_search.setText("")
                     et_search.requestFocus()
-                    tv_purchase_use.text = ""
                 }
     }
 
@@ -147,25 +158,53 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
      * 初始化下拉弹窗
      * */
     private fun initClassify(list: List<ProductClassifyBean>) {
-        btn_purchase_use.post {
-            val width = btn_purchase_use.width
-            mPurchaseUsePop = DropDownPop(this, list, width)
+        btn_product_classify.post {
+            val width = btn_product_classify.width
+            mClassifyPop = DropDownPop(this, list, width)
 
-            mPurchaseUsePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
+            mClassifyPop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
                 override fun onItemClick(position: Int, value: Any?) {
                     val bean: ProductClassifyBean = value as ProductClassifyBean
                     classifyId = bean.id
                     keyword = null
-                    tv_purchase_use.text = ApiReplaceUtil.fromHtml(bean.name)
+                    tv_product_classify.text = ApiReplaceUtil.fromHtml(bean.name)
                     pageNo = 1
                     loadData()
                 }
             }
         }
 
-        btn_purchase_use.setOnClickListener {
-            Timber.e("click $list")
-            mPurchaseUsePop?.showAsDropDown(btn_purchase_use)
+        btn_product_classify.setOnClickListener {
+            mClassifyPop?.showAsDropDown(btn_product_classify)
+        }
+    }
+
+    /**
+     * 初始化产品来源弹窗
+     * */
+    private fun initType() {
+        val list: MutableList<String> = ArrayList()
+        list.add(PlatformEnum.isAll.value)
+        list.add(PlatformEnum.isPlatform.value)
+        list.add(PlatformEnum.isPrivate.value)
+        btn_product_type.post {
+            val width = btn_product_type.width
+            mTypePop = DropDownPop(this, list, width)
+
+            mTypePop?.onItemClickListener = object : DropDownPop.OnItemClickListener {
+                override fun onItemClick(position: Int, value: Any?) {
+                    val key: String = value as String
+                    keyword = null
+                    tv_product_type.text = key
+                    platformKey = PlatformEnum.getKey(key)
+                    pageNo = 1
+                    loadData()
+                }
+            }
+        }
+
+        btn_product_type.setOnClickListener {
+            mTypePop?.showAsDropDown(btn_product_type)
         }
     }
 
@@ -177,9 +216,10 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
         }
     }
 
-    override fun replaceList(beans: List<ProductBean>?, isNext: Boolean) {
+    override fun replaceList(beans: List<ProductBean>?, isNext: Boolean, total: Int) {
         if (isRunning) {
             list_product?.loadedFinish()
+            tv_total_product.text = "$total"
             if (beans != null && beans.isNotEmpty()) {
                 if (mAdapter != null) {
                     mAdapter!!.replaceList(beans)
@@ -224,6 +264,21 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
 
     override fun hideEmptyView() {
         list_product?.hideEmptyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mClassifyPop.let {
+            if (mClassifyPop != null && mClassifyPop!!.isShowing) {
+                mClassifyPop?.dismiss()
+            }
+        }
+
+        mTypePop.let {
+            if (mTypePop != null && mTypePop!!.isShowing) {
+                mTypePop?.dismiss()
+            }
+        }
     }
 
     companion object {

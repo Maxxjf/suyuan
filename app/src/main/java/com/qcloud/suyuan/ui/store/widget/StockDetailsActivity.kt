@@ -16,6 +16,7 @@ import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.InStorageRecordBean
 import com.qcloud.suyuan.beans.PrintBean
+import com.qcloud.suyuan.beans.PrintContentBean
 import com.qcloud.suyuan.beans.ProductDetailsBean
 import com.qcloud.suyuan.ui.store.presenter.impl.StockDetailsPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
@@ -24,6 +25,8 @@ import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.AdjustWarnDialog
 import com.qcloud.suyuan.widgets.dialog.ChangePriceDialog
 import com.qcloud.suyuan.widgets.dialog.ProductDetailsDialog
+import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
+import kotlinx.android.synthetic.main.activity_stock_details.*
 import kotlinx.android.synthetic.main.card_stock_product_details.*
 import kotlinx.android.synthetic.main.card_stock_product_list.*
 import timber.log.Timber
@@ -38,11 +41,10 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
     private var mEmptyView: NoDataView? = null
 
     private var productDetailsDialog: ProductDetailsDialog? = null
-    private var adjustWarnDialog: AdjustWarnDialog? = null
-    private var changePriceDialog: ChangePriceDialog? = null
 
     private var currId: String = "-1"
     private var currBean: ProductDetailsBean? = null
+    private var isPlatform: Boolean = false
 
     override val layoutId: Int
         get() = R.layout.activity_stock_details
@@ -53,14 +55,28 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
 
     override fun initViewAndData() {
         currId = intent.getStringExtra("ID")
+        isPlatform = intent.getBooleanExtra("IS_PLATFORM", false)
         initView()
+        initToolbar()
         initRecyclerView()
     }
 
     private fun initView() {
         btn_product_details?.setOnClickListener(this)
-        btn_product_price?.setOnClickListener(this)
-        btn_adjust_warn?.setOnClickListener(this)
+    }
+
+    private fun initToolbar() {
+        if (!isPlatform) {
+            // 私有产品
+            toolbar.showRight(true)
+            toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
+                override fun onBtnClick(view: View) {
+                    CreateProductIActivity.openActivity(this@StockDetailsActivity, currId)
+                }
+            }
+        } else {
+            toolbar.showRight(false)
+        }
     }
 
     private fun initRecyclerView() {
@@ -71,15 +87,20 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         list_product.setAdapter(mAdapter!!)
         mAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<InStorageRecordBean> {
             override fun onHolderClick(view: View, t: InStorageRecordBean, position: Int) {
+                val contentBean = PrintContentBean()
+                contentBean.content = currBean?.info?.name
+                contentBean.alignIndex = 1
+
                 val printBean = PrintBean()
                 printBean.type = 1
+                printBean.content = contentBean
                 printBean.barCode = t.batchNum
                 PrintHelper.instance.printData(printBean)
             }
         }
 
         mEmptyView = NoDataView(this)
-        mEmptyView?.noData(R.string.tip_no_data)
+        mEmptyView?.noData(R.string.tip_no_purchase_record)
         list_product?.setEmptyView(mEmptyView!!, Gravity.CENTER_HORIZONTAL)
 
         mPresenter?.loadData(currId)
@@ -103,42 +124,6 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
             productDetailsDialog?.refreshData(currBean!!)
         }
         productDetailsDialog?.show()
-    }
-
-    override fun onProductPriceClick() {
-        if (currBean == null) {
-            QToast.show(this, R.string.toast_get_product_details_failure)
-            return
-        }
-        if (changePriceDialog == null) {
-            changePriceDialog = ChangePriceDialog(this)
-        }
-        changePriceDialog?.clearInput()
-        changePriceDialog?.show()
-        changePriceDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
-            override fun onBtnClick(view: View) {
-                val price: Double = changePriceDialog?.price ?: 0.00
-                mPresenter?.editPrice(currId, price)
-            }
-        }
-    }
-
-    override fun onAdjustWarnClick() {
-        if (currBean == null) {
-            QToast.show(this, R.string.toast_get_product_details_failure)
-            return
-        }
-        if (adjustWarnDialog == null) {
-            adjustWarnDialog = AdjustWarnDialog(this)
-        }
-        adjustWarnDialog?.clearInput()
-        adjustWarnDialog?.show()
-        adjustWarnDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
-            override fun onBtnClick(view: View) {
-                val warnLine: Int = adjustWarnDialog?.warnLine ?: 0
-                mPresenter?.editWarnLine(currId, warnLine)
-            }
-        }
     }
 
     override fun refreshData(bean: ProductDetailsBean?) {
@@ -221,24 +206,13 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
                 productDetailsDialog?.dismiss()
             }
         }
-
-        adjustWarnDialog?.let {
-            if (adjustWarnDialog != null && adjustWarnDialog!!.isShowing) {
-                adjustWarnDialog?.dismiss()
-            }
-        }
-
-        changePriceDialog?.let {
-            if (changePriceDialog != null && changePriceDialog!!.isShowing) {
-                changePriceDialog?.dismiss()
-            }
-        }
     }
 
     companion object {
-        fun openActivity(@NonNull context: Context, id: String) {
+        fun openActivity(@NonNull context: Context, id: String, isPlatform: Boolean) {
             val intent = Intent(context, StockDetailsActivity::class.java)
             intent.putExtra("ID", id)
+            intent.putExtra("IS_PLATFORM", isPlatform)
             context.startActivity(intent)
         }
     }

@@ -41,13 +41,13 @@ class StoreProductPresenterImpl: BasePresenter<IStoreProductView>(), IStoreProdu
     /**
      * 获取产品数据
      * */
-    override fun loadData(pageNo: Int, classifyId: String?, keyword: String?) {
-        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, PlatformEnum.isAll.key, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
+    override fun loadData(pageNo: Int, classifyId: String?, platformKey: Int, keyword: String?) {
+        mModel.list(pageNo, AppConstants.PAGE_SIZE, classifyId, platformKey, keyword, object : DataCallback<ReturnDataBean<ProductBean>> {
             override fun onSuccess(t: ReturnDataBean<ProductBean>?, message: String?) {
                 if (t?.list != null) {
                     if (t.list != null) {
                         if (pageNo == 1) {
-                            mView?.replaceList(t.list, t.isNext(AppConstants.PAGE_SIZE))
+                            mView?.replaceList(t.list, t.isNext(AppConstants.PAGE_SIZE), t.totalRow)
                         } else {
                             mView?.addListAtEnd(t.list, t.isNext(AppConstants.PAGE_SIZE))
                         }

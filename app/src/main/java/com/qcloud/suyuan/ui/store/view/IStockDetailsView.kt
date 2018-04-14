@@ -12,10 +12,6 @@ import com.qcloud.suyuan.beans.ProductDetailsBean
 interface IStockDetailsView: BaseView {
     fun onProductDetailsClick()
 
-    fun onProductPriceClick()
-
-    fun onAdjustWarnClick()
-
     fun refreshData(bean: ProductDetailsBean?)
 
     fun refreshInfo(bean: ProductDetailsBean)

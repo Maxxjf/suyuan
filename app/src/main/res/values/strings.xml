@@ -38,6 +38,7 @@
     <string name="btn_confirm">确认</string>
     <string name="btn_cancel">取消</string>
     <string name="btn_logout">退出登录</string>
+    <string name="btn_go_main">返回首页</string>
     <string name="btn_login">登录</string>
     <string name="btn_forrget_login">忘记密码</string>
     <string name="btn_updata_password">修改密码</string>
@@ -66,7 +67,7 @@
     <string name="btn_confirm_in_storage_and_print_code">确认并打印批次条形码</string>
     <string name="btn_my_product">我的产品</string>
     <string name="btn_create_product">创建私有产品</string>
-    <string name="btn_product_details">详情说明</string>
+    <string name="btn_product_details">了解更多详情</string>
     <string name="btn_product_price">产品售价</string>
     <string name="btn_adjust_warn">调整警告线</string>
     <string name="btn_print">打印</string>
@@ -103,6 +104,7 @@
     <string name="hint_input_mobile">请输入联系电话</string>
     <string name="hint_input_water_number">请输入流水号，采购人</string>
     <string name="hint_input_product_code_and_name">请输入产品条形码或产品名称</string>
+    <string name="hint_product_code_and_name">产品条形码/产品名称</string>
     <string name="hint_input_money">请输入有效的金额</string>
     <string name="hint_input_name_idcard_phone">请输入姓名/身份证号/电话号码</string>
     <string name="hint_input_name_supplier">请输入供应商名称/负责人</string>
@@ -136,7 +138,8 @@
     <string name="hint_input_sell_price">请输入售价</string>
     <string name="hint_input_stock_warn_line">请输入库存警告线</string>
     <string name="hint_input_buy_number">请输入购买数量</string>
-    <string name="hint_select_product_classify_search">选择产品分类搜索</string>
+    <string name="hint_select_product_classify_search">请选择产品分类</string>
+    <string name="hint_select_product_type_search">请选择产品来源</string>
     <string name="hint_select_date">请选择日期</string>
 
     <string name="toast_app_exit">您确认要离开？</string>
@@ -271,6 +274,7 @@
     <string name="tip_no_product">无该产品信息，是否创建我的私有产品?</string>
     <string name="tip_bar_code_is_repeat">产品条码已存在，请重新输入</string>
     <string name="tip_no_product_data">暂无销售产品数据</string>
+    <string name="tip_no_purchase_record">抱歉！暂无入库记录</string>
 
     <string name="tag_income">收入</string>
     <string name="tag_credit">赊账</string>
@@ -331,9 +335,11 @@
     <string name="tag_product_spec">产品规格</string>
     <string name="tag_product_stock">当前库存</string>
     <string name="tag_product_total_stock">总库存</string>
+    <string name="tag_product_sale_price">售价(元)</string>
     <string name="tag_product_valid">有效期</string>
     <string name="tag_product_operator">操作人</string>
     <string name="tag_product_type">产品来源</string>
+    <string name="tag_product_type2">产品来源: </string>
     <string name="tag_product_last_in_time">最新入库时间</string>
     <string name="tag_purchaser_info">购买者信息</string>
     <string name="tag_user_name">姓名: </string>
@@ -373,7 +379,7 @@
     <string name="tag_product_detail_retail_price">建议零售价: </string>
     <string name="tag_in_storage_confirm">入库确认</string>
     <string name="tag_in_storage_date">入库日期: </string>
-    <string name="tag_total_stock_number">总库存: %d</string>
+    <string name="tag_total_stock_number">总库存(件): %d</string>
     <string name="tag_in_storage_batch">入库批次</string>
     <string name="tag_in_storage_time">入库时间</string>
     <string name="tag_in_storage_number">入库数量</string>
@@ -454,5 +460,7 @@
     <string name="tag_cash">现金</string>
     <string name="tag_dialog_credit">赊账金额(元): </string>
     <string name="tag_dialog_real_cash">实收金额(元): </string>
+    <string name="tag_sale_product_total">在售商品(件): </string>
+    <string name="tag_product_classify">分类</string>
 
 </resources>

@@ -14,7 +14,7 @@ interface IStoreProductView: BaseView {
     fun replaceClassifyList(list: List<ProductClassifyBean>?)
 
     /**替换数据 */
-    fun replaceList(beans: List<ProductBean>?, isNext: Boolean)
+    fun replaceList(beans: List<ProductBean>?, isNext: Boolean, total: Int)
 
     /**添加数据 */
     fun addListAtEnd(beans: List<ProductBean>?, isNext: Boolean)

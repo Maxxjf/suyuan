@@ -10,5 +10,5 @@ interface IStoreProductPresenter {
     fun loadClassify()
 
     /**获取产品数据*/
-    fun loadData(pageNo: Int, classifyId: String?, keyword: String?)
+    fun loadData(pageNo: Int, classifyId: String?, platformKey: Int, keyword: String?)
 }

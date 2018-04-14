@@ -10,6 +10,10 @@
         <attr name="is_logout" format="boolean"/>
         <!--退出登录图标-->
         <attr name="logout_icon" format="reference"/>
+        <!--是否显示返回首页-->
+        <attr name="is_go_main" format="boolean"/>
+        <!--返回首页图标-->
+        <attr name="go_main_icon" format="reference"/>
         <!--是否显示标题文字-->
         <attr name="is_title" format="boolean"/>
         <!--标题文字-->

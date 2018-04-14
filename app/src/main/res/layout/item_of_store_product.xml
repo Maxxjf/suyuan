@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/itemHeight"
     android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.8"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_3">
-
-        <com.qcloud.qclib.widget.customview.RatioImageView
-            android:id="@+id/img_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bmp_product"
-            app:ratio="1.0"/>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_product_bar_code"
@@ -77,6 +60,17 @@
         tools:text="@string/tag_product_total_stock"/>
 
     <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:maxLines="3"
+        android:gravity="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="@dimen/miniTextSize"
+        tools:text="@string/tag_product_sale_price"/>
+
+    <TextView
         android:id="@+id/tv_product_type"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -86,17 +80,6 @@
         android:textColor="@color/colorTitle"
         android:textSize="@dimen/miniTextSize"
         tools:text="@string/tag_product_type"/>
-
-    <TextView
-        android:id="@+id/tv_product_operator"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.8"
-        android:maxLines="3"
-        android:gravity="center"
-        android:textColor="@color/colorTitle"
-        android:textSize="@dimen/miniTextSize"
-        tools:text="@string/tag_product_operator"/>
 
     <TextView
         android:id="@+id/tv_product_last_in_time"

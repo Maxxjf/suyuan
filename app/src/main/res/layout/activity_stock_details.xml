@@ -12,7 +12,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
-        app:title_text="@string/title_stock_details"/>
+        app:title_text="@string/title_stock_details"
+        app:is_right="true"
+        app:right_icon="@drawable/icon_go_main"
+        app:right_text="@string/btn_edit_product_info"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,14 +26,12 @@
             layout="@layout/card_stock_product_details"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.4"
-            android:layout_marginBottom="@dimen/margin_2" />
+            android:layout_weight="1.0" />
 
         <include
             layout="@layout/card_stock_product_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginTop="@dimen/margin_2" />
+            android:layout_weight="2.52" />
     </LinearLayout>
 </LinearLayout>

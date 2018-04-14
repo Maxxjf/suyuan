@@ -18,27 +18,15 @@
             android:layout_height="@dimen/barHeight">
 
             <TextView
-                android:id="@+id/tv_tag_stock"
+                android:id="@+id/tv_total_stock"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layoutMargin"
                 android:layout_marginStart="@dimen/layoutMargin"
-                android:textColor="@color/colorTitle"
-                android:textSize="@dimen/titleTextSize"
-                android:text="@string/tag_stock"/>
-
-            <TextView
-                android:id="@+id/tv_total_stock"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/tv_tag_stock"
-                android:layout_toEndOf="@+id/tv_tag_stock"
-                android:layout_marginLeft="@dimen/margin_6"
-                android:layout_marginStart="@dimen/margin_6"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/titleTextSize"
                 android:text="@string/tag_total_stock_number"/>
