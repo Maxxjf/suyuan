@@ -15,10 +15,7 @@ import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.base.BaseDialog
-import com.qcloud.suyuan.beans.InStorageBean
-import com.qcloud.suyuan.beans.PrintBean
-import com.qcloud.suyuan.beans.PurchaseProductBean
-import com.qcloud.suyuan.beans.SupplierBean
+import com.qcloud.suyuan.beans.*
 import com.qcloud.suyuan.ui.goods.presenter.impl.PurchaseDetailsPresenterImpl
 import com.qcloud.suyuan.ui.goods.view.IPurchaseDetailsView
 import com.qcloud.suyuan.ui.store.widget.MySupplierActivity
@@ -240,9 +237,14 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
             inStorageDialog?.show()
             inStorageDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
                 override fun onBtnClick(view: View) {
+                    val contentBean = PrintContentBean()
+                    contentBean.content = productBean?.name
+                    contentBean.alignIndex = 1
+
                     val printBean = PrintBean()
                     printBean.type = 1
                     printBean.barCode = bean.batchNum
+                    printBean.content = contentBean
                     PrintHelper.instance.printData(printBean)
                 }
             }

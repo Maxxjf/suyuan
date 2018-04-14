@@ -2,6 +2,7 @@ package com.qcloud.suyuan.adapters
 
 import android.content.Context
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
@@ -27,7 +28,7 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
         val index = position+1
 
         val refreshNumView = holder.get<RefreshNumView>(R.id.refresh_num_view)
-        val btnDel = holder.get<ImageView>(R.id.btn_delete)
+        val btnDel = holder.get<Button>(R.id.btn_delete)
         if (position %2 == 0) {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
         } else {

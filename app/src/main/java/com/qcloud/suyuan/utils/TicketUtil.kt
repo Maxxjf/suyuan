@@ -3,6 +3,7 @@ package com.qcloud.suyuan.utils
 import com.qcloud.suyuan.beans.PrintBean
 import com.qcloud.suyuan.beans.PrintContentBean
 import com.qcloud.suyuan.beans.TicketBean
+import com.qcloud.suyuan.enums.PayMethod
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -74,7 +75,11 @@ object TicketUtil {
                 it.onNext(contentBean)
 
                 contentBean = PrintContentBean()
-                contentBean.content = "实收：${ticket.realPayStr}  找零：${ticket.giveMoneyStr}"
+                if (ticket.payMethod == PayMethod.payCredit.key) {
+                    contentBean.content = "赊账：${ticket.realPayStr}"
+                } else {
+                    contentBean.content = "实收：${ticket.realPayStr}  找零：${ticket.giveMoneyStr}"
+                }
                 contentBean.alignIndex = 0
                 it.onNext(contentBean)
 

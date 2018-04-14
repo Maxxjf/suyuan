@@ -150,10 +150,12 @@ class PrintHelper private constructor() {
                             result = when (bean.type) {
                                 1 -> {
                                     // 打印条形码
+                                    printText(bean.content)
                                     printBarCode(bean.barCode)
                                 }
                                 2 -> {
                                     // 打印二维码
+                                    printText(bean.content)
                                     printQrCode(bean.qrCode)
                                 }
                                 else -> {
@@ -284,7 +286,7 @@ class PrintHelper private constructor() {
         }
 
         val pictureTool = PrintPictureUtil.instance
-        val srcImage = BarCodeUtil.createQrCode(qrCode!!, 100, 100)
+        val srcImage = BarCodeUtil.createQrCode(qrCode!!, 230, 230)
         if (srcImage == null) {
             Timber.d("图片数据为空")
             return -1
@@ -298,6 +300,8 @@ class PrintHelper private constructor() {
             Timber.d("图片数据为空")
             return -1
         }
+        // 居中显示
+        mUsbController?.sendByte(cmdAlignCenter, mUsbDevice!!)
         var s = 0
         return try {
             // usb bulk < 16k bytes

@@ -32,6 +32,7 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
     private fun initView() {
         btn_close.setOnClickListener(this)
         btn_confirm.setOnClickListener(this)
+        btn_select_pay_method.setOnClickListener(this)
 
         et_real_price.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {
@@ -62,7 +63,7 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_close -> dismiss()
-            R.id.btn_confirm -> {
+            R.id.btn_confirm, R.id.btn_select_pay_method -> {
                 dismiss()
                 onBtnClickListener?.onBtnClick(v)
             }
@@ -74,6 +75,6 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
         this.realPay = realPay
         tv_total_price.text = String.format(moneyStr, realPay)
         et_real_price.setText(String.format(moneyStr, realPay))
-        tv_give_change.text = ""
+        tv_give_change.text = String.format(moneyStr, 0.00)
     }
 }

@@ -19,6 +19,7 @@ import com.qcloud.qclib.rxtask.RxScheduler
 import com.qcloud.qclib.rxtask.task.NewTask
 import com.qcloud.qclib.rxtask.task.UITask
 import com.qcloud.qclib.toast.QToast
+import com.qcloud.qclib.utils.BaseUrlUtil
 import com.qcloud.qclib.utils.BitmapUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
@@ -60,9 +61,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var mAdapter: SellersAdapter? = null
     private var mEmptyView: NoDataView? = null
 
-    private var tipDialog: TipDialog? = null
     private var settlementDialog: SettlementDialog? = null
     private var cashDialog: CashDialog? = null
+    private var payConfirmDialog: PayConfirmDialog? = null
     private var inputPurchaseDialog: InputPurchaseDialog? = null
 
     /**身份识别有关*/
@@ -266,7 +267,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 }
             }
         }
-        return isHighToxic
+        return true
     }
 
     /**
@@ -285,9 +286,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 payMethod = settlementDialog!!.payMethod
                 when (view.id) {
                     R.id.btn_cash -> showCashDialog()
-
                     else -> {
-                        mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
+                        showPayConfirmDialog()
                     }
                 }
             }
@@ -305,10 +305,34 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         cashDialog?.refreshData(receivablePrice)
         cashDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                realPay = cashDialog!!.realPay
-                giveMoney = cashDialog!!.giveMoney
+                if (view.id == R.id.btn_select_pay_method) {
+                    showSettlementDialog()
+                } else {
+                    realPay = cashDialog!!.realPay
+                    giveMoney = cashDialog!!.giveMoney
 
-                mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
+                    mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
+                }
+            }
+        }
+    }
+
+    /**
+     * 显示支付确认
+     * */
+    private fun showPayConfirmDialog() {
+        if (payConfirmDialog == null) {
+            payConfirmDialog = PayConfirmDialog(this)
+        }
+        payConfirmDialog?.show()
+        payConfirmDialog?.refreshPrice(payMethod, receivablePrice)
+        payConfirmDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                if (view.id == R.id.btn_select_pay_method) {
+                    showSettlementDialog()
+                } else {
+                    mPresenter?.saleSettlement(list, purchaseInfo!!, discount, realPay, payMethod, purpose, remark)
+                }
             }
         }
     }
@@ -409,9 +433,13 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 // 打印溯源码
                 if (bean.traceabilityList != null) {
                     for (it in bean.traceabilityList!!) {
+                        val contentBean = PrintContentBean()
+                        contentBean.content = it.name
+                        contentBean.alignIndex = 1
                         val printBean = PrintBean()
-                        printBean.type = 1
-                        printBean.barCode = it.code
+                        printBean.type = 2
+                        printBean.qrCode = BaseUrlUtil.getBaseUrl() + it.codeUrl
+                        printBean.content = contentBean
                         PrintHelper.instance.printData(printBean)
                     }
                     initTicketData(bean.orderNo, bean.orderTime)
@@ -571,11 +599,6 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             soundPool = null
         }
 
-        tipDialog.let {
-            if (tipDialog != null && tipDialog!!.isShowing) {
-                tipDialog?.dismiss()
-            }
-        }
         settlementDialog.let {
             if (settlementDialog != null && settlementDialog!!.isShowing) {
                 settlementDialog?.dismiss()
@@ -584,6 +607,11 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         cashDialog.let {
             if (cashDialog != null && cashDialog!!.isShowing) {
                 cashDialog?.dismiss()
+            }
+        }
+        payConfirmDialog.let {
+            if (payConfirmDialog != null && payConfirmDialog!!.isShowing) {
+                payConfirmDialog?.dismiss()
             }
         }
         inputPurchaseDialog.let {

@@ -96,6 +96,10 @@ class InputPurchaseDialog constructor(context: Context) : BaseDialog(context), V
             QToast.show(mContext, R.string.hint_input_mobile)
             return false
         }
+        if (!ValidateUtil.isMobilePhone(mobile)) {
+            QToast.show(mContext, R.string.tip_input_right_mobile)
+            return false
+        }
 
         return true
     }
