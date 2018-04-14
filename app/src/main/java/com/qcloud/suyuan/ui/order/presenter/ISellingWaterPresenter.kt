@@ -7,5 +7,5 @@ package com.qcloud.suyuan.ui.order.presenter
  */
 interface ISellingWaterPresenter {
     fun getSaleInfo(id: String)
-    fun getSaleList(keyword: String)
+    fun getSaleList(dayTime:String,keyword: String)
 }

@@ -64,9 +64,10 @@ class MoneyModelImpl : IMoneyModel {
      *销售列表
      * @param keyword
      */
-    override fun getSaleList(keyword:String,callback: DataCallback<ReturnDataBean<SaleListBean>>){
+    override fun getSaleList(dayTime:String,keyword:String,callback: DataCallback<ReturnDataBean<SaleListBean>>){
         val params = FrameRequest.getAppParams()
         params["keyword"] = keyword
+        params["dayTime"] = dayTime
 
         BaseApi.dispose(mApi.getSaleList(params), callback)
     }

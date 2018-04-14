@@ -19,6 +19,7 @@ import com.qcloud.suyuan.beans.ScanCodeBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.IReturnedPersenterImpl
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
+import com.qcloud.suyuan.utils.PasswordKeyListener
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.ReturnDialog
@@ -84,7 +85,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         mReceiptEmptyView?.noData(R.string.tip_no_list)
         rv_credit_info_list.setEmptyView(mGoodsEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
-
+        et_search.keyListener=PasswordKeyListener()
         et_search.setOnKeyListener { view, i, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if ((i == KeyEvent.KEYCODE_ENTER)) {
