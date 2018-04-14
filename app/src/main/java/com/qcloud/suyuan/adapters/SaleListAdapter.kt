@@ -36,7 +36,7 @@ class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(co
 
         if (bean.payMethod==PayMethod.payCredit.key){
             GlideUtil.loadImage(mContext,ivFlag,R.drawable.icon_flag_credit)
-        } else if (bean.isReturn){
+        } else if (bean.isRefund){
             GlideUtil.loadImage(mContext,ivFlag,R.drawable.icon_flag_return)
         }else{
             ivFlag.setImageBitmap(null)

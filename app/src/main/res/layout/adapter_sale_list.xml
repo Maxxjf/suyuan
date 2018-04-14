@@ -19,15 +19,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_2"
             android:layout_toLeftOf="@+id/tv_number"
             android:src="@drawable/icon_flag_credit" />
 
         <TextView
+            android:layout_alignParentRight="true"
             android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
             android:gravity="center_vertical"
             android:text="LHS0005894566"
             android:textColor="@color/colorText"

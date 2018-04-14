@@ -29,7 +29,7 @@ interface IMoneyModel {
     /**
      * 销售列表
      */
-    fun getSaleList(keyword: String, callback: DataCallback<ReturnDataBean<SaleListBean>>)
+    fun getSaleList(dayTime:String,keyword: String, callback: DataCallback<ReturnDataBean<SaleListBean>>)
     /**
      * 销售详情
      */

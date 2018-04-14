@@ -27,7 +27,6 @@ import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.DatePickerDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_selling_water.*
-import timber.log.Timber
 import java.util.*
 
 /**
@@ -77,7 +76,6 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             if (mCurrentBean != null) {
                 mPresenter?.getSaleInfo(mCurrentBean?.id!!)
             }
-            Timber.e("${saleListAdapter!!.mList}")
         })
         rv_sale_list.setLayoutManager(LinearLayoutManager(this))
         rv_sale_list.setAdapter(saleListAdapter!!)
@@ -119,8 +117,8 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     }
 
     private fun showDatePickerDialog() {
-        if (datePicker==null){
-            datePicker=DatePickerDialog(this)
+        if (datePicker == null) {
+            datePicker = DatePickerDialog(this)
             datePicker?.onDateSelectListener = object : DatePickerDialog.OnDateSelectListener {
                 override fun onSelect(time: Calendar) {
                     tv_date_picker.text = DateUtil.formatDate(time.time, "yyyy-MM-dd")
@@ -132,8 +130,9 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     }
 
     override fun loadData() {
-        var keyword = et_search.text.toString()
-        mPresenter?.getSaleList(keyword)
+        var dayTime=tv_date_picker.text.toString().trim()
+        var keyword = et_search.text.toString().trim()
+        mPresenter?.getSaleList(dayTime,keyword)
     }
 
     /**
@@ -168,6 +167,11 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
             rv_sale_list.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {
                 saleListAdapter?.replaceList(beans)
+                //默认加载第一个数据
+                mCurrentBean = beans[0]
+                if (mCurrentBean != null) {
+                    mPresenter?.getSaleInfo(mCurrentBean?.id!!)
+                }
                 hideEmptyView()
             } else {
                 showEmptyView(getString(R.string.tip_no_data))

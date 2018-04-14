@@ -15,37 +15,38 @@ import com.qcloud.suyuan.ui.order.view.ISellingWaterView
  * Author: gaobaiqiang
  * 2018/3/15 上午12:41.
  */
-class SellingWaterPresenterImpl: BasePresenter<ISellingWaterView>(), ISellingWaterPresenter {
-    private var mModel:IMoneyModel= MoneyModelImpl()
+class SellingWaterPresenterImpl : BasePresenter<ISellingWaterView>(), ISellingWaterPresenter {
+    private var mModel: IMoneyModel = MoneyModelImpl()
     /**得到销售列表*/
-    override fun getSaleList(keyword:String){
-        mModel.getSaleList(keyword,object : DataCallback<ReturnDataBean<SaleListBean>> {
+    override fun getSaleList(dayTime: String, keyword: String) {
+        mModel.getSaleList(dayTime, keyword, object : DataCallback<ReturnDataBean<SaleListBean>> {
             override fun onSuccess(bean: ReturnDataBean<SaleListBean>?, message: String?) {
-                if (bean!=null){
-                    mView?.replaceSaleList(bean.list,false)
+                if (bean != null) {
+                    mView?.replaceSaleList(bean.list, false)
                 }
             }
 
             override fun onError(status: Int, message: String) {
-               mView?.loadErr(message)
+                mView?.loadErr(message)
             }
 
         })
     }
+
     /**得到销售详情*/
-    override fun getSaleInfo(id:String){
-      mModel.getSaleInfo(id,object :DataCallback<SaleInfoBean>{
-          override fun onSuccess(bean: SaleInfoBean?, message: String?) {
-              if (bean!=null){
-                  mView?.getSaleInfoSuccess(bean)
-              }
-          }
+    override fun getSaleInfo(id: String) {
+        mModel.getSaleInfo(id, object : DataCallback<SaleInfoBean> {
+            override fun onSuccess(bean: SaleInfoBean?, message: String?) {
+                if (bean != null) {
+                    mView?.getSaleInfoSuccess(bean)
+                }
+            }
 
-          override fun onError(status: Int, message: String) {
-              mView?.loadErr(message)
-          }
+            override fun onError(status: Int, message: String) {
+                mView?.loadErr(message)
+            }
 
-      })
+        })
     }
 
 }
