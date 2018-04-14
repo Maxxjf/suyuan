@@ -122,7 +122,7 @@
                     android:text="@string/tag_product_detail_retail_price"/>
 
                 <TextView
-                    android:id="@+id/tv_product_pricet"
+                    android:id="@+id/tv_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/drawPadding"

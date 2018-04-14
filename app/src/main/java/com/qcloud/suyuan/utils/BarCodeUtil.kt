@@ -1,6 +1,7 @@
 package com.qcloud.suyuan.utils
 
 import android.graphics.Bitmap
+import android.net.Uri
 import android.support.annotation.NonNull
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -77,5 +78,13 @@ object BarCodeUtil {
         } else {
             ""
         }
+    }
+
+    /**
+     * 解析二维码获取溯源码
+     * */
+    fun disposeQrCode2Suyuan(qrCode: String): String {
+        val uri = Uri.parse(qrCode)
+        return uri.getQueryParameter("code")
     }
 }

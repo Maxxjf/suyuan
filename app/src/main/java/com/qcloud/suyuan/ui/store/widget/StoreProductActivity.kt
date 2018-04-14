@@ -68,7 +68,11 @@ class StoreProductActivity: BaseActivity<IStoreProductView, StoreProductPresente
     private fun initToolbar() {
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                CreateProductIActivity.openActivity(this@StoreProductActivity, null)
+                if (view.id == R.id.btn_right) {
+                    CreateProductIActivity.openActivity(this@StoreProductActivity, null)
+                } else {
+                    finish()
+                }
             }
         }
     }

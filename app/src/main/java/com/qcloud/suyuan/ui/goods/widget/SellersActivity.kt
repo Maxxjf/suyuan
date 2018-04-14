@@ -436,6 +436,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                         val contentBean = PrintContentBean()
                         contentBean.content = it.name
                         contentBean.alignIndex = 1
+                        contentBean.isWalk = 1
                         val printBean = PrintBean()
                         printBean.type = 2
                         printBean.qrCode = BaseUrlUtil.getBaseUrl() + it.codeUrl

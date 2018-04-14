@@ -76,7 +76,7 @@ object TicketUtil {
 
                 contentBean = PrintContentBean()
                 if (ticket.payMethod == PayMethod.payCredit.key) {
-                    contentBean.content = "赊账：${ticket.realPayStr}"
+                    contentBean.content = "赊账：${ticket.totalAccountStr}"
                 } else {
                     contentBean.content = "实收：${ticket.realPayStr}  找零：${ticket.giveMoneyStr}"
                 }

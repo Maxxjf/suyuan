@@ -240,11 +240,14 @@ class PurchaseDetailsActivity: BaseActivity<IPurchaseDetailsView, PurchaseDetail
                     val contentBean = PrintContentBean()
                     contentBean.content = productBean?.name
                     contentBean.alignIndex = 1
+                    contentBean.isWalk = 1
 
                     val printBean = PrintBean()
                     printBean.type = 1
                     printBean.barCode = bean.batchNum
                     printBean.content = contentBean
+                    PrintHelper.instance.printData(printBean)
+                    PrintHelper.instance.printData(printBean)
                     PrintHelper.instance.printData(printBean)
                 }
             }

@@ -53,12 +53,12 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
                 val priceStr = p0.toString().trim()
                 if (StringUtil.isMoneyStr(priceStr)) {
                     val price = priceStr.toDouble()
-                    if (price > totalAccount) {
+                    realPrice = if (price > totalAccount) {
                         QToast.show(mContext, R.string.toast_real_price_less_then_account)
                         et_real_price.setText(totalAccount.toString())
-                        realPrice = totalAccount
+                        totalAccount
                     } else {
-                        realPrice = price
+                        price
                     }
                 }
             }

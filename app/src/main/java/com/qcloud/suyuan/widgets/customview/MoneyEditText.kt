@@ -1,11 +1,5 @@
 package com.qcloud.suyuan.widgets.customview
 
-/**
- * 类型：自定义可输入金额的EditText(仿微信输入框效果)
- * Author: iceberg
- * Date: 2018/4/12  14:57
- */
-
 import android.content.Context
 import android.text.Editable
 import android.text.InputType
@@ -14,9 +8,12 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.widget.EditText
 import com.qcloud.qclib.utils.StringUtil
-import timber.log.Timber
 
-
+/**
+ * 类型：自定义可输入金额的EditText(仿微信输入框效果)
+ * Author: iceberg
+ * Date: 2018/4/12  14:57
+ */
 class MoneyEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : EditText(context, attrs, defStyleAttr) {
     private var textChange: Boolean = false
 
@@ -34,7 +31,6 @@ class MoneyEditText @JvmOverloads constructor(context: Context, attrs: Attribute
 
     init {
         this.setOnKeyListener({ view, i, keyEvent ->
-            Timber.e("_________")
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if ((i == KeyEvent.KEYCODE_ENTER)) {
                     addPotText()
@@ -42,19 +38,18 @@ class MoneyEditText @JvmOverloads constructor(context: Context, attrs: Attribute
             }
             false
         })
-        //设置可以输入小数
+        // 设置可以输入小数
         inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
         isFocusable = true
         isFocusableInTouchMode = true
-//        监听文字变化
+        // 监听文字变化
         this.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
             }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int,
-                                           after: Int) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
 
             }
 
@@ -77,7 +72,7 @@ class MoneyEditText @JvmOverloads constructor(context: Context, attrs: Attribute
             return
         }
         if (!input.contains(".")) {
-            setText(input + ".0")
+            setText("$input.0")
         }
     }
 
@@ -91,10 +86,10 @@ class MoneyEditText @JvmOverloads constructor(context: Context, attrs: Attribute
         }
         if (input.contains(".")) {
             val pointIndex = input.indexOf(".")
-            val totalLenth = input.length
-            val len = totalLenth - 1 - pointIndex
+            val totalLength = input.length
+            val len = totalLength - 1 - pointIndex
             if (len > 2) {
-                input = input.substring(0, totalLenth - 1)
+                input = input.substring(0, totalLength - 1)
                 textChange = true
                 setText(input)
                 setSelection(input.length)
@@ -102,14 +97,10 @@ class MoneyEditText @JvmOverloads constructor(context: Context, attrs: Attribute
         }
 
         if (input.trim { it <= ' ' }.substring(0) == ".") {
-            input = "0" + input
+            input = "0$input"
             setText(input)
             setSelection(2)
         }
 
-    }
-
-    companion object {
-        private val TAG = "MoneyEditText"
     }
 }

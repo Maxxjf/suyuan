@@ -88,7 +88,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/padding_1"
+                        android:layout_marginTop="@dimen/drawPadding"
                         android:orientation="horizontal">
 
                         <TextView
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/modelMargin">
+                android:layout_marginTop="@dimen/drawPadding">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/modelMargin">
+                android:layout_marginTop="@dimen/drawPadding">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/modelMargin">
+                android:layout_marginTop="@dimen/drawPadding">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -196,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/modelMargin">
+                android:layout_marginTop="@dimen/drawPadding">
 
                 <TextView
                     android:layout_width="wrap_content"

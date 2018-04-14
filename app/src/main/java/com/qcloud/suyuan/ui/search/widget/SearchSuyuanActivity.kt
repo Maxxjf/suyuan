@@ -3,6 +3,7 @@ package com.qcloud.suyuan.ui.search.widget
 import android.content.Context
 import android.content.Intent
 import android.support.annotation.NonNull
+import android.text.InputType
 import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.toast.QToast
@@ -16,13 +17,13 @@ import com.qcloud.suyuan.beans.SuyuanDetailsBean
 import com.qcloud.suyuan.ui.search.presenter.impl.SearchSuyuanPresenterImpl
 import com.qcloud.suyuan.ui.search.view.ISearchSuyuanView
 import com.qcloud.suyuan.utils.BarCodeUtil
+import com.qcloud.suyuan.utils.PasswordKeyListener
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_search_suyuan.*
 import kotlinx.android.synthetic.main.card_search_suyuan_product_info.*
 import kotlinx.android.synthetic.main.card_search_suyuan_purchase_info.*
 import kotlinx.android.synthetic.main.card_search_suyuan_store_info.*
-import kotlinx.android.synthetic.main.layout_product_info.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -62,12 +63,14 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
      * 初始化搜索输入框
      * */
     private fun initEditView() {
+        et_search.keyListener = PasswordKeyListener()
         et_search.setOnKeyListener { _, action, keyEvent ->
             if (keyEvent != null && keyEvent.action == KeyEvent.ACTION_UP) {
                 if (action == KeyEvent.KEYCODE_ENTER) {
                     KeyBoardUtil.hideKeybord(this, et_search)
                     keyword = et_search.text.toString().trim()
-                    if (StringUtil.isNotBlank(keyword)) {
+                    if (StringUtil.isNotBlank(keyword) && keyword!!.startsWith("http")) {
+                        keyword = BarCodeUtil.disposeQrCode2Suyuan(keyword!!)
                         loadData()
                         reSetEditText()
                     } else {
@@ -168,6 +171,13 @@ class SearchSuyuanActivity: BaseActivity<ISearchSuyuanView, SearchSuyuanPresente
             layout_empty.visibility = View.GONE
             layout_info.visibility = View.VISIBLE
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
     companion object {

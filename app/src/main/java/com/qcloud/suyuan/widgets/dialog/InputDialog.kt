@@ -15,10 +15,7 @@ import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.qcloud.qclib.materialdesign.listener.OnGetFocusListener
-import com.qcloud.qclib.utils.ApiReplaceUtil
-import com.qcloud.qclib.utils.KeyBoardUtil
-import com.qcloud.qclib.utils.ScreenUtil
-import com.qcloud.qclib.utils.StringUtil
+import com.qcloud.qclib.utils.*
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.utils.ChatNumberKeyListener
 import com.qcloud.suyuan.utils.PriceKeyListener
@@ -38,6 +35,7 @@ class InputDialog @JvmOverloads constructor(
     private var maxLength = 0
 
     private var mInputValue: String? = null
+    private var isPrice: Boolean = false
 
     var mEtView: TextView? = null
 
@@ -131,7 +129,15 @@ class InputDialog @JvmOverloads constructor(
                 KeyBoardUtil.showSoftInput(mContext, et_text.mEditText!!)
                 KeyBoardUtil.hideKeybord(mContext, et_text.mEditText!!)
             }
-            mEtView?.text = mInputValue
+            if (isPrice) {
+                if (StringUtil.isNumberStr(mInputValue)) {
+                    mEtView?.text = String.format("%1$.1f", mInputValue!!.toDouble())
+                } else {
+                    mEtView?.text = mInputValue
+                }
+            } else {
+                mEtView?.text = mInputValue
+            }
             dismiss()
         }
     }
@@ -164,6 +170,7 @@ class InputDialog @JvmOverloads constructor(
      * @param inputType eg InputType.TYPE_CLASS_NUMBER
      * */
     fun setInputMethod(inputType: Int) {
+        isPrice = false
         et_text?.inputType(inputType)
     }
 
@@ -171,6 +178,7 @@ class InputDialog @JvmOverloads constructor(
      * 设置输入金额
      * */
     fun setInputPrice() {
+        isPrice = true
         if (et_text.mEditText != null) {
             et_text.mEditText?.keyListener = PriceKeyListener()
         }
@@ -180,6 +188,7 @@ class InputDialog @JvmOverloads constructor(
      * 设置输入字母和数字
      * */
     fun setInputChatOrNumber() {
+        isPrice = false
         if (et_text.mEditText != null) {
             et_text.mEditText?.keyListener = ChatNumberKeyListener()
         }
@@ -199,6 +208,12 @@ class InputDialog @JvmOverloads constructor(
         this.mEtView = view
         if (StringUtil.isNotEmpty(view.hint.toString())) {
             et_text?.hint(view.hint.toString())
+        }
+    }
+
+    fun setInputHint(hint: String?) {
+        if (StringUtil.isNotEmpty(hint)) {
+            et_text?.hint(hint!!)
         }
     }
 

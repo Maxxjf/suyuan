@@ -153,6 +153,13 @@ class SearchBatchActivity: BaseActivity<ISearchBatchView, SearchBatchPresenterIm
         }
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
     companion object {
         fun openActivity(@NonNull context: Context) {
             context.startActivity(Intent(context, SearchBatchActivity::class.java))

@@ -71,7 +71,11 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
             toolbar.showRight(true)
             toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
                 override fun onBtnClick(view: View) {
-                    CreateProductIActivity.openActivity(this@StockDetailsActivity, currId)
+                    if (view.id == R.id.btn_right) {
+                        CreateProductIActivity.openActivity(this@StockDetailsActivity, currId)
+                    } else {
+                        finish()
+                    }
                 }
             }
         } else {
@@ -90,6 +94,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
                 val contentBean = PrintContentBean()
                 contentBean.content = currBean?.info?.name
                 contentBean.alignIndex = 1
+                contentBean.isWalk = 1
 
                 val printBean = PrintBean()
                 printBean.type = 1
@@ -164,6 +169,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
             // 库存
             val totalNumberStr = resources.getString(R.string.tag_total_stock_number)
             tv_total_stock.text = String.format(totalNumberStr, bean.totalAmount)
+            tv_product_price.text = bean.priceStr
         }
     }
 

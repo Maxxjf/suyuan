@@ -90,10 +90,12 @@ class MainActivity : BaseActivity<IMainView, MainPresenterImpl>(), IMainView, Vi
     private fun initToolbar() {
         toolbar.onBtnClickListener = object : CustomToolbar.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                if (searchDialog == null) {
-                    searchDialog = SearchSelectDialog(this@MainActivity)
+                if (view.id == R.id.btn_right) {
+                    if (searchDialog == null) {
+                        searchDialog = SearchSelectDialog(this@MainActivity)
+                    }
+                    searchDialog?.show()
                 }
-                searchDialog?.show()
             }
         }
     }

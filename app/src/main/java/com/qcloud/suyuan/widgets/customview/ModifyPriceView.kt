@@ -41,7 +41,7 @@ class ModifyPriceView  @JvmOverloads constructor(
 
     private fun initInputDialog() {
         inputDialog = InputDialog(mContext)
-        inputDialog?.setBindView(et_value)
+        inputDialog?.setInputHint(et_value.hint.toString())
         inputDialog?.setInputPrice()
         inputDialog?.setMaxLength(7)
         inputDialog?.onFinishInputListener = object : InputDialog.OnFinishInputListener {
@@ -56,18 +56,22 @@ class ModifyPriceView  @JvmOverloads constructor(
     private fun check(priceStr: String?): Boolean {
         if (StringUtil.isBlank(priceStr)) {
             QToast.show(mContext, R.string.toast_input_price)
+            et_value.text = String.format("%1$.1f", currBean?.retailPrice)
             return false
         }
         if (!StringUtil.isMoneyStr(priceStr)) {
             QToast.show(mContext, R.string.toast_input_price)
+            et_value.text = String.format("%1$.1f", currBean?.retailPrice)
             return false
         }
         val price = priceStr!!.toDouble()
         if (price <= 0) {
+            et_value.text = String.format("%1$.1f", currBean?.retailPrice)
             QToast.show(mContext, R.string.toast_input_price)
             return false
         }
         currBean?.retailPrice = price
+        et_value.text = String.format("%1$.1f", price)
         return true
     }
 

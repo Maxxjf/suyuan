@@ -154,6 +154,7 @@ class PurchaseActivity: BaseActivity<IPurchaseView, PurchasePresenterImpl>(), IP
     override fun loadErr(errMsg: String, isShow: Boolean) {
         if (isRunning) {
             stopLoadingDialog()
+            reSetEditText()
             if (isShow) {
                 QToast.show(this, errMsg)
             } else {

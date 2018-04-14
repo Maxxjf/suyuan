@@ -150,13 +150,13 @@ class PrintHelper private constructor() {
                             result = when (bean.type) {
                                 1 -> {
                                     // 打印条形码
-                                    printText(bean.content)
                                     printBarCode(bean.barCode)
+                                    printText(bean.content)
                                 }
                                 2 -> {
                                     // 打印二维码
-                                    printText(bean.content)
                                     printQrCode(bean.qrCode)
+                                    printText(bean.content)
                                 }
                                 else -> {
                                     // 打印文本小票
@@ -268,7 +268,7 @@ class PrintHelper private constructor() {
             mUsbController?.sendByte(cmdBarcodeHRIHeight, mUsbDevice!!)
             mUsbController?.sendByte(cmdBarCodeHeader, mUsbDevice!!)
             mUsbController?.sendByte(msgBarCodeInfo, mUsbDevice!!)
-            mUsbController?.sendByte(cmdWalkPaper, mUsbDevice!!)
+            //mUsbController?.sendByte(cmdWalkPaper, mUsbDevice!!)
             mUsbController?.sendByte(cmdInitPrinter, mUsbDevice!!)
             1
         } catch (e: Exception) {
@@ -324,7 +324,7 @@ class PrintHelper private constructor() {
             }
 
             // 行空白走纸
-            mUsbController!!.sendByte(cmdWalkPaper, mUsbDevice!!)
+            //mUsbController!!.sendByte(cmdWalkPaper, mUsbDevice!!)
             1
         } catch (e: Exception) {
             Timber.e("printImage: ${e.message}")
