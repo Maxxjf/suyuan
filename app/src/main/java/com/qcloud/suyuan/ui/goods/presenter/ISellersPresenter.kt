@@ -13,6 +13,6 @@ interface ISellersPresenter: BtnClickPresenter {
     fun loadData(keyword: String)
 
     /**结算*/
-    fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double,
+    fun saleSettlement(list: String, idInfo: IDBean?, saleDiscount: Double,
                        saleRealPay: Double, salePayMethod: Int, salePurpose: String?, saleRemark: String?)
 }

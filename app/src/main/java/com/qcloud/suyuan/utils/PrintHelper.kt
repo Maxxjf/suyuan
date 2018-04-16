@@ -286,7 +286,7 @@ class PrintHelper private constructor() {
         }
 
         val pictureTool = PrintPictureUtil.instance
-        val srcImage = BarCodeUtil.createQrCode(qrCode!!, 230, 230)
+        val srcImage = BarCodeUtil.createQrCode(qrCode!!, 300, 300)
         if (srcImage == null) {
             Timber.d("图片数据为空")
             return -1

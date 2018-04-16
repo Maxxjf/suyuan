@@ -49,7 +49,6 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
                     realPay = priceStr.toDouble()
                     if (realPay < totalAccount) {
                         QToast.show(mContext, "实收金额不能小于应收金额")
-                        et_real_price.setText(String.format(moneyStr, totalAccount))
                     } else {
                         giveMoney = realPay - totalAccount
                         tv_give_change.text = String.format(moneyStr, giveMoney)

@@ -172,24 +172,26 @@ class GoodsModelImpl: IGoodsModel {
      * @param saleRemark 备注
      * @param callback
      * */
-    override fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double, saleRealPay: Double, salePayMethod: Int,
+    override fun saleSettlement(list: String, idInfo: IDBean?, saleDiscount: Double, saleRealPay: Double, salePayMethod: Int,
                                 salePurpose: String?, saleRemark: String?, callback: DataCallback<SettlementResBean>) {
 
         val params = FrameRequest.getAppParams()
         params["list"] = list
-        params["purchaser.address"] = idInfo.address ?: ""          // 地址
-        if (idInfo.gender != 0) {
-            params["purchaser.gender"] = idInfo.gender                  // 购买者性别 1男2女
+        if (idInfo != null) {
+            params["purchaser.address"] = idInfo.address ?: ""          // 地址
+            if (idInfo.gender != 0) {
+                params["purchaser.gender"] = idInfo.gender                  // 购买者性别 1男2女
+            }
+            params["purchaser.headImage"] = idInfo.userImgBase64 ?: ""  // 照片(base64格式)
+            params["purchaser.id"] = idInfo.id                          // 购买者ID
+            params["purchaser.idCard"] = idInfo.idCode ?: ""            // 身份证号
+            params["purchaser.issuingOrganization"] = idInfo.department ?: ""   // 签发机关
+            params["purchaser.mobile"] = idInfo.mobile ?: ""            // 联系电话
+            params["purchaser.nation"] = idInfo.nation ?: ""            // 民族
+            params["purchaser.purchaserNmae"] = idInfo.name ?: ""       // 购买者名称
+            params["purchaser.validBegin"] = idInfo.startDate ?: ""     // 有效期始
+            params["purchaser.validEnd"] = idInfo.endDate ?: ""         // 有效期止
         }
-        params["purchaser.headImage"] = idInfo.userImgBase64 ?: ""  // 照片(base64格式)
-        params["purchaser.id"] = idInfo.id                          // 购买者ID
-        params["purchaser.idCard"] = idInfo.idCode ?: ""            // 身份证号
-        params["purchaser.issuingOrganization"] = idInfo.department ?: ""   // 签发机关
-        params["purchaser.mobile"] = idInfo.mobile ?: ""            // 联系电话
-        params["purchaser.nation"] = idInfo.nation ?: ""            // 民族
-        params["purchaser.purchaserNmae"] = idInfo.name ?: ""       // 购买者名称
-        params["purchaser.validBegin"] = idInfo.startDate ?: ""     // 有效期始
-        params["purchaser.validEnd"] = idInfo.endDate ?: ""         // 有效期止
         params["sale.discount"] = saleDiscount
         params["sale.realPay"] = saleRealPay
         params["sale.payMethod"] = salePayMethod

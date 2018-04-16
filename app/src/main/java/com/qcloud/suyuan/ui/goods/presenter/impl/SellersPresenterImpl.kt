@@ -80,7 +80,7 @@ class SellersPresenterImpl: BasePresenter<ISellersView>(), ISellersPresenter {
      * @param salePurpose 购买用途
      * @param saleRemark 备注
      * */
-    override fun saleSettlement(list: String, idInfo: IDBean, saleDiscount: Double, saleRealPay: Double, salePayMethod: Int,
+    override fun saleSettlement(list: String, idInfo: IDBean?, saleDiscount: Double, saleRealPay: Double, salePayMethod: Int,
                                 salePurpose: String?, saleRemark: String?) {
 
         mModel.saleSettlement(list, idInfo, saleDiscount, saleRealPay, salePayMethod, salePurpose, saleRemark, object : DataCallback<SettlementResBean> {
