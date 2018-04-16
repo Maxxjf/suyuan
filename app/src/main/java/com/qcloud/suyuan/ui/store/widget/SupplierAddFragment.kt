@@ -75,9 +75,6 @@ class SupplierAddFragment : BaseFragment<ISupplierAddView, SupplierAddPresenterI
     override fun addClick() {
         if (check()) {
             mPresenter?.addSupplier(address, name, phone, person, remark)
-            if (mContext is MySupplierActivity) {
-                (mContext as MySupplierActivity).loadData()
-            }
         }
     }
 

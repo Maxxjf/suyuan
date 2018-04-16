@@ -30,4 +30,5 @@ interface ICreditRecordView :BaseView{
     fun repayment()
 
     fun showCreditMoney(money: String)
+    fun repaymentSuccess()
 }

@@ -22,11 +22,11 @@ class SupplierAdapter(context: Context) : CommonRecyclerAdapter<SupplierBean>(co
         var tvName = holder.get<TextView>(R.id.tv_name)
         var tvPerson = holder.get<TextView>(R.id.tv_person)
         var tvPhone = holder.get<TextView>(R.id.tv_phone)
-        if (position == 2) {
-            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
-        } else {
-            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
-        }
+//        if (position %2!= 0) {
+//            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+//        } else {
+//            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
+//        }
         if (bean != null) {
             tvName.text = "${bean.name}"
             tvPerson.text = "${bean.principal}"

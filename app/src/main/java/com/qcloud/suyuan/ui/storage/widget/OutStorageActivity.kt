@@ -14,7 +14,11 @@ import com.qcloud.suyuan.beans.OutStorageBean
 import com.qcloud.suyuan.ui.storage.presenter.impl.OutStoragePresenterImpl
 import com.qcloud.suyuan.ui.storage.view.IOutStorageView
 import com.qcloud.suyuan.widgets.dialog.TipDialog
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_out_storage.*
+import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 /**
  * Description: 撤消入库
@@ -51,11 +55,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if (i == KeyEvent.KEYCODE_ENTER) {
                     KeyBoardUtil.hideKeybord(this, et_search)
-                    keyword = et_search.text.toString().trim()
                     searchProductInfo()
-                    et_search.setText("")
-                    et_search.requestFocus()
-                    startLoadingDialog()
                 }
             }
             true
@@ -81,7 +81,14 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
 
     //    搜索产品消息
     override fun searchProductInfo() {
+        keyword = et_search.text.toString().trim()
+        Timber.e("keyword:::::${keyword}")
         mPresenter?.search(keyword)
+        startLoadingDialog()
+        Observable.timer(500, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+            et_search.setText("")
+            et_search.requestFocus()
+        }
     }
 
     //    加载产品消息

@@ -52,9 +52,7 @@ class CreditRecordPresenterImpl : BasePresenter<ICreditRecordView>(), ICreditRec
         iMoneyModel.repayment(id,money,object : DataCallback<EmptyReturnBean>{
             override fun onSuccess(t: EmptyReturnBean?, message: String?) {
                 if (message != null) {
-                    mView?.loadErr(message,true)
-                    mView?.getCreditList()
-                    mView?.getCreditInfo()
+                    mView?.repaymentSuccess()
                 }
             }
 
