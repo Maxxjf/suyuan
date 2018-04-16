@@ -29,7 +29,7 @@ object AppConstants {
     // 1010; // 12351; // 12337;
     const val ID_VERIFY_SERVER_PORT = 9001
     /**身份识别路径*/
-    const val CIDSTRING = "/dev/ttyS1"
+    const val CIDSTRING = "/dev/ttyS3"
     /**身份识别串口*/
     const val BAUDRATT = 115200
 
