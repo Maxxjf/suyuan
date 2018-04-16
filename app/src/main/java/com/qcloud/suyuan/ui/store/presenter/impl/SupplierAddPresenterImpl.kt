@@ -1,7 +1,10 @@
 package com.qcloud.suyuan.ui.store.presenter.impl
 
 import com.qcloud.qclib.base.BasePresenter
+import com.qcloud.qclib.beans.RxBusEvent
 import com.qcloud.qclib.callback.DataCallback
+import com.qcloud.qclib.rxbus.BusProvider
+import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.EmptyReturnBean
 import com.qcloud.suyuan.model.IStoreModel
 import com.qcloud.suyuan.model.impl.StoreModelImpl
@@ -32,6 +35,7 @@ class SupplierAddPresenterImpl :BasePresenter<ISupplierAddView>(),ISupplierAddPr
                 if (message != null) {
                     mView?.loadErr(message)
                     mView?.clearEdit()
+                    BusProvider.instance.post(RxBusEvent.newBuilder(R.id.id_clidk_add_supplier).build())
                 }
             }
 

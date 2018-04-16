@@ -28,8 +28,6 @@ class SupplierEditPresenterImpl :BasePresenter<ISupplierEditView>(), ISupplierEd
             when(it.type){
                 R.id.id_clidk_edit_supplier ->{
                     val bean :SupplierBean?= it.obj as SupplierBean?
-                    Timber.e("$bean")
-                    Timber.e("$mView")
                     if (bean!=null){
                         mView?.replaceInfo(bean)
                     }

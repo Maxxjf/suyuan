@@ -9,7 +9,6 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.widget.EditText
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 

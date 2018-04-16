@@ -39,6 +39,8 @@
                 android:padding="@dimen/margin_2">
 
                 <LinearLayout
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/btn_add"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/editHeight"
                     android:layout_centerVertical="true"
@@ -65,12 +67,6 @@
                         android:id="@+id/et_search"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_alignBaseline="@+id/textView"
-                        android:layout_alignBottom="@+id/textView"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginEnd="99dp"
-                        android:layout_marginRight="99dp"
                         android:background="@null"
                         android:gravity="center_vertical"
                         android:hint="@string/hint_input_name_supplier"

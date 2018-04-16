@@ -38,10 +38,11 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     private var keyword: String = ""
     private var mCurrentCreditId: String = ""//这是当前欠债人的id
     private var mCurrentId: String = ""//这是当前欠债单的id
-    private var creditMoney: Double = 0.0//赊账金额
-    private var repayMoney: Double = 0.0//已还金额
+    private var creditMoney: Double = 0.00//赊账金额
+    private var repayMoney: Double = 0.00//已还金额
     private var creditPageNo: Int = 1       //列表页数
     private var orderPageNo: Int = 1        //列表页数
+    private var needPay: String = ""
 
     //其他需要的控件
     private var errtip: TipDialog? = null
@@ -153,9 +154,16 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         repaymentDialog!!.show()
     }
 
+    /*还款成功*/
+    override fun repaymentSuccess() {
+        loadErr(getString(R.string.toast_repayment_success))
+        getCreditList()
+        getCreditInfo()
+    }
+
     /**还款**/
     override fun repayment() {
-        var needPay = repaymentDialog?.getMoney()
+        needPay = repaymentDialog?.getMoney()!!
         mPresenter?.repayment(mCurrentId, needPay!!.toDouble())
     }
 
@@ -186,8 +194,9 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         if (isRunning) {
             rv_sale_info_list?.loadedFinish()
             if (beans != null && beans.isNotEmpty()) {
-                if (creditAdapter != null) {
+                if (creditAdapter != null && beans.isNotEmpty()) {
                     creditAdapter!!.replaceList(beans)
+                    mCurrentCreditId= beans[0].purchaserId!!
                 }
                 rv_sale_info_list?.isMore(isNext)
                 hideEmptyView()

@@ -37,7 +37,7 @@ class StoreModelImpl : IStoreModel {
      * */
     override fun supplierList(keyword: String, callback: DataCallback<ReturnDataBean<SupplierBean>>) {
         val params = FrameRequest.getAppParams()
-
+        params.put("keyword", keyword)
         BaseApi.dispose(mApi.supplierList(params), callback)
     }
 
@@ -80,18 +80,19 @@ class StoreModelImpl : IStoreModel {
         params.put("shopkeeperName", shopkeeperName)
         BaseApi.dispose(mApi.editInfo(params), callback)
     }
+
     /**
      * 修改门店密码
      * @param oldPwd    原密码
      * @param newPwd    新密码
      *  @param againNewPwd    确认新密码
      */
-    override fun editStorePassword(oldPwd:String,newPwd:String,againNewPwd:String,callback: DataCallback<EmptyReturnBean>){
-        val params=FrameRequest.getAppParams()
-        params.put("oldPwd",oldPwd)
-        params.put("newPwd",newPwd)
-        params.put("againNewPwd",againNewPwd)
-        BaseApi.dispose(mApi.editPassword(params),callback)
+    override fun editStorePassword(oldPwd: String, newPwd: String, againNewPwd: String, callback: DataCallback<EmptyReturnBean>) {
+        val params = FrameRequest.getAppParams()
+        params.put("oldPwd", oldPwd)
+        params.put("newPwd", newPwd)
+        params.put("againNewPwd", againNewPwd)
+        BaseApi.dispose(mApi.editPassword(params), callback)
     }
 
 

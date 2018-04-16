@@ -3,12 +3,15 @@ package com.qcloud.suyuan.ui.goods.widget
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
+import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
@@ -19,6 +22,7 @@ import com.qcloud.suyuan.beans.ScanCodeBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.IReturnedPersenterImpl
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
+import com.qcloud.suyuan.utils.BarCodeUtil
 import com.qcloud.suyuan.utils.PasswordKeyListener
 import com.qcloud.suyuan.utils.UserInfoUtil
 import com.qcloud.suyuan.widgets.customview.NoDataView
@@ -76,6 +80,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
         SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
         PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
+        goodsAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<ScanCodeBean.MerchandiseBean> {
+            override fun onHolderClick(view: View, t: ScanCodeBean.MerchandiseBean, position: Int) {
+                goodsHasDelete(t)
+            }
+        }
+        btn_returned_goods.setOnClickListener(this)
 
         mGoodsEmptyView = NoDataView(this)
         mGoodsEmptyView?.setImageIcon(R.drawable.bmp_list_empty)
@@ -85,7 +95,8 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         mReceiptEmptyView?.noData(R.string.tip_no_list)
         rv_credit_info_list.setEmptyView(mGoodsEmptyView!!, Gravity.CENTER_HORIZONTAL)
         rv_sale_info_list.setEmptyView(mReceiptEmptyView!!, Gravity.CENTER_HORIZONTAL)
-        et_search.keyListener=PasswordKeyListener()
+
+        et_search.keyListener = PasswordKeyListener()
         et_search.setOnKeyListener { view, i, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if ((i == KeyEvent.KEYCODE_ENTER)) {
@@ -95,12 +106,20 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
             }
             false
         }
-        goodsAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<ScanCodeBean.MerchandiseBean> {
-            override fun onHolderClick(view: View, t: ScanCodeBean.MerchandiseBean, position: Int) {
-                goodsHasDelete(t)
+        et_search.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+
             }
-        }
-        btn_returned_goods.setOnClickListener(this)
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+        })
+
     }
 
     /**
@@ -157,16 +176,17 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
 
     private fun getScanData() {
         var code = et_search.text.toString().trim()
-        if (StringUtil.isBlank(code)) {
-            loadErr(getString(R.string.hint_suyuan_code_search))
-            return
+        if (StringUtil.isNotBlank(code) && code!!.startsWith("http")) {
+            code = BarCodeUtil.disposeQrCode2Suyuan(code!!)
+            mPresenter?.loadData(code,saleId)
+        } else {
+            QToast.show(this, R.string.tip_scan_suyuan_code)
         }
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     et_search.setText("")
                     et_search.requestFocus()
-                    mPresenter?.loadData(code,saleId)
                 }
 
     }

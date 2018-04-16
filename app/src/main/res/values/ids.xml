@@ -5,7 +5,9 @@
 
     <!-- 打印机连接返回 -->
     <item name="id_printer_connect_result" type="id"/>
-    <!-- 供应商点击修改 -->
+    <!-- 供应商修改成功 -->
     <item name="id_clidk_edit_supplier" type="id"/>
+    <!-- 供应商添加成功 -->
+    <item name="id_clidk_add_supplier" type="id"/>
 
 </resources>
