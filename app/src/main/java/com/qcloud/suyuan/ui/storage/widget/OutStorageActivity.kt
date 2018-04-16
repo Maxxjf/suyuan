@@ -17,7 +17,6 @@ import com.qcloud.suyuan.widgets.dialog.TipDialog
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_out_storage.*
-import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 /**
@@ -55,10 +54,11 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
             if (keyEvent.action == KeyEvent.ACTION_UP) {
                 if (i == KeyEvent.KEYCODE_ENTER) {
                     KeyBoardUtil.hideKeybord(this, et_search)
+                    keyword = et_search.text.toString().trim()
                     searchProductInfo()
                 }
             }
-            true
+            false
         })
         btn_confirm.setOnClickListener({ _ ->
             et_search.requestFocus()
@@ -81,8 +81,7 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
 
     //    搜索产品消息
     override fun searchProductInfo() {
-        keyword = et_search.text.toString().trim()
-        Timber.e("keyword:::::${keyword}")
+
         mPresenter?.search(keyword)
         startLoadingDialog()
         Observable.timer(500, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
@@ -97,7 +96,6 @@ class OutStorageActivity : BaseActivity<IOutStorageView, OutStoragePresenterImpl
         mCurrentBean = bean
         if (bean != null) {
             ll_info.visibility = View.VISIBLE
-            ll_number.visibility = View.VISIBLE
             tv_name.setText("${bean.name}")
             tv_rule.setText("${bean.specification}")
             tv_classify.setText("${bean.classifyName}")

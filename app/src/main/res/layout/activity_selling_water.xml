@@ -202,7 +202,7 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/margin_4"
             android:paddingRight="@dimen/margin_4"
-            android:visibility="visible">
+            android:visibility="invisible">
 
 
             <LinearLayout
@@ -231,7 +231,7 @@
                         android:id="@+id/tv_serial_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LSH00000001"
+                        tools:text="LSH00000001"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
@@ -248,7 +248,7 @@
                         android:id="@+id/tv_create_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2018-03-10 00:00"
+                        tools:text="2018-03-10 00:00"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
@@ -257,7 +257,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"
-                        android:text="冰山"
+                        tools:text="冰山"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
                 </LinearLayout>
@@ -279,7 +279,7 @@
                         android:id="@+id/tv_sale_person"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="樱木"
+                        tools:text="樱木"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
@@ -288,7 +288,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_3"
-                        android:text="440402199999999999"
+                        tools:text="440402199999999999"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
 
@@ -297,7 +297,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_2"
-                        android:text="15015912345"
+                        tools:text="15015912345"
                         android:textColor="@color/default_text_color"
                         android:textSize="@dimen/miniTextSize" />
                 </LinearLayout>

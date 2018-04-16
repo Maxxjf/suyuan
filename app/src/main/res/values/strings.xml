@@ -315,6 +315,7 @@
     <string name="tag_total_account">总计金额: </string>
     <string name="tag_money_getter">收银员: </string>
     <string name="tag_return_money">退款金额: </string>
+    <string name="tag_return_money_no_mao">退款金额 </string>
     <string name="tag_receipt_info">小票信息</string>
     <string name="tag_time">时间：</string>
     <string name="tag_serial_number">流水号：</string>

@@ -179,7 +179,9 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         if (StringUtil.isNotBlank(code) && code!!.startsWith("http")) {
             code = BarCodeUtil.disposeQrCode2Suyuan(code!!)
             mPresenter?.loadData(code,saleId)
-        } else {
+        } else if (StringUtil.isNotBlank(code)){
+            mPresenter?.loadData(code,saleId)
+        }else {
             QToast.show(this, R.string.tip_scan_suyuan_code)
         }
         Observable.timer(500, TimeUnit.MILLISECONDS)
@@ -196,10 +198,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         if (returnDialog == null) {
             returnDialog = ReturnDialog(this)
         }
-//        if (goodsAdapter==null||goodsAdapter?.itemCount==0){
-//            loadErr(getString(R.string.toast_please_add_goods))
-//            return
-//        }
+        if (goodsAdapter==null||goodsAdapter?.itemCount==0){
+            loadErr(getString(R.string.toast_please_add_goods))
+            return
+        }
         returnDialog?.setNumber(goodsAdapter?.itemCount!!)
         returnDialog?.onConfirmClickListener = object : ReturnDialog.OnConfirmClickListener {
             override fun onConfirmClick() {
