@@ -13,7 +13,7 @@
         android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_store_product"
         app:is_right="true"
-        app:right_icon="@drawable/icon_go_main"
+        app:right_icon="@drawable/icon_create_product"
         app:right_text="@string/btn_create_product"/>
 
     <RelativeLayout

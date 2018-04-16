@@ -14,7 +14,7 @@
         android:layout_height="@dimen/barHeight"
         app:title_text="@string/title_stock_details"
         app:is_right="true"
-        app:right_icon="@drawable/icon_go_main"
+        app:right_icon="@drawable/icon_edit_product"
         app:right_text="@string/btn_edit_product_info"/>
 
     <LinearLayout
