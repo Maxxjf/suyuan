@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/typeTextSize"
                 android:textColor="@color/colorTitle"
-                android:text="@string/tag_return_money"/>
+                android:text="@string/tag_return_money_no_mao"/>
 
             <View
                 style="@style/LineVertical"

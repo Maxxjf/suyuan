@@ -86,6 +86,7 @@
                         android:imeOptions="actionSearch"
                         android:inputType="text"
                         android:minWidth="@dimen/margin_40"
+                        android:maxWidth="@dimen/margin_40"
                         android:textColor="@color/colorTitle"
                         android:textColorHint="@color/colorGray"
                         android:textSize="@dimen/textSize" />
