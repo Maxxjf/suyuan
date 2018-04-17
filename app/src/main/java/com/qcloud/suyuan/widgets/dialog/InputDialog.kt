@@ -60,6 +60,7 @@ class InputDialog @JvmOverloads constructor(
     }
 
     private fun initView() {
+        et_text?.isControlKeyBoard = false
         //et_text.imeOptions = EditorInfo.IME_ACTION_UNSPECIFIED
         et_text?.inputType(InputType.TYPE_CLASS_TEXT)
         et_text?.hintColor(ApiReplaceUtil.getColor(mContext, R.color.colorHint))

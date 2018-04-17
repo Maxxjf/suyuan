@@ -98,5 +98,6 @@ class SettlementDialog constructor(context: Context) : BaseDialog(context), View
         tv_goods_number.text = totalNum.toString()
         tv_total_account.text = String.format(moneyStr, totalAccount)
         et_real_price.setText(String.format(moneyStr, receivablePrice))
+        et_real_price.setSelection(String.format(moneyStr, receivablePrice).length)
     }
 }

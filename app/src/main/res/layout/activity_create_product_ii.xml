@@ -12,7 +12,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
-        app:title_text="@string/title_create_product"/>
+        app:title_text="@string/title_create_product"
+        app:is_go_main="false"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
