@@ -37,7 +37,7 @@
                 android:padding="@dimen/margin_2">
 
                 <TextView
-
+                    android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -86,22 +86,18 @@
                         android:textColorHint="@color/colorGray"
                         android:textSize="@dimen/textSize" />
 
-                    <!--<ImageView-->
-                        <!--android:id="@+id/iv_detele_text"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:src="@drawaet_deteletext" />-->
 
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/frame_input">
 
                     <TextView
+                        android:drawableRight="@drawable/icon_date_picker"
                         android:id="@+id/tv_date_picker"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/iv_date_picker_from"
@@ -113,13 +109,6 @@
                         android:textColor="@color/colorSubTitle"
                         android:textSize="@dimen/typeTextSize" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/margin_2"
-                        android:layout_toRightOf="@+id/tv_date_picker"
-                        android:src="@drawable/icon_date_picker" />
                 </RelativeLayout>
 
             </LinearLayout>
