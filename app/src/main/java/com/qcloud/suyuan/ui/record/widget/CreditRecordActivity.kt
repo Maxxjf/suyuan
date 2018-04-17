@@ -28,7 +28,6 @@ import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.RepaymentDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_credit_record.*
-import timber.log.Timber
 
 /**
  * Description: 赊账记录
@@ -164,8 +163,6 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
 
     /*还款成功*/
     override fun repaymentSuccess() {
-        Timber.e("${needPay}")
-        Timber.e("${needPay.toDouble()}")
         if (StringUtil.isNotBlank(needPay) && StringUtil.isMoneyStr(needPay)) {
             loadErr(String.format(getString(R.string.toast_repayment_success), mCurrentCreditName, mCurrentCreditMoney - needPay.toDouble()))
         }
