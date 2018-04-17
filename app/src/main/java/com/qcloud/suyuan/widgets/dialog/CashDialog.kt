@@ -75,5 +75,6 @@ class CashDialog constructor(context: Context) : BaseDialog(context), View.OnCli
         tv_total_price.text = String.format(moneyStr, realPay)
         et_real_price.setText(String.format(moneyStr, realPay))
         tv_give_change.text = String.format(moneyStr, 0.00)
+        et_real_price.setSelection(String.format(moneyStr, realPay).length)
     }
 }

@@ -18,6 +18,7 @@ class ProductInfoBean {
     var content: String? = null
         get() = if (StringUtil.isEmpty(field)) "" else field
     var image: String? = null           // 商品图片
+    var imageUrl: String? = null
     var licenseCard: String? = null     // 生产许可证号
         get() = if (StringUtil.isBlank(field)) "" else field
     var registerCard: String? = null    // 登记证号

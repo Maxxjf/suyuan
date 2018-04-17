@@ -150,7 +150,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
             if (infoBean != null) {
                 with(infoBean) {
                     // 图片
-                    GlideUtil.loadImage(this@StockDetailsActivity, img_product, image, R.drawable.bmp_product)
+                    GlideUtil.loadImage(this@StockDetailsActivity, img_product, imageUrl, R.drawable.bmp_product)
                     // 名称
                     tv_product_name.text = name
                     // 规格

@@ -29,7 +29,7 @@
                 android:layout_marginStart="@dimen/layoutMargin"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/titleTextSize"
-                android:text="@string/tag_total_stock_number"/>
+                tools:text="@string/tag_total_stock_number"/>
 
         </RelativeLayout>
 
