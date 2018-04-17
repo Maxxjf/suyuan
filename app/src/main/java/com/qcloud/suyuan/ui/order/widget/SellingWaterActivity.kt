@@ -72,6 +72,8 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
         saleListAdapter = SaleListAdapter(this)
         saleInfoAdapter = SaleInfoAdapter(this)
         saleListAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ _, _, i, _ ->
+            saleListAdapter!!.setSelectItem(i);
+            saleListAdapter!!.notifyDataSetChanged()
             mCurrentBean = saleListAdapter!!.mList[i]
             if (mCurrentBean != null) {
                 mPresenter?.getSaleInfo(mCurrentBean?.id!!)
@@ -130,9 +132,9 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
     }
 
     override fun loadData() {
-        var dayTime=tv_date_picker.text.toString().trim()
+        var dayTime = tv_date_picker.text.toString().trim()
         var keyword = et_search.text.toString().trim()
-        mPresenter?.getSaleList(dayTime,keyword)
+        mPresenter?.getSaleList(dayTime, keyword)
     }
 
     /**
@@ -174,6 +176,7 @@ class SellingWaterActivity : BaseActivity<ISellingWaterView, SellingWaterPresent
                 }
                 hideEmptyView()
             } else {
+                layout_info.visibility=View.INVISIBLE
                 showEmptyView(getString(R.string.tip_no_data))
             }
         }

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bmp_form"
     android:orientation="vertical">
 
@@ -27,25 +28,19 @@
             android:textSize="@dimen/typeTextSize" />
 
         <TextView
+            android:drawableRight="@drawable/icon_date_picker"
             android:hint="@string/hint_select_date"
             android:id="@+id/tv_date_from"
             android:layout_width="@dimen/margin_40"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/iv_date_picker_from"
+            android:layout_toLeftOf="@+id/tv_to"
             android:background="@color/colorModelBg"
             android:textColor="@color/colorSubTitle"
             android:padding="@dimen/margin_1"
             android:text=""
             android:textSize="@dimen/typeTextSize" />
 
-        <ImageView
-            android:id="@+id/iv_date_picker_from"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/tv_to"
-            android:src="@drawable/icon_date_picker" />
 
         <TextView
             android:id="@+id/tv_to"
@@ -58,25 +53,19 @@
             android:textSize="@dimen/textSize" />
 
         <TextView
+            android:drawableRight="@drawable/icon_date_picker"
             android:hint="@string/hint_select_date"
             android:id="@+id/tv_date_to"
             android:layout_width="@dimen/margin_40"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/iv_date_picker_to"
+            android:layout_alignParentRight="true"
             android:background="@color/colorModelBg"
             android:textColor="@color/colorSubTitle"
             android:padding="@dimen/margin_1"
             android:text=""
             android:textSize="@dimen/textSize" />
 
-        <ImageView
-            android:id="@+id/iv_date_picker_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_date_picker" />
     </RelativeLayout>
 
     <View
@@ -175,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -185,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -195,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -205,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -215,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -225,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="10笔"
+                tools:text="10笔"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
 
@@ -235,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_3"
                 android:gravity="center_vertical"
-                android:text="3000.00元"
+                tools:text="3000.00元"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textSize" />
         </LinearLayout>

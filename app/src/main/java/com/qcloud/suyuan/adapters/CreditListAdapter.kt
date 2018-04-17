@@ -1,5 +1,6 @@
 package com.qcloud.suyuan.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
@@ -13,17 +14,27 @@ import com.qcloud.suyuan.beans.CreditListBean
  * 赊账列表
  */
 class CreditListAdapter(mContext: Context) : CommonRecyclerAdapter<CreditListBean.ListBean>(mContext) {
+    private var itemSelected = -1
 
     override val viewId: Int
         get() = R.layout.adapter_credit_list
 
+    fun setItemSelete(itemSelected: Int) {
+        this.itemSelected = itemSelected
+    }
+
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: CreditListBean.ListBean = mList[position]
 
-        if (position%2 != 0){
-            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+        if (position == itemSelected) {
+            holder.mConvertView.setBackgroundResource(R.color.colorLine)
         } else {
-            holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
+            if (position % 2 != 0) {
+                holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
+            } else {
+                holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
+            }
         }
         with(bean) {
             holder.setText(R.id.tv_idcard, idCard)

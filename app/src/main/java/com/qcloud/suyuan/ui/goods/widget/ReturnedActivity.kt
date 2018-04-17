@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit
 class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), IReturnedView, View.OnClickListener {
 
 
-    private var saleId=""//销售单id (首次为空,从第二次开始传)
+    private var saleId = ""//销售单id (首次为空,从第二次开始传)
 
     private var errtip: TipDialog? = null
     private var returnDialog: ReturnDialog? = null
@@ -128,8 +128,8 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
     private fun goodsHasDelete(bean: ScanCodeBean.MerchandiseBean) {
         tv_goods_number.text = "${goodsAdapter!!.mList.size}"
         //假如列表的数据为0时，把销售单ID清空
-        if (goodsAdapter!!.mList.size==0){
-            saleId=""
+        if (goodsAdapter!!.mList.size == 0) {
+            saleId = ""
         }
     }
 
@@ -147,12 +147,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
      */
     override fun loadDataSuccess(bean: ScanCodeBean) {
         for (item in goodsAdapter?.mList!!) {
-            if (StringUtil.isEquals(item.traceabilityId, bean.merchandise!!.traceabilityId)){
+            if (StringUtil.isEquals(item.traceabilityId, bean.merchandise!!.traceabilityId)) {
                 loadErr(getString(R.string.toast_goods_in_list))
                 return
             }
         }
-        saleId= bean.saleSerial!!.id!!
+        saleId = bean.saleSerial!!.id!!
         replaceList(bean.infoList, false)
         addListAtEnd(bean.merchandise, false)
         showSaleInfo(bean.saleSerial!!)
@@ -178,10 +178,10 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         var code = et_search.text.toString().trim()
         if (StringUtil.isNotBlank(code) && code!!.startsWith("http")) {
             code = BarCodeUtil.disposeQrCode2Suyuan(code!!)
-            mPresenter?.loadData(code,saleId)
-        } else if (StringUtil.isNotBlank(code)){
-            mPresenter?.loadData(code,saleId)
-        }else {
+            mPresenter?.loadData(code, saleId)
+        } else if (StringUtil.isNotBlank(code)) {
+            mPresenter?.loadData(code, saleId)
+        } else {
             QToast.show(this, R.string.tip_scan_suyuan_code)
         }
         Observable.timer(500, TimeUnit.MILLISECONDS)
@@ -198,7 +198,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         if (returnDialog == null) {
             returnDialog = ReturnDialog(this)
         }
-        if (goodsAdapter==null||goodsAdapter?.itemCount==0){
+        if (goodsAdapter == null || goodsAdapter?.itemCount == 0) {
             loadErr(getString(R.string.toast_please_add_goods))
             return
         }
@@ -215,12 +215,12 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
     /**
      * 退货成功之后
      */
-    override fun returnSuccess(){
+    override fun returnSuccess() {
         layout_info.visibility = View.INVISIBLE
-        saleId=""
+        saleId = ""
         goodsAdapter!!.removeAll()
         receiptAdapter!!.removeAll()
-        tv_goods_number.text=""
+        tv_goods_number.text = ""
     }
 
     private fun ReturnGoodsConfirm() {

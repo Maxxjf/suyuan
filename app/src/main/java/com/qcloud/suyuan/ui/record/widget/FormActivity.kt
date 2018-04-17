@@ -6,6 +6,7 @@ import android.support.annotation.NonNull
 import android.view.View
 import com.qcloud.qclib.enums.DateStyleEnum
 import com.qcloud.qclib.utils.DateUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.SaleFormBean
@@ -104,6 +105,9 @@ class FormActivity: BaseActivity<IFormView, FormPresenterImpl>(), IFormView, Vie
     private fun loadData() {
         startTime=tv_date_from.text.toString().trim()
         endTime=tv_date_to.text.toString().trim()
+        if(StringUtil.isBlank(startTime)||StringUtil.isBlank(endTime)){
+            return
+        }
         if(DateUtil.compareTime(startTime,endTime, DateStyleEnum.YYYY_MM_DD.value)==1){
             loadErr(resources.getString(R.string.toast_start_bigger_end))
             return

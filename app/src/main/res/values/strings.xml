@@ -190,7 +190,7 @@
     <string name="toast_number_too_larger">出库数量不得大于当前库存</string>
     <string name="toast_please_add_goods">请添加商品</string>
     <string name="toast_scan_idcard">请刷身份证</string>
-    <string name="toast_repayment_success">还款成功</string>
+    <string name="toast_repayment_success">还款成功,%1$s剩余应还%2$.2f元</string>
 
     <string name="tag_today_report_form">今日营业</string>
     <string name="tag_main_warn">告警提示</string>

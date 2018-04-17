@@ -14,6 +14,7 @@ import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshLayout
 import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.utils.KeyBoardUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.CreditListAdapter
 import com.qcloud.suyuan.adapters.OrderInfoAdapter
@@ -27,6 +28,7 @@ import com.qcloud.suyuan.widgets.customview.NoDataView
 import com.qcloud.suyuan.widgets.dialog.RepaymentDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_credit_record.*
+import timber.log.Timber
 
 /**
  * Description: 赊账记录
@@ -35,11 +37,13 @@ import kotlinx.android.synthetic.main.activity_credit_record.*
  */
 class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresenterImpl>(), ICreditRecordView {
     //参数
-    private var keyword: String = ""
+    private var keyword: String = ""  //搜索
     private var mCurrentCreditId: String = ""//这是当前欠债人的id
+    private var mCurrentCreditName: String = ""//这是当前欠债人的名字
+    private var mCurrentCreditMoney: Double = 0.00//这是当前欠债人所欠下的债
     private var mCurrentId: String = ""//这是当前欠债单的id
-    private var creditMoney: Double = 0.00//赊账金额
-    private var repayMoney: Double = 0.00//已还金额
+    private var creditMoney: Double = 0.00//该单赊账金额
+    private var repayMoney: Double = 0.00//该单已还金额
     private var creditPageNo: Int = 1       //列表页数
     private var orderPageNo: Int = 1        //列表页数
     private var needPay: String = ""
@@ -107,7 +111,11 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
             }
         }
         creditAdapter?.onItemClickListener = AdapterView.OnItemClickListener({ adapterView, view, i, l ->
+            creditAdapter!!.setItemSelete(i)
+            creditAdapter!!.notifyDataSetChanged()
             mCurrentCreditId = creditAdapter!!.mList[i].purchaserId!!
+            mCurrentCreditName = creditAdapter!!.mList[i].name!!
+            mCurrentCreditMoney = creditAdapter!!.mList[i].sumRepayment!!
             getCreditInfo()
         })
         orderAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<CreditInfoBean> {
@@ -156,7 +164,11 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
 
     /*还款成功*/
     override fun repaymentSuccess() {
-        loadErr(getString(R.string.toast_repayment_success))
+        Timber.e("${needPay}")
+        Timber.e("${needPay.toDouble()}")
+        if (StringUtil.isNotBlank(needPay) && StringUtil.isMoneyStr(needPay)) {
+            loadErr(String.format(getString(R.string.toast_repayment_success), mCurrentCreditName, mCurrentCreditMoney - needPay.toDouble()))
+        }
         getCreditList()
         getCreditInfo()
     }
@@ -196,7 +208,10 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
             if (beans != null && beans.isNotEmpty()) {
                 if (creditAdapter != null && beans.isNotEmpty()) {
                     creditAdapter!!.replaceList(beans)
-                    mCurrentCreditId= beans[0].purchaserId!!
+                    mCurrentCreditId = beans[0].purchaserId!!
+                    mCurrentCreditName = beans[0].name!!
+                    mCurrentCreditMoney = beans[0].sumRepayment!!
+                    getCreditInfo()
                 }
                 rv_sale_info_list?.isMore(isNext)
                 hideEmptyView()
