@@ -22,7 +22,7 @@
             android:layout_marginLeft="@dimen/layoutMargin"
             android:layout_marginStart="@dimen/layout_margin"
             app:hint="@string/hint_input_value"
-            app:cursorColor="@color/colorPrimary"
+            app:cursorDrawable="@drawable/cursor_drawable"
             app:inputTextSize="@dimen/textSize"
             app:inputTextColor="@color/colorTitle"/>
 

@@ -20,6 +20,7 @@ import com.qcloud.suyuan.R
 import com.qcloud.suyuan.utils.ChatNumberKeyListener
 import com.qcloud.suyuan.utils.PriceKeyListener
 import kotlinx.android.synthetic.main.dialog_input.*
+import timber.log.Timber
 
 /**
  * Description: 输入弹窗
