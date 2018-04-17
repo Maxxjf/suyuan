@@ -355,7 +355,8 @@
     <string name="tag_real_cash">实收金额</string>
     <string name="tag_cash_settlement">现金结算</string>
     <string name="tag_give_change">找零(元): </string>
-    <string name="tag_input_purchase_info">请刷身份证</string>
+    <string name="tag_brush_purchase_info">请刷身份证</string>
+    <string name="tag_input_purchase_info">请输入购买者信息</string>
     <string name="tag_high_product">*购买产品中有高毒产品！</string>
     <string name="tag_purchase_name">姓名: </string>
     <string name="tag_buyer">采购人：</string>

@@ -64,6 +64,9 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
     private var settlementDialog: SettlementDialog? = null
     private var cashDialog: CashDialog? = null
     private var payConfirmDialog: PayConfirmDialog? = null
+    // 刷身份证
+    private var brushPurchaseDialog: BrushPurchaseDialog? = null
+    // 输入身份证
     private var inputPurchaseDialog: InputPurchaseDialog? = null
 
     /**身份识别有关*/
@@ -286,6 +289,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
                 payMethod = settlementDialog!!.payMethod
                 when (view.id) {
                     R.id.btn_cash -> showCashDialog()
+                    R.id.btn_credit -> showInputPurchaseDialog()
                     else -> {
                         showPayConfirmDialog()
                     }
@@ -342,6 +346,29 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
      * */
     private fun showPurchaseDialog() {
         NFCHelper.instance.isReadCard = true
+        if (brushPurchaseDialog == null) {
+            brushPurchaseDialog = BrushPurchaseDialog(this)
+        }
+        brushPurchaseDialog?.clearData()
+        brushPurchaseDialog?.show()
+        brushPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
+            override fun onBtnClick(view: View) {
+                purpose = brushPurchaseDialog!!.purpose
+                remark = brushPurchaseDialog!!.remark
+                purchaseInfo?.mobile = brushPurchaseDialog!!.mobile
+
+                showSettlementDialog()
+            }
+        }
+        brushPurchaseDialog?.setOnDismissListener {
+            NFCHelper.instance.isReadCard = false
+        }
+    }
+
+    /**
+     * 显示输入身份证弹窗
+     * */
+    private fun showInputPurchaseDialog() {
         if (inputPurchaseDialog == null) {
             inputPurchaseDialog = InputPurchaseDialog(this)
         }
@@ -349,15 +376,10 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         inputPurchaseDialog?.show()
         inputPurchaseDialog?.onBtnClickListener = object : BaseDialog.OnBtnClickListener {
             override fun onBtnClick(view: View) {
-                purpose = inputPurchaseDialog!!.purpose
-                remark = inputPurchaseDialog!!.remark
-                purchaseInfo?.mobile = inputPurchaseDialog!!.mobile
+                purchaseInfo = inputPurchaseDialog!!.currPurchaser
 
-                showSettlementDialog()
+                showPayConfirmDialog()
             }
-        }
-        inputPurchaseDialog?.setOnDismissListener {
-            NFCHelper.instance.isReadCard = false
         }
     }
 
@@ -501,6 +523,8 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         showEmptyView(getString(R.string.tip_no_product_data))
 
         submitProducts = ArrayList()
+
+        purchaseInfo = null
     }
 
     /**
@@ -584,7 +608,7 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
             val bitmap = BitmapFactory.decodeFile(bean.userImg)
             purchaseInfo?.userImgBase64 = BitmapUtil.bitmapToBase64(bitmap)
 
-            inputPurchaseDialog?.refreshPurchase(bean)
+            brushPurchaseDialog?.refreshPurchase(bean)
         }
     }
 
@@ -613,6 +637,11 @@ class SellersActivity: BaseActivity<ISellersView, SellersPresenterImpl>(), ISell
         payConfirmDialog.let {
             if (payConfirmDialog != null && payConfirmDialog!!.isShowing) {
                 payConfirmDialog?.dismiss()
+            }
+        }
+        brushPurchaseDialog.let {
+            if (brushPurchaseDialog != null && brushPurchaseDialog!!.isShowing) {
+                brushPurchaseDialog?.dismiss()
             }
         }
         inputPurchaseDialog.let {
