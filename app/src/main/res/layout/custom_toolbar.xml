@@ -27,35 +27,26 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_suyuan"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/drawPadding"
-            android:layout_marginStart="@dimen/drawPadding"
-            android:textColor="@color/white"
-            android:textSize="@dimen/titleTextSize"
-            android:text="@string/title_suyuan"/>
+        <!--<View-->
+            <!--android:layout_width="@dimen/underLine"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginLeft="@dimen/margin_2"-->
+            <!--android:layout_marginRight="@dimen/margin_2"-->
+            <!--android:background="@color/colorPrimaryDark"/>-->
 
-        <View
-            android:layout_width="@dimen/underLine"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_2"
-            android:layout_marginRight="@dimen/margin_2"
-            android:background="@color/colorPrimaryDark"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/bigTitleSize"
-            android:text="@string/title_cashier"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="@dimen/bigTitleSize"-->
+            <!--android:text="@string/title_cashier"/>-->
     </LinearLayout>
 
     <TextView
