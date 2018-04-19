@@ -465,5 +465,9 @@
     <string name="tag_dialog_real_cash">实收金额(元): </string>
     <string name="tag_sale_product_total">在售商品(件): </string>
     <string name="tag_product_classify">分类</string>
+    <string name="tag_list_null">--</string>
+    <string name="tag_credit_history">还款历史</string>
+    <string name="tag_repayment_time">还款时间</string>
+    <string name="tag_repayment_money_unit">还款金额（元）</string>
 
 </resources>

@@ -21,11 +21,14 @@ import com.qcloud.suyuan.adapters.OrderInfoAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.CreditInfoBean
 import com.qcloud.suyuan.beans.CreditListBean
+import com.qcloud.suyuan.beans.RepaymentListBean
 import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.record.presenter.impl.CreditRecordPresenterImpl
 import com.qcloud.suyuan.ui.record.view.ICreditRecordView
 import com.qcloud.suyuan.widgets.customview.NoDataView
+import com.qcloud.suyuan.widgets.dialog.RepaymentAllDialog
 import com.qcloud.suyuan.widgets.dialog.RepaymentDialog
+import com.qcloud.suyuan.widgets.dialog.RepaymentHistoryDialog
 import com.qcloud.suyuan.widgets.dialog.TipDialog
 import kotlinx.android.synthetic.main.activity_credit_record.*
 
@@ -34,7 +37,9 @@ import kotlinx.android.synthetic.main.activity_credit_record.*
  * Author: gaobaiqiang
  * 2018/3/15 上午12:56.
  */
-class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresenterImpl>(), ICreditRecordView {
+class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresenterImpl>(), ICreditRecordView, View.OnClickListener {
+
+
     //参数
     private var keyword: String = ""  //搜索
     private var mCurrentCreditId: String = ""//这是当前欠债人的id
@@ -50,10 +55,13 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
     //其他需要的控件
     private var errtip: TipDialog? = null
     private var repaymentDialog: RepaymentDialog? = null
+    private var repaymentAllDialog: RepaymentAllDialog? = null
+    private var repaymentHistoryDialog: RepaymentHistoryDialog? = null
     private var creditAdapter: CreditListAdapter? = null
     private var orderAdapter: OrderInfoAdapter? = null
     private var mCreditEmptyView: NoDataView? = null
     private var mOrderEmptyView: NoDataView? = null
+
 
     override val layoutId: Int
         get() = R.layout.activity_credit_record
@@ -142,6 +150,27 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
             }
             false
         }
+        tv_credit_history.setOnClickListener(this)
+        tv_all_repayment.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            tv_credit_history -> {
+                stopLoadingDialog()
+                mPresenter?.repaymentHistory(mCurrentCreditId)
+            }
+            tv_all_repayment -> showRepaymentAllDialog()
+        }
+    }
+
+    //展示还款历史对话框
+    override fun showRepaymentHistoryDialog(beans: List<RepaymentListBean>, isNext: Boolean) {
+        if (repaymentHistoryDialog == null) {
+            repaymentHistoryDialog = RepaymentHistoryDialog(this)
+        }
+        repaymentHistoryDialog?.replaceList(beans!!, isNext)
+        repaymentHistoryDialog?.show()
     }
 
     private fun showRepaymentDialog() {
@@ -159,6 +188,20 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
         }
         repaymentDialog!!.setMoney("")
         repaymentDialog!!.show()
+    }
+
+    //    还清该人所欠下的款
+    private fun showRepaymentAllDialog() {
+        if (repaymentAllDialog == null) {
+            repaymentAllDialog = RepaymentAllDialog(this)
+            repaymentAllDialog!!.onConfirmClickListener = object : RepaymentAllDialog.OnConfirmClickListener {
+                override fun onConfirmClick() {
+                    mPresenter?.repaymentAll(mCurrentCreditMoney.toString(), mCurrentCreditId)
+                }
+            }
+        }
+        repaymentAllDialog!!.setMoney("$mCurrentCreditMoney")
+        repaymentAllDialog!!.show()
     }
 
     /*还款成功*/
@@ -259,10 +302,12 @@ class CreditRecordActivity : BaseActivity<ICreditRecordView, CreditRecordPresent
 
     override fun showEmptyView(tip: String) {
         rv_sale_info_list.showEmptyView()
+        rv_credit_info_list.showEmptyView()
     }
 
     override fun hideEmptyView() {
         rv_sale_info_list.hideEmptyView()
+        rv_credit_info_list.hideEmptyView()
     }
 
     companion object {

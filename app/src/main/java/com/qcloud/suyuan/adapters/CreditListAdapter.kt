@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.CreditListBean
 
@@ -37,10 +38,10 @@ class CreditListAdapter(mContext: Context) : CommonRecyclerAdapter<CreditListBea
             }
         }
         with(bean) {
-            holder.setText(R.id.tv_idcard, idCard)
-                    .setText(R.id.tv_name, name)
-                    .setText(R.id.tv_phone, mobile)
-                    .setText(R.id.tv_money, "$sumRepayment")
+            holder.setText(R.id.tv_idcard, if (StringUtil.isNotBlank(idCard)) idCard else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_name, if (StringUtil.isNotBlank(name)) name else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_phone, if (StringUtil.isNotBlank(mobile)) mobile else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_money, if (StringUtil.isNotBlank("$sumRepayment")) "$sumRepayment" else mContext.getString(R.string.tag_list_null))
         }
     }
 

@@ -50,15 +50,17 @@
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="match_parent">
+
         <Button
-            android:textSize="@dimen/smallTextSize"
-            android:textColor="@color/colorText"
-            android:text="@string/btn_pay_credit"
             android:id="@+id/btn_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/btn_frame_radius_selector"
-        />
+            android:text="@string/btn_pay_credit"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/smallTextSize" />
     </RelativeLayout>
 
 

@@ -3,6 +3,7 @@ package com.qcloud.suyuan.ui.record.view
 import com.qcloud.qclib.base.BaseView
 import com.qcloud.suyuan.beans.CreditInfoBean
 import com.qcloud.suyuan.beans.CreditListBean
+import com.qcloud.suyuan.beans.RepaymentListBean
 
 /**
  * Description: 赊账记录
@@ -28,7 +29,10 @@ interface ICreditRecordView :BaseView{
     fun getCreditList()
     /**还款*/
     fun repayment()
-
+    //展示赊账对话框
     fun showCreditMoney(money: String)
+    //还款成功
     fun repaymentSuccess()
+    //展示还款历史对话框
+    fun showRepaymentHistoryDialog(beans: List<RepaymentListBean>,isNext: Boolean)
 }

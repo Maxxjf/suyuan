@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 
 /**
@@ -21,6 +22,6 @@ class ProductComponentHeadAdapter(mContext: Context, private val columns: Int, p
         layoutParams.width = parentWidth / columns
         tvValue.layoutParams = layoutParams
 
-        holder.setText(R.id.tv_value, mList[position])
+        holder.setText(R.id.tv_value,if (StringUtil.isNotBlank(mList[position]))mList[position] else mContext.getString(R.string.tag_list_null) )
     }
 }

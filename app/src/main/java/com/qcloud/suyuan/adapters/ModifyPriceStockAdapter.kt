@@ -5,6 +5,7 @@ import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.utils.ApiReplaceUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ProductBean
@@ -37,9 +38,9 @@ class ModifyPriceStockAdapter(mContext: Context) : CommonRecyclerAdapter<Product
         }
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)
-            holder.setText(R.id.tv_product_name, name)
-                    .setText(R.id.tv_product_spec, specification)
-                    .setText(R.id.tv_product_manufacture, millName)
+            holder.setText(R.id.tv_product_name, if (StringUtil.isNotBlank(name))name else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_product_spec,if (StringUtil.isNotBlank(specification))specification else mContext.getString(R.string.tag_list_null) )
+                    .setText(R.id.tv_product_manufacture,if (StringUtil.isNotBlank(millName))millName else mContext.getString(R.string.tag_list_null) )
             modifyPrice.initData(this)
             modifyStock.initData(this)
         }

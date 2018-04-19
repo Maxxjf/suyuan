@@ -15,7 +15,7 @@ class InStorageRecordBean {
     var goodId: String? = null
     var supplierId: String? = null
     var batchNum: String? = null    // 入库批次
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var createDate: String? = null  // 入库时间
         get() {
             return if (StringUtil.isBlank(field)) {

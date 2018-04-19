@@ -34,4 +34,15 @@ interface IMoneyModel {
      * 销售详情
      */
     fun getSaleInfo(id: String, callback: DataCallback<SaleInfoBean>)
+    /**
+     * 还款记录
+     */
+    fun repaymentHistory(purchaserId: String, callback: DataCallback<ReturnDataBean<RepaymentListBean>>)
+    /**
+     * 个人剩余还款总金额
+     */
+    fun creditAllMoney(purchaserId: String, callback: DataCallback<CreditAllMoneyBean>)
+
+//    全部还款
+    fun repaymentAll(money: String, purchaserId: String, callback: DataCallback<EmptyReturnBean>)
 }

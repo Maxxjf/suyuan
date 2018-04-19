@@ -2,10 +2,10 @@ package com.qcloud.suyuan.adapters
 
 import android.content.Context
 import android.widget.ImageView
-import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SaleListBean
 import com.qcloud.suyuan.enums.PayMethod
@@ -28,26 +28,16 @@ class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(co
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: SaleListBean = mList.get(position)
-        var tvNumber = holder.get<TextView>(R.id.tv_number)
-        var tvTime = holder.get<TextView>(R.id.tv_time)
-        var tvMoney = holder.get<TextView>(R.id.tv_money)
-        var tvPerson = holder.get<TextView>(R.id.tv_person)
         var ivFlag = holder.get<ImageView>(R.id.iv_flag)
-
         if (position == selectItem) {
-//            holder.mConvertView.isSelected = true
-//            holder.mConvertView.isPressed = true
             holder.mConvertView.setBackgroundResource(R.color.colorLine)
         } else {
-//            holder.mConvertView.isSelected = false
-//            holder.mConvertView.isPressed = false
             if (position % 2 == 0) {
                 holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
             } else {
                 holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
             }
         }
-
         if (bean.payMethod == PayMethod.payCredit.key) {
             GlideUtil.loadImage(mContext, ivFlag, R.drawable.icon_flag_credit)
         } else if (bean.isRefund) {
@@ -55,14 +45,13 @@ class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(co
         } else {
             ivFlag.setImageBitmap(null)
         }
-
-
-        if (bean != null) {
-            tvNumber?.setText("${bean.serialNumber}")
-            tvTime?.setText("${bean.createDate}")
-            tvMoney?.setText("${bean.realPay}")
-            tvPerson?.setText("${bean.purchaserNmae}")
+        with(bean) {
+            holder.setText(R.id.tv_number, if (StringUtil.isNotBlank("$serialNumber"))"$serialNumber" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_time, if (StringUtil.isNotBlank("$createDate"))"$createDate" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_money, if (StringUtil.isNotBlank("$realPay"))"$realPay" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_person, if (StringUtil.isNotBlank("$purchaserNmae"))"$purchaserNmae" else mContext.getString(R.string.tag_list_null))
         }
+
     }
 
 

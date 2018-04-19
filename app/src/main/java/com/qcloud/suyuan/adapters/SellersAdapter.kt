@@ -3,10 +3,10 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.widgets.customview.RefreshNumView
@@ -36,13 +36,13 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
         }
 
         with(bean) {
-            holder.setText(R.id.tv_product_number, index.toString())
-                    .setText(R.id.tv_product_name, name)
-                    .setText(R.id.tv_product_spec, specification)
-                    .setText(R.id.tv_product_batch, batchNum)
+            holder.setText(R.id.tv_product_number,  if (StringUtil.isNotBlank(index.toString()))index.toString() else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_product_name,  if (StringUtil.isNotBlank(name))name else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_product_spec,  if (StringUtil.isNotBlank(specification))specification else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_product_batch, if (StringUtil.isNotBlank(batchNum))batchNum else mContext.getString(R.string.tag_list_null) )
                     .setVisible(R.id.tv_product_valid, if (active) View.GONE else View.VISIBLE)
-                    .setText(R.id.tv_product_stock, stockStr)
-                    .setText(R.id.tv_selling_price, priceStr)
+                    .setText(R.id.tv_product_stock,  if (StringUtil.isNotBlank(stockStr))stockStr else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_selling_price, if (StringUtil.isNotBlank(priceStr))priceStr else mContext.getString(R.string.tag_list_null) )
         }
 
         refreshNumView.refreshBean(bean)

@@ -3,6 +3,7 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SuyuanRecordBean
 
@@ -25,12 +26,12 @@ class SuyuanRecordAdapter(mContext: Context) : CommonRecyclerAdapter<SuyuanRecor
         }
 
         with(bean) {
-            holder.setText(R.id.tv_suyuan_number, traceabilityCode)
-                    .setText(R.id.tv_product_name, goodsName)
-                    .setText(R.id.tv_product_spec, specification)
-                    .setText(R.id.tv_purchaser, purchaser)
-                    .setText(R.id.tv_store_address, storeAddress)
-                    .setText(R.id.tv_sale_time, purchaserTime)
+            holder.setText(R.id.tv_suyuan_number, if (StringUtil.isNotBlank(traceabilityCode))traceabilityCode else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_product_name,if (StringUtil.isNotBlank(goodsName))goodsName else mContext.getString(R.string.tag_list_null) )
+                    .setText(R.id.tv_product_spec,if (StringUtil.isNotBlank(specification))specification else mContext.getString(R.string.tag_list_null) )
+                    .setText(R.id.tv_purchaser, if (StringUtil.isNotBlank(purchaser))purchaser else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_store_address, if (StringUtil.isNotBlank(storeAddress))storeAddress else mContext.getString(R.string.tag_list_null))
+                    .setText(R.id.tv_sale_time,if (StringUtil.isNotBlank(purchaserTime))purchaserTime else mContext.getString(R.string.tag_list_null) )
         }
     }
 }

@@ -26,6 +26,18 @@ interface IMoneyApi {
     @GET(UrlConstants.REPAYMENT)
     fun repayment(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
 
+    /**还款历史*/
+    @GET(UrlConstants.REPAYMENT_HISTORY)
+    fun repaymentHistory(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<ReturnDataBean<RepaymentListBean>>>
+
+    /**个人声誉还款总金额*/
+    @GET(UrlConstants.CREDIT_ALL_MONEY)
+    fun creditAllMoney(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<CreditAllMoneyBean>>
+
+    /**全部还清*/
+    @GET(UrlConstants.REPAYMENT_ALL)
+    fun repaymentAll(@QueryMap map: HashMap<String, Any>): Observable<BaseResponse<EmptyReturnBean>>
+
 
     /**销售列表*/
     @GET(UrlConstants.SALE_LIST)

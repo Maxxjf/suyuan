@@ -77,6 +77,12 @@ object UrlConstants {
     const val GET_CREDIT_INFO= URL_PREFIX_APP+"onCredit/info"
     /**赊账还款**/
     const val REPAYMENT= URL_PREFIX_APP+"onCredit/repayment"
+    /**还款历史**/
+    const val REPAYMENT_HISTORY= URL_PREFIX_APP+"onCredit/historyRepayment"
+    /**个人剩余还款总金额**/
+    const val CREDIT_ALL_MONEY = URL_PREFIX_APP+"onCredit/surplusMoney"
+    /**全部还清**/
+    const val REPAYMENT_ALL= URL_PREFIX_APP+"onCredit/payoff"
 
     /**
      * 进货入库有关

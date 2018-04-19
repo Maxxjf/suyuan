@@ -82,43 +82,41 @@
                 android:textSize="@dimen/textSize" />
         </LinearLayout>
     </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/barHeight"
+        android:layout_below="@+id/calendar_view"
         android:layout_marginTop="@dimen/layoutMargin"
+        android:layout_marginBottom="@dimen/modelMargin"
         android:orientation="horizontal"
-        android:gravity="right"
+        android:gravity="center"
         tools:ignore="RtlHardcoded">
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/btnHeight"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/layoutMargin"
+            android:layout_marginStart="@dimen/layoutMargin"
             android:layout_marginRight="@dimen/layoutMargin"
             android:layout_marginEnd="@dimen/layoutMargin"
-            android:paddingLeft="@dimen/margin_4"
-            android:paddingStart="@dimen/margin_4"
-            android:paddingRight="@dimen/margin_4"
-            android:paddingEnd="@dimen/margin_4"
-            android:background="?attr/selectableItemBackground"
-            android:textColor="@color/colorTitle"
+            android:background="@drawable/btn_frame_radius_selector"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/smallTextSize"
             android:text="@string/btn_cancel" />
 
         <Button
             android:id="@+id/btn_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/btnHeight"
+            android:layout_weight="1"
             android:layout_marginRight="@dimen/layoutMargin"
             android:layout_marginEnd="@dimen/layoutMargin"
-            android:paddingLeft="@dimen/margin_4"
-            android:paddingStart="@dimen/margin_4"
-            android:paddingRight="@dimen/margin_4"
-            android:paddingEnd="@dimen/margin_4"
-            android:background="?attr/selectableItemBackground"
-            android:textColor="@color/colorTitle"
+            android:background="@drawable/btn_radius_selector"
+            android:textColor="@color/white"
             android:textSize="@dimen/smallTextSize"
             android:text="@string/btn_ok" />
+
     </LinearLayout>
 </LinearLayout>

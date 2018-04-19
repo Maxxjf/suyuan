@@ -58,6 +58,37 @@ class MoneyModelImpl : IMoneyModel {
 
         BaseApi.dispose(mApi.repayment(params), callback)
     }
+    /**
+     *还款记录
+     * @param purchaserId 赊账人的id
+     */
+    override fun repaymentHistory(purchaserId:String,callback: DataCallback<ReturnDataBean<RepaymentListBean>>){
+        val params = FrameRequest.getAppParams()
+        params["purchaserId"] = purchaserId
+
+        BaseApi.dispose(mApi.repaymentHistory(params), callback)
+    }
+    /**
+     *查看该人剩余赊账
+     * @param purchaserId 赊账人的id
+     */
+    override fun creditAllMoney(purchaserId:String, callback: DataCallback<CreditAllMoneyBean>){
+        val params = FrameRequest.getAppParams()
+        params["purchaserId"] = purchaserId
+
+        BaseApi.dispose(mApi.creditAllMoney(params), callback)
+    }
+
+    /**
+     *全部还款
+     * @param purchaserId 赊账人的id
+     */
+    override fun repaymentAll(money:String,purchaserId:String,callback: DataCallback<EmptyReturnBean>){
+        val params = FrameRequest.getAppParams()
+        params["money"] = money
+        params["purchaserId"] = purchaserId
+        BaseApi.dispose(mApi.repaymentAll(params), callback)
+    }
 
 
     /**

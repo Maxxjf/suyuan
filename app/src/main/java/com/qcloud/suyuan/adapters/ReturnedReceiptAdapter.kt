@@ -1,9 +1,9 @@
 package com.qcloud.suyuan.adapters
 
 import android.content.Context
-import android.widget.TextView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ScanCodeBean
 
@@ -20,20 +20,16 @@ class ReturnedReceiptAdapter(mContext: Context) : CommonRecyclerAdapter<ScanCode
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean: ScanCodeBean.InfoListBean = mList.get(position)
-        var tvName = holder.get<TextView>(R.id.tv_name)
-        var tvNumber = holder.get<TextView>(R.id.tv_number)
-        var tvRule = holder.get<TextView>(R.id.tv_rule)
-        var tvPrice = holder.get<TextView>(R.id.tv_price)
         if (position%2==0){
             holder.mConvertView.setBackgroundResource(R.drawable.bg_item_dark_ripple)
         } else {
             holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
-        if (bean != null) {
-            tvNumber?.setText("${bean.goodsNum}")
-            tvName?.setText("${bean.goodsName}")
-            tvRule?.setText("${bean.specification}")
-            tvPrice?.setText("${bean.price}")
+        with(bean){
+            holder.setText(R.id.tv_number,if (StringUtil.isNotBlank("$goodsNum"))"$goodsNum" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_name,if (StringUtil.isNotBlank("$goodsName"))"$goodsName" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_rule,if (StringUtil.isNotBlank("$specification"))"$specification" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_price,if (StringUtil.isNotBlank("$price"))"$price" else mContext.getString(R.string.tag_list_null))
         }
     }
 

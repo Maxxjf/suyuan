@@ -3,6 +3,7 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
+import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.IDBean
 
@@ -18,6 +19,6 @@ class IDCardAdapter(context: Context): CommonRecyclerAdapter<IDBean>(context) {
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean = mList[position]
-        holder.setText(R.id.tv_value, bean.idCode)
+        holder.setText(R.id.tv_value, if (StringUtil.isNotBlank(bean.idCode)) bean.idCode else mContext.getString(R.string.tag_list_null))
     }
 }

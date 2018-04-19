@@ -9,4 +9,7 @@ interface ICreditRecordPresenter {
     fun getCreditList(keyword:String,pageNo: Int, pageSize: Int)
     fun getCreditInfo(id: String, pageNo: Int, pageSize: Int)
     fun repayment(id: String, pageNo: Double)
+    fun repaymentHistory(purchaserId: String)
+    fun creditAllmoney(purchaserId: String)
+    fun repaymentAll(money: String, purchaserId: String)
 }
