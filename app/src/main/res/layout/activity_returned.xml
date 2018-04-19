@@ -156,7 +156,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.qcloud.qclib.refresh.swiperefresh.SwipeRecyclerView
+                <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
                     android:id="@+id/rv_credit_info_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -304,7 +304,7 @@
     <string name="tag_list_water">流水号</string>
     <string name="tag_list_payed_money">已还金额</string>
     <string name="tag_order_info">账单明细</string>
-    <string name="tag_repayment_all">全部还请</string>
+    <string name="tag_repayment_all">全部还清</string>
     <string name="tag_repayment_money">还款金额</string>
     <string name="tag_repayment">还款</string>
     <string name="tag_supplier_details">供应商详情</string>

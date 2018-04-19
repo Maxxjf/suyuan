@@ -10,7 +10,6 @@ import android.view.KeyEvent
 import android.view.View
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.refresh.pullrefresh.PullRefreshUtil
-import com.qcloud.qclib.refresh.swiperefresh.SwipeRefreshUtil
 import com.qcloud.qclib.toast.QToast
 import com.qcloud.qclib.utils.KeyBoardUtil
 import com.qcloud.qclib.utils.StringUtil
@@ -19,7 +18,6 @@ import com.qcloud.suyuan.adapters.ReturnGoodsListAdapter
 import com.qcloud.suyuan.adapters.ReturnedReceiptAdapter
 import com.qcloud.suyuan.base.BaseActivity
 import com.qcloud.suyuan.beans.ScanCodeBean
-import com.qcloud.suyuan.constant.AppConstants
 import com.qcloud.suyuan.ui.goods.presenter.impl.IReturnedPersenterImpl
 import com.qcloud.suyuan.ui.goods.view.IReturnedView
 import com.qcloud.suyuan.utils.BarCodeUtil
@@ -77,8 +75,7 @@ class ReturnedActivity : BaseActivity<IReturnedView, IReturnedPersenterImpl>(), 
         rv_credit_info_list.setAdapter(goodsAdapter!!)
         rv_sale_info_list.setLayoutManager(LinearLayoutManager(this))
         rv_sale_info_list.setAdapter(receiptAdapter!!)
-        SwipeRefreshUtil.setLoadMore(rv_credit_info_list, true)
-        SwipeRefreshUtil.setColorSchemeColors(rv_credit_info_list, AppConstants.loadColors)
+        PullRefreshUtil.setRefresh(rv_credit_info_list, false, false)
         PullRefreshUtil.setRefresh(rv_sale_info_list, false, false)
         goodsAdapter?.onHolderClick = object : CommonRecyclerAdapter.OnHolderClickListener<ScanCodeBean.MerchandiseBean> {
             override fun onHolderClick(view: View, t: ScanCodeBean.MerchandiseBean, position: Int) {
