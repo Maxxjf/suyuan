@@ -19,15 +19,15 @@ class CodeBean {
      */
 
     var createTime: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var name: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var operaName: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var specification: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var traceabilityCode: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     override fun toString(): String {
         return "CodeBean(createTime=$createTime, name=$name, operaName=$operaName, specification=$specification, traceabilityCode=$traceabilityCode)"
     }

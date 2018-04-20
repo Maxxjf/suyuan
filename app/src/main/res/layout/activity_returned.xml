@@ -159,7 +159,7 @@
                 <com.qcloud.qclib.refresh.pullrefresh.PullRecyclerView
                     android:id="@+id/rv_credit_info_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_above="@+id/rl_tag"
                     android:paddingLeft="@dimen/margin_2" />
 

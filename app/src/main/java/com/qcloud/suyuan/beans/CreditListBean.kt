@@ -32,13 +32,13 @@ class CreditListBean {
          */
 
         var idCard: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var mobile: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var name: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var purchaserId: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var sumRepayment: Double = 0.00
         override fun toString(): String {
             return "ListBean(idCard=$idCard, mobile=$mobile, name=$name, purchaserId=$purchaserId, sumRepayment=$sumRepayment)"

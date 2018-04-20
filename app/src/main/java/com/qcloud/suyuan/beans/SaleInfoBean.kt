@@ -26,12 +26,13 @@ class SaleInfoBean {
          * specification : 商品规格
          */
         var goodsName: String? = null
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var goodsNum: Int = 0
         var id: String? = null
             get() = if (StringUtil.isBlank(field)) "" else field
         var price: Double = 0.00
         var specification: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
 
         override fun toString(): String {
             return "ListBean(goodsName=$goodsName, goodsNum=$goodsNum, id=$id, price=$price, specification=$specification)"

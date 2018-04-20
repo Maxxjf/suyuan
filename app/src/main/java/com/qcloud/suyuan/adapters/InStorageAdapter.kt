@@ -5,7 +5,6 @@ import android.widget.Button
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.InStorageRecordBean
 
@@ -30,20 +29,20 @@ class InStorageAdapter(mContext: Context) : CommonRecyclerAdapter<InStorageRecor
 
         val btnPrint = holder.get<Button>(R.id.btn_print)
 
-        if (position %2 == 0) {
+        if (position % 2 == 0) {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
         } else {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
 
         with(bean) {
-            holder.setText(R.id.tv_batch_number, if (StringUtil.isNotBlank(batchNum))batchNum else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_time, if (StringUtil.isNotBlank(createDate)) createDate else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_number,if (StringUtil.isNotBlank(goodsNumStr)) goodsNumStr else mContext.getString(R.string.tag_list_null) )
-                    .setText(R.id.tv_stock, if (StringUtil.isNotBlank(surplusNumStr))surplusNumStr else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_valid, if (StringUtil.isNotBlank(stopDate)) stopDate else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_price,if (StringUtil.isNotBlank(String.format(moneyStr, price))) String.format(moneyStr, price) else mContext.getString(R.string.tag_list_null) )
-                    .setText(R.id.tv_operator, if (StringUtil.isNotBlank(operaName)) operaName else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_batch_number, batchNum)
+                    .setText(R.id.tv_time, createDate)
+                    .setText(R.id.tv_number, goodsNumStr)
+                    .setText(R.id.tv_stock, surplusNumStr)
+                    .setText(R.id.tv_product_valid, stopDate)
+                    .setText(R.id.tv_price, String.format(moneyStr, price))
+                    .setText(R.id.tv_operator, operaName)
         }
 
         btnPrint.setOnClickListener {

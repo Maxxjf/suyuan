@@ -13,16 +13,16 @@ import java.io.Serializable
 class PurchaseProductBean: Serializable {
     var id: String? = null  // id
     var name: String? = null    // 商品名称
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var image: String? = null       // 商品图片(入库使用)
     var storageNum: Int = 0
     var storageNumStr: String = "0"
         get() = storageNum.toString()
     var code: String? = null     // 产品条形条码
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var storageTime: String? = null
     var specification: String? = null   // 规格
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var unit: String? = null    // 单位
         get() = if (StringUtil.isBlank(field)) "" else field
     var classifyName: String? = null    // 分类名称
@@ -31,7 +31,7 @@ class PurchaseProductBean: Serializable {
     var stockStr: String = "0"
         get() = stock.toString()
     var millName: String? = null    // 厂家名称
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var expDate: String? = null
         get() {
             return if (StringUtil.isBlank(field)) {

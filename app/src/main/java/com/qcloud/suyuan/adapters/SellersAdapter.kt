@@ -6,7 +6,6 @@ import android.widget.Button
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.utils.ApiReplaceUtil
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SaleProductBean
 import com.qcloud.suyuan.widgets.customview.RefreshNumView
@@ -16,7 +15,7 @@ import com.qcloud.suyuan.widgets.customview.RefreshNumView
  * Author: gaobaiqiang
  * 2018/3/21 下午9:33.
  */
-class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(context) {
+class SellersAdapter(context: Context) : CommonRecyclerAdapter<SaleProductBean>(context) {
 
     var onRefreshNumClickListener: OnRefreshNumClickListener? = null
 
@@ -25,24 +24,24 @@ class SellersAdapter(context: Context): CommonRecyclerAdapter<SaleProductBean>(c
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val bean = mList[position]
-        val index = position+1
+        val index = position + 1
 
         val refreshNumView = holder.get<RefreshNumView>(R.id.refresh_num_view)
         val btnDel = holder.get<Button>(R.id.btn_delete)
-        if (position %2 == 0) {
+        if (position % 2 == 0) {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.colorItemBg))
         } else {
             holder.mConvertView.setBackgroundColor(ApiReplaceUtil.getColor(mContext, R.color.white))
         }
 
         with(bean) {
-            holder.setText(R.id.tv_product_number,  if (StringUtil.isNotBlank(index.toString()))index.toString() else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_name,  if (StringUtil.isNotBlank(name))name else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_spec,  if (StringUtil.isNotBlank(specification))specification else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_batch, if (StringUtil.isNotBlank(batchNum))batchNum else mContext.getString(R.string.tag_list_null) )
+            holder.setText(R.id.tv_product_number, index.toString())
+                    .setText(R.id.tv_product_name, name)
+                    .setText(R.id.tv_product_spec, specification)
+                    .setText(R.id.tv_product_batch, batchNum)
                     .setVisible(R.id.tv_product_valid, if (active) View.GONE else View.VISIBLE)
-                    .setText(R.id.tv_product_stock,  if (StringUtil.isNotBlank(stockStr))stockStr else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_selling_price, if (StringUtil.isNotBlank(priceStr))priceStr else mContext.getString(R.string.tag_list_null) )
+                    .setText(R.id.tv_product_stock, stockStr)
+                    .setText(R.id.tv_selling_price, priceStr)
         }
 
         refreshNumView.refreshBean(bean)

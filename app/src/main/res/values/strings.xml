@@ -370,7 +370,7 @@
     <string name="tag_product_detail_spec">产品规格: </string>
     <string name="tag_product_detail_classify">产品分类: </string>
     <string name="tag_product_detail_unit">产品单位: </string>
-    <string name="tag_product_detail_manufacturer">产品厂家: </string>
+    <string name="tag_product_detail_manufacturer">生产厂家: </string>
     <string name="tag_product_detail_in_time">入库时间: </string>
     <string name="tag_product_detail_curr_stock">当前库存: </string>
     <string name="tag_product_detail_number">入库数量: </string>

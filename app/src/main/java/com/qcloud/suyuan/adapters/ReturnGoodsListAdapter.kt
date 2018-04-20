@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ScanCodeBean
 
@@ -29,10 +28,10 @@ class ReturnGoodsListAdapter(context: Context) : CommonRecyclerAdapter<ScanCodeB
             holder.mConvertView.setBackgroundResource(R.drawable.bg_item_light_ripple)
         }
         with(bean){
-            holder.setText(R.id.tv_number,if (StringUtil.isNotBlank("$traceabilityCode"))"$traceabilityCode" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_name,if (StringUtil.isNotBlank("$goodsName"))"$goodsName" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_rule,if (StringUtil.isNotBlank("$specification"))"$specification" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_date,if (StringUtil.isNotBlank("$batchNum"))"$batchNum" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_number,traceabilityCode)
+            holder.setText(R.id.tv_name,goodsName)
+            holder.setText(R.id.tv_rule,specification)
+            holder.setText(R.id.tv_date,batchNum)
         }
         ivDelete?.setOnClickListener(View.OnClickListener {
             remove(position)

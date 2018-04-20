@@ -5,7 +5,6 @@ import android.widget.ImageView
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.SaleListBean
 import com.qcloud.suyuan.enums.PayMethod
@@ -17,7 +16,7 @@ import com.qcloud.suyuan.enums.PayMethod
  *
  */
 class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(context) {
-
+    var moneyStr = mContext.resources.getString(R.string.money_str)
     private var selectItem: Int = -1
     override val viewId: Int
         get() = R.layout.adapter_sale_list
@@ -46,10 +45,10 @@ class SaleListAdapter(context: Context) : CommonRecyclerAdapter<SaleListBean>(co
             ivFlag.setImageBitmap(null)
         }
         with(bean) {
-            holder.setText(R.id.tv_number, if (StringUtil.isNotBlank("$serialNumber"))"$serialNumber" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_time, if (StringUtil.isNotBlank("$createDate"))"$createDate" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_money, if (StringUtil.isNotBlank("$realPay"))"$realPay" else mContext.getString(R.string.tag_list_null))
-            holder.setText(R.id.tv_person, if (StringUtil.isNotBlank("$purchaserNmae"))"$purchaserNmae" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_number, serialNumber)
+            holder.setText(R.id.tv_time, createDate)
+            holder.setText(R.id.tv_money, String.format(moneyStr, realPay))
+            holder.setText(R.id.tv_person, purchaserNmae)
         }
 
     }

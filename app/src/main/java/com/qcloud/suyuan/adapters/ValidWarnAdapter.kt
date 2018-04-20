@@ -6,7 +6,6 @@ import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
 import com.qcloud.qclib.image.GlideUtil
 import com.qcloud.qclib.utils.ApiReplaceUtil
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.qclib.widget.customview.RatioImageView
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.ValidWarnBean
@@ -34,13 +33,13 @@ class ValidWarnAdapter(context: Context): CommonRecyclerAdapter<ValidWarnBean>(c
 
         with(bean) {
             GlideUtil.loadImage(mContext, imgProduct, imageUrl, R.drawable.bmp_product)
-            holder.setText(R.id.tv_product_bar_code,if (StringUtil.isNotBlank(barCode))barCode else mContext.getString(R.string.tag_list_null) )
-                    .setText(R.id.tv_product_name, if (StringUtil.isNotBlank(name))name else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_spec, if (StringUtil.isNotBlank(specification))specification else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_manufacture, if (StringUtil.isNotBlank(millName))millName else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_product_stock,if (StringUtil.isNotBlank(surplusNumStr))surplusNumStr else mContext.getString(R.string.tag_list_null) )
-                    .setText(R.id.tv_product_valid,if (StringUtil.isNotBlank(validDate))validDate else mContext.getString(R.string.tag_list_null) )
-                    .setText(R.id.tv_product_batch, "批次条形码: ${if (StringUtil.isNotBlank(batchNum))batchNum else mContext.getString(R.string.tag_list_null)}")
+            holder.setText(R.id.tv_product_bar_code,barCode )
+                    .setText(R.id.tv_product_name, name )
+                    .setText(R.id.tv_product_spec, specification)
+                    .setText(R.id.tv_product_manufacture, millName )
+                    .setText(R.id.tv_product_stock,surplusNumStr )
+                    .setText(R.id.tv_product_valid,validDate  )
+                    .setText(R.id.tv_product_batch, "批次条形码:$batchNum" )
         }
 
         btnOutStorage.setOnClickListener {

@@ -24,15 +24,15 @@ class ScanCodeBean {
          */
 
         var batchNum: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var goodsName: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var specification: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var traceabilityCode: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var traceabilityId: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         override fun toString(): String {
             return "MerchandiseBean(batchNum=$batchNum, goodsName=$goodsName, specification=$specification, traceabilityCode=$traceabilityCode, traceabilityId=$traceabilityId)"
         }
@@ -73,11 +73,11 @@ class ScanCodeBean {
          */
 
         var goodsName: String? = null
-            get() = if (StringUtil.isBlank(field)) "" else field
+            get() = if (StringUtil.isBlank(field)) "--" else field
         var goodsNum: Int = 0
         var price: Double = 0.0
-        var specification: String = ""
-            get() = if (StringUtil.isBlank(field)) "" else field
+        var specification: String? =null
+            get() = if (StringUtil.isBlank(field)) "--" else field
         override fun toString(): String {
             return "InfoListBean(goodsName=$goodsName, goodsNum=$goodsNum, price=$price, specification='$specification')"
         }

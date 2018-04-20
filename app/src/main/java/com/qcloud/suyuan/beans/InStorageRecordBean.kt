@@ -19,7 +19,7 @@ class InStorageRecordBean {
     var createDate: String? = null  // 入库时间
         get() {
             return if (StringUtil.isBlank(field)) {
-                ""
+                "--"
             } else {
                 DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
             }
@@ -28,12 +28,12 @@ class InStorageRecordBean {
     var goodsNumStr: String = "0"
         get() = goodsNum.toString()
     var operaName: String? = null   // 操作人
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var price: Double = 0.00	    // 进货价
     var stopDate: String? = null    // 有效截止时间
         get() {
             return if (StringUtil.isBlank(field)) {
-                ""
+                "--"
             } else {
                 DateUtil.transformDate(field!!, DateStyleEnum.YYYY_MM_DD.value)
             }

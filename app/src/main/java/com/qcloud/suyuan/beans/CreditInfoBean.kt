@@ -20,12 +20,12 @@ class CreditInfoBean {
 
     var alreadyRepayment: Double = 0.00
     var serialNumber: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var shouldRepayment:  Double = 0.00
     var time: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var id: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     override fun toString(): String =
             "CreditInfoBean(alreadyRepayment=$alreadyRepayment, serialNumber=$serialNumber, shouldRepayment=$shouldRepayment, time=$time, id=$id)"
 

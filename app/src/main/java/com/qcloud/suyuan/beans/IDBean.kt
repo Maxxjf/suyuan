@@ -10,21 +10,26 @@ import io.realm.annotations.PrimaryKey
  * Author: Kuzan
  * Date: 2018/3/26 15:27.
  */
-open class IDBean: RealmObject() {
+open class IDBean : RealmObject() {
     // 身份证号
     @PrimaryKey
     var idCode: String? = null
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var id: Long = -1L
     // 名称
     var name: String? = null
+        get() = if (StringUtil.isBlank(field)) "--" else field
     // 姓别
     var sex: String? = null
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var gender: Int = 0
         get() = if (sex.equals("男")) 1 else if (sex.equals("女")) 2 else 0
     // 民族
     var nation: String? = null
+        get() = if (StringUtil.isBlank(field)) "--" else field
     // 出生日期
     var birthday: String? = null
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var birthdayFormat: String? = null
         get() {
             return if (StringUtil.isNotBlank(birthday) && birthday!!.length == 8) {

@@ -3,7 +3,6 @@ package com.qcloud.suyuan.adapters
 import android.content.Context
 import com.qcloud.qclib.adapter.recyclerview.BaseViewHolder
 import com.qcloud.qclib.adapter.recyclerview.CommonRecyclerAdapter
-import com.qcloud.qclib.utils.StringUtil
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.beans.RepaymentListBean
 
@@ -15,6 +14,7 @@ import com.qcloud.suyuan.beans.RepaymentListBean
  */
 class RepaymentListAdapter(mContext: Context) : CommonRecyclerAdapter<RepaymentListBean>(mContext) {
 
+    var moneyStr: String = mContext.resources.getString(R.string.money_str)
     override val viewId: Int
         get() = R.layout.adapter_repayment_list
 
@@ -22,8 +22,8 @@ class RepaymentListAdapter(mContext: Context) : CommonRecyclerAdapter<RepaymentL
         val bean: RepaymentListBean = mList[position]
 
         with(bean) {
-            holder.setText(R.id.tv_date, if (StringUtil.isNotBlank(time)) time else mContext.getString(R.string.tag_list_null))
-                    .setText(R.id.tv_money, if (StringUtil.isNotBlank("${repayment}")) "${repayment}" else mContext.getString(R.string.tag_list_null))
+            holder.setText(R.id.tv_date,  time )
+                    .setText(R.id.tv_money,  String.format(moneyStr,repayment))
         }
     }
 

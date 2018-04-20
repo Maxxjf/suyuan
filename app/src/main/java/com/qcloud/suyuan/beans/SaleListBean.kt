@@ -27,7 +27,7 @@ class SaleListBean {
 
     var amount: Double = 0.00
     var createDate: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var discount: Double = 0.00
     var id: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
@@ -37,14 +37,14 @@ class SaleListBean {
         get() = if (StringUtil.isBlank(field)) "" else field
     var payMethod: Int = 1
     var purchaserNmae: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var purpose: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var realPay: Double = 0.00
     var remark: String? = null
         get() = if (StringUtil.isBlank(field)) "" else field
     var serialNumber: String? = null
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var isRefund:Boolean=false
     override fun toString(): String {
         return "SaleListBean(amount=$amount, discount=$discount, payMethod=$payMethod, realPay=$realPay, isRefund=$isRefund)"

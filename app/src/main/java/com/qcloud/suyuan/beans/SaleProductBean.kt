@@ -10,9 +10,9 @@ import com.qcloud.qclib.utils.StringUtil
 class SaleProductBean {
     var recordId: String? = null        // 入库批次ID
     var batchNum: String? = null        // 批次码
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var name: String? = null            // 商品名
-        get() = if (StringUtil.isBlank(field)) "" else field
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var number: Int = 1                 // 数量：默认为1
     var numberStr: String = "1"
         get() = number.toString()
@@ -20,6 +20,7 @@ class SaleProductBean {
     var priceStr: String = "0.00"
         get() = price.toString()
     var specification: String? = null   // 规格
+        get() = if (StringUtil.isBlank(field)) "--" else field
     var stock: Int = 0                  // 批次库存
     var stockStr: String = "0"
         get() = stock.toString()

@@ -13,7 +13,6 @@ import com.qcloud.qclib.toast.QToast
 import com.qcloud.suyuan.R
 import com.qcloud.suyuan.adapters.InStorageAdapter
 import com.qcloud.suyuan.base.BaseActivity
-import com.qcloud.suyuan.base.BaseDialog
 import com.qcloud.suyuan.beans.InStorageRecordBean
 import com.qcloud.suyuan.beans.PrintBean
 import com.qcloud.suyuan.beans.PrintContentBean
@@ -22,8 +21,6 @@ import com.qcloud.suyuan.ui.store.presenter.impl.StockDetailsPresenterImpl
 import com.qcloud.suyuan.ui.store.view.IStockDetailsView
 import com.qcloud.suyuan.utils.PrintHelper
 import com.qcloud.suyuan.widgets.customview.NoDataView
-import com.qcloud.suyuan.widgets.dialog.AdjustWarnDialog
-import com.qcloud.suyuan.widgets.dialog.ChangePriceDialog
 import com.qcloud.suyuan.widgets.dialog.ProductDetailsDialog
 import com.qcloud.suyuan.widgets.toolbar.CustomToolbar
 import kotlinx.android.synthetic.main.activity_stock_details.*
@@ -36,7 +33,7 @@ import timber.log.Timber
  * Author: gaobaiqiang
  * 2018/3/24 下午2:35.
  */
-class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresenterImpl>(), IStockDetailsView, View.OnClickListener {
+class StockDetailsActivity : BaseActivity<IStockDetailsView, StockDetailsPresenterImpl>(), IStockDetailsView, View.OnClickListener {
     private var mAdapter: InStorageAdapter? = null
     private var mEmptyView: NoDataView? = null
 
@@ -147,6 +144,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
         if (isRunning) {
             val infoBean = bean.info
             val goodsBean = bean.goods
+            var millBean =bean.mill
             if (infoBean != null) {
                 with(infoBean) {
                     // 图片
@@ -157,6 +155,7 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
                     tv_product_spec.text = specification
                     // 单位
                     tv_product_unit.text = unit
+
                 }
 
             }
@@ -165,6 +164,10 @@ class StockDetailsActivity: BaseActivity<IStockDetailsView, StockDetailsPresente
                 tv_product_bar_code?.text = goodsBean.barCode
                 // 分类
                 tv_product_classify.text = goodsBean.classifyName
+            }
+            if (millBean!=null){
+                //生产厂家
+                tv_product_manufacture.text = millBean.name
             }
             // 库存
             val totalNumberStr = resources.getString(R.string.tag_total_stock_number)

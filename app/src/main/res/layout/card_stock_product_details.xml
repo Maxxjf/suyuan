@@ -33,7 +33,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.2"
+            android:layout_weight="2"
             android:weightSum="4"
             android:gravity="top"
             android:orientation="vertical">
@@ -227,12 +227,13 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:weightSum="4"
             android:orientation="horizontal"
             android:gravity="top">
 
             <Button
+                android:drawableLeft="@drawable/icon_product_details"
                 android:id="@+id/btn_product_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
